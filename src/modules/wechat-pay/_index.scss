@@ -1,0 +1,27 @@
+.mdl-wechat-pay{
+	.pay-title{
+		height: 45px;
+		.money{
+			padding: 0;
+			text-align: right;
+		}
+		.company{
+			line-height: 31px;
+		}
+	}
+	.pay-qrcode{
+		.mdl-qr-block{
+			margin:0 auto;
+			p{
+				text-align: center;
+			}
+		}
+		.tips{
+			  text-align: center;
+  			margin: 15px auto 0 auto;
+		}
+	}
+	.pay-tips{
+		text-align: center;
+	}
+}

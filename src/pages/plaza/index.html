@@ -1,0 +1,81 @@
+<div class="page-plaza card-display" ng-init="init()">
+	<div class="top-area">
+		<div class="container">
+			<img class="bg" src="/images/plaza-top.png">
+		</div>
+	</div>
+
+	<div class="hot-flyers">
+		<div class="container">
+			<div class="headline">
+				<span class="title">
+					近期热门作品
+				</span>
+				<!-- <span class="bg-grey">
+					<span class="green">
+						秀热单，赢易豆——作品登上热单榜，易豆拿到你手软哦！
+					</span>
+					<a href="http://club.davinci.echoes.link/topic/5502591d98067e752e0b3c71" class="red" target="_blank">查看活动规则</a>
+				</span> -->
+			</div>
+			<div class="card-list">
+				<div class="card" ng-repeat="flyer in hotFlyers">
+					<plaza-card ng-model="flyer"></plaza-card>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="good-flyers">
+		<div class="container">
+			<div class="headline">
+				<span class="title">
+					优秀作品展示
+				</span>
+				<div class="sort">
+					<select class="form-control input-sm"
+						ng-options="tag.tag as tag.name for tag in tags"
+						ng-model="query.tags"
+						ng-change="searchByCond()">
+						<option value="">全部类型</option>
+					</select>
+
+					<select
+						class="form-control input-sm"
+						ng-model="query.sort"
+						ng-change="searchByCond()">
+						<option value="">按条件查询</option>
+						<option value="ptDesc">发布时间从新到旧</option>
+						<option value="ptAsc">发布时间从旧到新</option>
+						<option value="pvDesc">浏览量从高到低</option>
+						<option value="pvAsc">浏览量从低到高</option>
+					</select>
+				</div>
+				<div class="search">
+					<input type="text"
+						class="form-control input-sm"
+						ng-model="query.title"
+						ng-enter="searchByCond()">
+					<span class="search-btn" ng-click="searchByCond()">
+						<i class="fa fa-search"></i>
+					</span>
+				</div>
+			</div>
+			<div class="card-list" ng-show="flyers.length"  ng-init="searchInputFixed()">
+				<div class="card" ng-repeat="flyer in flyers">
+					<plaza-card ng-model="flyer"></plaza-card>
+				</div>
+			</div>
+			<div class="snippet-empty" ng-if="count === 0">
+				<h3>没有符合条件的作品</h3>
+			</div>
+		</div>
+
+		<div class="load-more" ng-if="count !== 0 && next">
+			<span ng-if="loading">
+				<i class="sprite"></i>
+			</span>
+			<span ng-click="loadMore()">载入更多</span>
+		</div>
+	</div>
+</div>

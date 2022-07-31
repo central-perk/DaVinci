@@ -1,0 +1,302 @@
+@import './top-bar/index';
+@import './edit-area/index';
+@import './nav-area/index';
+@import './display-area/index';
+
+.flyer-interact-editor {
+	@include fi-top-bar;
+
+	//!TODO 类名需要修改
+	.interact-flyer-editor {
+		height: 650px;
+		background-color: $white;
+		position: relative;
+		padding-left: 180px;
+		padding-right: 330px;
+		display: flex;
+		justify-content: center;
+		overflow: hidden;
+		// 暂时先隐藏音乐图标
+		.flyer-audio {
+			display: none;
+		}
+
+		// 设计器中的占位图片半透明
+		.mdl-pg-vessel, .nav-area {
+			.pic {
+				.pic-empty {
+					@include opacity(0.2);
+					@include transition(opacity 0.3s);
+					// 展位图隐藏不加动画
+					&.ng-leave {
+						display: none;
+						&.ng-leave-active {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+		.ui-sortable-helper {
+			.icon-hover {
+				display: none !important;
+			}
+		}
+	}
+
+	.edit-area {
+		height: 100%;
+		z-index: 12;
+		&>div {
+			height: 100%;
+		}
+	}
+	@include fi-nav-area;
+	@include fi-display-area;
+	@include fi-edit-area;
+}
+
+
+
+
+.btn {
+	&.btn-sm {
+		padding-right: 16px;
+		padding-left: 16px;
+		font-size: 14px;
+		height: 30px;
+		line-height: 18px;
+	}
+	&.btn-grey {
+		color: $black;
+		background-color: #bbbbbb;
+		border: none;
+	}
+	&.btn-grey-d {
+		color: $white;
+		background-color: #555555;
+		border: none;
+	}
+	&.btn-green-click {
+		color: $white;
+		@include background-image(linear-gradient(#3B9466, #2A6B4A));
+		border: none;
+	}
+	&.btn-green {
+		color: $white;
+		background-color: #3B9466;
+		border: none;
+	}
+	&.btn-white-click {
+		color: #333333;
+		background-color: white;
+		border: none;
+	}
+	&.btn-white {
+		color: #333333;
+		background-color: white;
+		border: none;
+	}
+	&.btn-black {
+		background-color: #4A4A4A;
+		color: $white;
+		border: none;
+	}
+	&.btn-custom {
+		@include background-image(linear-gradient(#FFFFFF, #D5D5D5));
+	}
+	&.btn-green-l {
+		@include background-image(linear-gradient(#2AD1B0, #198965));
+		border: 0;
+		color: $white;
+		padding: 5px 20px;
+		text-align: center;
+	}
+}
+.btn-toggle {
+	.btn {
+		height: 24px;
+		border: none;
+		padding: 2px 12px;
+		line-height: 20px;
+		margin-left: 0 !important;
+		&:not(.active) {
+			background-color: #CCCCCC;
+		}
+		&.btn-red.active {
+			&, &:hover {
+				background-color: $red;
+			}
+		}
+	}
+}
+// 所有新式的弹出框样式
+.modal-content {
+	border: none;
+	overflow: hidden;
+}
+.modal-content.modal-new {
+	border: none;
+	@include border-radius(3px);
+	.modal-header {
+		height: 50px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 20px;
+		border: none;
+		.left-part {
+			display: flex;
+			.title {
+				margin-right: 90px;
+			}
+			.header-menu {
+				display: flex;
+				color: #999999;
+				font-weight: bold;
+				& > div {
+					margin-right: 50px;
+					cursor: pointer;
+					&:last-child {
+						margin-right: 0;
+					}
+				}
+				.active {
+					color: #3B9466;
+					position: relative;
+					&:after {
+						content: '';
+						width: 0;
+						height: 0;
+						display: block;
+						position: absolute;
+						bottom: -16px;
+						left: 0;
+						right: 0;
+						margin: 0 auto;
+						border: solid transparent;
+						pointer-events: none;
+						border-width: 10px;
+						border-bottom-color: #4A4A4A;
+					}
+				}
+			}
+		}
+		.right-part {
+			@include mx-flex-center;
+			.btn-green-click {
+				width: 120px;
+				@include background-image(linear-gradient(#2AD1B0, #198965));
+				border: 0;
+				color: $white;
+				text-align: center;
+			}
+			.justify {
+				height: 100%;
+				display: block;
+				line-height: 20px;
+			}
+			.close {
+				font-size: 34px;
+				margin-left: 14px;
+				margin-top: -4px;
+				position: relative;
+				right: -5px;
+			}
+		}
+	}
+	.nav-tabs {
+		height: 50px;
+		padding: 0 20px;
+		background-color: #4A4A4A;
+		display: flex;
+		align-items: flex-end;
+		border: none;
+		position: relative;
+		> li.active > a {
+			background-color: #F0F0F0;
+			color: #4A4A4A;
+		}
+		a {
+			color: $white;
+			padding: 10px 20px;
+			// &:active {
+			// 	color: #4A4A4A;
+			// }
+			&:hover {
+				border-color: transparent;
+				background-color: transparent;
+			}
+		}
+	}
+	.modal-body {
+		overflow-y: auto;
+		background-color: #F0F0F0;
+	}
+	.modal-footer {
+		height: 70px;
+		background-color: #CCCCCC;
+		@include mx-flex-center;
+		.btn {
+			padding: 7px 27px;
+			font-size: 18px;
+			height: 40px;
+			line-height: 26px;
+		}
+		.btn-white {
+			margin-left: 20px;
+			color: #9B9B9B;
+		}
+	}
+}
+
+
+i.chosen {
+	display: none;
+	width: 32px;
+	height: 32px;
+	@include mx-center;
+	background-image: url(/images/sprite.png);
+	background-size: 276px 233px;
+	background-position: -114px 74px;
+}
+
+.context-menu {
+	.mod {
+		&:before {
+			content: 'Ctrl'
+		}
+	}
+	span {
+		float: right;
+	}
+	.delete {
+		&:before {
+			content: 'BackSpace'
+		}
+	}
+}
+.osx .context-menu {
+	.mod {
+		&:before {
+			content: "⌘";
+			font-size: 16px;
+			line-height: 16px;
+		}
+	}
+	.delete {
+		&:before {
+			content: 'Delete'
+		}
+	}
+}
+
+.device{
+	.page-layers{
+		overflow: hidden;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+	}
+}

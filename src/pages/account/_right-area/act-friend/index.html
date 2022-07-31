@@ -1,0 +1,63 @@
+ <div class="act-friend">
+	<div class="act-title">
+		<h3>
+			我的好友
+		</h3>
+	</div>
+	<div class="content">
+		<div class="add-friend">
+			<!-- <input type="text" ng-model="friendName" placeholder="请输入昵称或者邮箱">
+			<div class="btn-add-friend" ng-click="addFriend()" ng-disabled="!friendName">添加好友</div> -->
+			<div class="lbtn lbtn-green refresh-friend" ng-click="listApply()">刷新列表</div>
+		</div>
+		<div class="friend-list">
+			<table class="table table-bordered" ng-if="applys.length">
+				<thead>
+					<tr>
+						<th>好友</th>
+						<th>时间</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="apply in applys">
+						<td>
+							<img ng-src="{{apply.user.head}}" alt="">
+							{{apply.user.nickname}}
+						</td>
+						<td ng-bind="apply.createdTime"></td>
+						<td>
+							<span class="orange"
+								ng-click="rmFriend(apply)"
+								ng-if="apply.status === 20">删除</span>
+							<span class="green"
+								ng-click="accept(apply)"
+								ng-if="apply.status === 10 && apply.reciever._id === user._id"
+								>接受</span>
+							<span ng-if="apply.status === 10 && apply.master._id === user._id">申请已发送</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="pagination-wrap" ng-if="pagination.content.length">
+			<ul class="pagination">
+				<li class="no disabled" ng-if="pagination.leftIgnore">
+					<a>...</a>
+				</li>
+				<li data-ng-repeat="item in pagination.content" class="{{item.pclass}}">
+					<a ng-click="listApply(item.curpage)">{{item.ptext}}</a>
+				</li>
+				<li class="no disabled" ng-if="pagination.rightIgnore">
+					<a>...</a>
+				</li>
+				<li class="next" ng-if="pagination.content">
+					<a class="icon-chevron-right" ng-click="listApply(pagination.right)">
+						下一页
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+

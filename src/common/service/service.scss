@@ -1,0 +1,23 @@
+@import "shared/shared";
+
+@import './affirm/index';
+@import './notify/index';
+@import './flyer-config/index';
+@import './flyer-view/index';
+@import './tpl-view/index';
+@import './tpl-config/index';
+
+@import '../services/flyer-select/index';
+@import '../services/alert/index';
+@import '../services/pg-add/index';
+@import '../services/image-upload/index';
+@import '../services/image-manage/index';
+@import '../services/modal/index';
+@import '../services/alert/index';
+@import '../services/pg-add/index';
+@import '../services/pg-template-add/index';
+@import '../services/confirm/index';
+@import '../services/loading/index';
+@import '../services/flyer-share/index';
+@import '../services/chat/index';
+@import '../services/relation/index';

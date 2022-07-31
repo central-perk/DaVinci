@@ -1,0 +1,67 @@
+<section class="svs-pg-template-add">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" data-ng-click="close();">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            <h3>创建页面模板</h3>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal" name="templateForm" role="form" novalidate ng-submit="save()">
+                <div class="form-group" ng-class="{'has-error':templateForm.name.$dirty && templateForm.name.$invalid}">
+                    <label for="name" class="col-md-2 control-label">名称</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="name" ng-model="template.name" ng-enter="save()" ng-minlength="2" ng-maxlength="30" required />
+                        <div class="text-danger" ng-show="templateForm.name.$dirty && templateForm.name.$invalid">
+                            <small class="text-danger" ng-show="templateForm.name.$error.required">
+                                昵称不能为空
+                            </small>
+                            <small class="text-danger" ng-show="templateForm.name.$error.minlength||templateForm.name.$error.maxlength">
+                                昵称长度应在2-30个字符以内
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tags" class="col-md-2 control-label">标签</label>
+                    <div class="col-sm-6 ">
+                       <ui-select multiple ng-model="data.selectedTags" theme="bootstrap" ng-disabled="disabled" class="col-sm-9" style="width:270px">
+                        <ui-select-match placeholder="选择标签">{{$item.name}}</ui-select-match>
+                        <ui-select-choices repeat="t in tags | filter:$select.search" value="{{$select.selected.name}}">
+                            <small ng-bind="t.name | highlight: $select.search"></small>
+                        </ui-select-choices>
+                    </ui-select>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':templateForm.sort.$dirty && templateForm.sort.$invalid}">
+                    <label for="sort" class="col-md-2 control-label">排序</label>
+                    <div class="col-sm-6">
+                        <input type="number" class="form-control" name="sort" ng-model="template.sort" ng-enter="save()" required />
+                        <div class="help-block">
+                            <small>(数字越大，排序越靠前)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="col-md-2 control-label">封面</label>
+                    <div class="col-sm-3">
+                        <div class="thumb">
+                             <img  ng-src="{{template.cover}}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-sm-2" ng-if="!template._id">
+                        <a class="btn btn-default btn-sm" ng-click="setCover()">设置封面</a>
+                    </div>
+                    <div class="col-sm-5">
+                        <input type="text" ng-model="template.cover" class="form-control" >
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button " class="btn btn-default" data-ng-click="close()">取消</button>
+            <button type="button" class="btn btn-success" ng-disabled="templateForm.$invalid" data-ng-click="save()">保存</button>
+        </div>
+    </div>
+</section>

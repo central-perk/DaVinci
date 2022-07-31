@@ -1,0 +1,39 @@
+<individual ng-init="billRecordsPageInit()">
+	<!-- 交易记录 -->
+	<div class="pane pane-bills">
+		<h3 class="pane-title">
+			交易记录
+		</h3>
+		<table class="table table-striped table-bordered table-hover table-std">
+			<thead>
+				<th class="ts">时间</th>
+				<th class="detail">明细</th>
+				<th>金额（元）</th>
+				<th>余额（元）</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="bill in bills">
+					<td ng-bind="bill.createdTime|dateDisplay"></td>
+					<td>
+						<div ng-bind="bill.detail" class="detail"></div>
+					</td>
+					<td ng-bind="bill.amount|toFixed|numberSign" ng-class="{'amount-pay-out':bill.amount<0,'amount-charge':bill.amount>0}"></td>
+
+					<td ng-bind="bill.balance|toFixed"></td>
+				</tr>
+				<tr ng-if="bills.length==0">
+					<td colspan="4">
+						<p class="text-muted text-center snippet-empty">暂无交易记录</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="pull-right">
+					<dvcpagination ng-model="pagination" ng-if="bills.length!==0" max-size="5"></dvcpagination>
+				</div>
+			</div>
+		</div>
+	</div>
+</individual>

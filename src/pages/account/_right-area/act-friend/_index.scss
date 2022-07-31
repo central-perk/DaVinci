@@ -1,0 +1,29 @@
+.act-friend {
+	.content {
+		padding: 40px;
+		.add-friend {
+			display: flex;
+			margin-bottom: 20px;
+			position: relative;
+		}
+		.table {
+			img {
+				width: 30px;
+				height: 30px;
+				margin-right: 10px;
+			}
+			td {
+				line-height: 30px;
+			}
+		}
+		.orange {
+			color: #EC580C;
+		}
+		.green {
+			color: #3B9466;
+		}
+		.orange ,.green {
+			cursor: pointer;
+		}
+	}
+}

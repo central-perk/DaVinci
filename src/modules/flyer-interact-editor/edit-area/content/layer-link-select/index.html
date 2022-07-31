@@ -1,0 +1,68 @@
+<div>
+  <div class="form-group">
+    <div class="control-label">Link</div>
+    <div class="btn-group edit-container">
+      <select
+        class="form-control input-sm"
+        ng-model="setting.linkType"
+        ng-disabled="layer.asSubmitBtn||layer.state === 1"
+        name="linkType"
+        ng-options="l.type as l.name for l in linkTypes"
+      ></select>
+    </div>
+  </div>
+
+  <div class="form-group new-window" ng-if="setting.linkType==='web'">
+    Open the web page in the work
+    <div class="btn-group">
+      <span
+        class="btn btn-sm btn-default"
+        ng-model="layer.link.openNewTab"
+        btn-radio="false"
+        title="yes"
+      >
+        Yes
+      </span>
+      <span
+        class="btn btn-sm btn-default"
+        ng-model="layer.link.openNewTab"
+        btn-radio="true"
+        title="No"
+      >
+        no
+      </span>
+    </div>
+  </div>
+  <div
+    class="form-group"
+    ng-class="{'has-error':error.type}"
+    ng-if="setting.linkType==='web'||setting.linkType==='tel'"
+  >
+    <input
+      type="text"
+      placeholder="{{placeholder[setting.linkType]}}"
+      class="form-control input-sm"
+      ng-model="setting.linkVal"
+    />
+  </div>
+  <div class="form-group" ng-if="setting.linkType==='page'">
+    <div class="control-label">Page number</div>
+    <div class="btn-group edit-container">
+      <select
+        class="form-control input-sm"
+        ng-model="setting.linkVal"
+        ng-disabled="layer.asSubmitBtn"
+        name="pageNum"
+        ng-options="page.id as page.name for page in pages"
+      ></select>
+    </div>
+  </div>
+  <div class="text-danger" ng-show="error.type">
+    <small class="text-danger" ng-show="error.type&&error.type ==='tel'">
+      Please make sure the phone number you entered is valid
+    </small>
+    <small class="text-danger" ng-show="error.type&&error.type ==='web'">
+      Please make sure the URL you entered is valid
+    </small>
+  </div>
+</div>

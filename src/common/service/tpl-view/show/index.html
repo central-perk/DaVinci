@@ -1,0 +1,16 @@
+<div class="fv-show {{transferMode}}">
+	<div class="phone">
+		<div class="drop-div">
+			<i class="sprite"></i>
+			<iframe id="template-iframe" frameborder="0"
+				ng-src="{{'/templates/' + tplID + '/preview?_mobile=true'}}"></iframe>
+		</div>
+		<div class="speaker"></div>
+		<div class="page">
+			<i class="page-up sprite" ng-click="prev()"></i>
+			<i class="page-down sprite"  ng-click="next()"></i>
+			<i class="page-left sprite" ng-click="prev()"></i>
+			<i class="page-right sprite"  ng-click="next()"></i>
+		</div>
+	</div>
+</div>

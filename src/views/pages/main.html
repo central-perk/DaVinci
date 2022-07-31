@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-controller="LayoutController">
+<head>
+    {{>main_head}}
+</head>
+
+<body class="body-main" ng-class="colorClass">
+    {{> global_alert}}
+    
+    {{> header}}
+
+    <!--Loading -->
+    <div class="mdl-loading loading" id="loading">
+        <i class="fa fa-spinner fa-spin"></i>
+    </div>
+    <div ui-view ng-cloak></div>
+    {{> main_script}}
+</body>
+
+</html>

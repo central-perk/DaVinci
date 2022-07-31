@@ -1,0 +1,28 @@
+<div class="search">
+    <div class="form-inline" role="form">
+        <label>群组:</label>
+        <div class="form-group">
+            <ul class="group-items">
+                <li class="btn btn-sm btn-default"
+                    ng-class="{'btn-success': g.active}"
+                    ng-click="addQueryGroup(g)"
+                    ng-repeat="g in groups"
+                    ng-bind="g.name"
+                    ng-mouseenter="addSuccess($event, g.active)"
+                    ng-mouseleave="rmSuccess($event, g.active)"></li>
+                <li ng-if="!groups||groups.length===0" class="text-muted">暂无无群组</li>
+            </ul>
+        </div>
+    </div>
+    <div class="form-inline" role="form">
+        <label for="">查询:</label>
+        <div class="form-group">
+            <input class="form-control input-sm" type="text"
+                placeholder="模糊查询客户信息"
+                ng-enter="searchContacts()"
+                ng-model="query.text">
+            <i class="fa fa-times icon-clear-qt" ng-if="isQuery" ng-click="clearQuery()"></i>
+        </div>
+        <button class="btn btn-primary btn-sm" ng-click="searchContacts()">查询</button>
+    </div>
+</div>

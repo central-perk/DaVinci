@@ -1,0 +1,21 @@
+<div class="page-content" >
+    <div class="page-data">
+      <div class="container">
+        <div  class="dt-main-area">
+          <tabset class="nav nav-select tabset-std">
+              <tab ng-repeat="nav in navs" active="nav.active" disabled="nav.disabled">
+                  <tab-heading>
+                      <span>{{nav.head}}</span>
+                  </tab-heading>
+                     <adm-flyer-form 
+                     		ng-if="nav.name === 'form' && flyer">
+                     </adm-flyer-form>
+                     <adm-flyer-stat 
+                      	ng-if="nav.name === 'stat' && flyer">
+                     </adm-flyer-stat>
+              </tab>
+          </tabset>
+         </div>
+       </div>
+     </div>
+</div>

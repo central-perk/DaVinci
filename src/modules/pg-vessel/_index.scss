@@ -1,0 +1,179 @@
+$pg-vessel-width:350px;
+$pg-vessel-height:506px;
+
+@mixin mdl-pg-vessel {
+	.mdl-pg-vessel {
+		width: $pg-vessel-width;
+		margin: 0 auto;
+		position: relative;
+		&:hover {
+			.mdl-flex-carousel .carousel-control, .mdl-flex-carousel .carousel-indicators{
+				@include opacity(1);
+			}
+			.device.mobile .home {
+				@include opacity(0);
+			}
+			.pic .pic-empty {
+				@include opacity(1);
+			}
+		}
+
+		@include mx-interact-device;
+		-webkit-perspective: 3000px;
+		-moz-perspective: 3000px;
+		perspective: 3000px;
+		.page-base{
+		  height: 506px;
+		  position: absolute;
+		  top: 40px;
+		  width: 100%;
+		}
+		.page-base.paging{
+			background: black;
+			overflow: hidden;
+			.page{
+				position: absolute;
+				z-index: 0;
+				display: none;
+				-webkit-transform-style: preserve-3d;
+				-moz-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+				&.active{
+					display: block;
+				}
+			}
+		}
+		.page.page-clone{
+			z-index: 9999;
+		}
+		.page{
+			width: 100%;
+			height: 100%;
+			.bgi {
+				overflow: hidden;
+			}
+			.bgi.slide-horizontal{
+				.bgi-inner{
+					width: 110%!important;
+				}
+			}
+			.bgi.slide-vertical{
+				.bgi-inner{
+					height: 110%!important;
+				}
+			}
+
+			.page-bg-include{
+				overflow:hidden;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+			}
+		}
+		.mdl-flex-carousel{
+			//切换模板
+			height: 100%;
+			.carousel-inner {
+				width: 300%;
+				height: 506px;
+				.slide {
+					width: 320px;
+					height: 506px;
+					margin-right: 0;
+					overflow: hidden;
+				}
+			}
+			.carousel-control {
+				width: 45px;
+				// height: 100%;
+				height: calc(100% - 80px);
+				top: 40px;
+				@include opacity(0);
+				@include transition(all 0.3s);
+				&.right, &.left {
+					background: none;
+					z-index: 1000;
+					span{
+						font-size: 65px;
+					}
+				}
+				&.left{
+					width: 45px;
+					margin-left: -18px;
+				}
+				&.right{
+					width: 45px;
+					margin-right: -18px;
+				}
+				.icon-prev, .icon-next {
+					color: $black;
+					line-height: 60px;
+					font-size: 60px;
+					width: 100%;
+					height: 60px;
+					margin: 0;
+					top: 50%;
+					margin-top: -30px;
+					&:before {
+						content: '';
+					}
+				}
+				.icon-prev {
+					right: 0;
+					left: initial;
+					background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAQAAADZc7J/AAACAElEQVR4XqXOvYtUVxjH8c85c2cdcRc2xi0kEkIgaEghebFIkS5FIBKLKFgoVioKNjaCf4C1iG+1rZ0riqDYWdnoIrq6NqqororosjvOnXuO1sPci1e/9fN8+AEA0YxfbNGiAtDzje98a8oar1oB+8IfvQO/W2eNgMpwJl+IWywbLatUhoYSCaBY2bH3+J+TKglgVd7Qfy2MAZKkkmTx4dWTzkPYvf/M2VcCALJS0FQQTDp36MgpuYDhyEPUHNmy/46euOZu9IVVVq+f2PSoE31N03qRrLmOWHfT1Smy3Eh0PRD9aGi0DAqyJBhX0LXgor+RjJZAoWFB14JZfR1Jrl+Qxi4ICvddsqwjSGMX5PoFQeG26z6obPaDsmZBDRB03HJNZehX/xqoqAeMAjrmXJUkv9mqrxRqgWg0XfdckWQ/2Wal5h11QGWD9SrRWwuiQFtg2k7fKy2a9cREWyBY0bHLRsmSSx7rtgMIPijtsEnlvcueK9oBBAMD/9uotOSd0AQ0Edv9bCjSHiAolT4RSvUVWda0ItvmrUpdsQpJ84qBqSYg9wONRDIQxtBVSqUQH958s9jT2Nj3SXPzr18QxD0HDx+bnoraVJl/evj0ncvmg2jt5n/+2rp6XfpsI3rzcvbGyzn3PQuYsNaMaROtJix5ZtEggKhnldgCyPr6Eh8Bz2TCCG+ydTQAAAAASUVORK5CYII=) center center no-repeat;
+				}
+				.icon-next {
+					left: 0;
+					right: initial;
+					background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAQAAADZc7J/AAAB5klEQVR4Xp3P0WuOUQDH8c85z7bmLQCySCghEOFOkYoIFUo1k1SokZIbf4JLN67dySUitfwDKAAxISNlBZvN9u59Dq3d8PQ+7dnve3U6ne/vd1TKFmvMF005ex1zyC6bdWgHAgCfYmYcsVii5r79u7/OlsuQ/NJ/5eGD3wG4enjnmbQ8iBOEgiCp6WsfCQCibO1g17lAFi51d10ekCtP0vqPOJnn9CksWf3687v0tjK9aTAdPRllbaumdeSmmqjdLKZOlGmlSBJlkxIgFdHinV4tUgm5JEJeBENuTSjyJqSyBbnMsBvlKxA1bQiCITe9ljVbUbagbqm1Gobd8kQLUgHlXwj22mjMqB6PZUVF+YJk1Ih9Nsk19HgqNlvQjKBu2AErJLm7XmlVTKRMEfX6LmrosFijqqBNn5u+qlviiFlVBa0+um1QbqVOmWGhiqDFF3cMaFjlsLoRgSqC4KdBdSsdNGpUoJqAaMxqh8qelwvq48/r6gLVBQ2LHSi0VxJMN1reDoGZy46/bDxPzwo8/e9cvP+WOk8wc8ae6y8+pAlFBd6k3v6t66nZuObi3b736WMlPqRHP7q6BaJFdiw4e+LahXvnJ82Fnu5rGzrNFaHNIpttt7MC26yzUBtAVDPH3ArMVhPhDxTM/CUYeoK6AAAAAElFTkSuQmCC) center center no-repeat;
+				}
+			}
+			.carousel-indicators {
+				margin-bottom: 0;
+				top: calc(100% + 10px);
+				@include opacity(0);
+				@include transition(all 0.3s);
+			}
+		}
+		.btn-preview{
+			position: absolute;
+			  left: 50%;
+			  margin-left: -38px;
+			  margin-top: 8px;
+			  padding: 2px 10px;
+			  font-size: 14px;
+			&:hover{
+				opacity: .87;
+			}
+		}
+	}
+
+	//正在编辑特效
+	.mdl-pg-vessel.edit-effect{
+		.page-base{
+			>.page{
+				>.mdl-flex-carousel{
+					.carousel-indicators,.carousel-control{
+						display: none;
+					}
+				}
+			}
+		}
+	}
+	.vessel-lock{
+		.carousel-control,.vessel-tb,.carousel-indicators{
+			display: none!important;
+		}
+		.home{
+			display: block!important;
+			opacity: 1!important;
+		}
+		.bgi {
+			-webkit-animation: none;
+			animation: none;
+			-o-animation: none;
+			-moz-animation: none;
+		}
+	}
+}

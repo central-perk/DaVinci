@@ -1,0 +1,62 @@
+@import '../components/effect/fpscan/edit';
+@import '../components/effect/mask/edit';
+
+
+@mixin fi-edit-effect {
+	.edit-effect {
+		.effect-group{
+			$effect-group-item-width: 48px;
+			display: flex;
+
+			.effect-group-item{
+				margin-right: 20px;
+				text-align: center;
+				.square {
+					width: $effect-group-item-width;
+					height: $effect-group-item-width;
+					line-height: $effect-group-item-width;
+					display: block;
+					border: 2px solid #DDDDDD;
+					background-color: #DDDDDD;
+					cursor: pointer;
+					margin-bottom: 5px;
+					@include mx-flex-center;
+					@include border-radius(3px);
+					i {
+						width: 40px;
+						height: 40px;
+						background-image: url(/images/sprite.png);
+						background-size: 276px 233px;
+						&.none {
+							width: 36px;
+							height: 36px;
+							background-position: 0px -78px;
+						}
+						&.mask {
+							background-position: -42px -78px;
+						}
+						&.fpscan {
+							background-position: -84px -78px;
+						}
+					}
+				}
+				&:hover{
+					opacity: .87;
+				}
+				&.active{
+					.square {
+						background-color: $white;
+						border-color: #3B9466;
+					}
+				}
+			}
+		}
+		.custom-mask, .custom-fpscan-bg {
+			text-align: center;
+			line-height: 103px;
+			@include background-image(linear-gradient(#FFFFFF, #D5D5D5));
+		}
+		@include edit-effect-fpscan;
+		@include edit-effect-mask;
+	}
+}

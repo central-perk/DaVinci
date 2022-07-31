@@ -1,0 +1,145 @@
+<individual>
+    <div class="pane pane-mails" ng-init="mailsRecordsPageInit()">
+        <h3 class="pane-title">
+            短信邮件
+        </h3>
+        <div class="row pane-sub">
+            <div class="col-sm-12">
+                <tabset class="nav tabset-std">
+                    <tab ng-repeat="nav in recordNavs" heading="{{nav.name}}" active="nav.active" disabled="nav.disabled" ng-click="chooseNav(nav)">
+                    </tab>
+                </tabset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-inline col-sm-12">
+                <div class="input-search text-right">
+                    <input type="text" ng-enter="searchRecords()" ng-model="query.text" placeholder="搜索文本信息" class="form-control input-sm">
+                    <button class="btn btn-default btn-sm" ng-click="searchRecords()">查询</button>
+                </div>
+            </div>
+        </div>
+        <div class="row pane-sub" ng-if="whenMails()">
+            <div class="col-sm-12">
+                <table class="table table-striped table-bordered table-hover table-std">
+                    <thead>
+                        <th class="ts">时间</th>
+                        <th>姓名</th>
+                        <th>邮箱</th>
+                        <th>邮件内容</th>
+                        <th>传单</th>
+                        <th>耗费邮件</th>
+                        <th>状态</th>
+                    </thead>
+                    <tbody>
+                        <tr class="record-send" ng-repeat="r in records" ng-click="showMailDetails(r)">
+                            <td class="ts" ng-bind="r.createdTime|dateDisplay"></td>
+                            <td>
+                                <div class="nickname text-out" ng-bind="r.nickname"></div>
+                            </td>
+                            <td>
+                                <div class="email text-out" ng-bind="r.email"></div>
+                            </td>
+                            <td>
+                                <div class="text-out"><a >查看详细内容</a></div>
+                            </td>
+                            <td title="{{snippet.visitFlyer}}">
+                                <a class="flyer text-out" ng-if="r.flyer" ng-href="/f/{{r.flyer._id}}" target="_blank" ng-bind="r.flyer.title"></a>
+                            </td>
+                            <td>
+                                <div class="cost text-out" ng-bind="r.cost"></div>
+                            </td>
+                            <td class="status">
+                                <i class="fa" ng-class="{'fa fa-warning text-danger':r.status===40,'fa fa-clock-o text-info':r.status===30,'text-success fa-check':r.status===20,'text-danger fa-times':r.status===10}" tooltip-placement="left" tooltip-trigger="mouseenter" tooltip-html-unsafe="{{getRecordStatusName(r)}}"></i>
+                            </td>
+                        </tr>
+                        <tr ng-if="count ===0 ">
+                            <td colspan="7">
+                                <p class="text-muted text-center snippet-empty">暂无邮件推送记录</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- BEGIN PAGINATION -->
+
+            </div>
+        </div>
+        <div class="row" ng-if="whenSms()">
+            <div class="col-sm-12">
+                <table class="table table-striped table-bordered table-hover table-std">
+                    <thead>
+                        <th class="ts">时间</th>
+                        <th>姓名</th>
+                        <th>电话</th>
+                        <th>短信内容</th>
+                        <th style="width:159px;">传单</th>
+                        <th>耗费短信</th>
+                        <th class="status">状态</th>
+                    </thead>
+                    <tbody>
+                        <tr class="record-send" ng-repeat="r in records" ng-click="showSmsDetails(r)">
+                            <td class="ts" ng-bind="r.createdTime|dateDisplay"></td>
+                            <td>
+                                <div class="nickname text-out" ng-bind="r.nickname"></div>
+                            </td>
+                            <td>
+                                <div class="tel text-out" ng-bind="r.tel"></div>
+                            </td>
+                            <td>
+                                <div class="record-content text-out" ng-bind="r.content"></div>
+                            </td>
+                            <td title="{{snippet.visitFlyer}}">
+                                <a class="flyer text-out" ng-if="r.flyer" ng-href="/f/{{r.flyer._id}}" target="_blank" ng-bind="r.flyer.title"></a>
+                            </td>
+                            <td>
+                                <div class="cost text-out" ng-bind="r.cost"></div>
+                            </td>
+                            <td class="status"> <i class="fa" ng-class="{'fa fa-warning text-danger':r.status===40,'fa fa-clock-o text-info':r.status===30,'text-success fa-check':r.status===20,'text-danger fa-times':r.status===10}" tooltip-placement="left" tooltip-trigger="mouseenter" tooltip-html-unsafe="{{getRecordStatusName(r)}}"></i>
+                            </td>
+                        </tr>
+                        <tr ng-if="count ===0 ">
+                            <td colspan="7">
+                                <p class="text-muted text-center snippet-empty">暂无短信推送记录</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- BEGIN PAGINATION -->
+
+            </div>
+        </div>
+        <div class="row" ng-if="count>0">
+            <div class="col-md-12">
+
+                <div class="pull-right">
+                    <ul class="pagination">
+                        <li class="total-count">
+                            <a>
+                                <span class="text-success">合计{{count}}条记录</span>
+                            </a>
+                        </li>
+                        <li class="previous" ng-if="pagination.content">
+                            <a class="icon-chevron-left" ng-click="search(pagination.left)"><i class="fa fa-angle-double-left"></i></a>
+                        </li>
+
+                        <li class="no disabled" ng-if="pagination.leftIgnore">
+                            <a>...</a>
+                        </li>
+                        <li data-ng-repeat="item in pagination.content" class="{{item.pclass}}">
+                            <a ng-click="search(item.curpage)">{{item.ptext}}</a>
+                        </li>
+                        <li class="no disabled" ng-if="pagination.rightIgnore">
+                            <a>...</a>
+                        </li>
+                        <li class="next" ng-if="pagination.content">
+                            <a class="icon-chevron-right" ng-click="search(pagination.right)"><i class="fa fa-angle-double-right"></i></a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <!-- END PAGINATION -->
+        </div>
+
+    </div>
+</individual>

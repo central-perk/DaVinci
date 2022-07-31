@@ -1,0 +1,172 @@
+@import "shared/shared";
+@import "./card/index";
+@import "./star/index";
+
+$green: #3d9b79;
+.tpl-center {
+	height: 20px;
+	background-color: red;
+	.top-area {
+		background-color: #BBDFCF;
+		margin-bottom: 0;
+		.create-tpl {
+			width: 160px;
+			height: 50px;
+			background-color: $white;
+			font-size: 18px;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 15px;
+			margin: auto 0;
+			color: #ff5500;
+			padding: 5px 25px;
+			line-height: 40px;
+			text-align: right;
+			cursor: pointer;
+			border-radius: 25px;
+			@include box-shadow(0 2px 0px 0px rgba(0,0,0,0.2));
+			i {
+				width: 27px;
+				height: 30px;
+				position: absolute;
+				left: 25px;
+				top: 10px;
+				background-position: -260px -138px;
+			}
+		}
+	}
+	.search-area {
+		height: 81px;
+		border-bottom: 1px solid #e6e6e6;
+		background-color: #fff;
+		.container {
+			height: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			&:before, &:after {
+				content: none;
+			}
+		}
+		.query {
+			width: 500px;
+			display: flex;
+			.dropdown {
+				position: relative;
+				margin-right: 35px;
+			}
+			.dropdown-toggle {
+				font-size: 16px;
+				cursor: pointer;
+				transition: all 0.3s;
+				&:hover {
+					color: #2d9e6c;
+					.fa {
+						color: #2d9e6c;
+						border-color: #2d9e6c;
+					}
+				}
+				.fa {
+					width: 19px;
+					height: 18px;
+					border-radius: 3px;
+					border: 1px solid #cccccc;
+					color: #cccccc;
+					text-align: center;
+					line-height: 17px;
+					margin-left: 5px;
+					transition: all 0.3s;
+				}
+			}
+			.dropdown-menu {
+				width: 160px;
+				box-shadow: 0 0px 8px rgba(0, 0, 0, 0.175);
+				border-radius: 0;
+				top: calc(100% + 11px);
+				padding: 5px 0 0 0;
+				.arrow {
+					@include mx-arrow;
+				}
+				li {
+					padding: 0 15px;
+					margin-bottom: 5px;
+					a {
+						width: 100%;
+						height: 30px;
+						transition: all 0.3s;
+						line-height: 30px;
+						padding: 0;
+						text-align: center;
+						&:hover {
+							background-color: #31a16f;
+							color: #fff;
+							border-radius: 3px;
+						}
+						&.active {
+							color: #31a16f;
+							background-color: transparent;
+						}
+					}
+				}
+				.cancel {
+					height: 45px;
+					line-height: 45px;
+					background-color: #e6e6e6;
+					padding: 0 15px;
+					cursor: pointer;
+					.sprite {
+						width: 14px;
+						height: 14px;
+						background-position: -284px -172px;
+						position: relative;
+						top: 2px;
+						margin-right: 7px;
+					}
+				}
+			}
+			.tag {
+				.dropdown-menu {
+					left: 50%;
+					margin-left: -80px;
+				}
+			}
+			.filter {
+				.dropdown-menu {
+					left: 50%;
+					margin-left: -80px;
+				}
+			}
+			.sort {
+				.dropdown-menu {
+					width: 180px;
+					left: 50%;
+					margin-left: -90px;
+				}
+			}
+		}
+		.search {
+			position: relative;
+			input {
+				width: 200px;
+				height: 30px;
+				border: 1px solid #cccccc;
+				border-radius: 15px;
+				display: inline-block;
+				background: transparent;
+				vertical-align: top;
+				font-size: 12px;
+				padding-left: 35px;
+			}
+			i {
+				color: #cccccc;
+				position: absolute;
+				top: 8px;
+				left: 12px;
+			}
+		}
+	}
+	.card-list {
+		margin-top: 25px;
+	}
+}

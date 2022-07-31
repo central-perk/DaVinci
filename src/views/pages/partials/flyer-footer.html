@@ -1,0 +1,44 @@
+<div class="share-output" id="share-output"></div>
+{{#if checkinExist}}
+	<div class="dialog-wrap" id="checkin-dialog">
+		<div class="dialog success">
+			<div class="dialog-icon">
+				<i class="fa fa-check"></i>
+			</div>
+			<div class="prompt"></div>
+			<div class="login">
+				<div class="divider"></div>
+				制作漂亮的电子传单，请先 <a class="signin">登录</a> 或 <a class="signup">免费注册</a>
+			</div>
+			<div class="share share-checkin">
+				<div class="divider"></div>
+				<p class="share-title">分享到：</p>
+				<div class="share-frame">
+					<div class="share-row">
+						<a class="share-btn share-weixin" title="分享到微信"></a>
+						<a class="share-btn share-sweibo" title="分享到新浪微博"></a>
+						<a class="share-btn share-tweibo" title="分享到腾讯微博"></a>
+						<a class="share-btn share-qzone" title="分享到QQ空间"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="dialog error">
+			<div class="dialog-icon">
+				<i class="fa fa-times"></i>
+			</div>
+			<div class="prompt"></div>
+			<p class="msg"></p>
+		</div>
+		<div class="btn-return-wrap">
+			<a class="btn btn-primary btn-return">返回</a>
+		</div>
+	</div>
+{{/if}}
+<div id="lw-share-data" style="display:none;">
+   <div class="lws-title">{{flyer.wxshare.title}}</div>
+   <div class="lws-description">{{flyer.wxshare.desc}}</div>
+   <div class="lws-image">{{flyer.wxshare.cover}}</div>
+   <div class="lws-link">{{flyer.wxshare.link}}</div>
+</div>
+

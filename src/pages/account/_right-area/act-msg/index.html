@@ -1,0 +1,32 @@
+<div class="act-msg">
+	<div class="act-title" ng-init="initPage()">
+		<h3>
+			系统消息
+			<span class="unread"><span ng-bind="unReadMsgCount"></span> 条未读</span>
+		</h3>
+		<span class="read-all right" ng-click="readAll()">
+			<i class="sprite"></i>
+			全部设为已读
+		</span>
+	</div>
+	<div class="content">
+		<accordion close-others="true">
+			<accordion-group ng-repeat="msg in msgs" ng-click="readMsg(msg)" is-open="isOpen" ng-class="{open: isOpen, unread: msg.status === 10}">
+				<accordion-heading>
+					<span class="msg-status">{{msg.sender|senderDisplay}}：</span>{{msg.title}}
+					<span class="ts" ng-bind="msg.createdTime|dateDisplay"></span>
+				</accordion-heading>
+				<div bind-html-unsafe="msg.content"></div>
+				<!-- <div class="rm-msg">
+					<i class="sprite"></i>
+					删除此消息
+				</div> -->
+
+			</accordion-group>
+		</accordion>
+
+		<div class="pagination-wrap" ng-if="pagination.content.length">
+			<dvcpagination ng-model="pagination" max-size="5" turn="listMsgs(data)"></dvcpagination>
+		</div>
+	</div>
+</div>

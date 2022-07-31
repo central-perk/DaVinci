@@ -1,0 +1,29 @@
+<div class="pg-add-menu">
+	<div class="add-icon left">
+		<i class="add"></i>
+		<div>添加新页面</div>
+	</div>
+	<div class="add-btns left">
+		<div class="add-custom" ng-click="toAddCustomPage($event)">
+			<i></i>
+			<div>自定义<br>页面</div>
+		</div>
+		<div class="add-std">
+			<i></i>
+			<div>组件<br>页面</div>
+		</div>
+	</div>
+	<div class="std-cpts left">
+		<ul>
+			<li ng-repeat="cpt in stdCpts" ng-if="!cpt.disabled" ng-click="addStdPg(cpt)">
+				<div class="icon-wrap">
+					<i ng-class="cpt._t"></i>
+				</div>
+				<div ng-bind="cpt.name"></div>
+			</li>
+		</ul>
+	</div>
+<!-- 	<div class="arrow-right left">
+		<i class="fa fa-angle-right"></i>
+	</div> -->
+</div>

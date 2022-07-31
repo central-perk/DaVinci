@@ -1,0 +1,43 @@
+<div>
+	<tv-show ng-if="tab.tplActive || tab.authorActive"
+	 	tpl-id="{{tpl._id}}"
+		transfer-mode="{{tpl.transferMode}}"></tv-show>
+	<tv-tpl ng-model="tpl" ng-if="tab.tplActive"></tv-tpl>
+	<tv-author tpl-id="{{tpl._id}}" ng-if="tab.authorActive"></tv-author>
+	<fv-reply
+		ng-if="tab.replyActive"
+		setting="{modelID: tpl._id, category: 0}"></fv-reply>
+
+	<tabset type="'view-nav'">
+		<tab active="tab.tplActive">
+			<tab-heading>
+				<i class="sprite tpl"></i>
+				模板
+			</tab-heading>
+		</tab>
+		<tab active="tab.authorActive">
+			<tab-heading>
+				<i class="sprite author"></i>
+				作者
+			</tab-heading>
+		</tab>
+		<tab active="tab.replyActive">
+			<tab-heading>
+				<i class="sprite reply"></i>
+				评论
+			</tab-heading>
+		</tab>
+		<div class="like" ng-click="like()" ng-if="!tpl.likeID">
+			<i class="sprite"></i>
+		</div>
+		<div class="like active" ng-click="unlike()" ng-if="tpl.likeID">
+			<i class="sprite"></i>
+		</div>
+		<div class="collect" ng-click="collect()" ng-if="!tpl.collectID">
+			<i class="sprite"></i>
+		</div>
+		<div class="collect active" ng-click="uncollect()" ng-if="tpl.collectID">
+			<i class="sprite"></i>
+		</div>
+	</tabset>
+</div>

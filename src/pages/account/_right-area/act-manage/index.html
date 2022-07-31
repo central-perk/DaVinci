@@ -1,0 +1,168 @@
+<div class="act-manage">
+	<div class="act-title" ng-init="initPage()">
+		<h3>
+			账户管理
+		</h3>
+	</div>
+	<div class="content">
+		<div class="property">
+			<ul class="property-list">
+				<li class="edou">
+					<div class="property-num">
+						<div class="left-part">
+							<i class="sprite" ng-class="{active: user.integral}"></i>
+							<div class="property-title">
+								易豆
+							</div>
+						</div>
+						<div class="right-part">
+							<div class="desc">拥有（颗）</div>
+							<div class="num" ng-bind="user.integral">0</div>
+							<!-- <div class="desc">已使用（颗）</div>
+							<div class="num">0</div> -->
+						</div>
+					</div>
+					<div class="property-operation">
+						<span class="get-edou" ng-click="getEdou($event)">获取易豆的方式</span>
+					</div>
+				</li>
+				<li class="rmlogo">
+					<div class="property-num">
+						<div class="left-part">
+							<i class="sprite" ng-class="{active: user.rmLogoPack}"></i>
+							<div class="property-title">
+								去版权包
+							</div>
+						</div>
+						<div class="right-part">
+							<div class="desc">拥有（个）</div>
+							<div class="num" ng-bind="user.rmLogoPack">0</div>
+							<!-- <div class="desc">已使用（个）</div>
+							<div class="num">0</div> -->
+						</div>
+					</div>
+					<div class="property-operation">
+						<button class="green"
+							ng-disabled="!user.integral"
+							ng-click="exchangeRmlogo($event)">兑换</button>
+						<button class="orange" ng-click="buyRmlogo($event)">购买</button>
+					</div>
+				</li>
+			</ul>
+			<form name="propertyForm" action="/api/service-pack/get" method="post" >
+				<div class="property-layout get-edou-layout" ng-show="activeLayout === 'get-edou'">
+					<div class="left-part">
+						<i></i>
+						<div class="property-title">
+							获取易豆的 N 种方式
+						</div>
+					</div>
+					<div class="right-part">
+						<p>1，推广“Davinci”平台可获得易豆；<a class="green" href="http://club.davinci.echoes.link/topic/5502591d98067e752e0b3c71" target="_blank">查看详细</a></p><br>
+						<p>2，通过参加平台的各类活动获取；<a class="green" href="http://club.davinci.echoes.link/topic/54e803316fd1ca402b2ad056" target="_blank">查看详细</a></p><br>
+						<p>3，作品的总浏览量在一周内达到并超过10000次，被收录到发现；</p><br>
+						<p>4，作品被精品案例采用；</p><br>
+						<p>5，在用户社区解答用户提问累计超过50次；</p><br>
+						<p>6，在用户社区发起的话题被收录为“精华”；</p><br>
+						<a class="green" href="http://club.davinci.echoes.link/?tab=official" target="_blank">查看更多获取易豆的方式</a>
+					</div>
+				</div>
+				<div class="property-layout exchange-rmlogo-layout" ng-show="activeLayout === 'exchange-rmlogo'">
+					<div class="left-part">
+						<i></i>
+						<div class="property-title">
+							兑换去版权包
+						</div>
+					</div>
+					<div class="right-part">
+						<p>该增值服务用于去除作品尾页的版权信息，仅可单个单次使用。</p>
+						<ul class="pack-list">
+							<li ng-repeat="cost in costs" ng-class="{'active':cost.active,
+								 'disabled':cost.disabled}" ng-click="chooseCost(cost)">
+								<div class="num">{{cost.amount}} 个</div>
+								<div class="price">{{cost.price}} <span>易豆</span></div>
+							</li>
+						</ul>
+						<div class="pay-block">
+							<button type="submit" class="btn btn-green"
+								ng-disabled="!cost || user.integral < cost.amount">立刻兑换</button>
+						</div>
+					</div>
+				</div>
+				<div class="property-layout exchange-rmlogo-layout" ng-if="activeLayout === 'buy-rmlogo'">
+					<div class="left-part">
+						<i></i>
+						<div class="property-title">
+							购买去版权包
+						</div>
+					</div>
+					<div class="right-part">
+						<p>该增值服务用于去除作品尾页的版权信息，仅可单个单次使用。</p>
+						<ul class="pack-list">
+							<li ng-repeat="cost in costs"
+								ng-class="{active: cost.active, disabled: cost.disabled}"
+								ng-click="chooseCost(cost)">
+								<div class="num">{{cost.amount}} 个</div>
+								<div class="price">{{cost.price}} <span>元</span></div>
+							</li>
+						</ul>
+						<div class="pay-block">
+							<button type="submit" class="btn btn-green btn-alipay"
+								ng-disabled="!cost"></button>
+						<!-- 	<span class="btn btn-green btn-wxpay" ng-disabled="true"></span> -->
+							<span class="btn btn-green btn-wxpay" ng-disabled="!cost" wechat-pay setting="wechatPaySetting"></span>
+						</div>
+					</div>
+				</div>
+				<input type="hidden" name="category" value="{{cost.category}}">
+				<input type="hidden" name="unit" value="{{pack.unit}}">
+				<input type="hidden" name="pack" value="{{pack.name}}">
+			</form>
+		</div>
+
+		<div class="bill-record">
+			<div class="bill-title">
+				<h3>交易记录</h3>
+			</div>
+			<table>
+				<thead>
+					<tr>
+						<th class="bill-created-time">交易时间</th>
+						<th class="bill-detail">交易明细</th>
+						<th class="bill-amount">交易金额（元）</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="bill in bills">
+					    <td ng-bind="bill.createdTime|dateDisplay"></td>
+					    <td ng-bind="bill.detail" class="detail"></td>
+					    <td ng-bind="bill.amount|toFixed|numberSign"></td>
+					</tr>
+					<tr ng-if="!bills.length">
+					    <td colspan="4">
+					        <p class="text-muted text-center snippet-empty">暂无交易记录</p>
+					    </td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="pagination-wrap" ng-if="pagination.content.length">
+				<ul class="pagination">
+					<li class="no disabled" ng-if="pagination.leftIgnore">
+						<a>...</a>
+					</li>
+					<li data-ng-repeat="item in pagination.content" class="{{item.pclass}}">
+						<a ng-click="listBills(item.curpage)">{{item.ptext}}</a>
+					</li>
+					<li class="no disabled" ng-if="pagination.rightIgnore">
+						<a>...</a>
+					</li>
+					<li class="next" ng-if="pagination.content">
+						<a class="icon-chevron-right" ng-click="listBills(pagination.right)">
+							下一页
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

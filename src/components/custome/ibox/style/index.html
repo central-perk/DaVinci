@@ -1,0 +1,96 @@
+<div class="custom-ibox">
+  <div class="form-group ibox-bgc">
+    <div class="control-label">background color</div>
+    <input-color
+      ng-model="layer.content.style.backgroundColor"
+      allow-empty="true"
+      input-class="form-control input-sm"
+    >
+    </input-color>
+  </div>
+  <hr />
+  <div class="form-group ibox-border">
+    <label class="control-label">border</label>
+    <ui-select ng-model="layer.content.style.borderStyle" theme="bootstrap">
+      <ui-select-match>
+        <div class="border {{$select.selected.value}}">
+          {{$select.selected.key}}
+        </div>
+      </ui-select-match>
+      <ui-select-choices
+        repeat="borderStyle.value as borderStyle in borderStyles"
+      >
+        <div class="border {{borderStyle.value}}">{{borderStyle.key}}</div>
+      </ui-select-choices>
+    </ui-select>
+    <input-number
+      ng-model="layer.content.style.borderWidth"
+      class="lg"
+      unit="px"
+      max="20"
+      input-class="form-control input-sm"
+    >
+    </input-number>
+    <input-color
+      ng-model="layer.content.style.borderColor"
+      allow-empty="true"
+      input-class="form-control input-sm"
+    >
+    </input-color>
+  </div>
+  <hr />
+  <div class="form-group box-shadow">
+    <div class="control-label">shadow</div>
+    <div class="edit-container">
+      <div
+        slider
+        ng-model="layer.content.style.boxShadow"
+        min="0"
+        max="100"
+        tooltip="hide"
+      ></div>
+      <input-number
+        ng-model="layer.content.style.boxShadow"
+        unit="px"
+        input-class="form-control input-sm"
+      >
+      </input-number>
+    </div>
+  </div>
+  <div class="form-group opacity">
+    <div class="control-label">Opacity</div>
+    <div class="edit-container">
+      <div
+        slider
+        ng-model="layer.content.style.opacity"
+        min="0"
+        max="100"
+        tooltip="hide"
+      ></div>
+      <input-number
+        ng-model="layer.content.style.opacity"
+        unit="%"
+        input-class="form-control input-sm"
+      >
+      </input-number>
+    </div>
+  </div>
+  <div class="form-group border-radius">
+    <div class="control-label">Rounded corners</div>
+    <div class="edit-container">
+      <div
+        slider
+        ng-model="layer.content.style.borderRadius"
+        min="0"
+        max="100"
+        tooltip="hide"
+      ></div>
+      <input-number
+        ng-model="layer.content.style.borderRadius"
+        unit="%"
+        input-class="form-control input-sm"
+      >
+      </input-number>
+    </div>
+  </div>
+</div>

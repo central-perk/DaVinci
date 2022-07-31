@@ -1,0 +1,12 @@
+<!-- 背景视图 -->
+<div class="page-bg-container">
+    <div id="{{page.ids.bg}}" class="bgi" style="background-color:{{page.bg.undertone}};
+               opacity:{{page.bg.style.opacity/100}};
+               -webkit-filter:blur({{page.bg.style.blur*5/100}}px);" context-menu="menuBg" ng-click="clickBg($event)">
+
+        <div ng-if="page.bg.customSwitch && page.bg.customValue && page.bg.cropUrl">
+            <div class="bgi-inner bg-repeat-extrude bg-position-middle" style="background-image:url('{{page.bg.cropUrl?page.bg.cropUrl:''}}');" data-bg="{{page.bg.cropUrl}}">
+            </div>
+        </div>
+    </div>
+</div>

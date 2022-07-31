@@ -1,0 +1,18 @@
+<section class="svs-confirm" ng-init="init()">
+        <div class="modal-header" ng-hide="modal.hideHead">
+            <button type="button" class="close" ng-hide="btnHeadClose.hide" data-dismiss="modal" ng-click="close();">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            <h3 bind-html-unsafe="modal.title"></h3>
+        </div>
+        <div class="modal-body" bind-html-unsafe="modal.body">
+        </div>
+        <div class="modal-footer " ng-hide="modal.hideFooter">
+            <button type="button " ng-hide="btnClose.hide" class="btn {{btnClose.class}}" ng-click="close();">{{btnClose.name}}</button>
+            <button type="button " ng-hide="btnConfirm.hide" class="btn {{btnConfirm.class}}" ng-disabled="waitRes" ng-click="do()">
+                <span ng-if="!waitRes">{{btnConfirm.name}}</span>
+                <ng-loading ng-if="waitRes"></ng-loading>
+            </button>
+        </div>
+</section>

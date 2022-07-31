@@ -1,0 +1,78 @@
+<div class="page-content" ng-init="list()">
+    <div>
+        <!-- BEGIN TITLE -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-appbar">
+                    <div class="btn-group">
+                        <a class="btn blue" href="/admins/add">
+                            <i class="fa fa-plus"></i>
+                            <span>新增管理员</span>
+                        </a>
+                        <a class="btn btn-default" ng-click="clearCondition()">
+                            <i class="fa fa-remove"></i>
+                            <span>清空查询条件</span>
+                        </a>
+                    </div>
+                    <div class="group">
+                        <ul>
+                            <li>
+                                <input type="text" class="search-input" name="query" placeholder="按昵称搜索..." ng-model="query.email" ng-enter="list(query)">
+                                <input type="button" class="search-btn" ng-click="list(query)">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END TITLE -->
+        <!-- BEGIN TABLE -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>邮箱</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="admin in admins">
+                                <td ng-bind="admin.email"></td>
+                                <td>
+                                    <span class="{{getAdminStatusClass(admin.status)}}" ng-bind="getAdminStatusName(admin.status)"></span>
+                                </td>
+                                <td>
+                                    <a class="table-btn" href="/admins/{{admin._id}}/edit">修改
+                                    </a>
+                           <!--          <a class="table-btn" ng-click="delete(admin._id)">
+                                       删除
+                                    </a> -->
+
+                                    <a class="table-btn" ng-if="admin.status===20" ng-click="changeStatus(admin._id,admin.status)">
+                                       停用
+                                    </a>
+                                    <a class="table-btn" ng-if="admin.status===30" ng-click="changeStatus(admin._id,admin.status)">
+                                       启用
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- END TABLE -->
+        <!-- BEGIN PAGINATION -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pull-right">
+                    <dvcpagination ng-model="pagination" max-size="5"></dvcpagination>
+                </div>
+            </div>
+        </div>
+        <!-- END PAGINATION -->
+    </div>
+</div>

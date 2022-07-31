@@ -1,0 +1,240 @@
+.mdl-layer-container {
+	position: absolute;
+
+	&:hover {
+		cursor: move;
+	}
+	&.layer{
+		.text{
+			.content{
+				outline: none;
+			}
+		}
+		.ibox{
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+	}
+	&.editable{
+		@include user-select(text);
+		&:hover{
+			cursor: text;
+		}
+		.operate{
+			z-index: -1000;
+		}
+	}
+	.operate {
+		display: none;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		&:hover {
+			.btn-rm {
+				display: inline;
+			}
+		}
+		&.force {
+			.scale {
+				&.scale-n, &.scale-w, &.scale-e, &.scale-s {
+					border-radius: 50%;
+					width: 8px;
+					height: 8px;
+				}
+			}
+		}
+		.rotate {
+			top: -30px;
+			left: 50%;
+			padding: 0 10px;
+			position: absolute;
+			width: 20px;
+			height: 40px;
+			margin-left: -20px;
+			$circle-border-color:#4cae4c;
+			.circle{
+				position: absolute;
+				top: 1px;
+				cursor: url(/images/mouserotate.ico), default;
+				left: 15px;
+				.circle-inner{
+					width: 9px;
+					height: 9px;
+					border: 1px solid $circle-border-color;
+					background-color: $circle-border-color;
+					border-radius: 50%;
+				}
+			}
+			.line{
+				width: 1px;
+				height: 18px;
+				position: absolute;
+				top: 9px;
+				background: $circle-border-color;
+				margin-left: 9px;
+			}
+		}
+		.scale {
+			background: #FFF;
+			border: 1px solid #333;
+			width: 7px;
+			height: 7px;
+			z-index: 500;
+			font-size: 0;
+			position: absolute;
+			z-index: 1000;
+			&.scale-nw, &.scale-ne, &.scale-sw, &.scale-se {
+				border-radius: 50%;
+				width: 8px;
+				height: 8px;
+			}
+			&.scale-nw {
+				top: -4px;
+				left: -4px;
+				cursor: nw-resize;
+			}
+			&.scale-n {
+				top: -4px;
+				left: 50%;
+				margin-left: -4px;
+				cursor: n-resize;
+			}
+			&.scale-ne {
+				top: -4px;
+				right: -4px;
+				cursor: ne-resize;
+			}
+			&.scale-w {
+				top: 50%;
+				margin-top: -4px;
+				left: -4px;
+				cursor: w-resize;
+			}
+			&.scale-e {
+				top: 50%;
+				right: -4px;
+				margin-top: -4px;
+				cursor: e-resize;
+			}
+			&.scale-sw {
+				bottom: -4px;
+				left: -4px;
+				cursor: sw-resize;
+			}
+			&.scale-s {
+				left: 50%;
+				bottom: -4px;
+				margin-left: -4px;
+				cursor: s-resize;
+			}
+			&.scale-se {
+				right: -4px;
+				bottom: -4px;
+				cursor: se-resize;
+			}
+		}
+
+	}
+	&.ui-draggable-dragging {
+		.label-position {
+			display: block;
+		}
+		.operate {
+			display: none;
+		}
+		.layer-contaer {
+			opacity: .7;
+		}
+	}
+	&.ui-scaling {
+		.label-size {
+			display: block;
+		}
+	}
+	&.active{
+		.operate {
+			border: 1px dashed #333;
+			display: block;
+		}
+	}
+
+
+	&:hover{
+		@include box-shadow(0px 0px 15px #333);
+	}
+	&.ui-draggable-dragging{
+		outline:none;
+		outline-offset:none;
+		.layer{
+			opacity:0.3;
+		}
+		.operate{
+			display: none;
+		}
+		&:hover{
+			@include box-shadow(none);
+		}
+	}
+	&.ui-scaling{
+		&:hover{
+			@include box-shadow(none);
+		}
+	}
+}
+//页面缩略图内不显示container
+.mdl-pg-thumb{
+	.mdl-layer-container{
+
+		.operate{
+			border:none;
+			display: none;
+		}
+	}
+}
+
+.layer-label {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	z-index: 60;
+	padding: 0 10px;
+	background: rgba(0,0,0,0.5);
+	box-shadow: 0 0 2px #333;
+	font-size: 13px;
+	color: #fff;
+	border-radius: 5px;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 130px;
+	height: 30px;
+	line-height: 30px;
+	z-index: 10000;
+	.measure{
+		float: left;
+		width: 50%;
+		position: relative;
+		height: 30px;
+		.name{
+			font-size: 14px;
+			width: 20px;
+			display: block;
+			font-weight: bold;
+			float: left;
+		}
+		.w,.h{
+			margin-left: -6px;
+		}
+	}
+}
+.layer-drag-label{
+	.measure:first-child{
+		left: -5px;
+	}
+}
+.layer-scale-label{
+	width: 150px;
+}

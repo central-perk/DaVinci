@@ -1,0 +1,374 @@
+<div class="act-setting">
+	<div class="act-title">
+		<h3>账号设置</h3>
+	</div>
+
+	<div class="act-block email-block">
+		<div class="title">
+			<h3>邮箱账号</h3>
+		</div>
+		<div class="content" ng-if="user.email">
+			<div class="tip">使用该邮箱可直接登录Davinci</div>
+			<div class="email" ng-bind="user.email"></div>
+			<!-- 重设密码 -->
+			<div class="orange"
+				ng-if="!pwdEditing && !user.nopwd"
+				ng-click="resetPwd()">重设密码</div>
+			<div ng-if="pwdEditing && !user.nopwd">
+				<form name="pwdForm" novalidate>
+					<div>
+						<input type="password" name="pwd"
+							placeholder="输入旧密码："
+							ng-model="pwdObj.pwd"
+							ng-minlength="6"
+							maxlength="20"
+							required
+							auto-focus/>
+						<div ng-show="pwdForm.pwd.$dirty && pwdForm.pwd.$invalid">
+							<small class="text-danger" ng-show="pwdForm.pwd.$error.required">
+								原密码为必输项
+							</small>
+							<small class="text-danger" ng-show="pwdForm.pwd.$error.minlength">
+								原密码长度应在6～20个字符以内
+							</small>
+						</div>
+					</div>
+					<div>
+						<input type="password" name="npwd"
+							placeholder="输入新密码："
+							ng-model="pwdObj.npwd"
+							ng-minlength="6"
+							maxlength="20"
+							required/>
+						<div ng-show="pwdForm.npwd.$dirty && pwdForm.npwd.$invalid">
+							<small class="text-danger" ng-show="pwdForm.npwd.$error.required">
+								新密码为必输项
+							</small>
+							<small class="text-danger" ng-show="pwdForm.npwd.$error.minlength">
+								新密码长度应在6～20个字符以内
+							</small>
+						</div>
+					</div>
+					<div>
+						<input type="password" name="cpwd"
+							placeholder="确认新密码："
+							ng-model="pwdObj.cpwd"
+							ng-minlength="6"
+							maxlength="20"
+							required/>
+						<div ng-show="pwdForm.cpwd.$dirty && pwdForm.cpwd.$invalid">
+							<small class="text-danger" ng-show="pwdForm.cpwd.$error.required">
+								确认新密码为必输项
+							</small>
+							<small class="text-danger" ng-show="pwdForm.cpwd.$error.minlength">
+								确认新密码长度应在6～20个字符以内
+							</small>
+						</div>
+					</div>
+				</form>
+				<button type="button" class="lbtn lbtn-orange lbtn-reset"
+					ng-disabled="pwdForm.$invalid"
+					ng-click="savePwd()">重设</button>
+				<button type="button" class="lbtn lbtn-grey lbtn-cancel"
+					ng-click="cancelPwd()">取消</button>
+			</div>
+			<!-- 初始化密码 -->
+			<div class="orange"
+				ng-if="!pwdEditing && user.nopwd"
+				ng-click="resetPwd()">初始化密码</div>
+			<div ng-if="pwdEditing && user.nopwd">
+				<form name="pwdForm" novalidate>
+					<div>
+						<input type="password" name="npwd"
+							placeholder="输入新密码："
+							ng-model="pwdObj.npwd"
+							ng-minlength="6"
+							maxlength="20"
+							required/>
+						<div ng-show="pwdForm.npwd.$dirty && pwdForm.npwd.$invalid">
+							<small class="text-danger" ng-show="pwdForm.npwd.$error.required">
+								新密码为必输项
+							</small>
+							<small class="text-danger" ng-show="pwdForm.npwd.$error.minlength">
+								新密码长度应在6～20个字符以内
+							</small>
+						</div>
+					</div>
+					<div>
+						<input type="password" name="cpwd"
+							placeholder="确认新密码："
+							ng-model="pwdObj.cpwd"
+							ng-minlength="6"
+							maxlength="20"
+							required/>
+						<div ng-show="pwdForm.cpwd.$dirty && pwdForm.cpwd.$invalid">
+							<small class="text-danger" ng-show="pwdForm.cpwd.$error.required">
+								确认新密码为必输项
+							</small>
+							<small class="text-danger" ng-show="pwdForm.cpwd.$error.minlength">
+								确认新密码长度应在6～20个字符以内
+							</small>
+						</div>
+					</div>
+				</form>
+				<button type="button" class="lbtn lbtn-orange lbtn-reset"
+					ng-disabled="pwdForm.$invalid"
+					ng-click="savePwd()">重设</button>
+				<button type="button" class="lbtn lbtn-grey lbtn-cancel"
+					ng-click="cancelPwd()">取消</button>
+			</div>
+		</div>
+		<div class="content" ng-if="!user.email">
+		<!-- <div class="content"> -->
+			<div ng-if="!actIniting && !actBinding">
+				<span class="lbtn lbtn-orange init-act" ng-click="initAct()">创建新账号</span>
+				<span class="lbtn lbtn-green bind-act" ng-click="bindAct()">绑定原账号</span>
+			</div>
+			<div ng-if="actIniting">
+	            <form name="initActForm" novalidate>
+					<div>
+						<input type="text" name="email"
+							placeholder="邮箱地址："
+							ng-model="actObj.email"
+							maxlength="30"
+							required
+							auto-focus/>
+						<div ng-show="initActForm.email.$dirty && (initActForm.email.$invalid || !emailValid())">
+							<small class="text-danger" ng-show="initActForm.email.$error.required">
+								邮箱为必输项
+							</small>
+							<small class="text-danger" ng-show="!emailValid()">
+							    请输入有效邮箱
+							</small>
+						</div>
+					</div>
+					<div>
+						<input type="password" name="pwd"
+							placeholder="设置密码："
+							ng-model="actObj.pwd"
+							ng-minlength="6"
+							maxlength="20"
+							required/>
+						<div ng-show="initActForm.pwd.$dirty && initActForm.pwd.$invalid">
+							<small class="text-danger" ng-show="initActForm.pwd.$error.required">
+								密码为必输项
+							</small>
+							<small class="text-danger" ng-show="initActForm.pwd.$error.minlength">
+								密码长度应在6～20个字符以内
+							</small>
+						</div>
+					</div>
+					<div>
+						<input type="password" name="cpwd"
+							placeholder="确认密码："
+							ng-model="actObj.cpwd"
+							ng-minlength="6"
+							maxlength="20"
+							required/>
+						<div ng-show="initActForm.cpwd.$dirty && initActForm.cpwd.$invalid">
+							<small class="text-danger" ng-show="initActForm.cpwd.$error.required">
+								确认密码为必输项
+							</small>
+							<small class="text-danger" ng-show="initActForm.cpwd.$error.minlength">
+								确认密码长度应在6～20个字符以内
+							</small>
+						</div>
+					</div>
+				</form>
+				<button type="button" class="lbtn lbtn-orange save-act"
+					ng-disabled="initActForm.$invalid"
+					ng-click="saveInitAct()">创建账号</button>
+				<button type="button" class="lbtn lbtn-grey cancel-act"
+					ng-click="cancelAct()">取消</button>
+			</div>
+			<div ng-if="actBinding">
+	            <form name="bindActForm" novalidate>
+					<div>
+						<input type="text" name="email"
+							placeholder="邮箱地址："
+							ng-model="actObj.email"
+							maxlength="30"
+							required
+							auto-focus/>
+						<div ng-show="bindActForm.email.$dirty && (bindActForm.email.$invalid || !emailValid())">
+							<small class="text-danger" ng-show="bindActForm.email.$error.required">
+								邮箱为必输项
+							</small>
+							<small class="text-danger" ng-show="!emailValid()">
+							    请输入有效邮箱
+							</small>
+						</div>
+					</div>
+					<div>
+						<input type="password" name="pwd"
+							placeholder="输入密码："
+							ng-model="actObj.pwd"
+							ng-minlength="6"
+							maxlength="20"
+							required/>
+						<div ng-show="bindActForm.pwd.$dirty && bindActForm.pwd.$invalid">
+							<small class="text-danger" ng-show="bindActForm.pwd.$error.required">
+								密码为必输项
+							</small>
+							<small class="text-danger" ng-show="bindActForm.pwd.$error.minlength">
+								密码长度应在6～20个字符以内
+							</small>
+						</div>
+					</div>
+				</form>
+				<button type="button" class="lbtn lbtn-orange save-act"
+					ng-disabled="bindActForm.$invalid"
+					ng-click="saveBindAct()">绑定账号</button>
+				<button type="button" class="lbtn lbtn-grey cancel-act"
+					ng-click="cancelAct()">取消</button>
+			</div>
+		</div>
+	</div>
+	<div class="act-block amount-block" ng-if="user.isAgent">
+		<div class="title">
+			<h3>作品剩余额度</h3>
+		</div>
+		<div class="content" ng-if="user.email">
+            <div class="interact">
+               	交互作品 :
+                <amount>
+                    <span ng-bind="user.amount.interactFlyer"></span>
+                </amount>个
+                &nbsp;&nbsp;
+            </div>
+            <div class="static">
+               普通作品 :
+                <amount>
+                    <span ng-bind="user.amount.staticFlyer"></span>
+                </amount>个
+            </div>
+		</div>
+	</div>
+	<div class="act-block social-block">
+		<div class="title">
+			社交账号
+		</div>
+		<div class="content">
+			<div class="tip">绑定社交帐号后可使用以下帐号直接登录Davinci</div>
+			<div class="social-list">
+				<a class="weixin"
+					ng-if="!user.wechatOpenid"
+					ng-click="bindSocial('wechat')">
+					<i class="fa fa-weixin"></i>
+					<div>绑定</div>
+				</a>
+				<a class="weixin active"
+					ng-if="user.wechatOpenid&&!user.nopwd&&!whenUserInitial()"
+					ng-click="unbindSocial('wechat')">
+					<i class="fa fa-weixin"></i>
+					<div>解绑</div>
+				</a>
+
+
+				<a class="weibo"
+					ng-click="bindSocial('weibo')"
+					ng-if="!user.weiboOpenid">
+					<i class="fa fa-weibo"></i>
+					<div>绑定</div>
+				</a>
+				<a class="weibo active"
+					ng-click="unbindSocial('weibo')"
+					ng-if="user.weiboOpenid&&!user.nopwd&&!whenUserInitial()">
+					<i class="fa fa-weibo"></i>
+					<div>解绑</div>
+				</a>
+
+				<a class="mingdao"
+					ng-click="bindSocial('mingdao')"
+					ng-if="!user.mingdaoOpenid">
+					<i></i>
+					<div>绑定</div>
+				</a>
+				<a class="mingdao active"
+					ng-click="unbindSocial('mingdao')"
+					ng-if="user.mingdaoOpenid&&!user.nopwd&&!whenUserInitial()">
+					<i></i>
+					<div>解绑</div>
+				</a>
+
+
+
+				<a class="qq"
+					ng-click="bindSocial('qq')"
+					ng-if="!user.qqOpenid">
+					<i class="fa fa-qq"></i>
+					<div>绑定</div>
+				</a>
+				<a class="qq active"
+					ng-click="unbindSocial('qq')"
+					ng-if="user.qqOpenid&&!user.nopwd&&!whenUserInitial()">
+					<i class="fa fa-qq"></i>
+					<div>解绑</div>
+				</a>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="act-block nickname-avatar-block">
+		<div class="title">
+			昵称 / 头像
+		</div>
+		<div class="content">
+			<div class="nickname-edit" ng-if="!nicknameEditing">
+				<div class="nickname" ng-bind="user.nickname"></div>
+				<span class="orange" ng-click="editNickname()">修改</span>
+			</div>
+			<div class="nickname-edit" ng-if="nicknameEditing">
+				<form name="formNickname">
+					<input type="text"
+						required
+						ng-model="user.nickname"
+						ng-minlength="2"
+						maxlength="20">
+					<span class="green"
+						ng-disabled="!formNickname.$valid"
+						ng-click="saveNickname(formNickname.$valid)">保存</span>
+				</form>
+			</div>
+			<div class="avatar-edit">
+				<div class="upload-avatar"
+					image-upload
+					upload-callback="uploadAvatar(data)"
+					tip="图片建议尺寸180x180"
+					options="{
+						url: 'https://wyxcdn.fspage.com/flat-boy-with-vintage-glasses-avatar-vector-illustration.jpg',
+						crop: {&quot;w&quot;:500,&quot;h&quot;:500},
+						ratio: 1
+					}"
+					title="修改头像">上传新头像</div>
+				<span class="blue">头像已更新，请于左侧查看</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="act-block desc-block">
+		<div class="title">
+			个人简介
+		</div>
+		<div class="content">
+			<div class="desc-edit" ng-if="!descEditing && user.desc">
+				<div class="desc" ng-bind="user.desc"></div>
+				<span class="orange" ng-click="editDesc()">修改</span>
+			</div>
+			<div class="desc-edit" ng-if="descEditing || !user.desc">
+				<form name="formDesc">
+					<textarea type="text"
+						ng-model="user.desc"
+						required
+						maxlength="50"
+						placeholder="尚未录入任何信息，请在此写下您为人传诵的江湖事迹，让我们敬仰一番吧～"></textarea>
+					<span class="green"
+						ng-disabled="!formDesc.$valid"
+						ng-click="saveDesc(formDesc.$valid)">保存</span>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</div>

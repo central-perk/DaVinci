@@ -1,0 +1,108 @@
+<div class="user-flyer-card">
+	<div class="inner">
+		<div class="top-part" ng-click="clickTop($event)">
+			<div class="logo" >
+				<img class="full-size" ng-src="{{flyer.logo}}" image-loading/>
+				<img class="img-freeze" src="/images/freeze.png"
+					ng-if="flyer.freeze"
+					image-loading
+					tooltip="出问题了，请联络管理员"
+					tooltip-placement="top">
+			</div>
+			<div class="operate">
+				<div class="preview"
+					ng-if="flyer.status !== 10"
+					ng-click="preview($event)">预览</div>
+				<div class="preview"
+					ng-click="edit($event)"
+					ng-if="isAuthor">编辑</div>
+				<div class="collect"
+					ng-click="collect($event)"
+					ng-if="!isAuthor && !flyer.collectID">收藏</div>
+				<div class="collect"
+					ng-click="uncollect($event)"
+					ng-if="!isAuthor && flyer.collectID">取消收藏</div>
+			</div>
+			<i class="draft sprite"
+				tooltip="未完成的大作，期待ing"
+				tooltip-placement="bottom"
+				tooltip-append-to-body="true"
+				ng-if="isAuthor && flyer.status === 10"></i>
+			<i class="updated sprite"
+				tooltip="更新过了，不重新发布一下吗？"
+				tooltip-placement="bottom"
+				tooltip-append-to-body="true"
+				ng-if="isAuthor && flyer.status === 30"></i>
+		</div>
+
+		<!-- 基本信息 -->
+		<div class="bottom-part">
+			<!-- 作品标题、菜单 -->
+			<div class="row-1">
+				<div class="flyer-title" ng-bind="flyer.title"></div>
+				<div class="menu dropdown"
+					is-open="dropdown.isopen"
+					ng-mouseenter="openDropdown()"
+					ng-mouseleave="closeDropdown()">
+					<i class="cog dropdown-toggle sprite" ng-if="isAuthor"></i>
+					<ul class="dropdown-menu" ng-mouseenter="openDropdown()">
+						<li>
+							<a ng-click="config($event)">
+								<i class="fa fa-cog"></i>设&nbsp;&nbsp;&nbsp;置
+							</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<a ng-click="edit($event, flyer)">
+								<i class="fa fa-edit"></i>编&nbsp;&nbsp;&nbsp;辑
+							</a>
+						</li>
+						<li ng-if="!hideShare && flyer.status !== 5">
+							<a ng-click="share()">
+								<i class="fa fa-send"></i>共&nbsp;&nbsp;&nbsp;享
+							</a>
+						</li>
+						<li ng-class="{'disabled': isDraft(flyer.status)}"
+							ng-if="!hideData && flyer.status !== 5"
+							ng-click="dataFlyer($event, flyer)">
+							<a >
+								<i class="fa fa-line-chart"></i>数&nbsp;&nbsp;&nbsp;据
+							</a>
+						</li>
+						<li class="divider" ng-if="!hideData"></li>
+						<li>
+							<a ng-click="cloneFlyer($event, flyer)">
+								<i class="fa fa-files-o"></i>复&nbsp;&nbsp;&nbsp;制
+							</a>
+						</li>
+						<li class="del">
+							<a ng-click="toRmFlyer($event, flyer)">
+								<i class="fa fa-trash"></i>删&nbsp;&nbsp;&nbsp;除
+							</a>
+						</li>
+					</ul>
+				</div>
+				<i class="sprite btn-copy" clip-copy="flyer.link" clip-click="copy()"></i>
+			</div>
+
+			<!-- 浏览量、最后修改时间 -->
+			<div class="row-2">
+				<div class="flyer-pv">
+					<i class="eye sprite"></i>
+					<span number-format="{{flyer.pv || 0}}"></span>
+				</div>
+				<span class="flyer-update-time">
+					<i class="clock sprite"
+						tooltip="{{deltaTime(flyer.updatedTime) + '修改' }}"
+						tooltip-placement="bottom"
+						tooltip-append-to-body="true"></i>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+

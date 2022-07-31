@@ -1,0 +1,133 @@
+.act-setting {
+	.email-block {
+		.email {
+			font-size: 18px;
+			margin-bottom: 15px;
+		}
+		input {
+			width: 300px;
+		}
+		form {
+			> div {
+				display: flex;
+				align-items: baseline;
+				small {
+					margin-left: 10px;
+				}
+			}
+		}
+		.lbtn-reset, .init-act, .save-act {
+			margin-right: 15px;
+		}
+
+		.init-act, .bind-act {
+			width: 100px;
+		}
+	}
+	.amount-block{
+		.interact,.static{
+			float: left;
+		}
+	}
+
+	.social-block {
+		.social-list {
+			display: flex;
+			& > a {
+				width: 66px;
+				height: 66px;
+				border: 1px solid #CCCCCC;
+				border-radius: 6px;
+				text-align: center;
+				padding: 10px 0;
+				cursor: pointer;
+				margin-right: 15px;
+				i {
+					font-size: 16px !important;
+					margin-bottom: 10px !important;
+					color: #D0D0D0;
+				}
+				// &.active {
+				// 	border-color: #3B9466;
+				// }
+			}
+			.weixin.active {
+				i {
+					color: #05af10;
+				}
+			}
+			.weibo.active {
+				i {
+					color: #da251c;
+				}
+			}
+			.qq.active {
+				i {
+					color: #0091c6;
+				}
+			}
+			.mingdao {
+				i {
+					width: 32px;
+					height: 16px;
+					display: block;
+					background: url(/images/social_account.png) no-repeat;
+					margin: 0 auto;
+					background-position: 2px -66px;
+					background-size: 104%;
+				}
+				&.active {
+					i {
+						background-position: 2px -159px;
+					}
+				}
+			}
+		}
+	}
+
+	.nickname-avatar-block {
+		.content {
+			display: flex;
+		}
+		.nickname-edit {
+			width: 155px;
+			padding-right: 25px;
+			border-right: 1px solid #E5E5E5;
+			.nickname {
+				height: 30px;
+				line-height: 30px;
+				margin-bottom: 10px;
+			}
+			input {
+				width: 100%;
+			}
+		}
+		.avatar-edit {
+			padding-left: 25px;
+			.upload-avatar {
+				width: 120px;
+				height: 30px;
+				line-height: 28px;
+				border: 1px solid #CCCCCC;
+				text-align: center;
+				margin-bottom: 10px;
+				cursor: pointer;
+			}
+			.blue {
+				display: none;
+			}
+		}
+	}
+	.desc-block {
+		.desc {
+			margin-bottom: 10px;
+		}
+		textarea {
+			width: 320px;
+			height: 100px;
+		}
+		.content {
+			height: 130px;
+		}
+	}
+}

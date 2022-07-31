@@ -1,0 +1,30 @@
+<div class="custom-video">
+    <div class="form-group">
+        <span class="btn btn-sm btn-green-click btn-replace-image" ng-click="replaceImage()">替换图片</span>
+    </div>
+    <hr>
+    <div class="form-group blur">
+        <div class="control-label">模糊</div>
+        <div class="edit-container">
+            <div slider ng-model="layer.content.style.blur" min="0" max="100" tooltip="hide"></div>
+            <input-number ng-model="layer.content.style.blur" unit="%" input-class="form-control input-sm">
+            </input-number>
+        </div>
+    </div>
+    <hr>
+    <div class="form-group address">
+        <div class="control-label"><span class="required">网络视频</span></div>
+    </div>
+    <div class="form-group">
+        <textarea class="form-control" ng-model="layer.content.code" auto-focus placeholder="请输入网络视频的通用代码" rows="10"></textarea>
+    </div>
+    <div class="video-example">
+        <a href="http://club.davinci.echoes.link/topic/54fac1be79acb70e43dcc06e" target="_blank">点击这里</a>查看获取视频地址的常用方法。
+    </div>
+
+    <hr>
+    <div class="tip">
+        <span class="tag">提示</span>
+        <span>点击空白区域返回“页面属性”编辑状态</span>
+    </div>
+</div>

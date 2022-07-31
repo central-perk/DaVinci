@@ -1,0 +1,45 @@
+<div class="mdl-pg-thumb"
+	ng-click="toEditPage()"
+	ng-mouseenter="meThumb()"
+	ng-mouseleave="mlThumb()">
+	<div class="serial">
+		<span class="pg-up" ng-click="pgUp($event)"></span>
+		<span class="pg-index" ng-bind="pageNum"></span>
+		<span class="pg-down" ng-click="pgDown($event)"></span>
+	</div>
+	<div dropdown class="sub-menu">
+		<i class="sprite" dropdown-toggle></i>
+		<ul class="dropdown-menu">
+			<span class="arrow"></span>
+			<li ng-click="copyPage($event)">
+				<a>复制</a>
+			</li>
+			<li ng-show="showSaveAs()"
+				ng-click="toCreatePageTeamplate($event)">
+				<a>另存为</a>
+			</li>
+			<li class="rm-page" ng-click="rmPage($event)">
+				<a>删除</a>
+			</li>
+			<li ng-show="page.tplID && showSaveAs()" ng-click="upgradePageTpl($event)">
+				<a>升级</a>
+			</li>
+		</ul>
+	</div>
+
+	<div class="pg-thumb">
+		<!--  保护页面内layers不被点击 -->
+		<div class="overlay">
+			
+		</div>
+		<!--自定义页面模板 -->
+		<pg-custome-base
+			ng-model="page"
+			ng-page-active="{{whenSelected()}}"
+			ng-if="page.kind ==='custome'"
+			ng-click="toEditPage()">
+		</pg-custome-base>
+
+	</div>
+
+</div>

@@ -1,0 +1,58 @@
+@import './operate/index';
+@import './setting/index';
+@import './create-layer/index';
+
+
+@mixin fi-top-bar{
+	> .top-bar {
+		height: 80px;
+		background-color: #444444;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		font-size: 12px;
+		.brand {
+			width: 180px;
+			height: 100%;
+			background-color: #222222;
+			color: #bbbbbb;
+			@include mx-flex-center(column);
+			img {
+				width: 124px;
+				margin-bottom: 10px;
+			}
+		}
+		.center {
+			width: 600px;
+			@media screen and (min-width: 1400px) {
+				width: 640px;
+			}
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.btn {
+			text-align: center;
+			border: 0;
+			padding: 0;
+			font-size: 12px;
+			@include box-shadow(0 0);
+			color: #CCCCCC;
+			&:hover {
+				color: #fff;
+			}
+			i {
+				height: 21px;
+				display: block;
+				margin: 0 auto;
+				margin-bottom: 10px;
+				position: relative;
+				background-image: url(/images/sprite.png);
+				background-size: 276px 233px;
+			}
+		}
+		@include fi-setting;
+		@include fi-operate;
+		@include fi-create-layer;
+	}
+}

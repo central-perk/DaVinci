@@ -1,0 +1,16 @@
+<ul class="pagination">
+	<li class="no disabled" ng-if="pagination.leftIgnore">
+		<a>...</a>
+	</li>
+	<li data-ng-repeat="item in pagination.content" class="{{item.pclass}}">
+		<a ng-click="search(item.curpage)">{{item.ptext}}</a>
+	</li>
+	<li class="no disabled" ng-if="pagination.rightIgnore">
+		<a>...</a>
+	</li>
+	<li class="next" ng-if="pagination.content">
+		<a class="icon-chevron-right" ng-click="search(pagination.right)">
+			下一页
+		</a>
+	</li>
+</ul>

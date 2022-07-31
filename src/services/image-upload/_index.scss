@@ -1,0 +1,38 @@
+.svs-image-upload {
+	.modal-content {
+		border: none;
+	}
+	.mdl-image-manage, .mdl-image-crop {
+		float: left;
+		width: 310px;
+		height: 308px;
+	}
+	.mdl-image-manage{
+		margin-right: 20px;
+	}
+	.mdl-image-manage {
+		// $image_width: 75px;
+		// margin-right: 3px;
+		.content {
+			overflow-y: auto;
+			height: 285px;
+			.image-items {
+				.image-item {
+					margin: 0px 9px 4px 0;
+				}
+			}
+		}
+	}
+	.mdl-image-crop {
+		.content {
+			height: 284px;
+			.jcrop-keymgr {
+				opacity: 0;
+			}
+		}
+	}
+	.mask-loading {
+		@extend %image-upload-loading;
+		@include border-radius(5px);
+	}
+}

@@ -1,0 +1,162 @@
+.fv-flyer {
+	width: 460px;
+	height: 100%;
+	background-color: #eeeeee;
+	padding: 30px;
+	position: relative;
+	.flyer-title {
+		font-size: 18px;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	.flyer-exp {
+		height: 40px;
+		border-top: 1px solid #cccccc;
+		border-bottom: 1px solid #cccccc;
+		font-size: 12px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		a {
+			color: $green;
+		}
+		.visit {
+			margin-right: 10px;
+			.sprite {
+				width: 15px;
+				height: 9px;
+				background-position: -209px -219px;
+			}
+		}
+		.zan {
+			margin-right: 10px;
+			.sprite {
+				width: 15px;
+				height: 11px;
+				background-position: -229px -219px;
+			}
+		}
+		.collect {
+			margin-right: 10px;
+			.sprite {
+				width: 12px;
+				height: 11px;
+				background-position: -249px -219px;
+				position: relative;
+				top: 1px;
+			}
+		}
+		.comment {
+			margin-right: 10px;
+			.sprite {
+				width: 11px;
+				height: 11px;
+				background-position: -266px -219px;
+				position: relative;
+				top: 1px;
+			}
+		}
+	}
+	.flyer-info {
+		margin: 20px 0;
+		border-bottom: 1px solid #cccccc;
+		& > div {
+			margin-bottom: 15px;
+			display: flex;
+		}
+		.info-label {
+			width: 75px;
+		}
+		.info-value {
+			width: calc(100% - 75px);
+		}
+		.tpl-tag {
+			color: $orange;
+		}
+	}
+	.flyer-qrcode {
+		display: flex;
+		padding-bottom: 20px;
+		margin-bottom: 20px;
+		border-bottom: 1px solid #cccccc;
+		.mdl-qr-block {
+			width: 180px !important;
+			height: 180px !important;
+			padding: 15px;
+			background-color: #fff;
+			margin-right: 28px;
+		}
+		.download {
+			padding-top: 10px;
+			@include mx-flex-center(column);
+			align-items: flex-start;
+			div {
+				margin-bottom: 10px;
+			}
+			.space {
+				flex-grow: 1;
+			}
+			.d {
+				width: 100px;
+				display: flex;
+				justify-content: space-between;
+				a {
+					color: $orange;
+				}
+			}
+		}
+	}
+	.flyer-link {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 20px;
+		.input-group {
+			width: calc(100% - 70px);
+			input {
+				border-radius: 0;
+			}
+			.input-group-addon {
+				border-radius: 0;
+				background-color: #444444;
+				color: #fff;
+			}
+		}
+	}
+	.flyer-share {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		.share-btns {
+			width: calc(100% - 70px);
+		}
+		.sprite {
+			cursor: pointer;
+			margin-right: 20px;
+			&:hover {
+				background-position-y: -456px;
+			}
+		}
+		.share-sweibo {
+			width: 31px;
+			height: 25px;
+			background-position: 0 -427px;
+		}
+		.share-qq {
+			width: 25px;
+			height: 25px;
+			background-position: -34px -427px;
+		}
+		.share-tweibo {
+			width: 29px;
+			height: 25px;
+			background-position: -62px -427px;
+		}
+		.share-qzone {
+			width: 28px;
+			height: 25px;
+			background-position: -95px -427px;
+		}
+
+	}
+}

@@ -1,0 +1,65 @@
+<div class="fv-author">
+	<div class="info">
+		<div class="head">
+			<img class="full-size" ng-src="{{user.head}}">
+		</div>
+		<div class="user-info">
+			<a class="nickname"
+				ui-sref="user.flyer({ userID: user._id })"
+				ng-bind="user.nickname"></a>
+			<div ng-if="user.gender!==null || user.province!==null || user.job">
+				<span ng-if="user.gender!==null" ng-bind="user.gender|userGender"></span>
+				<span ng-if="user.province>=0">-</span>
+				<span ng-if="user.province>=0" ng-bind="user|userHometown"></span>
+				<span ng-if="user.job">-</span>
+				<span ng-bind="user.job"></span>
+			</div>
+			<div>
+				<span>
+					作品:
+					<span ng-bind="user.worksCount || 0"></span>
+				</span>
+				<span>
+					粉丝:
+					<span ng-bind="user.fansCount || 0"></span>
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="operate" ng-if="!user.isAuthor">
+		<div class="follow ek-btn btn-hl btn-grey" ng-if="!user.followID" ng-click="follow()">
+			<i class="sprite"></i>关注
+		</div>
+		<div class="unfollow ek-btn" ng-if="user.followID" ng-click="unfollow()">
+			<i class="sprite"></i>
+		</div>
+		<div class="friend ek-btn btn-hl btn-grey" ng-if="user.friendStatus === 0" ng-click="apply()">
+			<i class="sprite"></i>加好友
+		</div>
+		<div class="friend ing ek-btn btn-hl"
+			ng-if="user.friendStatus === 10"
+			ng-click="applying()">
+			<i class="sprite"></i>申请中
+		</div>
+		<div class="friend finish ek-btn" ng-if="user.friendStatus === 20"
+			ng-click="unapply()">
+			<i class="sprite"></i>我的好友
+		</div>
+		<div class="msg ek-btn btn-hl btn-grey" ng-click="chat()">
+			<i class="sprite"></i>私信
+		</div>
+	</div>
+	<div class="desc">
+		<div>个人说明：</div>
+		<div class="user-desc" ng-bind="user.desc"></div>
+	</div>
+	<div class="more" ng-if="flyers.length"><span ng-bind="user.nickname"></span>的其它作品</div>
+	<div class="flyers" ng-if="flyers.length">
+		<div class="flyer" ng-repeat="flyer in flyers" ng-click="preview(flyer)">
+			<span class="preview">
+				<span class="ek-btn btn-s btn-round">预览</span>
+			</span>
+			<img class="full-size" ng-src="{{flyer.logo}}">
+		</div>
+	</div>
+</div>

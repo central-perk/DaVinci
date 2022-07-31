@@ -1,0 +1,12 @@
+<div class="page-base">
+    <div class="page page-custome page-custome-bg">
+        <pg-bg></pg-bg>
+        <div class="page-layers">
+            <layer-container ng-repeat="layer in page.layers" ng-model="layer">
+            </layer-container>
+        </div>
+        <!-- 特效页面 -->
+        <pg-effect-base ng-model="page" ng-if="curOperate.type === 'effect'" ng-repeat="effectView in effectViews">
+        </pg-effect-base>
+    </div>
+</div>

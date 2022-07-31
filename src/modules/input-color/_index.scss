@@ -1,0 +1,39 @@
+.mdl-input-color {
+	width: 100px;
+	position: relative;
+	display: inline-block;
+	height: 30px;
+	.color-area {
+		z-index: 10;
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		top: 5px;
+		left: 5px;
+		background-image: url(/images/sprite.png);
+		background-size: 276px 233px;
+		background-position: -126px 33px;
+		border: 1px solid grey;
+		& > span {
+			@include opacity(0);
+		}
+		.sp-replacer  {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+		}
+	}
+	.color-input {
+		padding-left: 30px;
+		padding-right: 3px;
+		font-size: 13px;
+	}
+	iframe{
+		  width: 100%;
+		  height: 40px;
+		  padding: 0;
+		  margin: 0;
+		  z-index: 1;
+	}
+}

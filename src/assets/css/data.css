@@ -1,0 +1,472 @@
+.page-data {
+    margin-top: 60px;
+    color: #4A4A4A;
+    font-size: 14px;
+}
+
+.page-data>.container {
+    display: flex;
+}
+
+.dt-side-bar {
+    width: 260px;
+    background-color: #ADDAC5;
+    padding: 20px;
+}
+
+.dt-side-bar .flyer-logo {
+    width: 220px;
+    height: 220px;
+    position: relative;
+}
+
+.dt-side-bar .flyer-logo img {
+    border-radius: 5px;
+}
+
+.dt-side-bar .flyer-logo .btn-view-flyer {
+    width: 180px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #fff;
+    color: #3B9466;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.dt-side-bar .flyer-title,
+.dt-side-bar .flyer-pub-time {
+    padding: 12px 0;
+    border-bottom: 1px solid #9CC5AC;
+}
+
+.dt-side-bar .flyer-link {
+    padding: 12px 0;
+    position: relative;
+}
+
+.dt-side-bar .flyer-link i {
+    width: 18px;
+    height: 18px;
+    background-position: -280px -194px;
+    position: absolute;
+    right: 0;
+}
+
+.dt-side-bar .flyer-link input {
+    width: 100%;
+    height: 40px;
+    display: block;
+    margin-top: 10px;
+    border: none;
+    background-color: #CEF0DB;
+    border-radius: 0;
+    padding: 0 10px;
+}
+
+.dt-main-area {
+    width: calc(100% - 260px);
+    min-height: 900px;
+    padding-top: 20px;
+    background-color: #fff;
+    position: relative;
+}
+
+.dt-main-area .btn-back-flyers {
+    position: absolute;
+    right: 20px;
+    z-index: 100;
+}
+
+.dt-main-area .tabbable {
+    width: 100%;
+}
+
+.dt-main-area .tabbable .nav-tabs {
+    padding-left: 40px;
+}
+
+.dt-main-area .tabbable .nav-tabs>li>a {
+    border-radius: 0;
+    margin-right: 0;
+    color: #4A4A4A;
+}
+
+.dt-main-area .tabbable .nav-tabs>li.active>a {
+    color: #3B9466;
+}
+
+.dt-main-area .tabbable .nav-tabs>li.active:hover a {
+    border-top-color: #ddd;
+    border-right-color: #ddd;
+    border-left-color: #ddd;
+}
+
+.dt-main-area .tabbable .nav-tabs>li:hover a {
+    background-color: #fff;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-left-color: transparent;
+}
+
+.dt-main-area .tabbable .dt-form-heading i {
+    width: 20px;
+    height: 17px;
+    background-position: -66px -370px;
+    vertical-align: sub;
+    margin-right: 8px;
+}
+
+.dt-main-area .tabbable .dt-stat-heading i {
+    width: 18px;
+    height: 17px;
+    background-position: -21px -370px;
+    vertical-align: sub;
+    margin-right: 8px;
+}
+
+.dt-main-area .tabbable .active .dt-form-heading i {
+    background-position: -43px -370px;
+}
+
+.dt-main-area .tabbable .active .dt-stat-heading i {
+    background-position: 0 -370px;
+}
+
+.dt-main-area .tabbable .tab-content .tab-pane {
+    padding: 40px;
+}
+
+.dt-form .panel {
+    margin-bottom: 15px;
+}
+
+.dt-form .panel-group .panel-heading .panel-title {
+    height: 40px;
+    line-height: 40px;
+    margin: 0;
+    padding: 0 10px;
+    position: relative;
+}
+
+.dt-form .panel-group .panel-heading .panel-title a {
+    color: #4A4A4A;
+    font-size: 16px;
+}
+
+.dt-form .panel-group .panel-heading .panel-title a i {
+    width: 15px;
+    display: inline-block;
+}
+
+.dt-form .panel-group .panel-heading .panel-title hr {
+    width: 100%;
+    margin: 0;
+    border-color: #BBBBBB;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+}
+
+.dt-form .panel-group .panel-heading .panel-title .export {
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.dt-form .panel-group .panel-heading .panel-title .export .sprite {
+    width: 14px;
+    height: 15px;
+    background-position: -265px -172px;
+    top: 3px;
+    position: relative;
+    margin-right: 5px;
+}
+
+.dt-form table {
+    width: 100%;
+}
+
+.dt-form table tr {
+    height: 40px;
+    line-height: 40px;
+}
+
+.dt-form table tr:nth-child(even) {
+    background-color: #F0F0F0;
+}
+
+.dt-form table tr td:first-child,
+.dt-form table tr th:first-child {
+    padding-left: 20px;
+}
+
+.dt-form table tr td:last-child,
+.dt-form table tr th:last-child {
+    padding-right: 20px;
+}
+
+.dt-form table thead {
+    background-color: #DDDDDD;
+    padding: 0 10px;
+}
+
+.dt-form .bottom-bar {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    background-color: #DDDDDD;
+}
+
+.dt-stat .overview {
+    height: 80px;
+    border: 1px solid #DDDDDD;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dt-stat .overview li {
+    width: 12%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60px;
+    border-right: 1px solid #DDDDDD;
+}
+
+.dt-stat .overview li:first-child,
+.dt-stat .overview li:nth-child(2) {
+    width: 14%;
+}
+
+.dt-stat .overview li:first-child {
+    background-color: #FFF2C0;
+    height: 100%;
+}
+
+.dt-stat .overview li:first-child .num {
+    color: #EC580C;
+}
+
+.dt-stat .overview li:nth-child(2) {
+    background-color: #CEF0DB;
+    height: 100%;
+}
+
+.dt-stat .overview li:nth-child(2) .num {
+    color: #EC580C;
+}
+
+.dt-stat .overview li:last-child {
+    border-right: none;
+}
+
+.dt-stat .overview li .title {
+    margin-bottom: 10px;
+}
+
+.dt-stat .overview li .num {
+    font-size: 18px;
+}
+
+.dt-stat .section-header {
+    height: 45px;
+    line-height: 45px;
+}
+
+.dt-stat .section-header .title {
+    font-size: 18px;
+}
+
+.dt-stat .section-header .export {
+    font-size: 12px;
+    color: #4A4A4A;
+}
+
+.dt-stat .section-header .export i {
+    width: 15px;
+    height: 13px;
+    background-position: -245px -172px;
+}
+
+.dt-stat .data-query-toolbar {
+    height: 40px;
+    background-color: #F0F0F0;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dt-stat .data-query-toolbar .quick-query {
+    display: flex;
+}
+
+.dt-stat .data-query-toolbar .quick-query li {
+    width: 60px;
+    line-height: 40px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.dt-stat .data-query-toolbar .quick-query li.active {
+    background-color: #FFC67E;
+}
+
+.dt-stat .data-query-toolbar .quick-query li.active:after {
+    content: '';
+    width: 0;
+    height: 0;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    border: solid transparent;
+    pointer-events: none;
+    border-width: 7px;
+    border-bottom-color: #fff;
+}
+
+.dt-stat .data-query-toolbar .date-query {
+    display: flex;
+    align-items: center;
+}
+
+.dt-stat .data-query-toolbar .date-query .dropdown {
+    position: relative;
+}
+
+.dt-stat .data-query-toolbar .date-query .dropdown .dropdown-menu {
+    left: 10px;
+}
+
+.dt-stat .data-query-toolbar .date-query input {
+    width: 130px;
+    height: 30px;
+    border: 1px solid #CCCCCC;
+    border-radius: 0;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.dt-stat .data-query-toolbar .date-query .sprite {
+    width: 15px;
+    height: 14px;
+    background-position: -225px -172px;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+}
+
+.dt-stat .data-query-toolbar .date-query .btn-query {
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #9B9B9B;
+    color: white;
+    margin: 0 10px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dt-stat .chart-table-switch {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.dt-stat .chart-table-switch .btn {
+    width: 60px;
+    border-color: #327E56 !important;
+    color: #9B9B9B;
+}
+
+.dt-stat .chart-table-switch .btn.active {
+    color: #fff;
+}
+
+.dt-stat .section-body {
+    display: none;
+    position: relative;
+}
+
+.dt-stat .traffic {
+    margin-bottom: 15px;
+}
+
+.dt-stat .traffic .table {
+    border: none;
+}
+
+.dt-stat .traffic .table td,
+.dt-stat .traffic .table th {
+    border: none;
+    padding: 8px 15px;
+}
+
+.dt-stat .traffic .table thead {
+    background-color: #9B9B9B;
+    color: #fff;
+}
+
+.dt-stat .traffic .table tbody tr:nth-child(even) {
+    background-color: #F0F0F0;
+}
+
+.dt-stat .ref .section-body {
+    padding-top: 50px;
+}
+
+.dt-stat .ref .btn-group {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+}
+
+.dt-stat .ref .btn-group .btn {
+    width: 60px;
+    border-color: #327E56 !important;
+    color: #9B9B9B;
+}
+
+.dt-stat .ref .btn-group .btn.active {
+    color: #fff;
+}
+
+.dt-stat .ref .refChart-wrap {
+    width: 49%;
+    display: inline-block;
+}
+
+.dt-stat .ref .table {
+    width: 340px;
+    float: right;
+}
+
+.dt-stat .ref .table td,
+.dt-stat .ref .table th {
+    border: none;
+    padding: 8px 15px;
+}
+
+.dt-stat .ref .table thead {
+    background-color: #9B9B9B;
+    color: #fff;
+}
+
+.dt-stat .ref .table tbody tr:nth-child(even) {
+    background-color: #F0F0F0;
+}
+
+.dt-stat .ref .ng-table-pager {
+    display: none;
+}

@@ -1,0 +1,46 @@
+<div class="report" id="report">
+	<div class="report-wrap">
+		<p>Davinci一直努力为用户打造健康的传播环境。我们坚决反对一切违法、色情、欺诈，侵权等信息内容。欢迎广大用户积极举报不良的传单，以便我们更及时和精确地处理。</p>
+		<form>
+			<p>请选择举报原因：</p>
+			<div class="list-group">
+				<div class="list-group-item list-group-item-success radio">
+					<label for="other">
+						<input type="radio" name="category" id="other" value="10" checked="checked">
+						其他
+					</label>
+				</div>
+				<div class="list-group-item radio">
+					<label for="illegal">
+						<input type="radio" name="category" id="illegal" value="20">
+						违背法律和法规
+					</label>
+				</div>
+				<div class="list-group-item radio">
+					<label for="porlence">
+						<input type="radio" name="category" id="porlence" value="30">
+						暴力色情
+					</label>
+				</div>
+				<div class="list-group-item radio">
+					<label for="cheat">
+						<input type="radio" name="category" id="cheat" value="40">
+						诈骗和虚假信息
+					</label>
+				</div>
+				<div class="list-group-item radio">
+					<label for="harass">
+						<input type="radio" name="category" id="harass" value="50">
+						骚扰
+					</label>
+				</div>
+			</div>
+			<p>请填写举报原因：</p>
+			<div class="form-group">
+				<textarea class="form-control" name="reason" placeholder="请输入举报理由"></textarea>
+			</div>
+			<input type="hidden" name="flyerID" value="{{flyer._id}}">
+			<a class="btn btn-success btn-submit">确认举报</a>
+		</form>
+	</div>
+</div>

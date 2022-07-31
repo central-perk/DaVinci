@@ -1,0 +1,38 @@
+.user-flyer-card-friend {
+	width: 100%;
+	.bottom-part {
+		background-color: #F0F0F0;
+		border-radius: 0 0 3px 3px;
+		.row-1, .row-2 {
+			line-height: 30px;
+			padding: 0 10px;
+			position: relative;
+		}
+		.row-1 {
+			height: 30px;
+			padding-top: 5px;
+			.flyer-title {
+				height: 30px;
+				@include mx-outtext;
+			}
+		}
+		.row-2 {
+			height: 31px;
+			padding-bottom: 5px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			font-size: 12px;
+			.nickname {
+				display: inline-block;
+				width: 90px;
+				vertical-align: bottom;
+				@include mx-outtext;
+			}
+			.clone-flyer {
+				color: #3b9466;
+				cursor: pointer;
+			}
+		}
+	}
+}

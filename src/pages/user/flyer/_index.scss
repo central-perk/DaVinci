@@ -1,0 +1,59 @@
+@import './card/index';
+@import './card-friend/index';
+
+.user-flyer-nav {
+	.create-flyer {
+		width: 160px;
+		height: 40px;
+		color: $ek-green !important;
+		font-size: 18px;
+		padding: 0;
+		position: absolute;
+		top: 0;
+		right: 0;
+		border-radius: 20px !important;
+		transition: height 0.3s, background-color 0.3s;
+		overflow: hidden;
+		z-index: 10;
+		&:hover {
+			height: 135px;
+			@include box-shadow(0 0 5px 2px rgba(0,0,0,0.2));
+		}
+		& > div {
+			height: 40px;
+			border-bottom: 1px solid #cbcbcb;
+			@include mx-flex-center;
+		}
+		.sample {
+			.sprite {
+				width: 20px;
+				height: 20px;
+				background-position: -161px -337px;
+				margin-right: 10px;
+			}
+		}
+		.from-empty, .from-tpl {
+			justify-content: flex-start;
+			padding-left: 15px;
+			&:hover {
+				background-color: #f0f0f0;
+			}
+		}
+		.from-empty {
+			.sprite {
+				width: 18px;
+				height: 20px;
+				background-position: -186px -337px;
+				margin-right: 10px;
+			}
+		}
+		.from-tpl {
+			.sprite {
+				width: 18px;
+				height: 20px;
+				background-position: -230px -337px;
+				margin-right: 10px;
+			}
+		}
+	}
+}

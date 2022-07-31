@@ -1,0 +1,42 @@
+<div class="mdl-flyer-preview static" ng-class="{'show':previewing}">
+    <div class="container">
+        <div class="row">
+            <div class="preview-header">
+                <div class="btn-group">
+                    <label class="btn btn-default btn-sm" ng-class="{'active':device==='pc'}" ng-click="deviceChange('pc')">
+                        <i class="fa fa-desktop"></i>
+                    </label>
+                    <label class="btn btn-default btn-sm" ng-class="{'active':device==='tablet'}" ng-click="deviceChange('tablet')">
+                        <i class="fa fa-tablet"></i>
+                    </label>
+                    <label class="btn btn-default btn-sm" ng-class="{'active':device==='mobile'}" ng-click="deviceChange('mobile')">
+                        <i class="fa fa-mobile"></i>
+                    </label>
+                </div>
+                <div class="close-preview" ng-click="hidePreview()">
+                    <i class="fa fa-times"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="device {{device}}">
+        <div class="drop-div">
+            <iframe ng-src="{{preview_url}}" id="iframe-preview"></iframe>
+        </div>
+        <div class="inner"></div>
+        <div class="sleep"></div>
+        <div class="volume"></div>
+        <div class="camera"></div>
+        <div class="top-bar"></div>
+        <div class="sensor"></div>
+        <div class="speaker"></div>
+        <div class="bottom-bar"></div>
+        <div class="home"></div>
+        <div class="operate" ng-show=" flyerType === 'interact'">
+            <a class="prev" ng-click="prevPage()">上一页</a>
+            <a class="next" ng-click="nextPage()">下一页</a>
+        </div>
+    </div>
+
+</div>

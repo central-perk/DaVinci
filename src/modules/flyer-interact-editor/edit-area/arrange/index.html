@@ -1,0 +1,181 @@
+<div class="edit-form edit-arrange">
+  <div class="form-group sort">
+    <div class="control-label">Sort</div>
+    <div class="edit-container">
+      <div class="btn-group">
+        <span
+          class="btn btn-sm btn-custom"
+          title="Move to the back"
+          ng-click="bringLayerBottom()"
+        >
+          <i class="bottom"></i>
+        </span>
+        <span
+          class="btn btn-sm btn-custom"
+          title="Move to Front"
+          ng-click="bringLayerTop()"
+        >
+          <i class="top"></i>
+        </span>
+      </div>
+      <div class="btn-group">
+        <span
+          class="btn btn-sm btn-custom"
+          title="Move down one level"
+          ng-click="bringLayerDown()"
+        >
+          <i class="down"></i>
+        </span>
+        <span
+          class="btn btn-sm btn-custom"
+          title="Move one level up"
+          ng-click="bringLayerUp()"
+        >
+          <i class="up"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="form-group layer-align-horizontal">
+    <div class="control-label">Align (X)</div>
+    <div class="edit-container">
+      <div class="btn-group">
+        <span
+          class="btn btn-sm btn-custom"
+          title="left-align"
+          ng-click="mvLeft()"
+        >
+          <i class="left"></i>
+        </span>
+        <span
+          class="btn btn-sm btn-custom"
+          title="Center"
+          ng-click="mvCenter()"
+        >
+          <i class="center"></i>
+        </span>
+        <span
+          class="btn btn-sm btn-custom"
+          title="right-aligned"
+          ng-click="mvRight()"
+        >
+          <i class="right"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="form-group layer-align-vertical">
+    <div class="control-label">Align (Y)</div>
+    <div class="edit-container">
+      <div class="btn-group">
+        <span
+          class="btn btn-sm btn-custom"
+          title="top alignment"
+          ng-click="mvTop()"
+        >
+          <i class="top"></i>
+        </span>
+        <span
+          class="btn btn-sm btn-custom"
+          title="Center"
+          ng-click="mvMiddle()"
+        >
+          <i class="middle"></i>
+        </span>
+        <span
+          class="btn btn-sm btn-custom"
+          title="Align Bottom"
+          ng-click="mvBottom()"
+        >
+          <i class="bottom"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="form-group">
+    <div class="control-label">size</div>
+    <div class="edit-container">
+      <div class="half">
+        <div>width</div>
+        <input-number
+          ng-model="layer.style.width"
+          on-change="widthChange(data)"
+          class="lg"
+          unit="px"
+          max="500"
+          input-class="form-control input-sm"
+        >
+        </input-number>
+      </div>
+      <div class="half">
+        <div>tall</div>
+        <input-number
+          ng-model="layer.style.height"
+          ng-change="heightChange(data)"
+          class="lg"
+          unit="px"
+          max="700"
+          input-class="form-control input-sm"
+        >
+        </input-number>
+      </div>
+    </div>
+  </div>
+  <div class="form-group force">
+    <input id="force" type="checkbox" ng-model="layer.force" />
+    <label for="force">Force proportional</label>
+  </div>
+  <hr />
+  <div class="form-group">
+    <div class="control-label">Position</div>
+    <div class="edit-container">
+      <div class="half">
+        <div>X</div>
+        <input-number
+          ng-model="layer.style.x"
+          class="lg"
+          unit="px"
+          min="-500"
+          max="500"
+          input-class="form-control input-sm"
+        >
+        </input-number>
+      </div>
+      <div class="half">
+        <div>Y</div>
+        <input-number
+          ng-model="layer.style.y"
+          class="lg"
+          unit="px"
+          min="-500"
+          max="500"
+          input-class="form-control input-sm"
+        >
+        </input-number>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="form-group rotate-z">
+    <div class="control-label">Rotate</div>
+    <div class="edit-container">
+      <div
+        slider
+        ng-model="layer.style.rotateZ"
+        min="0"
+        max="360"
+        tooltip="hide"
+      ></div>
+      <input-number
+        ng-model="layer.style.rotateZ"
+        unit="˚"
+        min="0"
+        max="360"
+        input-class="form-control input-sm"
+      >
+      </input-number>
+    </div>
+  </div>
+  <hr />
+</div>

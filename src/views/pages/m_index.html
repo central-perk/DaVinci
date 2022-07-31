@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+{{> tag_home_head}}
+
+<body id="home">
+
+   {{!-- 未登录 --}}
+{{> browser_upgrade}}
+<header class="dvc-header navbar navbar-inverse" role="banner">
+    <div class="container">
+        <div class="row">
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand">
+                    {{#if isAgent}}
+                       &nbsp;&nbsp;&nbsp;&nbsp;
+                    {{else}}
+                        <img src="/images/brand/logo_dark.png">
+                    {{/if}}
+                </a>
+
+                <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapsers collapse" role="navigation">
+                <ul class="nav navbar-nav pull-right">
+                {{#if isLogin}}
+                    <li>
+                        <a href="/u/{{userID}}">回到我的主页</a>
+                    </li>
+                {{else}}
+                    <li>
+                        <a href="/">首页</a>
+                    </li>
+                    <!--<li>-->
+                    <!--    <a href="/club.html">用户社区</a>-->
+                    <!--</li>-->
+                    <!-- <li>
+                        <a href="/helps.html">帮助中心</a>
+                    </li> -->
+                    <li>
+                        <a href="/signup.html">注册</a>
+                    </li>
+                    <li>
+                        <a href="/signin.html">登录</a>
+                    </li>
+                {{/if}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <![if !lte IE 9]>
+    <div class="banner purport">
+        <div class="container">
+            <div class="row">
+                <div class="banner-word col-md-6 col-xs-12">
+                    <h1>五分钟创建电子传单</h1>
+                    <p>
+                        简单制作、高效传播、实时反馈，线上与线下极速连接，移动时代的企业营销利器!
+                    </p>
+                    <div class="btn-signup pc-btn-signup">
+                        <a class="btn btn-success btn-lg" href="/signup.html">
+                            完全免费，马上注册
+                        </a>　
+                    </div>
+                    <div class="btn-signup mobile-btn-signup">
+                        <a class="btn btn-success btn-lg" href="#form-home-signup">
+                            完全免费，马上注册
+                        </a>　
+                    </div>
+                    <div class="wx-tips">
+                        <small>您可以通过微信注册和登录</small>
+                    </div>
+                </div>
+                {{#unless isAgent}}
+                <div class="banner-pic col-md-6 col-xs-12">
+                    <img src="/images/index/banner-1.png">
+                </div>
+                {{/unless}}
+            </div>
+        </div>
+    </div>
+    <div class="banner features">
+        <div class="container">
+            <div class="row">
+                <div class="banner-pic col-md-6 col-xs-12">
+                    <img src="/images/index/banner-2.png">
+                </div>
+                <div class="banner-word col-md-6 col-xs-12">
+                    <h3>
+                        海量模版，任您复制新增
+                        <br/>简单灵活的模块，随意组合，适应各种应用场景
+                    </h3>
+                    <p>
+                        功能强大且简单易用的设计器，随意拖拽排序 无需专业的美工和互联网工程师几分钟就可以拥有一个漂亮的电子传单！
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="banner shares">
+        <div class="container">
+            <div class="row">
+                <div class="banner-word col-md-6 col-xs-12">
+                    <h3>
+                        微信、微博，各种社交渠道任意分享
+                        <br/>强大的联系人、群组管理，一键传播
+                    </h3>
+                    <p>
+                        升级传统的邮件和短信，随时随地跟用户建立连接自动适配电脑和几千种手机，全平台全网营销，就是这么简单！
+                    </p>
+                </div>
+                <div class="banner-pic col-md-6 col-xs-12">
+                    <img src="/images/index/banner-3.png">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="banner analytics">
+        <div class="container">
+            <div class="row">
+                <div class="banner-pic col-md-6 col-xs-12">
+                    <img src="/images/index/banner-4.png">
+                </div>
+                <div class="banner-word col-md-6 col-xs-12">
+                    <h3>
+                        实时采集客户反馈
+                        <br/>多维度统计分析客户数据
+                    </h3>
+                    <p>
+                        移动端实时提醒和查询推广效果，轻松做好每个传单的效果跟踪，精准传播与推广就是这么简单！
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="applys">
+        <div class="container">
+            <h3>使用场景</h3>
+            <div class="row applys-list">
+                <div class="col-md-3 col-xs-6"><i class="fa fa-thumbs-up"></i>品牌传播</div>
+                <div class="col-md-3 col-xs-6"><i class="fa fa-th"></i>商品展示</div>
+                <div class="col-md-3 col-xs-6"><i class="fa fa-gift"></i>婚礼邀请</div>
+                <div class="col-md-3 col-xs-6"><i class="fa fa-globe"></i>组织会议</div>
+                <div class="col-md-3 col-xs-6"><i class="fa fa-car"></i>预约试驾</div>
+                <div class="col-md-3 col-xs-6"><i class="fa fa-credit-card"></i>商家名片</div>
+                <div class="col-md-3 col-xs-6"><i class="fa fa-picture-o"></i>店铺海报</div>
+                <div class="col-md-3 col-xs-6"><i class="fa fa-group"></i>亲友聚会</div>
+                <div class="col-md-3 col-xs-6"><i class="fa fa-user"></i>个人名片</div>
+                <div class="col-md-3 col-xs-6"><i class="fa fa-star"></i>优惠促销</div>
+                <div class="col-md-3 col-xs-6"><i class="fa fa-shopping-cart"></i>推荐购买</div>
+                <div class="col-md-3 col-xs-6"><i class="fa fa-cutlery"></i>在线订餐</div>
+                <div class="col-md-3 col-xs-6"><i class="fa fa-list-alt"></i>发起投票</div>
+                <div class="col-md-3 col-xs-6"><i class="fa fa-pencil-square"></i>调查问卷</div>
+                <div class="col-md-3 col-xs-6"><i class="fa fa-trophy"></i>趣味评选</div>
+                <div class="col-md-3 col-xs-6"><i class="fa fa-file-text"></i>收集反馈</div>
+            </div>
+            <div class="bottom">所有点对点的连接场景，从线上到线下用Davinci轻松搞定。
+            </div>
+        </div>
+    </div>
+    <div class="attracts">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-xs-6">
+                    <a href="">
+                        <span class="fa-stack fa-3x icon-money"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-jpy fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4>完全免费
+                        </h4>所有功能完全免费，丰富的功能组件任您选择。</a>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    <a href="">
+                        <span class="fa-stack fa-3x icon-mobile"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-mobile fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4>移动版
+                        </h4>功能强大的微APP，iPhone、Android全平台支持。</a>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    <a href="">
+                        <span class="fa-stack fa-3x icon-tree"><i class="fa fa-circle fa-stack-2x"></i><i class="fa  fa-tree fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4>公益计划
+                        </h4>我们为公益组织、学生和教师提供专门的主题。</a>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    <a href="">
+                        <span class="fa-stack fa-3x icon-safe"><i class="fa fa-circle fa-stack-2x"></i><i class="fa  fa-shield fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4>数据安全
+                        </h4>保护数据安全，是我们的责任，请放心使用我们的服务。</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sign-wrap">
+        <div class="form-sign form-signup clearfix container" id="form-home-signup">
+            <div class="alert alert-danger alert-snnipet hide" id="snippet">
+                <i class="fa fa-times-circle"></i>
+                <span></span>
+            </div>
+            <form class="form-horizontal form-sign-inner form-signup-inner">
+                <div class="form-group">
+                    <label class="control-label col-sm-4 col-xs-12" for="email">邮箱</label>
+                    <div class="col-sm-5 col-xs-12">
+                        <input class="form-control" id="email" name="email" type="email" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-4 col-xs-12" for="pwd">密码</label>
+                    <div class="col-sm-5 col-xs-12">
+                        <input class="form-control" id="pwd" name="pwd" type="password" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-4 col-xs-12" for="cpwd">确认密码</label>
+                    <div class="col-sm-5 col-xs-12">
+                        <input class="form-control" id="cpwd" name="cpwd" type="password" />
+                    </div>
+                </div>
+                <div class="signup-bar container hide-on-pc">
+                    <a class="btn btn-submit btn-success btn-lg col-xs-12">完全免费，马上注册</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <![endif]>
+
+
+    {{> footer}}
+    {{> home_script}}
+    {{> g_script}}
+</body>

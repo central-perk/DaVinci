@@ -1,0 +1,24 @@
+<div class="mdl-pg-vessel" ng-if="page">
+	<div class="device">
+		<div class="drop-div" id="drop-div">
+			<div class="title">{{flyer.title}}</div>
+			<pg-custome-base
+				ng-model="page"
+				ng-if="page&& page.kind ==='custome'"
+				ng-repeat="i in vessels">
+			</pg-custome-base>
+			<div class="flyer-audio" ><div class="audio-btn audio-play fa-spin"></div></div>
+		</div>
+		<div class="inner"></div>
+		<div class="sleep"></div>
+		<div class="volume"></div>
+		<div class="camera"></div>
+		<div class="top-bar"></div>
+		<div class="sensor"></div>
+		<div class="speaker"></div>
+		<div class="bottom-bar">
+			<button class="btn btn-green-click btn-preview" ng-click="previewPage()">Play Animation</button>
+		</div>
+		<div class="home"></div>
+	</div>
+</div>

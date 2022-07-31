@@ -1,0 +1,21 @@
+<section class="contact-form">
+    <div class="modal-content" ng-init="init()">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" data-ng-click="close();">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            <h3>加为客户</h3>
+        </div>
+        <div class="modal-body">
+            <p class="text-center">确认将
+                <span class="text-danger" ng-bind="count"></span>
+                个登记数据加为客户
+            </p>
+        </div>
+        <div class="modal-footer ">
+            <button type="button " class="btn btn-default" data-ng-click="close() ">取消</button>
+            <button type="button " class="btn btn-success " ng-disabled="btnDisabled " data-ng-click="do() ">确认</button>
+        </div>
+    </div>
+</section>

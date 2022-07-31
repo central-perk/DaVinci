@@ -1,0 +1,64 @@
+<div>
+	<div ng-show="layer">
+		<tabset>
+			<!-- 不使用用select，会引起active更新 -->
+			<tab ng-repeat="tab in tabs1"
+				active="tab.active"
+				ng-click="changeTab1($index, true)"
+				ng-style="tabStyle(tabs1)">
+				<tab-heading >
+					<span>{{tab.label}}</span>
+				</tab-heading>
+			</tab>
+		</tabset>
+
+		<fi-edit-content
+			ng-model="layer"
+			ng-show="activeTab1.key === 'content'">
+		</fi-edit-content>
+
+		<fi-edit-style
+			ng-model="layer"
+			ng-show="activeTab1.key === 'style'">
+		</fi-edit-style>
+
+		<fi-edit-arrange
+			ng-model="layer"
+			ng-show="activeTab1.key === 'arrange'">
+		</fi-edit-arrange>
+
+		<fi-edit-animate
+			ng-model="layer"
+			ng-show="activeTab1.key === 'animate'">
+		</fi-edit-animate>
+	</div>
+
+	<div ng-show="!layer">
+		<tabset>
+			<tab ng-repeat="tab in tabs2"
+				active="tab.active"
+				select="changeTab2(tab)"
+				ng-style="tabStyle(tabs2)">
+				<tab-heading>
+					<span>{{tab.label}}</span>
+				</tab-heading>
+			</tab>
+		</tabset>
+
+		<fi-edit-bg
+			ng-model="page"
+			ng-show="activeTab2.key === 'bg'">
+		</fi-edit-bg>
+
+		<fi-edit-effect
+			ng-model="page"
+			ng-show="activeTab2.key === 'effect'">
+		</fi-edit-effect>
+
+		<fi-edit-layer
+			ng-model="page.layers"
+			layer="layer"
+			ng-show="activeTab2.key === 'layer'">
+		</fi-edit-layer>
+	</div>
+</div>

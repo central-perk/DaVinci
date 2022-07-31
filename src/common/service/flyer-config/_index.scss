@@ -1,0 +1,216 @@
+.flyer-config .modal-body {
+	display: flex;
+	.flyer-config-form {
+		display: flex;
+	}
+	.logo-area {
+		width: 240px;
+		background-color: #F0F0F0;
+		padding: 20px;
+		.logo-tip {
+			margin-bottom: 15px;
+			text-align: center;
+		}
+		.logo {
+			width: 200px;
+			height: 200px;
+			margin-bottom: 15px;
+			position: relative;
+			background-image: url(/images/grey-bg-logo.png);
+		}
+		.change-logo {
+			width: 100%;
+			margin-top: 20px;
+			transition: none;
+		}
+	}
+	.info-area {
+		width: 460px;
+		flex-grow: 1;
+		padding: 30px;
+		.title {
+			margin-bottom: 5px;
+		}
+		.tags-transfer {
+			margin-bottom: 30px;
+			display: flex;
+			justify-content: space-between;
+			.tags, .transfer {
+				width: 45%;
+			}
+		}
+		.desc {
+			width: 100%;
+			height: 120px;
+			border: none;
+			background: transparent;
+			box-shadow: none;
+			outline: 1px solid #CBCBCB;
+			outline-offset:-1px;
+			-webkit-appearance: none;
+			padding: 6px 8px;
+			resize: none;
+			margin-bottom: 20px;
+		}
+		.permission {
+			height: 31px;
+			.form-control-outter {
+				flex-grow: 1;
+			}
+		}
+		.next-step {
+			width: 160px;
+			margin-left: calc(50% - 80px);
+		}
+	}
+	.copyright-area {
+		width: 460px;
+		padding: 30px;
+		position: relative;
+		.copyright {
+			align-items: flex-start;
+			.control-content {
+				display: block;
+			}
+			.ek-btn {
+				width: 100px;
+				margin-right: 15px;
+			}
+		}
+		.question {
+			width: 14px;
+			height: 14px;
+			border-radius: 50%;
+			display: inline-block;
+			font-size: 12px;
+			background-color: #f8e71c;
+			color: #d0021b;
+			text-align: center;
+			line-height: 14px;
+			text-indent: 1px;
+			cursor: pointer;
+		}
+		.operate {
+			width: 100%;
+			margin-top: 40px;
+			display: flex;
+			justify-content: center;
+			position: absolute;
+			left: 0;
+			bottom: 45px;
+			.prev-step {
+				margin-right: 30px;
+			}
+			.ek-btn {
+				width: 100px;
+			}
+		}
+	}
+	.partner-app-btns{
+		margin-top:30px;
+	}
+	.buy-area, .exchange-area {
+		width: 460px;
+		padding: 30px 60px;
+		.pack-list {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			margin-bottom: 20px;
+			.pack {
+				width: 150px;
+				height: 80px;
+				margin-bottom: 20px;
+				.price {
+					color: $orange;
+					span {
+						font-size: 22px;
+					}
+				}
+				&.active, &:hover {
+					border-color: $orange;
+					border-width: 2px;
+				}
+				&[disabled] {
+					background: #fff;
+					border-color: #cbcbcb;
+					border-width: 1px;
+					opacity: 0.65;
+				}
+			}
+		}
+		.pay-list {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			margin-bottom: 35px;
+			.ek-btn {
+				width: 150px;
+				height: 50px;
+				padding: 0;
+				font-size: 22px;
+				line-height: 48px;
+			}
+		}
+		.return {
+			width: 150px;
+			margin: 0 auto;
+			text-align: center;
+			color: #3D9B79;
+			cursor: pointer;
+			.fa {
+				color: #979797;
+				margin-right: 10px;
+			}
+		}
+	}
+	.exchange-area {
+		.pay-list {
+			justify-content: center;
+		}
+	}
+	.form-group {
+		display: flex;
+		align-items: center;
+		.control-label {
+			width: 90px;
+		}
+		.control-content {
+			width: calc(100% - 90px);
+			flex-grow: 1;
+			display: flex;
+			align-items: center;
+			.radio, .checkbox {
+				margin: 0 20px 0 0;
+			}
+		}
+	}
+	.tooltip {
+		width: 200px;
+		.tooltip-inner {
+			text-align: left;
+		}
+	}
+	.form-control-outter {
+		border-bottom: 1px solid #CBCBCB;
+		.form-control {
+			border: none;
+			background: transparent;
+			box-shadow: none;
+		}
+		input.form-control {
+			padding: 6px 8px;
+		}
+	}
+	textarea {
+		width: 100%;
+		border: none;
+		background: transparent;
+		box-shadow: none;
+		outline: 1px solid #CBCBCB;
+		outline-offset:-1px;
+		-webkit-appearance: none;
+		padding: 6px 8px;
+		resize: none;
+	}
+}

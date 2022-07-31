@@ -1,0 +1,27 @@
+<div>
+	<table>
+		<thead>
+			<td ng-repeat="f in page.form"
+				ng-if="page.form"
+				ng-bind="f.label"></td>
+		</thead>
+		<tbody>
+			<tr ng-repeat="c in checkins">
+				<td ng-repeat="f in page.form">
+					{{c.data[f.id]||''}}
+				</td>
+			</tr>
+			<tr class="text-muted text-center" ng-if="checkins.length==0">
+				<td colspan="{{checkinsConfig.cols.length+1}}">
+					<p>
+						暂无登记数据
+					</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="bottom-bar">
+		<span class="text-center" ng-if="!checkins.length">暂无数据</span>
+		<span class="pull-right" ng-if="checkins">共收到 {{checkins.length}} 条提交数据 </span>
+	</div>
+</div>

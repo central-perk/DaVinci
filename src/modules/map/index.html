@@ -1,0 +1,12 @@
+<div ng-controller="MapController">
+    <div class="map-control" ng-init="initMap()">
+	    <label class="required">地址</label>
+		<label class="limit gray" ng-class="{'limit-danger':!($validator.getLeftLen(ngModel.location,addrLen)>=0)}" ng-bind="$validator.getLeftLen(ngModel.location, addrLen)"></label>
+		<div class="input-filed">
+			<i class="fa fa-map-marker"></i>
+        	<input id="suggestId" type="text" class="form-control search-input" ng-model="ngModel.location" placeholder="请输入地址" auto-focus/>
+		</div>
+        <div id="searchResultPanel">
+    </div>
+    <div id="allmap"></div>
+</div>

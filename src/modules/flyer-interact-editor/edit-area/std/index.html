@@ -1,0 +1,77 @@
+<div>
+	<tabset>
+		<tab ng-repeat="tab in tabs"
+			active="tab.active"
+			select="changeTab(tab)"
+			ng-style="tabStyle(tabs)">
+			<tab-heading >
+				<span>{{tab.label}}</span>
+			</tab-heading>
+		</tab>
+	</tabset>
+
+	<!-- 编辑内容 -->
+	<!-- 编辑动画 -->
+	<!-- <div ng-include src="getPageEditTpl()"></div> -->
+	<!-- <div class="fi-edit-ca"></div> -->
+	<!-- <div class="fi-edit-ca"></div> -->
+	<pg-base ng-if="page._t === 'button'"
+		active-tab="activeTab"
+		ng-env = 'et'
+		ng-model="page">
+	</pg-base>
+
+	<pg-base ng-if="page._t === 'checkin'"
+		active-tab="activeTab"
+		ng-env = 'et'
+		ng-model="page">
+	</pg-base>
+
+	<pg-base ng-if="page._t === 'intro'"
+		active-tab="activeTab"
+		ng-env = 'et'
+		ng-model="page">
+	</pg-base>
+
+	<pg-base ng-if="page._t === 'map'"
+		active-tab="activeTab"
+		ng-env = 'et'
+		ng-model="page">
+	</pg-base>
+
+	<pg-base ng-if="page._t === 'picture'"
+		active-tab="activeTab"
+		ng-env = 'et'
+		ng-model="page">
+	</pg-base>
+
+	<pg-base ng-if="page._t === 'slider'"
+		active-tab="activeTab"
+		ng-env = 'et'
+		ng-model="page">
+	</pg-base>
+
+	<pg-base ng-if="page._t === 'text'"
+		active-tab="activeTab"
+		ng-env = 'et'
+		ng-model="page">
+	</pg-base>
+
+	<pg-base ng-if="page._t === 'timer'"
+		active-tab="activeTab"
+		ng-env = 'et'
+		ng-model="page">
+	</pg-base>
+
+	<pg-base ng-if="page._t === 'video'"
+		active-tab="activeTab"
+		ng-env = 'et'
+		ng-model="page">
+	</pg-base>
+
+	<!-- 编辑背景 -->
+	<fi-edit-bg ng-model="page" ng-show="activeTab.key === 'bg'"></fi-edit-bg>
+
+	<!-- 编辑特效 -->
+	<fi-edit-effect ng-model="page" ng-show="activeTab.key === 'effect'"></fi-edit-effect>
+</div>

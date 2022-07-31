@@ -1,0 +1,43 @@
+.pagination {
+	display: inline-block;
+	padding-left: 0;
+	margin: 20px 0;
+	border: 1px solid #979797;
+	> li {
+		display: inline;
+		> a, > span {
+			position: relative;
+			float: left;
+			padding: 6px 12px;
+			margin-left: -1px;
+			line-height: 1.42857143;
+			color: #3B9466;
+			text-decoration: none;
+			background-color: #fff;
+		}
+		&:first-child {
+			> a, > span {
+				margin-left: 0;
+			}
+		}
+		> a:hover, > span:hover, > a:focus, > span:focus {
+			background-color: #eee;
+		}
+	}
+	> .active {
+		> a, > span, > a:hover, > span:hover, > a:focus, > span:focus {
+			z-index: 2;
+			color: #4A4A4A;
+			cursor: default;
+			background-color: rgba(123, 218, 160, 40);
+		}
+	}
+	> .disabled {
+		> span,> span:hover,> span:focus,> a,> a:hover,> a:focus {
+			color: #999;
+			cursor: not-allowed;
+			background-color: #fff;
+			border-color: #ddd;
+		}
+	}
+}

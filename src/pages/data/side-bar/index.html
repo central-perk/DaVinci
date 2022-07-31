@@ -1,0 +1,14 @@
+<div class="dt-side-bar">
+	<div class="flyer-logo">
+		<img class="full-size" ng-src="{{flyer.logo}}">
+		<a ng-href="{{flyer.link}}" class="btn-view-flyer" target="_blank">点击查看</a>
+	</div>
+	<div class="flyer-title" ng-bind="flyer.title"></div>
+	<div class="flyer-pub-time">
+		发布时间<span class="pull-right" ng-bind="flyer.pubTime|dateDisplay"></span>
+	</div>
+	<div class="flyer-link">
+		作品地址
+		<input type="text" ng-model="flyer.link" disabled="disabled">
+	</div>
+</div>

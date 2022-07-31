@@ -1,0 +1,128 @@
+@mixin fi-edit-arrange {
+	.edit-arrange {
+		.form-group {
+			.half {
+				.mdl-input-number {
+					margin-left: 10px;
+					width: 70px;
+				}
+			}
+		}
+		.rotate-z {
+			line-height: 24px;
+			.slider {
+				margin-left: 15px;
+				width: 240px;
+			}
+		}
+		.sort, .layer-align-horizontal, .layer-align-vertical {
+			.btn:active {
+				outline: 0;
+				background-image: none;
+				@include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+			}
+			.control-label {
+				width: 110px;
+			}
+			.edit-container {
+				width: calc(100% - 110px);
+			}
+		}
+		.sort {
+			.edit-container {
+				justify-content: space-between;
+			}
+			.btn-group {
+				margin-bottom: 0;
+			}
+			.btn {
+				border-color: #adadad;
+				width: 40px;
+			}
+			.bottom {
+				width: 22px;
+				height: 14px;
+				background-position: -209px -122px;
+			}
+			.top {
+				width: 22px;
+				height: 14px;
+				background-position: -236px -122px;
+			}
+			.down {
+				width: 20px;
+				height: 14px;
+				background-position: -209px -141px;
+			}
+			.up {
+				width: 20px;
+				height: 14px;
+				background-position: -236px -141px;
+			}
+		}
+		.layer-align-horizontal {
+			.btn {
+				border-color: #adadad;
+				width: 60.66px;
+			}
+			.left {
+				width: 17px;
+				height: 13px;
+				background-position: -209px -84px;
+			}
+			.center {
+				width: 23px;
+				height: 13px;
+				background-position: -232px -84px;
+			}
+			.right {
+				width: 17px;
+				height: 13px;
+				background-position: -259px -84px;
+			}
+		}
+		.layer-align-vertical {
+			.btn {
+				border-color: #adadad;
+				width: 60.66px;
+			}
+			.top {
+				width: 13px;
+				height: 17px;
+				background-position: -151px -159px;
+			}
+			.middle {
+				width: 13px;
+				height: 23px;
+				background-position: -169px -159px;
+			}
+			.bottom {
+				width: 13px;
+				height: 17px;
+				background-position: -187px -159px;
+			}
+		}
+		.force {
+			padding-left: 80px;
+			margin-top: -10px;
+			input {
+				margin-right: 10px;
+				margin-bottom: 4px;
+			}
+			label {
+				font-weight: normal;
+				margin-bottom: 0;
+			}
+		}
+		.btn-group {
+			.btn {
+				@include mx-flex-center;
+				padding: 0;
+			}
+		}
+		i {
+			background-image: url(/images/sprite.png);
+			display: block;
+		}
+	}
+}

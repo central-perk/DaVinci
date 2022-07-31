@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html ng-controller="LayoutController">
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    	<!-- <link rel="icon" href="/images/brand/icon128.ico"> -->
+
+
+       <link rel="stylesheet" href="/assets/css/adm-common.css" type='text/css' />
+        <link rel="stylesheet" href="/assets/css/adm-main.css" type='text/css' />
+
+    <script type="text/javascript">
+        var require = {
+            baseUrl: "/",
+            urlArgs: "v=" + {{__version}}
+        };
+    </script>
+</head>
+<body class="page-header-fixed default-layout">
+   <div growl></div>
+    <div class="header navbar navbar-fixed-top mega-menu" ng-if="currentAdmin" ng-cloak>
+        <div class="header-inner">
+            <a class="navbar-brand logo" href="/">
+                <span>Davinci管理系统</span>
+            </a>
+            <div class="hor-menu"></div>
+            <ul class="nav navbar-nav"></ul>
+            <ul class="nav navbar-nav pull-right">
+                <li class="dropdown user">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" style="height: 40px;">
+                        <img alt="" ng-src="/images/user/chrome.png" width="25px" height="25px">
+                        <span class="name" ng-bind="currentAdmin.email"></span> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a ng-click="logout()"> <i class="fa fa-key"></i>
+                                退出
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="page-container" ng-if="currentAdmin" ng-cloak>
+        <div class="page-sidebar-wrapper">
+            <a href="javascript:void(0);" class="navbar-toggle hidden-lg hidden-md" data-toggle="collapse" data-target=".navbar-collapse">
+                <img src="/images/back/menu-toggler.png" alt="菜单" />
+            </a>
+            <div class="page-sidebar navbar-collapse collapse">
+                <ul id="sidenav" class="page-sidebar-menu" ng-init="initSelected()">
+                    <li ng-repeat="i in sidebar" ng-if="i.title" ng-class="{'active' : isSelected(i.route.when)}">
+                        <a ng-click="switchView(i.route.when, i.title,i.type)">
+                            <i ng-class="iconShow(i.name)"></i>
+                            <span class="title" ng-bind="i.title"></span>
+                        </a>
+                        <ul class="sub-menu" ng-init="submenuInit(i.submenu, i.title)" ng-if="i.submenu">
+                            <li ng-repeat="j in i.submenu" ng-class="{'active' : isSelected(j.route.when)}">
+                                <a ng-click="switchView(j.route.when)">
+                                    <span ng-bind="j.title"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-content-wrapper" ng-view></div>
+    </div>
+     <div class="page-container" ng-if="!currentAdmin">
+        <div class="page-content-wrapper" ng-view ng-cloak></div>
+    </div>
+     <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+     <script src="/assets/libs/angular/angular.min.js"></script>
+     <script src="/assets/libs/angular-sanitize/angular-sanitize.min.js"></script>
+     <script src="/assets/libs/angular-animate/angular-animate.min.js"></script>
+     <script src="/assets/libs/angular-growl/angular-growl.min.js"></script>
+     <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+
+        "angularAnimate": "",
+        "angularGrowl": "",
+        "restangular": "libs/restangular/dist/restangular.min",
+        "angularResource": "libs/angular-resource/angular-resource.min",
+        "angularRoute": "libs/angular-route/angular-route.min",
+        "angularCookies": "libs/angular-cookies/angular-cookies.min",
+        "angularBootstrapUI": "libs/angular-bootstrap/ui-bootstrap",
+        "angularBootstrapTpls": "js/vendor/ui-bootstrap-tpls-custom",
+        "angularUiUtilsRoute": "libs/angular-ui-utils/ui-utils.min",
+        "angularLodash": "libs/angular-lodash/angular-lodash",
+        "angularBootstrapDatetimepicker": "js/vendor/datetimepicker",
+        "jqueryUISortable": "js/vendor/jquery-ui/jquery.ui.sortable",
+        "jqueryUIMouse": "libs/jquery-ui/ui/jquery.ui.mouse",
+        "jqueryUIWidget": "libs/jquery-ui/ui/jquery.ui.widget",
+        "jqueryUICore": "libs/jquery-ui/ui/jquery.ui.core",
+        "sortable": "modules/sortable/index",
+        "highcharts": "libs/highcharts/highcharts",
+        "highchartsExportChart": "libs/highcharts/modules/exporting",
+        "highchartsNg": "js/vendor/highcharts-ng",
+        "simditor": "libs/simditor/lib/simditor",
+        "simditor-hotkeys": "libs/simple-hotkeys/lib/hotkeys",
+        "simditor-module": "libs/simple-module/lib/module",
+        "simditor-uploader": "libs/simple-uploader/lib/uploader",
+        "ngTable": "libs/ng-table/ng-table.min",
+        "lodash": "libs/lodash/lodash.min",
+        "bootstrap": "libs/bootstrap/dist/js/bootstrap.min",
+        "countUp": "libs/countUp.js/countUp.min",
+        "angularUiSelect": "js/vendor/angular-ui-select/select",
+        "angularFileUpload": "libs/ng-file-upload/angular-file-upload",
+        "moment": "libs/moment/min/moment-with-locales.min",
+        <script data-main="adm-main" src="/assets/libs/requirejs/require.js"></script>
+
+</body>
+
+</html>

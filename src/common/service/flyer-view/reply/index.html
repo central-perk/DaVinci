@@ -1,0 +1,65 @@
+<div class="fv-reply" ng-init="init()">
+	<div class="reply-list">
+		<div>
+			<div class="reply-block" ng-repeat="reply in replys">
+				<div class="head">
+					<img class="full-size" ng-src="{{reply.user.head}}">
+				</div>
+				<div class="reply-main">
+					<div>
+						<span class="nickname" ng-bind="reply.user.nickname"></span>
+						<span class="created-time"> - {{reply.createdTime|dateDisplay}}</span>
+					</div>
+					<div class="content" ng-bind="reply.content"></div>
+				</div>
+			</div>
+		</div>
+		<div class="show-more" ng-if="next">
+			<i class="sprite" ng-if="loading"></i>
+			<span ng-click="nextReply()">载入更多评论</span>
+		</div>
+		<div ng-if="!replys.length">还没有人评论</div>
+	</div>
+	<div class="reply-vote">
+		<div class="reply-area">
+			<form name="replyForm">
+				<textarea class="desc"
+					placeholder="作品牛不牛，人民的眼睛是雪亮的。不过要理性评论，言禁攻击哦！"
+					name="desc"
+					required
+					maxlength="800"
+					ng-model="reply.content"></textarea>
+				<span class="content-left" ng-bind="contentLeft()"></span>
+				<button class="ek-btn btn-s btn-green submit-reply"
+					ng-disabled="replyForm.$invalid"
+					ng-click="submitReply()">评论</button>
+			</form>
+		</div>
+		<div class="vote-area">
+			<div class="slogan">
+				为该模版投上一票
+			</div>
+			<div class="vote-opts">
+				<div class="opt opt-{{$index}}"
+					ng-repeat="opt in VOTE"
+					ng-class="{active: opt.active}"
+					ng-click="vote(opt)">
+					<i class="fa fa-check"></i>
+					{{opt.label}}
+				</div>
+			</div>
+		</div>
+		<div class="tip" ng-show="!voteSum">
+			暂无投票
+		</div>
+		<div class="chart" ng-show="voteSum">
+			<div class="pie-chart"></div>
+			<div class="legends">
+				<div class="legend" ng-repeat="opt in VOTE">
+					<i></i>
+					{{opt.count}}人觉得{{opt.label}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

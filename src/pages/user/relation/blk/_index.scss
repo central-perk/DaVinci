@@ -1,0 +1,174 @@
+.user-relation-blk {
+	width: 560px;
+	height: 120px;
+
+	border-radius: 3px;
+	overflow: hidden;
+	.inner {
+		border-radius: 3px;
+		overflow: hidden;
+	}
+	&:hover {
+		overflow: visible;
+		.inner {
+			box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.5);
+		}
+		.top-part {
+			background-color: #fff;
+		}
+	}
+	.top-part {
+		height: 100%;
+		display: flex;
+		padding: 10px;
+		color: #666666;
+		font-size: 12px;
+		background-color: #F3F3F3;
+		transition: background-color 0.3s;
+		.head {
+			width: 100px;
+			height: 100px;
+			margin-right: 15px;
+			img {
+				border-radius: 50%;
+			}
+		}
+		.intro {
+			width: 215px;
+			.nickname {
+				font-size: 18px;
+				color: #000;
+				line-height: 30px;
+				display: block;
+				@include mx-outtext;
+			}
+			.job, .city {
+				line-height: 20px;
+			}
+			.city {
+				margin-bottom: 10px;
+			}
+			.view-like {
+				display: flex;
+				.view {
+					margin-right: 15px;
+				}
+				.sprite {
+					margin-right: 5px;
+				}
+			}
+			.view .sprite {
+				width: 15px;
+				height: 11px;
+				background-position: -209px -218px;
+			}
+			.like .sprite {
+				width: 15px;
+				height: 13px;
+				background-position: -229px -218px;
+			}
+		}
+		.work-list {
+			width: 210px;
+			display: flex;
+			justify-content: flex-end;
+			.work {
+				width: 100px;
+				height: 100px;
+				position: relative;
+				cursor: pointer;
+				margin-right: 10px;
+				&:last-child {
+					margin-right: 0;
+				}
+				&:hover {
+					.mask {
+						opacity: 0.6;
+					}
+					.ek-btn {
+						opacity: 1;
+					}
+				}
+				.mask {
+					width: 100%;
+					height: 100%;
+					opacity: 0;
+					background-color: #000;
+					position: absolute;
+					top: 0;
+					left: 0;
+					transition: opacity 0.3s;
+				}
+				.ek-btn {
+					width: 80px;
+					height: 40px;
+					font-size: 14px;
+					opacity: 0;
+					transition: opacity 0.3s;
+					background-color: #fff !important;
+					@include mx-center;
+				}
+			}
+			.empty {
+				width: 100%;
+				line-height: 100px;
+				font-size: 14px;
+				text-align: center;
+			}
+		}
+	}
+	.bottom-part {
+		height: 50px;
+		background-color: #F0F0F0;
+		border-top: 1px solid #cdcdcd;
+		display: flex;
+		align-items: center;
+		padding: 10px;
+		color: #555555;
+		.chat, .share {
+			cursor: pointer;
+			&:hover {
+				color: $ek-green;
+			}
+			.sprite {
+				margin-right: 8px;
+			}
+		}
+		.chat {
+			display: flex;
+			align-items: center;
+			margin-right: 30px;
+			.sprite {
+				width: 18px;
+				height: 12px;
+				background-position: -92px -370px;
+			}
+		}
+		.share {
+			display: flex;
+			align-items: center;
+			.sprite {
+				width: 17px;
+				height: 12px;
+				background-position: -115px -370px;
+			}
+		}
+		.space {
+			flex-grow: 1;
+		}
+		.ek-btn {
+			padding: 0;
+			width: 100px;
+			height: 30px;
+			@include mx-flex-center;
+		}
+		.remove {
+			.sprite {
+				width: 15px;
+				height: 15px;
+				background-position: -137px -370px;
+				margin-right: 6px;
+			}
+		}
+	}
+}

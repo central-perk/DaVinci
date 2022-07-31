@@ -1,0 +1,69 @@
+{{#if isLogin}}
+	{{!-- 登陆后 --}}
+	<header class="dvc-header navbar navbar-inverse" role="banner">
+		<div class="container">
+			<div class="navbar-header">
+				{{#unless isAgent}}
+				<img src="/images/brand/logo_dark.png">
+				{{/unless}}
+			</div>
+			<!-- start: 主站导航 -->
+			<div class="navbar-collapse collapse" style="height: auto;" role="navigation">
+				<ul class="nav navbar-nav pull-right">
+					<li>
+						<a ui-sref="user({ userID: user._id })"
+							ui-sref-active="active"
+							ui-sref-opts="{ reload: true }">我的主页</a>
+					</li>
+					<li>
+						<a ui-sref="tplCenter" ui-sref-active="active">模板中心</a>
+					</li>
+					<li>
+						<a ui-sref="plaza" ui-sref-active="active">发现</a>
+					</li>
+
+
+					<li>
+						<a class="messages" ui-sref="account.msg"  u  tooltip-placement="bottom" tooltip-trigger="mouseenter" tooltip-append-to-body="true"  tooltip-html-unsafe="通知">
+							<i class="sprite" ng-class="{active: unReadMsgCount}"></i>
+							{{!-- <i class="fa fa-envelope"></i> --}}
+							{{!-- <span class="badge-msg-count"
+								ng-class="{' badge-base badge':unReadMsgCount}"
+								ng-if="unReadMsgCount&&unReadMsgCount!=0"
+								ng-bind="unReadMsgCount">
+							</span> --}}
+						</a>
+					</li>
+					<li dropdown
+						is-open="dropdown.isopen"
+						ng-mouseenter="dropdown.isopen = true"
+						ng-mouseleave="dropdown.isopen = false">
+						<a class="avatar dropdown-toggle" >
+							<img id="user-head" style="visibility: hidden;" class="thumbnail"/>
+							<i class="fa fa-caret-down"></i>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							<li>
+								<a ui-sref="account" ui-sref-opts="{ reload: true }">
+									<i class="fa fa-coffee"></i>
+									<span class="nickname" ng-bind="user.nickname"></span>
+									<span class="badge badge-agent" ng-if="user.isAgent">VIP</span>
+									<span class="badge badge-advanced" ng-if="user.isAdvanced">VIP</span>
+								</a>
+							</li>
+							<li class="divider"></li>
+
+
+							<li>
+								<a ng-click="logout($event)">
+									<i class="fa fa-power-off"></i>退出
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!-- end: 主站导航 -->
+		</div>
+	</header>
+{{/if}}

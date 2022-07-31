@@ -1,0 +1,8 @@
+<div growl></div>
+    <!-- 以下为加载成功就提示的信息-->
+{{#if msg}}
+    <input type="hidden" value="{{{msg}}}" class="global-msg" data-type="success">
+{{/if}}
+{{#if error}}
+    <input type="hidden" value="{{{error}}}" class="global-msg" data-type="error">
+{{/if}}

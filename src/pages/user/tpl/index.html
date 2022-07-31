@@ -1,0 +1,63 @@
+<div class="user-tpl-nav user-sub-nav" ng-init="init()">
+	<tabset type="'sub-nav'">
+		<tab select="listTplByQuery()">
+			<tab-heading>
+				<span>所有模板</span>
+			</tab-heading>
+		</tab>
+		<tab select="listTplByQuery(filters[0])">
+			<tab-heading dropdown>
+				<span ng-bind="activeFilter.label || '我创建的'"></span>
+				<i class="fa fa-caret-down dropdown-toggle"></i>
+
+				<ul class="dropdown-menu">
+					<div class="arrow"></div>
+					<li ng-repeat="filter in filters"
+						ng-if="filter.name !== activeFilter.name"
+						ng-click="listTplByQuery(filter)">
+						<a ng-bind="filter.label"></a>
+					</li>
+				</ul>
+			</tab-heading>
+		</tab>
+		<tab select="listTplByQuery({query: {purchased: true}})">
+			<tab-heading>
+				<span>我购买的</span>
+			</tab-heading>
+		</tab>
+	</tabset>
+	<div class="create-tpl ek-btn btn-hl btn-round btn-grey"
+		ng-click="createTpl()"
+		ng-if="isAuthor(user)">
+		<i class="sprite"></i>
+		创建模板
+	</div>
+</div>
+
+<div class="card-list" ng-show="tpls.length">
+	<div class="card aa-fade disable-hide"
+		ng-repeat="tpl in tpls">
+
+		<user-tpl-card-created
+			ng-model="tpl"
+			ng-if="!tpl.purchased"></user-tpl-card-created>
+		<user-tpl-card-purchased
+			ng-model="tpl"
+			ng-if="tpl.purchased"></user-tpl-card-purchased>
+	</div>
+</div>
+
+
+<div class="snippet-empty" ng-if="count === 0">
+	<h3>您尚未提交任何模板作品</h3>
+	<div>您可以通过右上角按钮快速创建模板作品，或者前往<a ui-sref="tplCenter">模板中心</a>购买模板。</div>
+</div>
+
+<div class="load-more" ng-if="count !== 0 && next">
+	<span ng-if="loading">
+		<i class="sprite"></i>
+	</span>
+	<span ng-click="loadMore()">载入更多</span>
+</div>
+
+

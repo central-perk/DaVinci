@@ -1,0 +1,36 @@
+<div class="modal-content pg-add">
+  <div class="modal-header">
+    <button
+      type="button"
+      class="close"
+      data-dismiss="modal"
+      data-ng-click="close();"
+    >
+      <span aria-hidden="true">&times;</span>
+      <span class="sr-only">Close</span>
+    </button>
+    <h3>Add Page</h3>
+  </div>
+
+  <div class="modal-body">
+    <ul class="pg-tpl-categorys">
+      <li
+        class="category btn btn-sm btn-default"
+        ng-repeat="category in pgTplCategorys"
+        ng-class="{'btn-success': category.active}"
+        ng-bind="category.label"
+        ng-click="chooseCategory(category)"
+      ></li>
+    </ul>
+    <ul class="pg-tpls">
+      <li class="tpl" ng-repeat="tpl in tpls" ng-click="createPg(tpl)">
+        <div class="thumb">
+          <img
+            ng-src="{{tpl.src || 'http://7te85s.com2.z0.glb.qiniucdn.com/template-job-homepage.png'}}"
+          />
+        </div>
+        <div class="title" ng-bind="tpl.name"></div>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<section class="contact-form">
+    <div class="modal-content" ng-init="init()">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" data-ng-click="close();">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            <h3>批量删除</h3>
+        </div>
+        <div class="modal-body">
+           
+        </div>
+        <div class="modal-footer">
+            <button type="button " class="btn btn-default" data-ng-click="close() ">取消</button>
+            <button type="button " class="btn btn-danger " ng-disabled="btnDisabled || waitRes" data-ng-click="do() ">
+                <span ng-if="!waitRes">删除</span>
+                <ng-loading ng-if="waitRes"></ng-loading>
+            </button>
+        </div>
+    </div>
+</section>

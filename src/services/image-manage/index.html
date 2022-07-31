@@ -1,0 +1,256 @@
+<div class="modal-content modal-new svs-image-manage">
+  <div class="modal-header">
+    <div class="left-part">
+      <div class="title" ng-bind="title"></div>
+      <div class="header-menu">
+        <div
+          ng-class="{active: image.library === 'user'}"
+          ng-click="chooseLibrary('user')"
+        >
+          My Library
+        </div>
+      </div>
+    </div>
+    <div class="right-part">
+      <div
+        class="btn btn-sm btn-green-click"
+        ng-file-select="onFileSelect($files)"
+        multiple="true"
+        accept="image/png,image/jpg,image/jpeg,image/gif"
+        resetonclick="true"
+      >
+        <span
+          class="justify"
+          tooltip-html-unsafe="Single image within 150KB<br>5 images can be uploaded at a time"
+          tooltip-append-to-body="true"
+          tooltip-placement="bottom"
+          >Upload new image<span></span
+        ></span>
+      </div>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        data-ng-click="close();"
+      >
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+      </button>
+    </div>
+  </div>
+  <!-- 裁剪区域 -->
+  <div
+    class="crop-area"
+    style="height: 0; border: none"
+    ng-init="initCropBox()"
+  >
+    <div class="display">
+      <img id="image-manage-crop-box" />
+    </div>
+    <div class="operate">
+      <div class="tip">
+        <span class="tag">提示</span>
+        <p>背景图片推荐尺寸 640X1012，小于2M；</p>
+        <p>控制裁切框选择图像中您满意的部分；</p>
+        <p>按住shfit，固定裁剪比例；</p>
+        <p>双击选定区域即可完成“剪裁并添加”的操作；</p>
+        <p>点击“添加”按钮，图像会以完整状态添加至舞台。</p>
+      </div>
+      <div class="btns">
+        <span class="btn btn-green btn-add" ng-click="addImage()" ng-if="!ratio"
+          >添加</span
+        >
+        <span class="btn btn-grey btn-crop-add" ng-click="cropAddImage()"
+          >裁剪并添加</span
+        >
+        <span class="btn btn-white btn-cancel" ng-click="retract()">取消</span>
+      </div>
+    </div>
+    <div class="retract" ng-click="retract()"><i></i></div>
+  </div>
+
+  <!-- 公共素材库 -->
+  <div
+    ng-if="image.library === 'public'"
+    class="{{image.category}} {{image.library}} {{image.quantity}}"
+  >
+    <tabset>
+      <tab select="chooseCategory('static')">
+        <tab-heading>
+          <span class="title">静态图像</span>
+          <span
+            class="caret-down"
+            ng-mouseenter="showCategorys($event)"
+            ng-click="showCategorys($event)"
+          ></span>
+          <ul class="category-list" ng-mouseleave="hideCategorys($event)">
+            <li
+              class="category"
+              ng-repeat="category in publicStaticImages"
+              ng-click="switchCategory($event, category)"
+              ng-bind="category.name"
+            ></li>
+          </ul>
+        </tab-heading>
+      </tab>
+      <tab select="chooseCategory('dynamic')" disabled="disableDynamic">
+        <tab-heading>
+          <span class="title">动态图像</span>
+          <span
+            class="caret-down"
+            ng-mouseenter="showCategorys($event)"
+            ng-click="showCategorys($event)"
+          ></span>
+          <ul class="category-list" ng-mouseleave="hideCategorys($event)">
+            <li
+              class="category"
+              ng-repeat="category in publicDynamicImages"
+              ng-click="switchCategory($event, category)"
+              ng-bind="category.name"
+            ></li>
+          </ul>
+        </tab-heading>
+      </tab>
+      <div class="btn-group btn-toggle" ng-if="!disableMulti">
+        <span
+          type="button"
+          class="btn btn-default btn-sm"
+          ng-model="image.quantity"
+          btn-radio="'single'"
+          >单选</span
+        >
+        <span
+          type="button"
+          class="btn btn-default btn-sm"
+          ng-model="image.quantity"
+          btn-radio="'multi'"
+          >多选</span
+        >
+      </div>
+      <span class="dynamic-tip" ng-if="disableDynamic"
+        >暂不支持以动态图作为背景，双击图像可以直接替换当前背景</span
+      >
+    </tabset>
+    <div class="modal-body">
+      <div class="image-items">
+        <div class="image-item-wrap" ng-repeat="imageItem in imageItems">
+          <div
+            class="image-item"
+            ng-click="chooseImage($event, $index, imageItem)"
+            ng-dblclick="addImage($event)"
+            ng-mouseleave="resetImage($event)"
+          >
+            <i class="chosen"></i>
+            <img ng-src="{{imageItem.url}}" image-loading alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="paging" style="display: none">
+        <span class="prev" ng-click="prevLine()"><i></i></span>
+        <span class="next" ng-click="nextLine()"><i></i></span>
+      </div>
+    </div>
+    <div class="multi-menu menu">
+      一次可以添加5张图片
+      <span
+        class="btn btn-green"
+        ng-disabled="curImages.length > 5 || curImages.length === 0"
+        ng-click="addAllImages()"
+        >添加至页面</span
+      >
+      <span class="btn btn-black btn-rm-all" ng-click="rmAllImages"
+        >全部删除</span
+      >
+    </div>
+    <div class="single-dynamic-menu menu">
+      动态图不可裁剪，双击可以直接替换
+      <span class="btn btn-green" ng-disabled="!curImage" ng-click="addImage()"
+        >替换</span
+      >
+    </div>
+  </div>
+
+  <!-- 我的素材库 -->
+  <div
+    ng-if="image.library === 'user'"
+    class="{{image.category}} {{image.library}} {{image.quantity}}"
+  >
+    <tabset>
+      <tab>
+        <tab-heading> All images </tab-heading>
+      </tab>
+      <div class="btn-group btn-toggle" ng-if="!disableMulti">
+        <span
+          type="button"
+          class="btn btn-default btn-sm"
+          ng-model="image.quantity"
+          btn-radio="'single'"
+          >Single Choice</span
+        >
+        <span
+          type="button"
+          class="btn btn-default btn-sm"
+          ng-model="image.quantity"
+          btn-radio="'multi'"
+          >Multiple selection</span
+        >
+      </div>
+    </tabset>
+    <div class="modal-body">
+      <div class="image-items">
+        <div class="image-item-wrap" ng-repeat="imageItem in userImageItems">
+          <div
+            class="image-item"
+            ng-class="{
+  error: imageItem.status === 10,
+  loading: imageItem.status === 20
+  }"
+            ng-click="chooseImage($event, $index, imageItem)"
+            ng-dblclick="addImage()"
+            ng-mouseleave="resetImage($event)"
+          >
+            <i class="fa fa-refresh fa-spin"></i>
+            <span class="error-snippet" ng-bind="imageItem.snippet"></span>
+            <i class="to-rm-image" ng-click="toRmImage($event)"></i>
+            <span class="rm-image" ng-click="rmImage($event, $index, imageItem)"
+              >delete</span
+            >
+            <i class="chosen"></i>
+            <img
+              ng-src="{{imageItem.url}}"
+              ng-if="imageItem.url"
+              image-loading
+            />
+          </div>
+        </div>
+      </div>
+      <div class="paging" style="display: none">
+        <span class="prev" ng-click="prevLine()"><i></i></span>
+        <span class="next" ng-click="nextLine()"><i></i></span>
+      </div>
+    </div>
+    <div class="multi-menu menu" ng-class="{active: curImages.length}">
+      You can add 5 pictures at a time
+      <span
+        class="btn btn-green"
+        ng-disabled="curImages.length > 5 || curImages.length === 0"
+        ng-click="addAllImages()"
+        >Add to page</span
+      >
+      <span class="btn btn-black btn-rm-all" ng-click="rmAllImages()"
+        >Remove All</span
+      >
+    </div>
+    <div class="single-dynamic-menu menu">
+      The dynamic image cannot be cropped, double-click to replace it directly
+      <span class="btn btn-green" ng-disabled="!curImage" ng-click="addImage()"
+        >replace</span
+      >
+    </div>
+  </div>
+
+  <!-- loading -->
+  <div class="mask-loading" ng-if="loading">
+    <i class="fa fa-spinner fa-spin icon"></i>
+  </div>
+</div>

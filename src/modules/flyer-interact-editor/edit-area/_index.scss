@@ -1,0 +1,192 @@
+
+@import './bg/index';
+@import './effect/index';
+@import './arrange/index';
+@import './layer/index';
+@import './content/index';
+@import './style/index';
+@import './animate/index';
+@mixin fi-edit-area {
+	.edit-area {
+		width: 330px;
+		background-color: #eeeeee;
+		position: absolute;
+		right: 0;
+		top: 0;
+		color: #4A4A4A;
+		&:after {
+			content: '';
+			display: block;
+			float: none;
+			clear: both;
+		}
+		.tabbable {
+			.nav-tabs {
+				border-bottom: none;
+				background-color: #D8D8D8;
+				& > li {
+					margin-bottom: 0;
+					&:hover {
+						& > a {
+							background-color: #70c8a0;
+						}
+					}
+					& > a {
+						color: $black;
+						text-align: center;
+						margin-right: 0;
+						border: 0;
+						border-radius: 0;
+					}
+					&.active {
+						a, a:hover, a:focus {
+							color: $white;
+							@include background-image(linear-gradient(#2A6B4A, #3B9466));
+						}
+						&:after {
+							content: '';
+							width: 0;
+							height: 0;
+							display: block;
+							position: absolute;
+							bottom: 0;
+							left: 0;
+							right: 0;
+							margin: 0 auto;
+							border: solid transparent;
+							pointer-events: none;
+							border-width: 7px;
+							border-bottom-color: #eeeeee;
+						}
+					}
+				}
+			}
+		}
+		.edit-form {
+			width: 100%;
+			height: calc(100% - 40px);
+			padding: 20px;
+			overflow-y: auto;
+			position: absolute;
+			.form-group {
+				display: flex;
+				align-items: center;
+				line-height: 30px;
+				margin-bottom: 12px;
+				&:last-child {
+					margin-bottom: 0;
+				}
+				.control-label {
+					width: 90px;
+				}
+				.edit-container {
+					width: calc(100% - 90px);
+					display: flex;
+					justify-content: space-around;
+					align-items: center;
+					.slider {
+						width: 140px;
+						margin: 0 15px 0 10px;
+					}
+					.mdl-input-number {
+						display: inline-block;
+					}
+				}
+				.half {
+					width: 50%;
+					display: flex;
+					align-items: center;
+					justify-content: flex-end;
+				}
+
+				.err-msg {
+					top: 3px;
+					right: 1px;
+				}
+				.btn-group {
+					display: block;
+					margin-bottom: 12px;
+					&:after {
+						content: '';
+						display: block;
+						clear: both;
+					}
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+				.input-filed {
+					position: relative;
+				}
+			}
+			label.limit {
+				font-weight: normal;
+				font-size: 12px;
+				float: right;
+				margin-right: 1px;
+				&.limit-danger {
+					color: $red-d;
+				}
+			}
+			hr {
+				border-color: #CCCCCC;
+			}
+			input, select {
+				font-size: 14px;
+			}
+			.mdl-easy-editor {
+				.btn-group {
+					margin-left: 0;
+				}
+				.btn {
+					padding: 6px 10px;
+				}
+			}
+			#allmap {
+				height: 200px;
+				margin-top: 10px;
+			}
+		}
+		// bg和mask公用
+		.bg-items {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			.bg-item {
+				width: 65px;
+				height: 103px;
+				position: relative;
+				cursor: pointer;
+				border: 1px solid #BBBBBB;
+				overflow: hidden;
+				@include border-radius(3px);
+				&.active {
+					i.chosen {
+						display: block;
+					}
+				}
+				i.chosen {
+					display: none;
+					width: 32px;
+					height: 32px;
+					@include mx-center;
+					background-image: url(/images/sprite.png);
+					background-size: 276px 233px;
+					background-position: -114px 74px;
+				}
+				img {
+					width: 100%;
+					height: 100%;
+				}
+			}
+
+		}
+
+		@include fi-edit-bg;
+		@include fi-edit-effect;
+		@include fi-edit-arrange;
+		@include fi-edit-layer;
+		@include fi-edit-content;
+		@include fi-edit-style;
+	}
+}

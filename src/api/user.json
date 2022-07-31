@@ -1,0 +1,33 @@
+{
+  "code": 200,
+  "msg": {
+    "user": {
+      "_id": "62e64a6aca6b39bbe8b8b3f0",
+      "nickname": "Ecat",
+      "integral": 0,
+      "head": "https://wyxcdn.fspage.com/flat-boy-with-vintage-glasses-avatar-vector-illustration.jpg",
+      "headUrl": "https://wyxcdn.fspage.com/flat-boy-with-vintage-glasses-avatar-vector-illustration.jpg",
+      "headCrop": {},
+      "status": 10,
+      "email": "support@echuandan.com",
+      "nopwd": false,
+      "rmLogoPack": 0,
+      "dataFlowPack": 0,
+      "storagePack": 0,
+      "storage": {
+        "enable": true,
+        "space": 132
+      },
+      "traffic": {
+        "enable": true,
+        "space": 0
+      },
+      "kbn": 10,
+      "plan": {
+        "category": 10,
+        "endTime": "",
+        "name": "免费版"
+      }
+    }
+  }
+}

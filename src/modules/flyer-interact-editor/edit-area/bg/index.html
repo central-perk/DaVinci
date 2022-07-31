@@ -1,0 +1,85 @@
+<div class="edit-form edit-bg">
+  <div class="form-group undertone">
+    <div class="control-label">background color</div>
+    <input-color
+      ng-model="page.bg.undertone"
+      allow-empty="true"
+      input-class="form-control input-sm"
+    >
+    </input-color>
+  </div>
+  <hr />
+  <div class="form-group bg-image">
+    <div class="control-label">background image</div>
+    <span
+      class="btn btn-sm btn-green-click btn-change-bg"
+      ng-click="changeBg()"
+      ng-if="!page.bg.customValue"
+    >
+      choose an image
+    </span>
+    <span
+      class="btn btn-sm btn-green-click btn-replace-bg"
+      ng-click="changeBg()"
+      ng-if="page.bg.customValue"
+    >
+      replace background
+    </span>
+    <span
+      class="btn btn-sm btn-grey-d btn-rm-bg"
+      ng-click="rmBg($event)"
+      ng-if="page.bg.customValue"
+    >
+      clear background
+    </span>
+  </div>
+  <div class="form-group opacity">
+    <div class="control-label">Opacity</div>
+    <div class="edit-container">
+      <div
+        slider
+        ng-model="page.bg.style.opacity"
+        min="0"
+        max="100"
+        tooltip="hide"
+      ></div>
+      <input-number
+        ng-model="page.bg.style.opacity"
+        unit="%"
+        input-class="form-control input-sm"
+      >
+      </input-number>
+    </div>
+  </div>
+  <div class="form-group blur">
+    <div class="control-label">Blur</div>
+    <div class="edit-container">
+      <div
+        slider
+        ng-model="page.bg.style.blur"
+        min="0"
+        max="100"
+        tooltip="hide"
+      ></div>
+      <input-number
+        ng-model="page.bg.style.blur"
+        unit="%"
+        input-class="form-control input-sm"
+      >
+      </input-number>
+    </div>
+  </div>
+  <hr />
+  <div class="bg-animate">
+    <fi-edit-bg-animate ng-model="page"></fi-edit-bg-animate>
+  </div>
+  <hr />
+  <div class="form-group edit-page-transition">
+    <div class="control-label">Page flip effect</div>
+    <select
+      class="form-control input-sm"
+      ng-model="page.transition.type"
+      ng-options="pt.value as pt.label for pt in pageTransitions"
+    ></select>
+  </div>
+</div>

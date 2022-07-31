@@ -1,0 +1,21 @@
+<meta charset="utf-8">
+<title ng-bind="$state.current.pageTitle + ' | Davinci'"></title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<!-- <link rel="icon" href="/images/brand/icon128.ico"> -->
+
+
+<!--[if lt IE 9]>
+    <script type="text/javascript">window.location.href = '/browser';</script>
+<![endif]-->
+<script type="text/javascript">
+	var require = {
+	    baseUrl: "/",
+	    urlArgs: "v=" + {{__version}}
+	};
+</script>
+
+<!-- 主模板样式 -->
+{{> main_style}}
+

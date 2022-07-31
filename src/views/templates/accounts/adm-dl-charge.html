@@ -1,0 +1,52 @@
+<section>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4>充值</h4>
+        </div>
+        <div class="modal-body">
+            <!-- BEGIN SEARCH -->
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- BEGIN INFO -->
+                    <form class="form-horizontal form-row-seperated">
+                        <div class="portlet">
+                            <div class="portlet-body">
+                                <div class="form-body">
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">充值数额:</label>
+                                        <div class="col-md-5">
+                                            <input type="number" min="0.01" ng-model="$parent.amount" class="form-control" value="0.01">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">充值类型:</label>
+                                        <div class="col-md-5">
+                                            <div class="radio" ng-init="type=10">
+                                                <label>
+                                                    <input type="radio" name="type" ng-model="$parent.type" value="10" ng-checked="true">现金交易
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="type" ng-model="type" value="20" checked>虚拟交易
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- END INFO -->
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn blue" ng-class="{'disabled':btnConfirmDisabled}" ng-disalbed="$parent.btnConfirmDisabled" data-ng-click="doCharge()">确定</button>
+                <button class="btn pink" data-ng-click="close();">取消</button>
+            </div>
+        </div>
+    </div>
+</section>

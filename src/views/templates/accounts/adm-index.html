@@ -1,0 +1,84 @@
+<div class="page-content" ng-init="get()">
+    <div class="material">
+        <!-- BEGIN TITLE -->
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="page-breadcrumb breadcrumb">
+                    <li> <i class="fa fa-th-large"></i>
+                        <a>账户</a>
+                    </li>
+                    <li class="btn-group">
+                        <a class="btn green" ng-click="toCharge()">充值</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- END TITLE -->
+        <!-- BEGIN INFO -->
+        <form id="getTextForm" name="getTextForm" class="form-horizontal form-row-seperated">
+            <div class="portlet">
+                <div class="portlet-body">
+                    <div class="form-body">
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">余额:</label>
+                            <div class="col-md-5">
+                                <input type="text" disabled="disabled" class="form-control" value="{{account.balance}}">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- END INFO -->
+        <!-- BEGIN TABLE -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+
+                                <th>时间</th>
+                                <th>交易类型</th>
+                                <th>明细</th>
+                                <th>金额</th>
+                                <th>余额</th>
+                                <th>操作人</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="bill in bills">
+                                <td ng-bind="bill.createdTime|dateDisplay"></td>
+                                <td ng-bind="getBillTypeName(bill.type)"></td>
+                                <td ng-bind="bill.detail">
+
+                                </td>
+                                <td ng-class="{'text-danger':bill.amount<0,'text-success':bill.amount>0}" ng-bind="bill.amount|toFixed|numberSign"></td>
+                                <td ng-bind="bill.balance|toFixed"></td>
+
+                                <td ng-bind="getOperateUser(bill.operateUser)"></td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="6" class="text-center text-mutd" ng-if="bills.length === 0">
+                                    暂无交易记录
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- END TABLE -->
+        <!-- BEGIN PAGINATION -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pull-right">
+                    <dvcpagination ng-model="pagination" max-size="5"></dvcpagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

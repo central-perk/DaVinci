@@ -1,0 +1,144 @@
+<div class="user-intro">
+	<div class="container">
+		<div class="brief">
+			<div class="left-area">
+				<div class="head">
+					<img class="full-size" ng-src="{{user.head}}">
+					<div class="flag">
+						<span class="is-follow" ng-if="user.followID" title="已关注">
+							<i class="sprite"></i>
+						</span>
+						<span class="is-friend" ng-if="user.friendStatus === 20" title="好友关系">
+							<i class="sprite"></i>
+						</span>
+
+					</div>
+				</div>
+				<div>
+					<div class="nickname-block">
+						<span class="nickname" ng-bind="user.nickname"></span>
+						<button class="ek-btn btn-s btn-orange perfect"
+							ng-if="isAuthor(user)"
+							ui-sref="account.setting">修改个人资料</button>
+
+						<div class="operate" ng-if="!isAuthor(user)">
+							<span class="follow" title="关注" ng-if="!user.followID"
+								ng-click="follow()">
+								<i class="sprite"></i>
+							</span>
+							<span class="unfollow" title="取消关注" ng-if="user.followID"
+								ng-click="unfollow()">
+								<i class="sprite"></i>
+							</span>
+							<span class="relation" title="加好友" ng-if="user.friendStatus === 0" ng-click="apply()">
+								<i class="sprite"></i>
+							</span>
+							<span class="chat" title="发私信" ng-click="chat()">
+								<i class="sprite"></i>
+							</span>
+						</div>
+					</div>
+					<div class="job" ng-bind="user.job || '职业未填写'"></div>
+					<div class="city" ng-bind="user|userHometown:'now'"
+						ng-if="user.nowProvince != null"></div>
+					<div class="city" ng-bind="'现居未填写'" ng-if="user.nowProvince == null"></div>
+					<div class="signature" ng-bind="user.signature || '个性签名未填写'"></div>
+				</div>
+			</div>
+			<div class="right-area">
+				<div class="view">
+					<i class="sprite"></i>
+					浏览
+					<span ng-bind="user.view"></span>
+				</div>
+				<div class="like">
+					<i class="sprite"></i>
+					获赞
+					<span ng-bind="user.likeCount"></span>
+				</div>
+				<div class="follow">
+					<i class="sprite"></i>
+					关注
+					<span ng-bind="user.followCount"></span>
+				</div>
+				<div class="fans">
+					<i class="sprite"></i>
+					粉丝
+					<span ng-bind="user.fansCount"></span>
+				</div>
+			</div>
+		</div>
+		<div class="show-more" ng-click="showMore()">
+			<i class="sprite"></i>
+		</div>
+		<div class="details">
+			<div class="detail-main">
+				<div>
+					<span class="label">姓名：</span>
+					<span ng-bind="user.truename || '未填写'"></span>
+				</div>
+				<div ng-if="user.gender != null">
+					<span class="label">性别：</span>
+					<span ng-bind="user.gender | userGender"></span>
+				</div>
+				<div ng-if="user.gender == null">
+					<span class="label">性别：</span>
+					<span>未填写</span>
+				</div>
+				<div ng-if="user.homeProvince != null">
+					<span class="label">家乡：</span>
+					<span ng-bind="user | userHometown:'home' "></span>
+				</div>
+				<div ng-if="user.homeProvince == null">
+					<span class="label">家乡：</span>
+					<span>未填写</span>
+				</div>
+				<div ng-if="user.education != null">
+					<span class="label">学历：</span>
+					<span ng-bind="user.education | userEducation"></span>
+				</div>
+				<div ng-if="user.education == null">
+					<span class="label">学历：</span>
+					<span>未填写</span>
+				</div>
+				<div>
+					<span class="label">院校：</span>
+					<span ng-bind="user.school || '未填写'"></span>
+				</div>
+				<div>
+					<span class="label">职务：</span>
+					<span ng-bind="user.position || '未填写'"></span>
+				</div>
+
+				<div>
+					<span class="label">手机：</span>
+					<span ng-bind="user.tel || '未填写'"></span>
+				</div>
+				<div ng-if="user.email">
+					<span class="label">邮箱：</span>
+					<span ng-bind="user.email || '未填写'"></span>
+				</div>
+				<div>
+					<span class="label">Q Q：</span>
+					<span ng-bind="user.qq || '未填写'"></span>
+				</div>
+				<div>
+					<span class="label">微信：</span>
+					<span ng-bind="user.weixin || '未填写'"></span>
+				</div>
+				<div>
+					<span class="label">微博：</span>
+					<span ng-bind="user.weibo || '未填写'"></span>
+				</div>
+				<div ng-if="user.extra">
+					<span class="label">其他：</span>
+					<span ng-bind="user.extra"></span>
+				</div>
+			</div>
+			<div class="detail-desc">
+				<div class="label">个人简介</div>
+				<div ng-bind="user.desc || '未填写'"></div>
+			</div>
+		</div>
+	</div>
+</div>

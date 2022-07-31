@@ -1,0 +1,24 @@
+<div class="mdl-editable">
+	<div class="view-block">
+		<span ng-bind="ngModel"></span>
+		<a class="btn-del" ng-click="del()">删除</a>
+		<a class="btn-edit" ng-click="edit()">编辑</a>
+	</div>
+	<div class="edit-block">
+		<form name="editableForm" novalidate ng-submit="save()">
+			<input type="text" name="nickname" class="form-control"
+				ng-model="test"
+				ng-maxlength="200"
+				ng-enter="save()" auto-focus/>
+			    	{{test}}
+<!-- 			<input class="form-control input-sm" type="text"
+				name="dd"
+				ng-model="temp.val"
+				ng-minlength="1"
+				ng-enter="save()"/> -->
+			<button type="submit" class="btn btn-sm btn-success"
+				ng-disabled="editableForm.$invalid">保存</button>
+			<span class="btn btn-sm btn-default" ng-click="cancel()">取消</span>
+		</form>
+	</div>
+</div>

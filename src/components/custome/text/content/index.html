@@ -1,0 +1,211 @@
+<div class="custom-text" ng-init="initEditor()" id="toolbar">
+  <div class="form-group">
+    <div class="half font-family">
+      <div>font</div>
+      <select
+        class="form-control input-sm"
+        ng-change="onFontFamilyChange()"
+        ng-model="toolbar.fontFamily"
+        ng-options="font.value as font.label for font in ftFamilyList"
+      ></select>
+    </div>
+    <div class="half font-size">
+      <div>Font size</div>
+      <select
+        class="form-control input-sm"
+        ng-change="onFontSizeChange()"
+        ng-model="toolbar.fontSize"
+        ng-options="fs.value as fs.label for fs in ftSizeList"
+      ></select>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="half">
+      <div id="color" ng-click="initTest()">color</div>
+      <input-color
+        ng-model="toolbar.fontColor"
+        view-color="tmp.fontColor"
+        on-change="onFontColorChange(data)"
+        input-class="form-control input-sm"
+      >
+      </input-color>
+    </div>
+    <div class="half backgroud-color">
+      <div ng-click="initTest()">background</div>
+      <input-color
+        ng-model="toolbar.backgroundColor"
+        view-color="tmp.backgroundColor"
+        on-change="onBackgroundColorChange(data)"
+        allow-empty="true"
+        trigger="message"
+        input-class="form-control input-sm"
+      >
+      </input-color>
+    </div>
+  </div>
+  <hr />
+  <div class="form-group text-style">
+    <div class="control-label">Font style</div>
+    <div class="btn-group edit-container">
+      <span
+        class="btn btn-sm btn-default"
+        ng-class="{'active':toolbar.bold}"
+        ng-mousedown="formatText('bold')"
+        title="bold"
+      >
+        <i class="bold"></i>
+      </span>
+      <span
+        class="btn btn-sm btn-default"
+        ng-class="{'active':toolbar.italic}"
+        ng-click="formatText('italic')"
+        title="italic"
+      >
+        <i class="italic"></i>
+      </span>
+      <span
+        class="btn btn-sm btn-default"
+        ng-class="{'active':toolbar.underline}"
+        ng-click="formatText('underline')"
+        title="underscore"
+      >
+        <i class="underline"></i>
+      </span>
+    </div>
+  </div>
+  <hr />
+  <div class="form-group text-align">
+    <div class="control-label">Align (X)</div>
+    <div class="btn-group edit-container">
+      <span
+        class="btn btn-sm btn-default"
+        ng-model="layer.content.editorStyle.textAlign"
+        btn-radio="'left'"
+        title="left-align"
+      >
+        <i class="align-left"></i>
+      </span>
+      <span
+        class="btn btn-sm btn-default"
+        ng-model="layer.content.editorStyle.textAlign"
+        btn-radio="'center'"
+        title="Center"
+      >
+        <i class="align-center"></i>
+      </span>
+      <span
+        class="btn btn-sm btn-default"
+        ng-model="layer.content.editorStyle.textAlign"
+        btn-radio="'right'"
+        title="right-aligned"
+      >
+        <i class="align-right"></i>
+      </span>
+      <span
+        class="btn btn-sm btn-default"
+        ng-model="layer.content.editorStyle.textAlign"
+        btn-radio="'justify'"
+        title="Both ends"
+      >
+        <i class="align-justify"></i>
+      </span>
+    </div>
+  </div>
+  <div class="form-group text-align vertical">
+    <div class="control-label">对齐（Y）</div>
+    <div class="btn-group edit-container">
+      <span
+        class="btn btn-sm btn-default"
+        ng-model="layer.content.editorStyle.verticalAlign"
+        btn-radio="'top'"
+        title="上对齐"
+      >
+        <i class="align-top"></i>
+      </span>
+      <span
+        class="btn btn-sm btn-default"
+        ng-model="layer.content.editorStyle.verticalAlign"
+        btn-radio="'middle'"
+        title="垂直居中"
+      >
+        <i class="align-middle"></i>
+      </span>
+      <span
+        class="btn btn-sm btn-default"
+        ng-model="layer.content.editorStyle.verticalAlign"
+        btn-radio="'bottom'"
+        title="下对齐"
+      >
+        <i class="align-bottom"></i>
+      </span>
+    </div>
+  </div>
+  <hr />
+  <div class="form-group text-space">
+    <div class="half">
+      <div>Word spacing</div>
+      <input-number
+        ng-model="layer.content.editorStyle.letterSpacing"
+        state="layer.state"
+        class="lg"
+        unit="px"
+        max="20"
+        step="1"
+        precision="1"
+        input-class="form-control input-sm"
+      >
+      </input-number>
+    </div>
+    <div class="half">
+      <div>Line spacing</div>
+      <input-number
+        ng-model="layer.content.editorStyle.lineHeight"
+        state="layer.state"
+        class="lg"
+        unit="fold"
+        max="5"
+        step="0.1"
+        precision="1"
+        input-class="form-control input-sm"
+      >
+      </input-number>
+    </div>
+  </div>
+  <div class="form-group text-space">
+    <div class="half">
+      <div>Left margin</div>
+      <input-number
+        ng-model="layer.content.style.paddingLeft"
+        state="layer.state"
+        class="lg"
+        unit="px"
+        input-class="form-control input-sm"
+      >
+      </input-number>
+    </div>
+    <div class="half">
+      <div>right margin</div>
+      <input-number
+        ng-model="layer.content.style.paddingRight"
+        state="layer.state"
+        class="lg"
+        unit="px"
+        input-class="form-control input-sm"
+      >
+      </input-number>
+    </div>
+  </div>
+  <hr />
+  <layer-link-select ng-model="layer"> </layer-link-select>
+  <hr />
+  <layer-submit-setting ng-model="layer"> </layer-submit-setting>
+  <hr />
+  <div class="tip">
+    <span class="tag">Tips</span>
+    <span
+      >Click the blank area to return to the "Page Properties" editing
+      state</span
+    >
+  </div>
+  <hr />
+</div>

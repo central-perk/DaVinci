@@ -1,0 +1,97 @@
+<div class="page-content" ng-init="list()">
+  <div>
+    <!-- BEGIN TITLE -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-appbar">
+          <div class="btn-group">
+            <a class="btn btn-default" ng-click="clearCondition()">
+              <i class="fa fa-remove"></i>
+              <span>清空查询条件</span>
+            </a>
+          </div>
+          <div class="group">
+            <ul>
+              <li>
+                <input
+                  type="text"
+                  class="search-input"
+                  name="query"
+                  placeholder="按联系人或电话搜索..."
+                  ng-model="query.text"
+                  ng-enter="list(query)"
+                />
+                <input
+                  type="button"
+                  class="search-btn"
+                  ng-click="list(query)"
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END TITLE -->
+    <!-- BEGIN TABLE -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>联系人</th>
+                <th>电话</th>
+                <th>邮箱</th>
+                <th>状态</th>
+
+                <th>充值金额</th>
+                <th>赠送金额</th>
+                <td>操作</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="c in chargeApplys">
+                <td ng-bind="c.nickname"></td>
+                <td ng-bind="c.tel"></td>
+                <td ng-bind="c.user.email"></td>
+                <td>
+                  <span
+                    class="label"
+                    ng-class="{'label-primary':whenWait(c),'label-success':whenFinished(c),'label-default':whenInvalid(c)}"
+                  >
+                    {{getStatusName(c)}}
+                  </span>
+                </td>
+                <td ng-bind="c.price"></td>
+                <td ng-bind="c.gift?c.gift:'none'"></td>
+                <td>
+                  <a class="table-btn" ng-if="whenWait(c)" ng-click="deal(c)">
+                    充值
+                  </a>
+                  <a
+                    class="table-btn"
+                    ng-if="whenWait(c)"
+                    ng-click="invalid(c)"
+                  >
+                    作废
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- END TABLE -->
+    <!-- BEGIN PAGINATION -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="pull-right">
+          <dvcpagination ng-model="pagination" max-size="5"></dvcpagination>
+        </div>
+      </div>
+    </div>
+    <!-- END PAGINATION -->
+  </div>
+</div>

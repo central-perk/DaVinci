@@ -1,0 +1,31 @@
+<section class="svs-image-upload" ng-init="init()">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" data-ng-click="close();">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            <h3>上传图片</h3>
+        </div>
+        <div class="modal-body">
+            <image-manage compress-width="600"></image-manage>
+            <image-crop  compress-width="600" box-width="311" box-height="284" crop-size="cropSize" ></image-crop>
+
+            <div class="clear"></div>
+        </div>
+        <!-- 380 276-->
+        <div class="modal-footer">
+            <a type="button " class="btn btn-sm btn-default" data-ng-click="close()">取消</a>
+
+            <a type="button" ng-hide="hideReplaceBtn" class="btn btn-sm btn-primary" data-ng-click="replace()">
+                替换
+            </a>
+            <a type="button " class="btn btn-sm btn-success" data-ng-click="do()">
+                裁剪并替换
+            </a>
+        </div>
+    </div>
+    <div class="mask-loading" ng-if="loading">
+        <i class="fa fa-spinner fa-spin icon"></i>
+    </div>
+</section>

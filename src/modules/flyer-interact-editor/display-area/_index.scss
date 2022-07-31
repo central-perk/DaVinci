@@ -1,0 +1,11 @@
+@import './grid/index';
+
+@mixin fi-display-area {
+	.display-area {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		position: relative;
+		@include mdl-pg-vessel;
+	}
+}

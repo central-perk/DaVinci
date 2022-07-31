@@ -1,0 +1,77 @@
+<div class="tv-tpl">
+	<div class="tpl-title" ng-bind="tpl.title"></div>
+	<div class="tpl-exp">
+		<div>
+			<span class="visit">
+				<i class="sprite"></i>
+				<span number-format="{{tpl.view}}"></span>
+			</span>
+			<span class="zan">
+				<i class="sprite"></i>
+				<span number-format="{{tpl.likeCount}}"></span>
+			</span>
+			<span class="collect">
+				<i class="sprite"></i>
+				<span number-format="{{tpl.collectCount}}"></span>
+			</span>
+			<span class="comment">
+				<i class="sprite"></i>
+				<span number-format="{{tpl.replyCount}}"></span>
+			</span>
+		</div>
+		<tc-star ng-model="tpl"></tc-star>
+	</div>
+	<div class="tpl-info">
+		<div>
+			<span class="info-label">发布时间：</span>
+			<span class="info-value" ng-bind="tpl.pubTime|dayDisplay"></span>
+		</div>
+		<div>
+			<span class="info-label">模板类型：</span>
+			<span class="info-value">
+				<span class="tpl-tag" ng-bind="tpl.tags|flyerTag">节日祝福</span>
+			</span>
+		</div>
+		<div>
+			<span class="info-label">模板描述：</span>
+			<span class="info-value" ng-bind="tpl.desc || '作者未对该模板做出任何说明'"></span>
+		</div>
+		<div ng-if="tpl.afterSaleSupport">
+			<span class="info-label">后续服务：</span>
+			<span class="info-value" ng-if="tpl.afterSaleSupport">作者提供后续服务</span>
+			<span class="info-value" ng-if="!tpl.afterSaleSupport">不提供</span>
+		</div>
+		<div>
+			<span class="info-label">模板价格：</span>
+			<span class="info-value" ng-if="!tpl.isFree">
+				<span class="tpl-price">
+					<span ng-bind="tpl.price"></span>元
+				</span>
+				<span class="tpl-edou" ng-if="tpl.integralSupport">
+					( <span ng-bind="tpl.integral"></span> 易豆 )
+				</span>
+			</span>
+			<span class="info-value" ng-if="tpl.isFree">
+				免费
+			</span>
+		</div>
+	</div>
+	<div class="operate" ng-if="!tpl.isBought && !tpl.isFree">
+		<a class="ek-btn btn-s btn-orange" ng-if="tpl.price>0" ng-click="buy(tpl)">喜欢，买了</a>
+		<a class="ek-btn btn-s btn-green"  ng-if="tpl.integralSupport" ng-click="exchange()">易豆兑换</a>
+		<a class="ek-btn btn-s btn-purple" ng-if="tpl.buyoutSupport" ng-click="buyout(tpl)">我要买断</a>
+	</div>
+	<div class="operate" ng-if="tpl.isBought || tpl.isFree">
+		<a class="ek-btn btn-s btn-orange" ng-click="createFlyer()">使用</a>
+	</div>
+	<div class="tip" ng-if="!tpl.isFree">
+		<div>
+			<span class="info-label">后续服务</span>
+			<span class="info-value">购买模版后，作者会根据买方需求提供针对此模版的后续改造或再设计等服务。实际进行需由双方协商，平台仅提供作者联系方式。</span>
+		</div>
+		<div>
+			<span class="info-label">关于买断</span>
+			<span class="info-value">选择买断，该模版将下架并不再以任何形式售卖。在买断前已售出的不计入此列。</span>
+		</div>
+	</div>
+</div>

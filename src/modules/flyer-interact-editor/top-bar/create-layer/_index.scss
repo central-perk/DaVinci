@@ -1,0 +1,178 @@
+@mixin fi-create-layer {
+	.create-layer {
+		display: flex;
+		.btn {
+			margin-right: 30px;
+			@media screen and (min-width: 1400px) {
+				margin-right: 36px;
+			}
+			&:last-child {
+				margin-right: 0;
+			}
+			&:hover {
+				color: #fff;
+				i {
+					background-position-y: -22px !important;
+				}
+				i.map {
+					width: 24px;
+					height: 24px;
+					background-image: url(/images/Map2.png);
+					background-size: 100% 100%;
+					background-position-y: 0 !important;
+				}
+				i.video {
+					background-position-x: -212px !important;
+					background-position-y: -27px !important;
+				}
+				i.slider {
+					width: 25px;
+					height: 18px;
+					background-image: url(/images/Slide2.png);
+					background-size: 100% 100%;
+					background-position-y: 0 !important;
+				}
+				i.shape {
+					width: 20px;
+					height: 20px;
+					background-image: url(/images/Shape2.png);
+					background-size: 100% 100%;
+					background-position-y: 0 !important;
+				}
+			}
+			&:active {
+				color: $white !important;
+			}
+			i {
+				&.text {
+					width: 16px;
+				}
+				&.image {
+					width: 21px;
+					background-position: -22px 0;
+				}
+				&.shape {
+					width: 20px;
+					height: 20px;
+					margin-bottom: 11px;
+					background-image: url(/images/Shape1.png);
+					background-size: 100% 100%;
+					background-position-y: 0 !important;
+				}
+				&.ibox {
+					width: 28px;
+					background-position: -47px 0;
+				}
+				&.map {
+					width: 24px;
+					height: 24px;
+					margin-bottom: 7px;
+					top: -2px;
+					background-image: url(/images/Map1.png);
+					background-size: 100% 100%;
+				}
+				&.video {
+					width: 30px;
+					background-position: -245px -27px;
+				}
+				&.slider {
+					width: 25px;
+					height: 18px;
+					margin-bottom: 13px;
+					background-image: url(/images/Slide1.png);
+					background-size: 100% 100%;
+				}
+
+			}
+		}
+		.btn-shape {
+			position: relative;
+		}
+		.dropdown-menu {
+			left: -100px;
+			top: 50px;
+			padding: 20px 20px 10px 20px;
+			.dropdown-menu-inner {
+				width: 180px;
+				height: 230px;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				li {
+					width: 50px;
+					height: 50px;
+					position: relative;
+					cursor: pointer;
+					&:hover {
+						opacity: 0.8;
+					}
+					span {
+						width: 100%;
+						height: 100%;
+						display: block;
+						position: absolute;
+						overflow: hidden;
+						border-radius: 0px;
+						background-color: #3B9466;
+						-webkit-mask-repeat: round;
+						@include mx-center;
+					}
+					&:nth-child(1), &:nth-child(2), &:nth-child(3) {
+						span {
+							width: 84%;
+							height: 84%;
+						}
+					}
+					&:nth-child(4) {
+						span {
+							width: 84%;
+							height: 74%;
+						}
+					}
+					&:nth-child(5) {
+						span {
+							width: 84%;
+							height: 78%;
+						}
+					}
+					&:nth-child(6) {
+						span {
+							width: 80%;
+							height: 76%;
+						}
+					}
+					&:nth-child(7), &:nth-child(8) {
+						span {
+							width: 84%;
+							height: 84%;
+						}
+					}
+					&:nth-child(9) {
+						span {
+							width: 84%;
+							height: 52%;
+						}
+					}
+					&:nth-child(10) {
+						span {
+							width: 80%;
+							height: 78%;
+						}
+					}
+					&:nth-child(11) {
+						span {
+							width: 72%;
+							height: 86%;
+						}
+					}
+					&:nth-child(12) {
+						span {
+							width: 56%;
+							height: 84%;
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+{{> flyer_head}}
+</head>
+<body>
+    {{> flyer_loading}}
+    <!-- flyer-start -->
+    <div class="flyer flyer-static flyer-rt {{flyer.design.feel.key}}" style="display:none;">
+        <div class="flyer-bgi" style="{{flyer.bgOutStyle}}">
+            <div class="flyer-bgi-inner {{flyer.bgColor}}" style="{{flyer.bgInnerStyle}}"></div>
+        </div>
+        <div class="flyer-main {{flyer.design.color.key}} {{flyer.design.font.key}} {{flyer.bgColor}}  {{#if flyer.headOnly}}head-only{{/if}}">
+            {{{tpl.main}}}
+        </div>
+        <!-- share-start -->
+        {{> flyer_share}}
+        <!-- share-end -->
+    </div>
+    <div class="flyer-sidebar show-on-pc">
+        <div class="sidebar-section qrcode-info">
+            <div class="section-detail">
+                <div class="visit-title"><strong>手机扫码访问</strong></div>
+                <div class="weixin-title">扫一扫，分享给朋友</div>
+                <div class="qr-code"></div>
+            </div>
+        </div>
+    </div>
+    <div class="flyer-bottom-bar">
+        <div class="bottom-bar-container">
+            <div class="btn-pb">
+                技术支持「${brandName}」
+            </div>
+        </div>
+    </div>
+
+
+    {{!-- {{> flyer_report}} --}}
+
+    <style type="text/css">
+        @media screen and (max-width: 480px) {
+            .flyer .flyer-main .cpt.cpt-header-text {
+                {{bgInnerStyle}}
+                background-size: 100% 100%;
+            }
+        }
+    </style>
+    {{{tpl.animates}}}
+    {{{tpl.analytics}}}
+    {{> flyer_script}}
+</body>
+</html>

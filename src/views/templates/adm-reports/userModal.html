@@ -1,0 +1,33 @@
+<section class="mail-details">
+    <div class="modal-content" ng-init="init()">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" data-ng-click="close();">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            <h3>{{title}}</h3>
+        </div>
+        <div class="modal-body">
+            <div>
+                <label>{{datas.nickname.title}}:</label>
+                <span ng-bind="datas.nickname.value"></span>
+            </div>
+            <div>
+                <label>{{datas.email.title}}:</label>
+                <span ng-bind="datas.email.value"></span>
+            </div>
+            <div>
+                <label>{{datas.createdTime.title}}:</label>
+                <span ng-bind="datas.createdTime.value|dateDisplay"></span>
+            </div>
+            <div>
+                <label>{{datas.status.title}}:</label>
+                <span ng-bind="datas.status.value|userStatus"></span>
+            </div>
+            <div>
+                <label>{{datas.plan.title}}:</label>
+                <span ng-bind="datas.plan.value|plan"></span>
+            </div>
+        </div>
+    </div>
+</section>

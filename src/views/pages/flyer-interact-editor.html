@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-controller="LayoutController">
+<head>
+	{{>main_head}}
+</head>
+<body class="body-main" ng-cloak>
+     {{> global_alert}}
+
+	<div ui-view></div>
+	{{> main_script}}
+	  <script type="text/javascript">
+     if (window.document.domain.indexOf('davinci.echoes.link') > -1) {
+           window.document.domain = 'davinci.echoes.link';
+     }
+    </script>
+</body>
+
+</html>

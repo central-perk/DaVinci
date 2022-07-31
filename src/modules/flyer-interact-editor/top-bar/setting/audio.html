@@ -1,0 +1,117 @@
+<div class="modal-content modal-new setting-audio" ng-init="init()">
+	<div class="modal-header">
+		<div class="left-part">
+			<div class="title">背景音乐</div>
+		</div>
+		<div class="right-part">
+			<div class="btn-group audio-toggle btn-toggle">
+				<span type="button" class="btn btn-default btn-sm"
+					ng-model="audio.active"
+					btn-radio="true">开启</span>
+				<span type="button" class="btn btn-default btn-sm btn-red"
+					ng-model="audio.active"
+					tooltip="关闭背景音乐"
+					tooltip-append-to-body="true"
+					tooltip-placement="bottom"
+					btn-radio="false">关闭</span>
+			</div>
+			<button type="button" class="close" data-dismiss="modal" data-ng-click="close();">
+				<span aria-hidden="true">&times;</span>
+				<span class="sr-only">Close</span>
+			</button>
+		</div>
+	</div>
+	<div class="tip-disbale"
+		ng-if="audio.active === false">
+		您的背景音乐目前处于关闭状态
+	</div>
+	<form name="audioForm" ng-if="audio && audio.category" novalidate>
+		<tabset>
+			<tab heading="乐曲库" select="changeCategory(30)" active="tabs[0].active">
+				<div class="modal-body library" ng-if="audio.category === 30">
+					<select class="form-control input-sm" ng-model="audio.key"
+						name="uri"
+						ng-required="audio.active"
+						ng-change="changeAudio(audio)"
+						ng-options="a.key as a.name for a in audios">
+						<option value="">选择我的音乐</option>
+					</select>
+					<audio controls="controls" ng-show="audio.uri"></audio>
+				</div>
+			</tab>
+			<tab heading="外链音乐" select="changeCategory(20)" active="tabs[1].active">
+				<div class="modal-body thirdparty" ng-if="audio.category === 20">
+					<div class="form-group"
+						ng-class="{'has-error': audioForm.uri.$dirty && audioForm.uri.$invalid}">
+						<div class="input-group">
+							<input type="text" class="form-control input-sm" name="uri"
+								ng-model="audio.uri"
+								ng-required="audio.active"
+								ng-pattern="mp3Pattern"
+								ng-maxlength="200">
+							<div class="input-group-addon">粘贴链接</div>
+						</div>
+						<div class="help-block tip" ng-if="audioForm.uri.$valid || !audioForm.uri.$dirty">
+							<span class="red">提示</span>
+							您可前往<span class="green">百度、搜狗</span>音乐进行搜索，仅支持MP3格式的音乐外链。
+						</div>
+						<p class="help-block" ng-if="audioForm.uri.$error.pattern">请输入.mp3结尾的链接</p>
+						<p class="help-block" ng-if="audioForm.uri.$error.maxlength">链接长度不能超过200</p>
+						<p class="help-block" ng-if="audioForm.uri.$dirty && audioForm.uri.$error.required">链接不能为空</p>
+					</div>
+				</div>
+			</tab>
+			<!-- <tab heading="我的音乐库" select="changeCategory(10)" active="tabs[2].active">
+				<div class="modal-body upload" ng-if="audio.category === 10" ng-show="!audio.uploading">
+					<div class="play">
+						<select class="form-control input-sm" ng-model="audio.key"
+							name="uri"
+							ng-required="audio.active"
+							ng-change="changeAudio(audio)"
+							ng-options="a.key as a.name for a in audios">
+							<option value="">选择我的音乐</option>
+						</select>
+						<audio controls="controls"></audio>
+					</div>
+
+					<span class="btn btn-sm btn-green-click"
+						ng-model="audio.file"
+						ng-file-change="uploadAudioFile($files, $event)"
+						accept="audio/mpeg"
+						resetOnClick="true"
+						ng-file-select>
+						<span tooltip="小于 3.5M 的 MP3 格式音乐"
+							tooltip-append-to-body="true"
+							tooltip-placement="bottom">
+							<span class="justify">上 传<span></span></span>
+							<span class="justify">音 乐<span></span></span>
+						</span>
+					</span>
+				</div>
+				<div class="modal-body uploading" ng-if="audio.category === 10" ng-show="audio.uploading">
+					<p class="help-block">请稍等，您的音乐“<span class="audio-name"></span>”努力上传中...</p>
+					<progressbar value="audio.progress"></progressbar>
+				</div>
+			</tab> -->
+		</tabset>
+
+		<div class="modal-footer" ng-show="!audio.uploading">
+			<button class="btn btn-green"
+				ng-disabled="audioForm.$invalid && audio.active"
+				ng-click="save()">保存</button>
+			<button class="btn btn-white"
+				ng-click="close()">取消</button>
+		</div>
+
+		<div class="modal-footer" ng-show="audio.uploading">
+			<button class="btn btn-white btn-abort"
+				ng-click="abort()">
+				<i class="remove"></i>
+				取消上传</button>
+		</div>
+	</form>
+
+	<div class="mask-loading" ng-if="loading">
+		<i class="fa fa-spinner fa-spin icon"></i>
+	</div>
+</div>

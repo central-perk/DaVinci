@@ -1,0 +1,47 @@
+{{!-- 未登录 --}}
+
+{{> browser_upgrade}}
+<![if !lte IE 9]>
+<header class="home-header header-fixed {{headerCls}}">
+	<div class="container">
+		<a href="/" class="brand">
+			<span  style="color: white;font-size: 32px;line-height: 56px;display: block;height: 60px;position: absolute;top: 0;width: 200px;">
+				Davinci
+			</span>
+		</a>
+		<nav class="nav-header">
+			<ul class="">
+				<li>
+					<a href="/#section1">首页</a>
+				</li>
+				<li>
+					<a href="/#section2">产品</a>
+				</li>
+				<li>
+					<a href="/#section3">应用</a>
+				</li>
+				<li>
+					<a href="/#section4">营销</a>
+				</li>
+				<li>
+					<a href="/#section5">案例</a>
+				</li>
+				<!-- <li>
+					<a href="/">套餐</a>
+				</li> -->
+				<!--<li>-->
+				<!--	<a href="http://club.davinci.echoes.link">社区</a>-->
+				<!--</li>-->
+			</ul>
+		</nav>
+		<div class="operate">
+			{{#if isLogin}}
+				<a href="/u/{{userID}}">回到我的主页</a>
+			{{else}}
+				<a href="/signup.html" class="signup">注册</a>
+				<a href="/signin.html" class="signin">登录</a>
+			{{/if}}
+		</div>
+	</div>
+</header>
+<![endif]-->

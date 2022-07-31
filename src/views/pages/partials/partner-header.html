@@ -1,0 +1,45 @@
+{{#if isAgent}}
+	<header class="dvc-header navbar navbar-inverse" role="banner">
+		<div class="container">
+			<div class="navbar-header">
+		
+			</div>
+			<div class="navbar-collapse collapse" style="height: auto;" role="navigation">
+				<ul class="nav navbar-nav pull-right">
+					<li>
+						<a ui-sref="puser({ userID: user._id, appID: 'dvc' })"
+							ui-sref-active="active"
+							ui-sref-opts="{ reload: true }">我的作品</a>
+					</li>
+
+					<li dropdown
+						is-open="dropdown.isopen"
+						ng-mouseenter="dropdown.isopen = true"
+						ng-mouseleave="dropdown.isopen = false">
+						<a class="avatar dropdown-toggle" >
+							<img id="user-head" style="visibility: hidden;" class="thumbnail"/>
+							<i class="fa fa-caret-down"></i>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							<li>
+								<a ui-sref="account" ui-sref-opts="{ reload: true }">
+									<i class="fa fa-coffee"></i>
+									<span class="nickname" ng-bind="user.nickname"></span>
+									<span class="badge badge-agent" ng-if="user.isAgent">VIP</span>
+									<span class="badge badge-advanced" ng-if="user.isAdvanced">VIP</span>
+								</a>
+							</li>
+							<li class="divider"></li>
+
+							<li>
+								<a ng-click="logout($event)">
+									<i class="fa fa-power-off"></i>退出
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</header>
+{{/if}}

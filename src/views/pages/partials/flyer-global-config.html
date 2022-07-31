@@ -1,0 +1,62 @@
+var __DVC = window.__DVC || {};
+(function(win, DVC) {
+    var hostHome = 'http://davinci.echoes.link/';
+    if(win.document.domain.indexOf('davinci.echoes.link') > -1){
+        win.document.domain = 'davinci.echoes.link';
+    }
+    var __global = {
+        host: {
+            home: hostHome
+        },
+        social:{
+            share:{
+                mark:'—来自Davinci '
+            }
+        },
+        auth: {
+            permission: {
+                open: 10,
+                pwd: 20
+            },
+            snippets: {
+                freeze: '作品已被冻结，请联系管理员',
+                enterPwd: '您访问的作品已加密，请输入密码或向作者索取密码。'
+            }
+        },
+        //停用插件
+        unActiveMoudles: {
+
+        },
+        popularize: {
+            btn: {
+                text: '炫酷H5，非我莫属 - <span class="name">Davinci</span>',
+                link: hostHome
+            }
+        },
+        //版权页配置
+        pageCopyRight: {
+            id: 'page-copyright',
+            btnCreate: {
+                text: '创作我的 电子传单',
+                link: hostHome
+            },
+            interface: {
+                listFlyer: '/api/flyers/spread'
+            },
+            flyers: [{
+                "title": "让爱心汇聚，让病痛远离",
+                "logo": "/images/flyer/cover_2.png",
+                "link": "/f/gzd324"
+            }, {
+                "title": "乐视应用开放平台",
+                "logo": "/images/flyer/cover_3.jpg",
+                "link": "/f/u363w5"
+            }, {
+                "title": "为未来而变 | 万科新标志发布",
+                "logo": "/images/flyer/cover_4.jpg",
+                "link": "/f/t52wah"
+            }]
+        }
+    };
+    DVC.__global = __global;
+}(window,window.__DVC || {}));

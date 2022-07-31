@@ -1,0 +1,63 @@
+{
+  "code": 200,
+  "msg": {
+    "tags": {
+      "common": [
+        {
+          "tag": "all",
+          "name": "全部"
+        },
+        {
+          "tag": "normal",
+          "name": "通用"
+        },
+        {
+          "tag": "cover",
+          "name": "封面"
+        },
+        {
+          "tag": "news",
+          "name": "图文"
+        },
+        {
+          "tag": "backcover",
+          "name": "封底"
+        },
+        {
+          "tag": "form",
+          "name": "表单"
+        }
+      ],
+      "more": [
+        {
+          "tag": "intro",
+          "name": "名片"
+        },
+        {
+          "tag": "gallery",
+          "name": "相册"
+        },
+        {
+          "tag": "goods",
+          "name": "商品"
+        },
+        {
+          "tag": "timer",
+          "name": "时间轴"
+        }
+      ]
+    },
+    "templates": {
+      "all": [],
+      "normal": [],
+      "cover": [],
+      "news": [],
+      "backcover": [],
+      "intro": [],
+      "gallery": [],
+      "goods": [],
+      "timer": [],
+      "form": []
+    }
+  }
+}

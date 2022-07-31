@@ -1,0 +1,87 @@
+@import './pg-add-menu/index';
+@import './pg-add-custom/index';
+
+@mixin fi-nav-area {
+	.nav-area {
+		width: 180px;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		background-color: #eeeeee;
+		overflow-y: auto;
+		overflow-x: hidden;
+		@include mdl-pg-thumb;
+		.thumbs {
+			&.only-one {
+				.pg-up, .pg-down {
+					display: none !important;
+				}
+				.sub-menu .dropdown-menu {
+					.rm-page {
+						display: none;
+					}
+				}
+			}
+			.sort-list-end {
+				position: relative;
+				top: 80px;
+			}
+		}
+		.thumb {
+			height: 160px;
+			@include transition(background-color 0.3s);
+			&:hover {
+				background-color: #70c8a0;
+			}
+			&.active {
+				background-color: #47A67B;
+				.pg-index {
+					color: $white;
+				}
+			}
+			&.ui-sortable-helper {
+				background-color: #70c8a0;
+				margin-top: -80px;
+				@include opacity($op-l);
+				.mdl-pg-thumb {
+					.serial, .pg-thumb .mask {
+						display: none !important;
+					}
+				}
+			}
+			&.ui-sortable-placeholder {
+				height: 130px;
+			}
+		}
+		.sort-list {
+			padding-bottom: 50px;
+		}
+		.pg-add {
+			width: 180px;
+			height: 50px;
+			color: $white;
+			cursor: pointer;
+			background-color: #4A4A4A;
+			position: fixed;
+			bottom: 0;
+			z-index: 101;
+		}
+		.add-icon {
+			height: 50px;
+			cursor: pointer;
+			@include mx-flex-center;
+			&:hover {
+				.sprite {
+					background-position: -130px -337px;
+				}
+			}
+			.sprite {
+				width: 26px;
+				height: 26px;
+				background-position: -99px -337px;
+				margin-right: 10px;
+			}
+		}
+		@include fi-pg-add-menu;
+	}
+}

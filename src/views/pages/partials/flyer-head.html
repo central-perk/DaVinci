@@ -1,0 +1,36 @@
+<title></title>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache,must-revalidate">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="keywords" content="社交营销,移动设计营销,粉丝营销,微信营销,新媒体营销,在线营销工具,病毒传播,电子传单,会员卡,Davinci">
+<meta name="description" content="Davinci是免费强大的在线制作和托管电子传单的工具。">
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta itemprop="name" content="{{flyer.wxshare.title}}">
+<meta name="description" itemprop="description" content="{{flyer.wxshare.desc}}">
+<meta itemprop="image" content="{{flyer.wxshare.cover}}">
+	<!-- <link rel="icon" href="/images/brand/icon128.ico"> -->
+
+{{#if preview}}
+	{{> main_style}}
+{{else}}
+<link rel="stylesheet" type="text/css" href="{{cloud.style}}?v={{version}}">
+{{/if}}
+<script type="text/javascript" >
+{{#if preview}}
+	 {{{tpl.fcScript}}}
+	 {{{tpl.uacScript}}}
+{{else}}
+	var ts = new Date().getTime();
+	var uacScript = '<script type="text\/javascript" src="{{cloud.uacScript}}?v='+ts+'"><\/script>';
+	document.write(uacScript);
+	var fcScript = '<script type="text\/javascript" src="{{cloud.fcScript}}?v='+ts+'"><\/script>';
+	document.write(fcScript);
+{{/if}}
+</script>

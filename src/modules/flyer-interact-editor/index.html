@@ -1,0 +1,14 @@
+<div ng-if="flyer" class="flyer-interact-editor"
+	ng-controller="flyerInteractEditorController"
+	ng-init="init()">
+	<fi-top-bar ></fi-top-bar>
+	<div class="interact-flyer-editor flyer flyer-interact flyer-dt"
+		resize-to-bottom
+		top="80"
+		bottom="0">
+		<fi-nav-area></fi-nav-area>
+		<fi-display-area></fi-display-area>
+
+		<fi-edit-area ng-model="page"></fi-edit-area>
+	</div>
+</div>

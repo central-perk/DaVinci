@@ -1,0 +1,14 @@
+<script>
+	var __DVC = window.__DVC || {};
+</script>
+
+{{#if isproduction}}
+<script src="{{homeJs}}"/>
+{{else}}
+<script src="/assets/libs/jquery/jquery.min.js?v={{__version}}"></script>
+<script src="/assets/libs/jquery-qrcode/jquery.qrcode.min.js?v={{__version}}"></script>
+<script src="/assets/libs/imagesloaded/imagesloaded.pkgd.min.js?v={{__version}}"></script>
+<script src="/assets/libs/jquery-parallax/jquery.parallax.js?v={{__version}}"></script>
+<script src="/assets/libs/bootstrap/bootstrap.min.js?v={{__version}}"></script>
+<script src="/js/home/index.js?v={{__version}}"></script>
+{{/if}}

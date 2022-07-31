@@ -1,0 +1,31 @@
+.affirm {
+	.modal-content {
+		height: 100%;
+		border: none;
+		background-color: #4A4A4A;
+		padding: 23px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		text-align: center;
+		.msg {
+			width: 100%;
+			height: 24px;
+			color: $white;
+			font-size: 16px;
+		}
+		.btns {
+			width: 100%;
+			height: 30px;
+			display: flex;
+			justify-content: center;
+			.btn-white {
+				margin-left: 20px;
+			}
+			.btn {
+				padding: 6px 25px;
+				line-height: 18px;
+			}
+		}
+	}
+}

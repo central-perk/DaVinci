@@ -1,0 +1,23 @@
+.modal-notify {
+	.dismiss.sprite {
+		width: 15px;
+		height: 15px;
+		background-position: -284px -172px;
+		cursor: pointer;
+		position: absolute;
+		top: 15px;
+		right: 15px;
+		z-index: 10;
+	}
+	.modal-body {
+		width: 100%;
+		height: 100%;
+		@include mx-flex-center(column);
+		.green {
+			color: $ek-green;
+		}
+		.title {
+			margin: 0 0 20px 0;
+		}
+	}
+}

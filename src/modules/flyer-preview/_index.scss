@@ -1,0 +1,359 @@
+.mdl-flyer-preview {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: white;
+    display: none;
+    z-index: 1000;
+    overflow-y: auto;
+    background-image: url('/images/bgs/bgworking.png');
+    border-image-repeat: repeat;
+    .preview-header {
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        box-shadow: rgb(255, 255, 255) 0 1px 0 inset, rgb(255, 255, 255) 0 -1px 0 inset, rgb(238, 238, 238) 0 3px 0 inset, rgb(238, 238, 238) 0 -3px 0 inset, rgba(0, 0, 0, 0.0980392) 0 0 5px;
+        display: block;
+        background: rgb(248, 248, 248);
+        text-align: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1001;
+        .btn-group {
+            label {
+                width: 30px;
+                padding: 5px 0;
+                .fa {
+                    vertical-align: middle;
+                    line-height: 14px;
+                }
+                .fa-tablet {
+                    font-size: 16px;
+                }
+                .fa-mobile {
+                    font-size: 18px;
+                }
+            }
+        }
+        .close-preview {
+            display: inline-block;
+            position: absolute;
+            right: 20px;
+            .fa {
+                font-size: 25px;
+                cursor: pointer;
+            }
+        }
+    }
+    .device {
+        padding-top: 50px;
+        &.pc {
+            width: calc(100% - 130px);
+            height: calc(100% - 180px);
+            padding: 50px;
+            margin: 65px auto 15px;
+            background: $grey;
+            position: relative;
+            -moz-box-sizing: content-box;
+                 box-sizing: content-box;
+            @include transition(all 0.5s ease-in-out);
+            @include border-radius(20px);
+            .inner {
+                width: calc(100% - 8px);
+                height: calc(100% - 8px);
+                position: absolute;
+                top: 4px;
+                left: 4px;
+                background-color: $white;
+                @include border-radius(18px);
+            }
+            .drop-div {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                z-index: 2;
+                text-align: left;
+                border-radius: 1px;
+                box-shadow: 0 0 0 1px #8b8b8b;
+            }
+            .sleep {
+                display: inline-block;
+                font: normal normal normal 14px/1 FontAwesome;
+                font-size: inherit;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                color: $green-a-xd;
+                position: absolute;
+                right: 4px;
+                bottom: 47px;
+                width: 37px;
+                height: 18px;
+                line-height: 18px;
+                text-indent: 11px;
+                font-size: 12px;
+                background-color: $grey-l;
+                padding-top: 1px;
+                @include border-radius(3px 0 0 3px);
+                &:before {
+                    content: '\f011';
+                }
+            }
+            .volume {
+                right: 12px;
+                bottom: 95px;
+                z-index: 0;
+                &,
+                &:before,
+                &:after {
+                    width: 25px;
+                    height: 10px;
+                    position: absolute;
+                    background-color: $grey-l;
+                    @include border-radius(3px);
+                }
+                &:before,
+                &:after {
+                    content: '';
+                    display: block;
+                }
+                &:before {
+                    right: 0;
+                    bottom: 21px;
+                }
+                &:after {
+                    right: 0;
+                    top: 21px;
+                }
+            }
+        }
+        &.mobile {
+            // width: 362px;
+            // height: 600px;
+            width: 320px;
+            height: 480px;
+            padding: 105px 15px;
+            margin: 70px auto 30px;
+            background: $grey;
+            position: relative;
+            display: block;
+            border-radius: 50px;
+            -moz-box-sizing: content-box;
+                 box-sizing: content-box;
+            @include transition(all 0.5s ease-in-out);
+            @include border-radius(50px);
+            .drop-div {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                z-index: 2;
+                text-align: left;
+                text-indent: -999px;
+                display: block;
+                border-radius: 1px;
+                box-shadow: 0 0 0 1px #8b8b8b;
+            }
+            .inner {
+                width: calc(100% - 8px);
+                height: calc(100% - 8px);
+                position: absolute;
+                top: 4px;
+                left: 4px;
+                z-index: 1;
+                background: $white;
+                @include border-radius(48px);
+            }
+            .sleep {
+                width: 60px;
+                height: 4px;
+                position: absolute;
+                top: -4px;
+                right: 60px;
+                background-color: $grey-l;
+                @include border-radius(2px 2px 0 0);
+            }
+            .volume {
+                width: 4px;
+                height: 27px;
+                position: absolute;
+                left: -4px;
+                top: 180px;
+                z-index: 0;
+                background-color: $grey-l;
+                @include border-radius(2px 0 0 2px);
+                &:before,
+                &:after {
+                    background: inherit;
+                    content: '';
+                    display: block;
+                    @include border-radius(2px 0 0 2px);
+                }
+                &:before {
+                    width: 4px;
+                    height: 35px;
+                    position: absolute;
+                    left: 0;
+                    top: -75px;
+                }
+                &:after {
+                    width: 4px;
+                    height: 27px;
+                    position: absolute;
+                    left: 0;
+                    bottom: -64px;
+                }
+            }
+            .camera {
+                width: 10px;
+                height: 10px;
+                position: absolute;
+                top: 32px;
+                left: 50%;
+                z-index: 1;
+                margin-left: -5px;
+                background-color: $grey-xxd;
+                @include border-radius(5px);
+            }
+            .top-bar {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background: $white;
+            }
+            .sensor {
+                width: 10px;
+                height: 10px;
+                position: absolute;
+                top: 60px;
+                left: 160px;
+                z-index: 1;
+                margin-left: -32px;
+                background-color: $grey-xxd;
+                @include border-radius(5px);
+            }
+            .speaker {
+                width: 64px;
+                height: 10px;
+                position: absolute;
+                top: 60px;
+                left: 50%;
+                z-index: 1;
+                margin-left: -32px;
+                background-color: $grey-xxd;
+                @include border-radius(5px);
+            }
+            .bottom-bar {
+                position: absolute;
+                bottom: 70px;
+                left: 0;
+                background: $white;
+            }
+            .home {
+                width: 68px;
+                height: 68px;
+                position: absolute;
+                left: 50%;
+                bottom: 19px;
+                z-index: 1;
+                margin-left: -34px;
+                box-shadow: inset 0 0 0 4px $grey-l;
+                @include border-radius(50%);
+            }
+            .operate {
+                left: 115%;
+                top: 50%;
+                margin-top: -85px;
+                position: absolute;
+                width: 70px;
+                height: 170px;
+                a {
+                    @include border-radius(50%);
+                    background-image: url(/images/bgs/bg_black.png);
+                    display: block;
+                    height: 70px;
+                    text-align: center;
+                    color: $white;
+                    font-size: 16px;
+                    line-height: 70px;
+                    &:hover {
+                        opacity: $op-xd;
+                    }
+                    &.disabled:hover {
+                        cursor: not-allowed;
+                    }
+                }
+                a.prev {
+                    margin-bottom: 30px;
+                }
+            }
+        }
+        &.tablet {
+            width: 640px;
+            height: 768px;
+            padding: 90px 25px;
+            margin: 70px auto 30px;
+            background: $grey;
+            position: relative;
+            -moz-box-sizing: content-box;
+                 box-sizing: content-box;
+            @include transition(all 0.5s ease-in-out);
+            @include border-radius(44px);
+            .inner {
+                width: calc(100% - 8px);
+                height: calc(100% - 8px);
+                position: absolute;
+                top: 4px;
+                left: 4px;
+                @include border-radius(42px);
+                background-color: $white;
+            }
+            .drop-div {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                z-index: 2;
+                text-align: left;
+                border-radius: 1px;
+                box-shadow: 0 0 0 1px #8b8b8b;
+            }
+            .camera {
+                width: 10px;
+                height: 10px;
+                position: absolute;
+                top: 44px;
+                left: 50%;
+                background: $grey-xxd;
+                margin-left: -5px;
+                @include border-radius(5px);
+            }
+            .home {
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                left: 50%;
+                bottom: 20px;
+                z-index: 1;
+                margin-left: -34px;
+                box-shadow: inset 0 0 0 4px $grey-l;
+                @include border-radius(50%);
+            }
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            position: absolute;
+            left: 0;
+        }
+    }
+}
+.mdl-flyer-preview.interact{
+    .device.pc{
+        height: 768px;
+    }
+}

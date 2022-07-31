@@ -1,0 +1,46 @@
+<div class="dt-form" ng-init="init()">
+	<accordion close-others="true">
+		<!-- <accordion-group ng-repeat="msg in msgs" ng-click="readMsg(msg)" is-open="isOpen" ng-class="{open: isOpen, unread: msg.status === 10}"> -->
+		<accordion-group is-open="isOpen" ng-if="checkinsConfig.colNames.length > 0">
+			<accordion-heading>
+				<i class="fa" ng-class="{'fa-caret-down': isOpen, 'fa-caret-right': !isOpen}"></i>
+				{{checkinsConfig.title}}
+			</accordion-heading>
+
+			<table class="table table-striped table-bordered table-hover table-std">
+				<thead>
+					<th ng-repeat="name in checkinsConfig.colNames"
+						ng-bind="name"></th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="c in checkins">
+						<td ng-repeat="col in $parent.checkinsConfig.cols"
+							ng-style="{width: colwidthDic[col]}">
+							<span class="text-out" ng-if="col!=='industry'" ng-bind="c[col]"></span>
+							<span class="text-out" ng-if="col==='industry'" ng-bind="c[col]|industryName"></span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="bottom-bar">
+				<span class="text-center" ng-if="!checkins.length">暂无数据</span>
+				<span class="pull-right" ng-if="checkins">共收到 {{checkins.length}} 条提交数据 </span>
+			</div>
+		</accordion-group>
+		<accordion-group is-open="isOpen" ng-repeat="page in flyer.content" ng-if="page.form">
+			<accordion-heading>
+				<i class="fa" ng-class="{'fa-caret-down': isOpen, 'fa-caret-right': !isOpen}"></i>
+				页面 {{$index + 1}} 的表单
+				<span class="export pull-right" ng-click="exportForm($event, page, checkins, $index)"><i class="sprite"></i>导出表单数据</span>
+
+
+				<hr ng-if="!isOpen">
+			</accordion-heading>
+			<dt-form-data ng-model="page" checkins="checkins"></dt-form-data>
+		</accordion-group>
+	</accordion>
+
+	<div class="no-form" ng-if="!checkinsConfig && !hasCustomCheckin">
+		您还没有创建表单
+	</div>
+</div>

@@ -1,0 +1,23 @@
+<div class="user-tpl-card-purchased">
+	<div class="inner">
+		<div class="top-part" ng-click="preview()">
+			<div class="logo">
+				<img class="full-size" ng-src="{{tpl.logo}}" image-loading/>
+			</div>
+			<div class="operate">
+				<div class="preview"
+					ng-click="preview()">预览</div>
+			</div>
+		</div>
+
+		<div class="bottom-part">
+			<div class="row-1">
+				<div class="tpl-title" ng-bind="tpl.title"></div>
+			</div>
+			<div class="row-2">
+				<div class="create"
+					ng-click="createFlyer()">使&nbsp;&nbsp;&nbsp;&nbsp;用</div>
+			</div>
+		</div>
+	</div>
+</div>

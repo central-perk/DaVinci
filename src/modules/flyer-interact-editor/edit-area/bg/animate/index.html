@@ -1,0 +1,36 @@
+<div class="animate-bg-edit">
+  <div class="form-group effect-type">
+    <div class="control-label">Effects</div>
+    <div class="btn-group">
+      <button
+        class="btn btn-sm btn-default btn-sm"
+        type="button"
+        ng-model="page.bg.animate.type"
+        btn-radio="'{{effect.type}}'"
+        ng-repeat="effect in bgAnimateEffects"
+        ng-click="changeType(effect.type)"
+      >
+        {{effect.name}}
+      </button>
+    </div>
+  </div>
+
+  <div class="form-group" ng-if="page.bg.animate.type !== 'none'">
+    <div class="control-label">Orientation</div>
+    <div
+      class="btn-group"
+      ng-repeat="effect in bgAnimateEffects"
+      ng-if="page.bg.animate.type===effect.type"
+    >
+      <button
+        type="button"
+        class="btn btn-sm btn-default btn-sm"
+        ng-repeat="radio in effect.radios"
+        ng-model="page.bg.animate.orientation"
+        btn-radio="'{{radio.type}}'"
+      >
+        {{radio.name}}
+      </button>
+    </div>
+  </div>
+</div>

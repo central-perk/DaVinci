@@ -1,0 +1,74 @@
+<div class="custom-ibox">
+  <div class="form-group label-name">
+    <div class="control-label">Name</div>
+    <input
+      type="text"
+      class="form-control input-sm edit-container"
+      ng-model="layer.content.label"
+      maxlength="20"
+    />
+  </div>
+
+  <div class="form-group is-required">
+    <div class="control-label">Required</div>
+    <div class="btn-group">
+      <span
+        class="btn btn-sm btn-default"
+        ng-model="layer.content.isRequired"
+        btn-radio="true"
+        title="yes"
+      >
+        Yes
+      </span>
+      <span
+        class="btn btn-sm btn-default"
+        ng-model="layer.content.isRequired"
+        btn-radio="false"
+        title="no"
+      >
+        no
+      </span>
+    </div>
+  </div>
+  <div class="form-group type">
+    <div class="control-label">type</div>
+    <div class="btn-group edit-container">
+      <span
+        class="btn btn-sm btn-default"
+        ng-model="layer.content.type"
+        ng-click="changeType($event, true)"
+        btn-radio="'name'"
+        title="name "
+      >
+        Name
+      </span>
+      <span
+        class="btn btn-sm btn-default"
+        ng-model="layer.content.type"
+        ng-click="changeType($event, true)"
+        btn-radio="'tel'"
+        title="phone "
+      >
+        Telephone
+      </span>
+      <span
+        class="btn btn-sm btn-default"
+        ng-model="layer.content.type"
+        ng-click="changeType($event, true)"
+        btn-radio="'email'"
+        title="Email "
+      >
+        Mail
+      </span>
+      <span
+        class="btn btn-sm btn-default"
+        ng-model="layer.content.type"
+        ng-click="changeType($event)"
+        btn-radio="'extra'"
+        title="text"
+      >
+        text
+      </span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,2008 @@
+<!DOCTYPE html>
+<html ng-controller="LayoutController">
+  <head>
+    <meta charset="utf-8" />
+    <title ng-bind="$state.current.pageTitle + ' | Davinci'"></title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <!-- <link rel="icon" href="/images/brand/icon128.ico"> -->
+
+    <!--[if lt IE 9]>
+      <script type="text/javascript">
+        window.location.href = "/browser";
+      </script>
+    <![endif]-->
+    <script type="text/javascript">
+      var require = {
+        baseUrl: "/",
+        urlArgs: "v=" + 1659260154677,
+      };
+    </script>
+
+    <!-- 主模板样式 -->
+
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendor.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/directive.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/service.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/flyer.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/main.css" />
+
+    <link rel="stylesheet" type="text/css" href="./assets/css/account.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/data.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/user.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/plaza.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/tpl-center.css" />
+  </head>
+
+  <body class="body-main" ng-cloak>
+    <div growl></div>
+
+    <div ui-view></div>
+    <script>
+      var DVC = DVC || {};
+      DVC.env = "dev";
+      DVC.config = {
+        HOST: {
+          current: "http://localhost:12000/",
+          home: "http://localhost:12000/",
+          form: "http://localhost:16000/",
+          cdn: {
+            def: "http://s-dev.davinci.echoes.link/",
+          },
+        },
+        DESIGN: {
+          10: {
+            COLORS: [
+              {
+                key: "color-1",
+              },
+              {
+                key: "color-2",
+              },
+              {
+                key: "color-3",
+              },
+              {
+                key: "color-4",
+              },
+              {
+                key: "color-5",
+              },
+              {
+                key: "color-6",
+              },
+              {
+                key: "color-7",
+              },
+              {
+                key: "color-8",
+              },
+              {
+                key: "color-9",
+              },
+              {
+                key: "color-10",
+              },
+              {
+                key: "color-11",
+              },
+              {
+                key: "color-12",
+              },
+              {
+                key: "color-13",
+              },
+              {
+                key: "color-14",
+              },
+              {
+                key: "color-15",
+              },
+              {
+                key: "color-16",
+              },
+            ],
+            FONTS: [
+              {
+                key: "ft-wryh",
+                name: "雅黑",
+              },
+              {
+                key: "ft-st",
+                name: "宋体",
+              },
+              {
+                key: "ft-fs",
+                name: "仿宋",
+              },
+              {
+                key: "ft-kt",
+                name: "楷体",
+              },
+              {
+                key: "ft-ht",
+                name: "黑体",
+              },
+            ],
+            FEELS: {
+              "feel-carve-time": {
+                name: "carving time",
+                bgs: [
+                  {
+                    key: "1",
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/bgs/feel-carve-time/1.jpg",
+                  },
+                  {
+                    key: "2",
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/bgs/feel-carve-time/2.jpg",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/bgs/feel-carve-time/3.jpg",
+                    key: "3",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/bgs/feel-carve-time/4.jpg",
+                    key: "4",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/bgs/feel-carve-time/5.jpg",
+                    key: "5",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/bgs/feel-carve-time/6.jpg",
+                    key: "6",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/bgs/feel-carve-time/7.jpg",
+                    key: "7",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/bgs/feel-carve-time/8.jpg",
+                    key: "8",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/bgs/feel-carve-time/9.jpg",
+                    key: "9",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/bgs/feel-carve-time/10.jpg",
+                    key: "10",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/bgs/feel-carve-time/11.jpg",
+                    key: "11",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/bgs/feel-carve-time/12.jpg",
+                    key: "12",
+                  },
+                ],
+                audios: [
+                  {
+                    key: "Take action",
+                    uri: "http://cdn.davinci.echoes.link/musics/Lets_Do_It.mp3",
+                  },
+                  {
+                    key: "Village Party",
+                    uri: "http://cdn.davinci.echoes.link/musics/Grange_Party.mp3",
+                  },
+                  {
+                    key: "Beautiful Prelude",
+                    uri: "http://cdn.davinci.echoes.link/musics/Good Starts.mp3",
+                  },
+                  {
+                    key: "Messenger",
+                    uri: "http://cdn.davinci.echoes.link/musics/The_Messenger.mp3",
+                  },
+                  {
+                    key: "Friendship lasts forever",
+                    uri: "http://cdn.davinci.echoes.link/musics/Auld%20Lang%20Syne%20(Instrumental).mp3",
+                  },
+                  {
+                    key: "Morning walk",
+                    uri: "http://cdn.davinci.echoes.link/musics/Morning%20Walk.mp3",
+                  },
+                  {
+                    key: "Dubai Creek",
+                    uri: "http://cdn.davinci.echoes.link/musics/The_Creek.mp3",
+                  },
+                  {
+                    key: "Morning Song",
+                    uri: "http://cdn.davinci.echoes.link/musics/Morning_Mood_by_Grieg.mp3",
+                  },
+                ],
+              },
+              "feel-color-life": {
+                name: "Colorful Life",
+                bgs: [
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-color-life/1.jpg",
+                    key: "1",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-color-life/2.jpg",
+                    key: "2",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-color-life/3.jpg",
+                    key: "3",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-color-life/4.jpg",
+                    key: "4",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-color-life/5.jpg",
+                    key: "5",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-color-life/6.jpg",
+                    key: "6",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-color-life/7.jpg",
+                    key: "7",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-color-life/8.jpg",
+                    key: "8",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-color-life/9.jpg",
+                    key: "9",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-color-life/10.jpg",
+                    key: "10",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-color-life/11.jpg",
+                    key: "11",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-color-life/12.jpg",
+                    key: "12",
+                  },
+                ],
+                audios: [
+                  {
+                    key: "Messenger",
+                    uri: "http://cdn.davinci.echoes.link/musics/The_Messenger.mp3",
+                  },
+                  {
+                    key: "Jazz in Paris",
+                    uri: "http://cdn.davinci.echoes.link/musics/Jazz_In_Paris.mp3",
+                  },
+                  {
+                    key: "Opportunity",
+                    uri: "http://cdn.davinci.echoes.link/musics/Chances.mp3",
+                  },
+                  {
+                    key: "go there",
+                    uri: "http://cdn.davinci.echoes.link/musics/Getting_There.mp3",
+                  },
+                  {
+                    key: "Golden Years",
+                    uri: "http://cdn.davinci.echoes.link/musics/Golden_Days.mp3",
+                  },
+                  {
+                    key: "Grandpa",
+                    uri: "http://cdn.davinci.echoes.link/musics/Grandpa.mp3",
+                  },
+                  {
+                    key: "Grass",
+                    uri: "http://cdn.davinci.echoes.link/musics/Grass.mp3",
+                  },
+                  {
+                    key: "Microchip",
+                    uri: "http://cdn.davinci.echoes.link/musics/Microchip.mp3",
+                  },
+                ],
+              },
+              "feel-minimal": {
+                name: "Minimalism",
+                bgs: [
+                  {
+                    category: "color",
+                    key: "1",
+                  },
+                  {
+                    category: "color",
+                    key: "2",
+                  },
+                  {
+                    category: "color",
+                    key: "3",
+                  },
+                  {
+                    category: "color",
+                    key: "4",
+                  },
+                  {
+                    category: "color",
+                    key: "5",
+                  },
+                  {
+                    category: "color",
+                    key: "6",
+                  },
+                  {
+                    category: "color",
+                    key: "7",
+                  },
+                  {
+                    category: "color",
+                    key: "8",
+                  },
+                  {
+                    category: "color",
+                    key: "9",
+                  },
+                  {
+                    category: "color",
+                    key: "10",
+                  },
+                  {
+                    category: "color",
+                    key: "11",
+                  },
+                  {
+                    category: "color",
+                    key: "12",
+                  },
+                ],
+                audios: [
+                  {
+                    key: "Play Overture",
+                    uri: "http://cdn.davinci.echoes.link/musics/Sound_Off.mp3",
+                  },
+                  {
+                    key: "Story Prologue",
+                    uri: "http://cdn.davinci.echoes.link/musics/The_Story_Unfolds.mp3",
+                  },
+                  {
+                    key: "Morning walk",
+                    uri: "http://cdn.davinci.echoes.link/musics/Morning%20Walk.mp3",
+                  },
+                  {
+                    key: "Country Ball",
+                    uri: "http://cdn.davinci.echoes.link/musics/Cartoon_Hoedown.mp3",
+                  },
+                  {
+                    key: "step by step",
+                    uri: "http://cdn.davinci.echoes.link/musics/Every_Step.mp3",
+                  },
+                  {
+                    key: "For Alice",
+                    uri: "http://cdn.davinci.echoes.link/musics/Fur_Elise_by_Beethoven.mp3",
+                  },
+                  {
+                    key: "Outdoor Activities",
+                    uri: "http://cdn.davinci.echoes.link/musics/Get_Outside.mp3",
+                  },
+                  {
+                    key: "Escape",
+                    uri: "http://cdn.davinci.echoes.link/musics/Runaways.mp3",
+                  },
+                ],
+              },
+
+              "feel-abstract": {
+                name: "Abstract World",
+                bgs: [
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-abstract/1.jpg",
+                    key: "1",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-abstract/2.jpg",
+                    key: "2",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-abstract/3.jpg",
+                    key: "3",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-abstract/4.jpg",
+                    key: "4",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-abstract/5.jpg",
+                    key: "5",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-abstract/6.jpg",
+                    key: "6",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-abstract/7.jpg",
+                    key: "7",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-abstract/8.jpg",
+                    key: "8",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-abstract/9.jpg",
+                    key: "9",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-abstract/10.jpg",
+                    key: "10",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-abstract/11.jpg",
+                    key: "11",
+                  },
+                  {
+                    category: "image",
+                    uri: "http://cdn.davinci.echoes.link/static/bgs/feel-abstract/12.jpg",
+                    key: "12",
+                  },
+                ],
+                audios: [
+                  {
+                    key: "Morning walk",
+                    uri: "http://cdn.davinci.echoes.link/musics/Morning%20Walk.mp3",
+                  },
+                  {
+                    key: "Morning Song",
+                    uri: "http://cdn.davinci.echoes.link/musics/Morning_Mood_by_Grieg.mp3",
+                  },
+                  {
+                    key: "Play Overture",
+                    uri: "http://cdn.davinci.echoes.link/musics/Sound_Off.mp3",
+                  },
+                  {
+                    key: "Dubai Creek",
+                    uri: "http://cdn.davinci.echoes.link/musics/The_Creek.mp3",
+                  },
+                  {
+                    key: "Messenger",
+                    uri: "http://cdn.davinci.echoes.link/musics/The_Messenger.mp3",
+                  },
+                  {
+                    key: "Story Prologue",
+                    uri: "http://cdn.davinci.echoes.link/musics/The_Story_Unfolds.mp3",
+                  },
+                  {
+                    key: "Third time",
+                    uri: "http://cdn.davinci.echoes.link/musics/Third_Time.mp3",
+                  },
+                  {
+                    key: "Tucson",
+                    uri: "http://cdn.davinci.echoes.link/musics/Tucson.mp3",
+                  },
+                ],
+              },
+            },
+            styles: [
+              "css/themes/static/compiled/carve-time/view.css",
+              "css/themes/static/compiled/color-life/view.css",
+              "css/themes/static/compiled/minimal/view.css",
+              "css/themes/static/compiled/abstract/view.css",
+            ],
+          },
+          all: {
+            styles: [
+              "css/themes/static/compiled/carve-time/view.css",
+              "css/themes/static/compiled/color-life/view.css",
+              "css/themes/static/compiled/minimal/view.css",
+              "css/themes/static/compiled/abstract/view.css",
+            ],
+          },
+        },
+        PLANS: {
+          actions: {
+            upgrade: {
+              name: "Upgrade Package",
+            },
+          },
+          categories: {
+            free: 10,
+            std: 20,
+            pro: 30,
+            ent: 40,
+          },
+          features: {},
+          details: {
+            10: {
+              name: "Free Edition",
+              category: 10,
+              limit: {
+                flyerCount: 5000,
+                formDataCount: 1000,
+                storeageSize: 1,
+                dataFlowSize: "infinite",
+              },
+              price: 0,
+              supports: [],
+            },
+            20: {
+              name: "Standard Edition",
+              category: 20,
+              price: 49,
+              limit: {
+                flyerCount: 100,
+                formDataCount: 3000,
+                storeageSize: 2,
+                dataFlowSize: 100,
+              },
+              supports: [],
+            },
+            30: {
+              name: "Pro",
+              category: 30,
+              price: 499,
+              limit: {
+                flyerCount: 500,
+                formDataCount: 10000,
+                storeageSize: 5,
+                dataFlowSize: 500,
+              },
+              supports: [],
+            },
+            40: {
+              name: "Enterprise Edition",
+              category: 40,
+              price: 999,
+              limit: {
+                flyerCount: "infinite",
+                formDataCount: 50000,
+                storeageSize: 10,
+                dataFlowSize: 2000,
+                supports: [],
+              },
+            },
+          },
+          setting: {
+            circle: {
+              day: 30,
+              time: 2505600000,
+            },
+          },
+          costs: {
+            20: [
+              {
+                category: 10,
+                name: "month",
+                month: 1,
+                price: 49,
+                word: "49 yuan",
+              },
+              {
+                category: 40,
+                month: 12,
+                name: "one year",
+                price: 500,
+                word: "500 yuan",
+              },
+            ],
+            30: [
+              {
+                category: 10,
+                month: 1,
+                name: "month",
+                price: 499,
+                word: "499 yuan",
+              },
+              {
+                category: 40,
+                name: "one year",
+                month: 12,
+                price: 5000,
+                word: "5000 yuan",
+              },
+            ],
+            40: [
+              {
+                category: 10,
+                name: "month",
+                month: 1,
+                price: 999,
+                word: "999 yuan",
+              },
+              {
+                category: 40,
+                name: "one year",
+                month: 12,
+                price: 10000,
+                word: "10000 yuan",
+              },
+            ],
+          },
+          proposal: {
+            day: 6,
+            time: 518400000,
+          },
+          deadline: {
+            common: 1209600000,
+          },
+          daysOfMonth: 30,
+        },
+        ORDERS: {
+          types: {
+            planUpgrade: 10,
+            planRenewal: 20,
+            charge: 30,
+            gift: 35,
+            consume: 40,
+            feeDeduction: 50,
+            renewal: 60,
+            upgrade: 70,
+            buyMails: 80,
+            buySms: 90,
+            buyFlyers: 100,
+          },
+          names: {
+            10: "Upgrade Package",
+            20: "Package renewal",
+            30: "Top-up",
+            35: "Recharge Gift",
+            40: "Consumption",
+            50: "Deduction",
+            60: "Renewal",
+            70: "Upgrade",
+            80: "Buy Mail",
+            90: "Buy SMS",
+            100: "Buy Works",
+          },
+          status: {
+            initial: 10,
+            finished: 20,
+          },
+        },
+
+        SERVICE_PACK: {
+          actions: {
+            integral: {
+              name: "Exchange",
+            },
+            money: {
+              name: "Buy",
+            },
+          },
+          integral: {
+            name: "Easy Bean",
+          },
+          rmLogo: {
+            name: "Remove copyright package",
+            integral: {
+              costs: [
+                {
+                  category: 10,
+                  name: "1 copyright pack",
+                  amount: 1,
+                  price: 100,
+                },
+                {
+                  category: 20,
+                  name: "5 copyright packs",
+                  amount: 5,
+                  price: 450,
+                },
+                {
+                  category: 30,
+                  name: "10 copyright packs",
+                  amount: 10,
+                  price: 900,
+                },
+              ],
+            },
+            money: {
+              costs: [
+                {
+                  category: 10,
+                  name: "1 copyright pack",
+                  amount: 1,
+                  price: 99,
+                },
+                {
+                  category: 20,
+                  name: "5 copyright packs",
+                  amount: 5,
+                  price: 400,
+                },
+                {
+                  category: 30,
+                  name: "10 copyright packs",
+                  amount: 10,
+                  price: 750,
+                },
+                {
+                  category: 40,
+                  name: "30 copyright packs",
+                  amount: 30,
+                  price: 2000,
+                },
+              ],
+            },
+          },
+          dataFlow: {
+            name: "Data traffic",
+            integral: {
+              costs: [
+                {
+                  category: 10,
+                  name: "1GB",
+                  amount: 1,
+                  price: 10,
+                },
+                {
+                  category: 20,
+                  name: "10GB",
+                  amount: 10,
+                  price: 100,
+                },
+                {
+                  category: 30,
+                  name: "30GB",
+                  amount: 30,
+                  price: 300,
+                },
+              ],
+            },
+            money: {
+              costs: [
+                {
+                  category: 10,
+                  name: "1GB",
+                  amount: 1,
+                  price: 5,
+                },
+                {
+                  category: 20,
+                  name: "10GB",
+                  amount: 10,
+                  price: 45,
+                },
+                {
+                  category: 30,
+                  name: "30GB",
+                  amount: 30,
+                  price: 130,
+                },
+                {
+                  category: 40,
+                  name: "100GB",
+                  amount: 100,
+                  price: 400,
+                },
+              ],
+            },
+          },
+          storage: {
+            name: "Storage space",
+            integral: {
+              costs: [
+                {
+                  category: 10,
+                  name: "5GB",
+                  amount: 5,
+                  price: 50,
+                },
+                {
+                  category: 20,
+                  name: "10GB",
+                  amount: 10,
+                  price: 100,
+                },
+                {
+                  category: 30,
+                  name: "30GB",
+                  amount: 30,
+                  price: 300,
+                },
+              ],
+            },
+            money: {
+              costs: [
+                {
+                  category: 10,
+                  name: "1GB",
+                  amount: 1,
+                  price: 10,
+                },
+                {
+                  category: 20,
+                  name: "5GB",
+                  amount: 5,
+                  price: 45,
+                },
+                {
+                  category: 30,
+                  name: "10GB",
+                  amount: 10,
+                  price: 80,
+                },
+                {
+                  category: 40,
+                  name: "30GB",
+                  amount: 30,
+                  price: 200,
+                },
+              ],
+            },
+          },
+        },
+
+        CPTS: {
+          10: {
+            types: {
+              picture: "picture",
+              video: "video",
+              gallery: "gallery",
+              checkin: "checkin",
+            },
+            templates: {
+              components: "/components/static/",
+              base: "/components/static/base/index.html",
+              slide: "/components/static/base/slide.html",
+            },
+            limit: {
+              smTitle: 10,
+              title: 15,
+              subTitle: 30,
+              description: 100,
+              smDesc: 50,
+              desc: 100,
+              eventName: 30,
+              addr: 40,
+              text: 300,
+            },
+            state: {
+              design: 1,
+              edit: 2,
+            },
+            headerText: {
+              _t: "header-text",
+            },
+            logo: {
+              content: {
+                href: "http://davinci.echoes.link",
+                pic: "http://davinci.echoes.link/images/brand/logo_dark.png",
+              },
+              _t: "logo",
+              _layout: "default.html",
+            },
+            text: {
+              name: "Text",
+              _t: "text",
+            },
+            title: {
+              name: "Title",
+              _t: "link",
+            },
+            audio: {
+              _t: "audio",
+              _layout: "default.html",
+              content: {
+                value: "",
+              },
+            },
+            button: {
+              name: "Button",
+              _t: "button",
+            },
+            telephone: {
+              name: "call",
+              _t: "telephone",
+            },
+            gallery: {
+              name: "Multiple images",
+              _t: "gallery",
+            },
+            intro: {
+              name: "Business Card",
+              _t: "intro",
+            },
+            picture: {
+              name: "image",
+              _t: "picture",
+            },
+            timer: {
+              name: "Timeline",
+              _t: "timer",
+            },
+            checkin: {
+              name: "Registration Form",
+              _t: "checkin",
+              config: {
+                method: "post",
+                action: "",
+              },
+              permissions: {
+                categorys: {
+                  unlimited: 10,
+                  deviceUnique: 20,
+                  telEmailUnique: 30,
+                  loginUserUnique: 40,
+                },
+              },
+              submitRes: {
+                categorys: {
+                  text: 10,
+                  redirect: 20,
+                },
+              },
+              snippets: {
+                cn: {
+                  submitBtnName: "Submit",
+                  submitSuccess: "Submit successfully",
+                  stopSubmit: "The work you accessed has expired",
+                },
+              },
+            },
+            slide: {
+              name: "Slideshow",
+              _t: "slider",
+            },
+            video: {
+              name: "Video",
+              _t: "video",
+            },
+            map: {
+              name: "Map",
+              _t: "map",
+            },
+            vote: {
+              name: "Vote",
+              _t: "vote",
+            },
+            good: {
+              name: "Product",
+              _t: "good",
+            },
+            sim: [
+              {
+                name: "Text",
+                _t: "text",
+              },
+              {
+                name: "Title",
+                _t: "link",
+              },
+              {
+                name: "image",
+                _t: "picture",
+              },
+              {
+                name: "Multiple images",
+                _t: "gallery",
+              },
+              {
+                name: "Business Card",
+                _t: "intro",
+              },
+              {
+                name: "Video",
+                _t: "video",
+              },
+              {
+                name: "Map",
+                _t: "map",
+              },
+              {
+                name: "call",
+                _t: "telephone",
+              },
+            ],
+            std: [
+              {
+                name: "Text",
+                _t: "text",
+              },
+              {
+                name: "image",
+                _t: "picture",
+              },
+              {
+                name: "Timeline",
+                _t: "timer",
+              },
+              {
+                name: "Video",
+                _t: "video",
+              },
+              {
+                name: "call",
+                _t: "telephone",
+              },
+              {
+                name: "Slideshow",
+                _t: "slider",
+                disabled: true,
+                snippet: "Coming soon!",
+              },
+              {
+                name: "Vote",
+                _t: "vote",
+                disabled: true,
+                snippet: "Coming soon!",
+              },
+              {
+                name: "Title",
+                _t: "link",
+              },
+              {
+                name: "Multiple images",
+                _t: "gallery",
+              },
+              {
+                name: "Business Card",
+                _t: "intro",
+              },
+              {
+                name: "Map",
+                _t: "map",
+              },
+              {
+                name: "Button",
+                _t: "button",
+              },
+              {
+                name: "Registration Form",
+                _t: "checkin",
+                snippet:
+                  "Hint: A work can only have one registration component",
+              },
+              {
+                name: "Product",
+                _t: "good",
+                disabled: true,
+                snippet: "Coming soon!",
+              },
+            ],
+          },
+          20: {
+            templates: {
+              effectComponents: "/components/effect/",
+              effectBase: "/components/effect/base/index.html",
+              components: "/components/interact/",
+              base: "/components/interact/base/index.html",
+            },
+            custome: {
+              text: {
+                _t: "text",
+                name: "文本",
+                type: 1,
+              },
+              image: {
+                _t: "image",
+                name: "图片",
+                type: 2,
+              },
+              ibox: {
+                _t: "ibox",
+                name: "输入框",
+                type: 3,
+              },
+              map: {
+                _t: "map",
+                name: "地图",
+                type: 4,
+              },
+              video: {
+                _t: "video",
+                name: "视频",
+                type: 5,
+              },
+              slider: {
+                _t: "slider",
+                name: "Slider",
+                type: 6,
+              },
+              shape: {
+                _t: "shape",
+                name: "Shape",
+                type: 7,
+              },
+            },
+            mask: {
+              _t: "mask",
+              name: "Mask",
+              bgs: [
+                {
+                  key: "1",
+                  uri: "/images/masks/droplets.jpg",
+                },
+                {
+                  key: "3",
+                  uri: "/images/masks/maple_leaf.jpg",
+                },
+                {
+                  key: "4",
+                  uri: "/images/masks/petal.jpg",
+                },
+              ],
+            },
+            fpscan: {
+              _t: "fpscan",
+              name: "Fpscan",
+              bgs: [
+                {
+                  key: "1",
+                  uri: "/images/fpscan/bg1.jpg",
+                },
+                {
+                  key: "2",
+                  uri: "/images/fpscan/bg2.jpg",
+                },
+                {
+                  key: "3",
+                  uri: "/images/fpscan/bg3.jpg",
+                },
+              ],
+              fps: [
+                {
+                  key: "black",
+                  uri: "/images/fpscan/fp_black2.png",
+                },
+                {
+                  key: "grey",
+                  uri: "/images/fpscan/fp_grey2.png",
+                },
+                {
+                  key: "red",
+                  uri: "/images/fpscan/fp_red2.png",
+                },
+              ],
+            },
+            pkg: {},
+            data: {
+              base: {
+                data: {
+                  bg: {
+                    name: "bg",
+                    key: "",
+                    value: "",
+                    category: "",
+                    undertone: "#fff",
+                    style: {
+                      repeat: "extrude",
+                      position: "middle",
+                      opacity: 100,
+                      blur: 0,
+                    },
+                    animate: {
+                      type: "none",
+                      orientation: "horizontal",
+                      switch: false,
+                    },
+                    customValue: "",
+                    customSwitch: true,
+                  },
+                  effect: {
+                    name: "mask",
+                    enable: false,
+                  },
+                  _placeholder: {
+                    mask: "请输入标题",
+                  },
+                },
+              },
+              fpscan: {
+                data: {
+                  name: "fpscan",
+                  enable: false,
+                  title: "长按扫描",
+                  fp: {
+                    key: "black",
+                    value: "/images/fpscan/fp_black.png",
+                    customValue: "",
+                    customSwitch: false,
+                  },
+                  bg: {
+                    key: "1",
+                    value: "/images/fpscan/bg1.jpg",
+                    customValue: "",
+                    customSwitch: false,
+                  },
+                  _layout: "default.html",
+                },
+              },
+              mask: {
+                data: {
+                  name: "mask",
+                  enable: false,
+                  title: "",
+                  key: "1",
+                  value: "/images/masks/droplets.jpg",
+                  customValue: "",
+                  customSwitch: false,
+                  _layout: "center.html",
+                  drawPercent: 20,
+                },
+              },
+            },
+            pkgs: {},
+          },
+        },
+
+        MESSAGES: {
+          status: {
+            unread: 10,
+            read: 20,
+          },
+        },
+        LOGOS: {
+          dark: "http://cdn.davinci.echoes.link/images/brand/logo_dark.png",
+          square:
+            "http://cdn.davinci.echoes.link/images/brand/logo_square_260x260.png",
+        },
+        FLYERS: {
+          limit: {
+            pageLen: 5,
+          },
+          setting: {
+            permissions: {
+              categorys: {
+                public: 10,
+                enterPwd: 20,
+                private: 30,
+              },
+              lenDic: {
+                pwd: {
+                  max: 20,
+                  min: 1,
+                },
+              },
+            },
+            status: {
+              enable: 20,
+              disable: 30,
+            },
+            snippets: {
+              cn: {
+                submitBtnName: "提交",
+                submitSuccess: "提交成功",
+                flyerClose: "您访问的作品暂未开放",
+                stopSubmit: "您访问的作品已过期",
+                enterPwd: "您访问的作品需要密码，请输入密码或向管理员索取",
+              },
+              lenDic: {
+                submitBtnName: {
+                  max: 10,
+                  min: 1,
+                },
+                submitSuccess: {
+                  max: 50,
+                  min: 1,
+                },
+                flyerClose: {
+                  max: 50,
+                  min: 1,
+                },
+                stopSubmit: {
+                  max: 50,
+                  min: 1,
+                },
+                enterPwd: {
+                  max: 50,
+                  min: 1,
+                },
+              },
+            },
+            limit: {
+              flyerTitle: 25,
+              flyerDesc: 50,
+              btn: 10,
+              pw: 20,
+            },
+          },
+          categorys: {
+            static: 10,
+            interact: 20,
+          },
+          names: {
+            10: "Ordinary works",
+            20: "Interactive Works",
+          },
+          ref: {
+            templates: "templates",
+            clone: "clone",
+          },
+          status: {
+            draft: 10,
+            published: 20,
+            updated: 30,
+          },
+          types: {
+            10: "static",
+            20: "interact",
+          },
+          tags: {
+            types: {
+              1: "Dining",
+              2: "E-commerce",
+              3: "Medical",
+              4: "Education",
+              5: "Entertainment",
+              6: "Tourism",
+              7: "Property",
+              8: "Finance",
+              9: "Car",
+              10: "Clothing",
+              11: "Home",
+              12: "Beauty",
+              51: "Propaganda",
+              52: "Invitation",
+              53: "Reservation",
+              54: "Poster",
+              55: "Promotion",
+              56: "vote",
+              57: "Selection",
+              58: "Commonwealth",
+            },
+          },
+          audio: {
+            categorys: {
+              upload: 10,
+              thirdparty: 20,
+              library: 30,
+            },
+          },
+        },
+        TEMPLATES: {
+          page: {
+            tags: {
+              normal: {
+                tag: "normal",
+                name: "General",
+              },
+              cover: {
+                tag: "cover",
+                name: "Cover",
+              },
+              news: {
+                tag: "news",
+                name: "Text",
+              },
+              backcover: {
+                tag: "backcover",
+                name: "Back Cover",
+              },
+              intro: {
+                tag: "intro",
+                name: "Business Card",
+              },
+              gallery: {
+                tag: "gallery",
+                name: "Album",
+              },
+              goods: {
+                tag: "goods",
+                name: "Product",
+              },
+              timer: {
+                tag: "timer",
+                name: "Timeline",
+              },
+              form: {
+                tag: "form",
+                name: "Form",
+              },
+            },
+            kinds: {
+              custome: "custome",
+              std: "std",
+            },
+            names: {
+              custome: "custom",
+              std: "component",
+            },
+          },
+          tags: [
+            {
+              tag: "individual",
+              name: "Personal Display",
+              url: "/images/logo/geren.png",
+            },
+            {
+              tag: "product",
+              name: "Product Promotion",
+              url: "/images/logo/chanpin.png",
+            },
+            {
+              tag: "conference",
+              name: "Event Invitation",
+              url: "/images/logo/yaoyue.png",
+            },
+            {
+              tag: "job",
+              name: "Job Recruitment",
+              url: "/images/logo/qiuzhi.png",
+            },
+            {
+              tag: "brand",
+              name: "Brand Promotion",
+              url: "/images/logo/pinpai.png",
+            },
+            {
+              tag: "wedding",
+              name: "Blessings",
+              url: "/images/logo/zhufu.png",
+            },
+            {
+              tag: "business",
+              name: "Business Presentation",
+              url: "/images/logo/shangwu.png",
+            },
+            {
+              tag: "analytics",
+              name: "Statistical Questionnaire",
+              url: "/images/logo/wenjuan.png",
+            },
+          ],
+          status: {
+            draft: 10,
+            verifying: 20,
+            onsale: 30,
+            offshelves: 40,
+            verifyFailed: 50,
+            updatedVerifying: 60,
+          },
+        },
+        CHECKIN: {
+          permissions: {
+            categorys: {
+              unlimited: 10,
+              deviceUnique: 20,
+              telEmailUnique: 30,
+              loginUserUnique: 40,
+            },
+          },
+          submitRes: {
+            categorys: {
+              text: 10,
+              redirect: 20,
+            },
+          },
+        },
+        USERS: {
+          limit: {
+            agent: {
+              updateFlyerDuration: 31536000000,
+              publishFlyerDuration: 31536000000,
+            },
+            user: {
+              publishFlyerDuration: 31536000000,
+            },
+            storage: 1048576,
+            traffic: 1048576,
+            imageSize: 153600,
+            imageNum: 20,
+          },
+          status: {
+            initial: 10,
+            enable: 20,
+            disable: 30,
+          },
+          centralperk: ["956238702@qq.com"],
+          storagePackSize: 1048576,
+          bytesOfEveryGb: 1048576,
+        },
+        ANALYTICS: {
+          host: "http://a.davinci.echoes.link/",
+          _t: "analytics",
+          API: {
+            CREATE_FLYER_AID: "/api/analytics/site",
+          },
+        },
+        CONTACTS: {
+          origins: {
+            create: 10,
+            checkin: 20,
+          },
+          details: {
+            email: {
+              name: "邮箱",
+              len: {
+                min: 4,
+                max: 30,
+              },
+              weight: 5,
+            },
+            emails: {
+              name: "邮箱",
+              len: {
+                min: 4,
+                max: 30,
+              },
+              weight: 5,
+            },
+            nickname: {
+              name: "姓名",
+              len: {
+                min: 2,
+                max: 30,
+              },
+              weight: 2,
+            },
+            gender: {
+              name: "性别",
+              len: {
+                min: 1,
+                max: 4,
+              },
+              weight: 2,
+            },
+            tel: {
+              name: "电话",
+              len: {},
+              weight: 3,
+            },
+            tels: {
+              name: "电话",
+              len: {},
+              weight: 3,
+            },
+            city: {
+              name: "城市",
+              len: {
+                min: 0,
+                max: 10,
+              },
+              weight: 2,
+            },
+            addr: {
+              name: "地址",
+              len: {
+                min: 0,
+                max: 30,
+              },
+              weight: 2,
+            },
+            industry: {
+              name: "行业",
+              len: {
+                min: 0,
+                max: 30,
+              },
+              weight: 2,
+            },
+            company: {
+              name: "公司",
+              len: {
+                min: 0,
+                max: 20,
+              },
+              weight: 2,
+            },
+            position: {
+              name: "职位",
+              len: {
+                min: 0,
+                max: 10,
+              },
+              weight: 2,
+            },
+            birth: {
+              name: "生日",
+              len: {},
+              weight: 2,
+            },
+            qq: {
+              name: "QQ",
+              len: {
+                min: 0,
+                max: 1000000000000000,
+              },
+              weight: 2,
+            },
+            weixin: {
+              name: "微信",
+              len: {
+                min: 0,
+                max: 30,
+              },
+              weight: 2,
+            },
+            weibo: {
+              name: "微博",
+              len: {
+                min: 0,
+                max: 30,
+              },
+              weight: 2,
+            },
+            extra: {
+              name: "备注",
+              len: {
+                min: 0,
+                max: 300,
+              },
+              weight: 2,
+            },
+          },
+          industrys: [
+            {
+              key: "food",
+              value: "餐饮",
+            },
+            {
+              key: "ecommerce",
+              value: "电子商务",
+            },
+            {
+              key: "medical",
+              value: "医疗",
+            },
+            {
+              key: "education",
+              value: "教育",
+            },
+            {
+              key: "entertainment",
+              value: "娱乐",
+            },
+            {
+              key: "tourism",
+              value: "旅游",
+            },
+            {
+              key: "estate",
+              value: "房地产",
+            },
+            {
+              key: "financial",
+              value: "金融",
+            },
+            {
+              key: "automobile",
+              value: "汽车",
+            },
+            {
+              key: "costume",
+              value: "服饰",
+            },
+            {
+              key: "housing ",
+              value: "家居",
+            },
+            {
+              key: "other",
+              value: "其他",
+            },
+          ],
+          history: {
+            categorys: {
+              note: 10,
+              flyer: 20,
+              log: 50,
+            },
+            title: {
+              30: "发送了一条短信",
+              40: "发送了一封邮件",
+            },
+          },
+        },
+        version: 1659260154677,
+      };
+      DVC._user = {
+        _id: "62e64a6aca6b39bbe8b8b3f0",
+      };
+    </script>
+
+    <script src="./assets/js/main-vendor.js"></script>
+    <script
+      data-main="/main.js"
+      src="./assets/libs/requirejs/require.js"
+    ></script>
+
+    <script
+      type="text/ng-template"
+      path="r/src/davinc/fronted/src/components/custome/base/index.html"
+    >
+      <div class="page-base">
+          <div class="page page-custome page-custome-bg">
+              <pg-bg></pg-bg>
+              <div class="page-layers">
+                  <layer-container ng-repeat="layer in page.layers" ng-model="layer">
+                  </layer-container>
+              </div>
+              <!-- 特效页面 -->
+              <pg-effect-base ng-model="page" ng-if="curOperate.type === 'effect'" ng-repeat="effectView in effectViews">
+              </pg-effect-base>
+          </div>
+      </div>
+    </script>
+
+    <script
+      type="text/ng-template"
+      path="r/src/davinc/fronted/src/components/custome/base/rt.html"
+    >
+           <ul class="page-layers">
+               <li class="layer" ng-if="!layer.hidden" ng-class="{'layer-link':layer.link&&layer.link.type!==''&&layer.link.type!=='none'}" id="{{layer.id}}" ng-repeat="layer in page.layers" style="{{layer.outerStyle}}" data-style-storage="{{layer.styleStorage}}" data-animate-type="{{layer.animate.type}}"
+                   data-animate-dir="{{layer.animate.dir}}" data-animate-duration="{{layer.animate.duration}}" data-animate-delay="{{layer.animate.delay}}" data-animate-disappear="{{layer.animate.disappear}}" data-animate-count="{{layer.animate.count}}" data-link-type="{{layer.link.type}}"
+                   data-link-val="{{layer.link.val}}">
+
+
+                   <div class="text" ng-if="layer.type === 1" style="{{layer.innerStyle}}">
+                       <div class="content" style="{{layer.editorStyle}}" ng-bind-html="$sce.trustAsHtml(layer.text)">
+                       </div>
+                   </div>
+
+                   <div class="image-wrap" ng-if="layer.type === 2 " style="{{layer.innerStyle}}">
+                       <img class="image" data-size="{{layer.style.width}}:{{layer.style.height}}" ng-src="{{layer.pic}}">
+                   </div>
+
+
+                   <textarea class="ibox" ng-if="layer.type === 3" style="{{layer.innerStyle}}" data-ibox-type="{{layer.content.type}}" data-ibox-label="{{layer.content.label}}" ng-class="{'required': layer.content.isRequired}" placeholder="{{layer.content.label}} {{layer.content.isRequired ? '(必填)':''}}"></textarea>
+
+                   <img class="map layer-map" style="{{layer.innerStyle}}" data-location="{{layer.content.location}}" data-lng="{{layer.content.lng}}" data-lat="{{layer.content.lat}}" ng-if="layer.type === 4" ng-src="{{layer.pic}}">
+
+                   <img class="video layer-video" style="{{layer.innerStyle}}" data-code="{{layer.content.code}}" ng-if="layer.type === 5" ng-src="{{layer.pic}}">
+
+
+                   <div class="slider layer-slider swiper-container" ng-if="layer.type === 6" style="{{layer.innerStyle}}">
+                       <div class="swiper-wrapper">
+                           <div class="swiper-slide" ng-repeat="node in layer.content.node">
+                               <img src="{{node.cropUrl}}">
+                           </div>
+                       </div>
+                       <div class="swiper-pagination"></div>
+                   </div>
+
+                   <span class="shape" ng-if="layer.type === 7" style="{{layer.innerStyle}}">
+      </span>
+
+
+               </li>
+           </ul>
+    </script>
+
+    <script
+      type="text/ng-template"
+      path="r/src/davinc/fronted/src/components/custome/bg/index.html"
+    >
+      <!-- 背景视图 -->
+      <div class="page-bg-container">
+          <div id="{{page.ids.bg}}" class="bgi" style="background-color:{{page.bg.undertone}};
+             opacity:{{page.bg.style.opacity/100}};
+             -webkit-filter:blur({{page.bg.style.blur*5/100}}px);" context-menu="menuBg" ng-click="clickBg($event)">
+
+              <div ng-if="page.bg.customSwitch && page.bg.customValue && page.bg.cropUrl">
+                  <div class="bgi-inner bg-repeat-extrude bg-position-middle" style="background-image:url('{{page.bg.cropUrl?page.bg.cropUrl:''}}');" data-bg="{{page.bg.cropUrl}}">
+                  </div>
+              </div>
+          </div>
+      </div>
+    </script>
+
+    <script
+      type="text/ng-template"
+      path="r/src/davinc/fronted/src/components/effect/base/index.html"
+    >
+      <div>
+
+          <div class="page-effect" ng-if="env!=='et'">
+              <!-- 特效预览 -->
+              <flex-carousel layouts="layouts" name="page-effect-" layout="layout" distance="320" speed="100">
+              </flex-carousel>
+              <!--特效编辑 -->
+          </div>
+          <div ng-if="env=='et'" ng-init="editInit()">
+              <div ng-include src="getEffectEditTpl()"></div>
+          </div>
+      </div>
+    </script>
+
+    <script
+      type="text/ng-template"
+      path="r/src/davinc/fronted/src/components/effect/fpscan/bottom.html"
+    >
+      <div id="{{page.id}}-fpscan" ng-class="page.fpscan.fp.customSwitch ? '' : page.fpscan.fp.key">
+          <div id="{{page.id}}-fpscan-bg">
+              <div class="bg" image-crop-display content="page.fpscan.bg" type="bg" ng-if="page._env === 'dt'" ng-show="page.fpscan.bg.croping" ng-init="page.fpscan.bg.croping = false">
+              </div>
+          </div>
+
+          <div ng-if="!page.fpscan.bg.croping&&page.fpscan.bg.customSwitch && page.fpscan.bg.customValue && page.fpscan.bg.cropUrl">
+              <div class="bg image-preload" data-bg="{{page.fpscan.bg.cropUrl}}" ng-style="{'background-image': 'url(' + page.fpscan.bg.cropUrl + ')'}">
+              </div>
+          </div>
+          <div ng-if="!page.fpscan.bg.croping&&!page.fpscan.bg.customSwitch">
+              <div class="bg image-preload" data-bg="{{page.fpscan.bg.value}}" ng-style="{'background-image': 'url(' + page.fpscan.bg.value + ')'}"></div>
+          </div>
+
+
+
+          <div class="content">
+              <div class="pic" ng-init="page.fpscan.fp.croping = false" ng-show="page.fpscan.fp.croping || page.fpscan.fp.customSwitch" pg-image-upload options="{
+              id: '{{page.id}}-fpscan-fp',
+              url: '{{page.fpscan.fp.customValue}}',
+              crop: page.fpscan.fp.crop,
+              ratio: 1
+          }">
+                  <div class="pic-wrap" image-crop-display content="page.fpscan.fp" ng-if="page._env==='dt'">
+                      <img id="{{page.id}}-fpscan-fp">
+                  </div>
+                  <div class="pic-wrap" ng-if="!page.fpscan.fp.croping&&page.fpscan.fp.cropUrl">
+                      <img class="fp" ng-src="{{page.fpscan.fp.cropUrl}}">
+                  </div>
+              </div>
+              <img class="fp" ng-src="{{page.fpscan.fp.value}}" ng-if="!page.fpscan.fp.customSwitch && !page.fpscan.fp.croping">
+
+              <img class="line" src="/images/fpscan/line.png">
+              <div class="touch-area"></div>
+          </div>
+          <p class="info" ng-bind="page.fpscan.title" data-text="{{page.fpscan.title}}"></p>
+      </div>
+    </script>
+
+    <script
+      type="text/ng-template"
+      path="r/src/davinc/fronted/src/components/effect/fpscan/default.html"
+    >
+      <div id="{{page.id}}-fpscan" ng-class="page.fpscan.fp.customSwitch ? '' : page.fpscan.fp.key">
+          <div id="{{page.id}}-fpscan-bg" ng-if="page._env === 'dt'">
+              <div class="bg" image-crop-display content="page.fpscan.bg" type="bg" ng-show="page.fpscan.bg.croping" ng-init="page.fpscan.bg.croping = false">
+              </div>
+          </div>
+
+          <div ng-if="!page.fpscan.bg.croping&&page.fpscan.bg.customSwitch && page.fpscan.bg.customValue && page.fpscan.bg.cropUrl">
+              <div class="bg image-preload" data-bg="{{page.fpscan.bg.cropUrl}}" ng-style="{'background-image': 'url(' + page.fpscan.bg.cropUrl + ')'}">
+              </div>
+          </div>
+          <div ng-if="!page.fpscan.bg.croping&&!page.fpscan.bg.customSwitch">
+              <div class="bg image-preload" data-bg="{{page.fpscan.bg.value}}" ng-style="{'background-image': 'url(' + page.fpscan.bg.value + ')'}"></div>
+          </div>
+
+
+
+          <div class="content">
+              <div class="pic" ng-init="page.fpscan.fp.croping = false" ng-show="page.fpscan.fp.croping || page.fpscan.fp.customSwitch" pg-image-upload options="{
+              id: '{{page.id}}-fpscan-fp',
+              url: '{{page.fpscan.fp.customValue}}',
+              crop: page.fpscan.fp.crop,
+              ratio: 1
+          }">
+                  <div class="pic-wrap" image-crop-display content="page.fpscan.fp" ng-if="page._env==='dt'">
+                      <img id="{{page.id}}-fpscan-fp">
+                  </div>
+                  <div class="pic-wrap" ng-if="!page.fpscan.fp.croping&&page.fpscan.fp.cropUrl">
+                      <img class="fp" ng-src="{{page.fpscan.fp.cropUrl}}">
+                  </div>
+              </div>
+              <img class="fp" ng-src="{{page.fpscan.fp.value}}" ng-if="!page.fpscan.fp.customSwitch && !page.fpscan.fp.croping">
+
+              <img class="line" src="/images/fpscan/line.png">
+              <div class="touch-area"></div>
+          </div>
+          <p class="info" ng-bind="page.fpscan.title" data-text="{{page.fpscan.title}}"></p>
+      </div>
+    </script>
+
+    <script
+      type="text/ng-template"
+      path="r/src/davinc/fronted/src/components/effect/fpscan/top.html"
+    >
+      <div id="{{page.id}}-fpscan" ng-class="page.fpscan.fp.customSwitch ? '' : page.fpscan.fp.key">
+          <div id="{{page.id}}-fpscan-bg">
+              <div class="bg" image-crop-display content="page.fpscan.bg" type="bg" ng-if="page._env === 'dt'" ng-show="page.fpscan.bg.croping" ng-init="page.fpscan.bg.croping = false">
+              </div>
+          </div>
+
+          <div ng-if="!page.fpscan.bg.croping&&page.fpscan.bg.customSwitch && page.fpscan.bg.customValue && page.fpscan.bg.cropUrl">
+              <div class="bg image-preload" data-bg="{{page.fpscan.bg.cropUrl}}" ng-style="{'background-image': 'url(' + page.fpscan.bg.cropUrl + ')'}">
+              </div>
+          </div>
+          <div ng-if="!page.fpscan.bg.croping&&!page.fpscan.bg.customSwitch">
+              <div class="bg image-preload" data-bg="{{page.fpscan.bg.value}}" ng-style="{'background-image': 'url(' + page.fpscan.bg.value + ')'}"></div>
+          </div>
+
+
+
+          <div class="content">
+              <div class="pic" ng-init="page.fpscan.fp.croping = false" ng-show="page.fpscan.fp.croping || page.fpscan.fp.customSwitch" pg-image-upload options="{
+              id: '{{page.id}}-fpscan-fp',
+              url: '{{page.fpscan.fp.customValue}}',
+              crop: page.fpscan.fp.crop,
+              ratio: 1
+          }">
+                  <div class="pic-wrap" image-crop-display content="page.fpscan.fp" ng-if="page._env==='dt'">
+                      <img id="{{page.id}}-fpscan-fp">
+                  </div>
+                  <div class="pic-wrap" ng-if="!page.fpscan.fp.croping&&page.fpscan.fp.cropUrl">
+                      <img class="fp" ng-src="{{page.fpscan.fp.cropUrl}}">
+                  </div>
+              </div>
+              <img class="fp" ng-src="{{page.fpscan.fp.value}}" ng-if="!page.fpscan.fp.customSwitch && !page.fpscan.fp.croping">
+
+              <img class="line" src="/images/fpscan/line.png">
+              <div class="touch-area"></div>
+          </div>
+          <p class="info" ng-bind="page.fpscan.title" data-text="{{page.fpscan.title}}"></p>
+      </div>
+    </script>
+
+    <script
+      type="text/ng-template"
+      path="r/src/davinc/fronted/src/components/effect/mask/bottom.html"
+    >
+      <div class="bg" id="{{page.id}}-mask" data-draw-percent="{{page.mask.drawPercent}}" data-layout="{{page.mask._layout}}" data-bg="{{page.mask.publishBg}}" data-title="{{page.mask.title}}">
+      </div>
+    </script>
+
+    <script
+      type="text/ng-template"
+      path="r/src/davinc/fronted/src/components/effect/mask/center.html"
+    >
+      <div class="bg" id="{{page.id}}-mask" data-draw-percent="{{page.mask.drawPercent}}" data-layout="{{page.mask._layout}}" data-bg="{{page.mask.publishBg}}" data-title="{{page.mask.title}}">
+      </div>
+    </script>
+
+    <script
+      type="text/ng-template"
+      path="r/src/davinc/fronted/src/components/effect/mask/top.html"
+    >
+      <div class="bg" id="{{page.id}}-mask" data-draw-percent="{{page.mask.drawPercent}}" data-layout="{{page.mask._layout}}" data-bg="{{page.mask.publishBg}}" data-title="{{page.mask.title}}">
+      </div>
+    </script>
+
+    <script type="text/javascript">
+      if (window.document.domain.indexOf("davinci.echoes.link") > -1) {
+        window.document.domain = "davinci.echoes.link";
+      }
+    </script>
+
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-X0EMP7FFX3"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-X0EMP7FFX3");
+    </script>
+
+    <script type="text/javascript">
+      if (window.document.domain.indexOf("davinci.echoes.link") > -1) {
+        window.document.domain = "davinci.echoes.link";
+      }
+    </script>
+  </body>
+</html>

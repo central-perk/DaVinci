@@ -1,0 +1,87 @@
+<individual>
+	<div class="pane ct-domains" ng-init="initPage()">
+		<h3 class="pane-title">绑定域名</h3>
+
+		<div class="states">
+			<p><b>绑定独立域名</b></p>
+			<ul>
+				<li><small>企业版用户可以将独立域名 xxx.您的域名.com 绑定到Davinci，之后传单的地址便会变成“xxx.您的域名.com/wishd8”;</small></li>
+				<li><small>“xxx.您的域名.com”中的“xxx”您可以随意定制，可以是cdn、chuandan或任意您喜欢字符;</small></li>
+				<li><small>根据我国相关法律规定，域名必须完成备案才能进行接入绑定。我们无法帮助您进行域名备案，请自行完成，请谅解。<a href="http://tool.chinaz.com/beian.aspx" rel="nofollow" target="_blank">点此检验是否备案成功</a></small></li>
+				<li><small>自定义域名不支持https, 仅支持http；</small></li>
+				<li><small>绑定独立域名后，原有的 cdn.davinci.echoes.link/<您的传单地址> 同样有效；</small></li>
+			</ul>
+
+			<p><b>操作步骤</b></p>
+			<p><b>1. 获取独立域名</b></p>
+			<p><small>首先去购买域名。请务必确认，您拥有自己的域名并能够进行“添加CNAME记录”操作。接下来的操作请到域名服务商网站后台完成，Davinci不提供这部分的技术支持。</small></p>
+
+			<p><b>2. 完成域名备案</b></p>
+			<p><small>根据我国相关法律规定，域名必须完成备案才能进行接入绑定。我们无法帮助您进行域名备案，请自行完成，请谅解。<a href="http://tool.chinaz.com/beian.aspx" rel="nofollow" target="_blank">点此检验是否备案成功</a> </small>
+			</p>
+
+
+
+			<p><b>3.在下方提交备案成功的域名和备案号码，并联系管理员做人工审核，管理员会反馈CNAME对应的记录值。</b></p>
+
+			<form class="form-horizontal col-sm-6" name="domainForm" novalidate ng-submit="save()">
+				<div class="form-group"
+					ng-class="{'has-error': domainForm.cname.$error.maxlength || domainForm.cname.$error.pattern}">
+					<label for="cname" class="col-sm-2 control-label required">域名</label>
+					<div class="col-sm-10">
+						<input id="cname" class="form-control" type="text" name="cname"
+							ng-model="domain.cname"
+							required
+							ng-pattern="domainPattern"
+							ng-disabled="!formEditing"
+							ng-maxlength="50"
+							placeholder="your.domain.com">
+					</div>
+					<p class="help-block" ng-show="domainForm.cname.$error.maxlength">域名长度1-50</p>
+					<p class="help-block" ng-show="domainForm.cname.$error.pattern">请输入正确的域名</p>
+				</div>
+				<div class="form-group"
+					ng-class="{'has-error': domainForm.icp.$error.maxlength}">
+					<label for="icp" class="col-sm-2 control-label required">备案号</label>
+					<div class="col-sm-10">
+						<input id="icp" class="form-control" type="text" name="icp"
+							ng-model="domain.icp"
+							required
+							ng-disabled="!formEditing"
+							ng-maxlength="50"
+							placeholder="京ICP备XXXXXX号">
+					</div>
+					<p class="help-block" ng-show="domainForm.icp.$error.maxlength">备案号长度1-50</p>
+			  	</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button class="btn btn-success" type="submit"
+							ng-disabled="domainForm.$invalid"
+							ng-if="formEditing">保存</button>
+						<button class="btn btn-default" type="button"
+							ng-click="cancel()"
+							ng-disabled="!domainOrigin.cname"
+							ng-if="formEditing">取消</button>
+						<button class="btn btn-primary" type="button"
+							ng-click="edit()"
+							ng-if="!formEditing">修改</button>
+					</div>
+				</div>
+			</form>
+			<div class="clear"></div>
+
+			<p><b>4.设置域名CNAME和记录值</b></p>
+			<p><small>
+			备案成功后，请在域名服务商后台增加新的域名指向。可参考：<a href="http://kb.qiniu.com/5kl0wb0g?v0" rel="nofollow" target="_blank">如何配置域名的CNAME</a><br>
+			主机记录：您自己想要定义的二级域名，如cdn, chuandan等<br>
+			记录类型：CNAME<br>
+			记录值：这个值管理员在人工审核后会反馈给您</small></p>
+
+
+			<p><b>5. 确认域名指向生效</b></p>
+			<small>如果您已经成功设置域名指向，请耐心等待域名指向生效。不同的域名服务商，生效时长不相同，一般最长不超过24小时。检查生效方法：点Windows桌面左下角的“开始”，在搜索框中输入“cmd”点击运行，然后输入命令“ping xxx.您的域名.com”，若能成功获得IP地址，即为生效。</small>
+
+		</div>
+
+	</div>
+</individual>

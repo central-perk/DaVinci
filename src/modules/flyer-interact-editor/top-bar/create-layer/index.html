@@ -1,0 +1,45 @@
+<div class="create-layer left">
+  <span class="btn btn-text" ng-click="createText()">
+    <i class="text"></i>
+    Text
+  </span>
+
+  <span class="btn btn-image" ng-click="createImage()">
+    <i class="image"></i>
+    Image
+  </span>
+
+  <span class="btn btn-shape" dropdown>
+    <span dropdown-toggle>
+      <i class="shape"></i>
+      Shape
+    </span>
+    <ul class="dropdown-menu">
+      <div class="dropdown-menu-inner">
+        <li ng-repeat="svg in svgs" ng-click="createShape(svg)">
+          <span ng-style="getSvgStyle(svg.src)"></span>
+        </li>
+      </div>
+    </ul>
+  </span>
+
+  <span class="btn btn-ibox" ng-click="createIbox()">
+    <i class="ibox"></i>
+    Input box
+  </span>
+
+  <span class="btn btn-map" ng-click="createMap()">
+    <i class="map"></i>
+    Map
+  </span>
+
+  <span class="btn btn-video" ng-click="createVideo()">
+    <i class="video"></i>
+    Video
+  </span>
+
+  <span class="btn btn-slider" ng-click="createSlider()">
+    <i class="slider"></i>
+    Slideshow
+  </span>
+</div>

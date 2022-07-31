@@ -1,0 +1,91 @@
+<div class="event" ng-init="init()">
+	<div class="section-header">
+		<span class="title">转发统计</span>
+		<a href="#" class="export pull-right" ng-click="eventChartExport()">
+			<i class="sprite"></i>
+			下载转发统计图
+		</a>
+	</div>
+	<div class="data-query-toolbar">
+		<ul class="quick-query">
+			<li ng-repeat="queryBtn in queryBtns"
+				ng-click="queryByDate(queryBtn.key);time.start= '';time.end= '';"
+				ng-class="{active: queryBtn.key == queryDate}" ng-bind="queryBtn.value"></li>
+		</ul>
+		<div class="date-query pull-right" ng-class="{'has-error':datePickerErr}">
+			按日期查询
+			<div class="dropdown">
+				<a class="dropdown-toggle" role="button" data-toggle="dropdown">
+					<input type="text"
+						class="form-control input-sm"
+						placeholder="起始"
+						ng-model="time.start"
+						date-format>
+					<i class="sprite"></i>
+				</a>
+				<ul class="dropdown-menu" role="menu">
+					<datetimepicker ng-model="time.start" data-datetimepicker-config="{minView: 'day'}"></datetimepicker>
+				</ul>
+			</div>
+			<div class="dropdown">
+				<a class="dropdown-toggle" role="button" data-toggle="dropdown">
+					<input type="text"
+						class="form-control input-sm"
+						placeholder="截至"
+						ng-model="time.end"
+						date-format>
+					<i class="sprite"></i>
+				</a>
+				<ul class="dropdown-menu" role="menu">
+					<datetimepicker ng-model="time.end" data-datetimepicker-config="{minView: 'day' }"></datetimepicker>
+				</ul>
+			</div>
+			<span class="btn-query"
+				ng-click="queryByDate(time.start, time.end)">查询</span>
+		</div>
+	</div>
+	<div class="chart-table-switch">
+		<div class="btn-group">
+			<label class="btn btn-default btn-sm" ng-model="contentType" btn-radio="false">图表</label>
+			<label class="btn btn-default btn-sm" ng-model="contentType" btn-radio="true">数据</label>
+		</div>
+	</div>
+	<div class="section-body" ng-class="{hide: contentType}">
+		<highchart id="eventChart" config="eventChartConfig"></highchart>
+	</div>
+	<div class="section-body" ng-class="{hide: !contentType}">
+		<table class="table" ng-if="!singleDay">
+			<thead>
+				<th>日期</th>
+				<th>转发数</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="category in tableCategories">
+					<td>{{category}}</td>
+					<td>
+						{{seriesDataReverse[$index + pagination.perPage * (pagination.curPage-1)]}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table" ng-if="singleDay">
+			<thead>
+				<th>日期</th>
+				<th>转发数</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{curDate}}</td>
+					<td>{{shareSum}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<ul class="pagination right" ng-if="pagination.pageNum > 1 && !singleDay">
+			<li ng-repeat="page in pagination.pages" ng-class="{active:pagination.curPage == page}">
+				<a ng-click="doPage(page)">{{page}}</a>
+			</li>
+		</ul>
+		<div class="clear"></div>
+	</div>
+	<div class="section-error"></div>
+</div>

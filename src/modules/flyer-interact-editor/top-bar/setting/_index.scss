@@ -1,0 +1,220 @@
+@mixin fi-setting {
+	.setting {
+		display: flex;
+		.btn {
+			margin-left: 36px;
+			&:first-child {
+				margin-left: 0;
+			}
+			&:hover {
+				i {
+					background-position-y: -22px !important;
+				}
+			}
+			&:active {
+				color: $white !important;
+			}
+			i {
+				&.music {
+					width: 15px;
+					background-position: -80px 0;
+				}
+				&.config {
+					width: 21px;
+					background-position: -100px 0;
+				}
+			}
+		}
+	}
+}
+
+.setting-audio {
+	.modal-content {
+		overflow: hidden;
+		border: none;
+	}
+	.modal-header {
+		height: 50px;
+		padding-right: 20px;
+		padding-left: 20px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.nav-tabs {
+		height: 50px;
+		padding: 0 20px;
+		background-color: #4A4A4A;
+		display: flex;
+		align-items: flex-end;
+		border: none;
+		position: relative;
+		> li.active > a {
+			background-color: #F0F0F0;
+		}
+		a {
+			color: $white;
+			padding: 10px 20px;
+			&:focus {
+				color: $white;
+			}
+			&:active {
+				color: #4A4A4A;
+			}
+			&:hover {
+				border-color: transparent;
+				background-color: transparent;
+			}
+		}
+		select {
+			width: 160px;
+			position: absolute;
+			right: 20px;
+			top: 10px;
+		}
+	}
+	.modal-body {
+		padding: 20px;
+		height: 130px;
+		background-color: #F0F0F0;
+		&.library {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			select, audio {
+				width: 400px;
+				display: block;
+			}
+			select {
+				margin-bottom: 20px;
+			}
+			audio {
+				margin-bottom: 10px;
+			}
+		}
+		&.thirdparty {
+			.input-group {
+				margin-bottom: 10px;
+				input {
+					border-color: #BBBBBB;
+				}
+				.input-group-addon {
+					border-color: #BBBBBB;
+					background-color: #BBBBBB;
+					color: $black;
+					padding: 6px 22px;
+				}
+			}
+			.help-block {
+				font-size: 13px;
+				&.tip {
+					color: #333333;
+				}
+				.red {
+					width: 40px;
+					height: 30px;
+					line-height: 30px;
+					text-align: center;
+					margin-right: 5px;
+					background-color: #F8E71C;
+					color: #C22200;
+					display: inline-block;
+					border-radius: 3px;
+				}
+				.green {
+					color: #3B9466;
+				}
+			}
+		}
+		&.upload {
+			@include mx-flex-center;
+			justify-content: space-around;
+			.play {
+				width: 320px;
+				height: 80px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				select, audio {
+					width: 100%;
+				}
+			}
+			.btn-green-click {
+				width: 80px;
+				height: 80px;
+				padding: 19px 20px;
+				font-size: 17px;
+				@include background-image(linear-gradient(#51CF8E, #3B9466));
+				@include mx-flex-center;
+				justify-content: space-between;
+				flex-direction: column;
+				.justify {
+					height: 20px;
+				}
+			}
+		}
+		&.uploading {
+			@include mx-flex-center;
+			flex-direction: column;
+			.progress {
+				width: 400px;
+				height: 12px;
+				background-color: #9B9B9B;
+				border: 1px solid #9B9B9B;
+				@include border-radius(6px);
+				.progress-bar {
+					height: 10px;
+					background: $white;
+					@include border-radius(5px);
+					@include transition(width 0.5s);
+				}
+			}
+			.help-block {
+				display: flex;
+				span {
+					@include mx-outtext;
+					max-width: 190px;
+				}
+			}
+		}
+	}
+	.modal-footer {
+		.btn-abort {
+			margin-left: 0;
+		}
+		i.remove {
+			width: 16px;
+			height: 16px;
+			display: inline-block;
+			background-image: url(/images/sprite.png);
+			background-position: -45px 34px;
+			position: relative;
+			top: 1px;
+			margin-right: 3px;
+		}
+	}
+
+	.select {
+		width: 236px;
+	}
+	.uri-label {
+		width: 90px;
+	}
+	.uri-input {
+		width: 356px;
+	}
+	.mask-loading {
+		@extend %image-upload-loading;
+		@include border-radius(5px);
+	}
+	select, input {
+		font-size: 14px;
+	}
+	.tip-disbale {
+		height: 40px;
+		padding: 0 20px;
+		background-color: #CCCCCC;
+		line-height: 40px;
+		position: relative;
+	}
+}

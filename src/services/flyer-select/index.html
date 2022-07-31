@@ -1,0 +1,77 @@
+<section class="svs-flyer-select">
+    <div class="modal-content" ng-init="init()">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" data-ng-click="close();">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            <h3>选择作品</h3>
+        </div>
+        <div class="modal-body">
+            <div class="form-inline">
+                <div class="input-search text-right">
+                    <input type="text" ng-enter="searchFlyer()" ng-model="query.title" class="form-control input-sm" placeholder="按作品标题搜索">
+                    <button class="btn btn-sm btn-primary" ng-click="searchFlyer()">查询</button>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="radio-input"></th>
+                        <th>作品</th>
+                        <th class="ts">创建时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="f in flyers" ng-click="chooseFlyer(f)">
+                        <td class="radio-input">
+                            <input type="radio" name="flyer"
+                                ng-checked="f._id === targetFlyer._id">
+                        </td>
+                        <td>
+                                <span>{{f.title}}</span>
+                        </td>
+                        <td>
+                            {{f.createdTime|dateDisplay}}
+                        </td>
+                    </tr>
+                    <tr ng-if="count===0">
+                        <td colspan="2">
+                            <p  class="text-muted text-center snippet-empty">暂无作品</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row" ng-if="pagination.content">
+                <div class="col-md-12">
+                    <div class="pull-right">
+                        <ul class="pagination">
+                            <li class="previous">
+                                <a class="icon-chevron-left" ng-click="search(pagination.left)"><i class="fa fa-angle-double-left"></i></a>
+                            </li>
+
+                            <li class="no disabled" ng-if="pagination.leftIgnore">
+                                <a>...</a>
+                            </li>
+                            <li data-ng-repeat="item in pagination.content" class="{{item.pclass}}">
+                                <a ng-click="search(item.curpage)">{{item.ptext}}</a>
+                            </li>
+                            <li class="no disabled" ng-if="pagination.rightIgnore">
+                                <a>...</a>
+                            </li>
+                            <li class="next" ng-if="pagination.content">
+                                <a class="icon-chevron-right" ng-click="search(pagination.right)"><i class="fa fa-angle-double-right"></i></a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="modal-footer ">
+            <button type="button" class="btn btn-sm btn-default" data-ng-click="close() ">取消</button>
+            <button type="button" class="btn btn-sm btn-success " ng-disabled="btnDisabled " data-ng-click="do() ">确定</button>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,152 @@
+.plaza-card {
+	width: 100%;
+	.bottom-part {
+		.row-1, .row-2, .row-3 {
+			line-height: 30px;
+			padding: 0 10px;
+			position: relative;
+		}
+		.row-1 {
+			height: 30px;
+			padding-top: 5px;
+			.flyer-title {
+				height: 30px;
+				@include mx-outtext;
+			}
+			.menu {
+				text-align: right;
+				position: absolute;
+				right: 10px;
+				top: 7px;
+				i.cog {
+					width: 16px;
+					height: 16px;
+					background-position: -112px 0px;
+				}
+				.dropdown-toggle {
+					font-size: 17px;
+					top: 1px;
+					position: relative;
+					cursor: pointer;
+				}
+				.dropdown-menu {
+					width: 100px;
+					min-width: initial;
+					padding: 0;
+					right: 0;
+					left: auto;
+					background-color: #333333;
+					border: none;
+					margin-right: -42px;
+					margin-top: 10px;
+					@include border-radius(3px);
+					&:before {
+						content: '';
+						width: 0;
+						height: 0;
+						display: block;
+						position: absolute;
+						top: -10px;
+						right: 0;
+						left: 0;
+						margin: 0 auto;
+						border: solid transparent;
+						pointer-events: none;
+						border-bottom-width: 7px;
+						border-right-width: 7px;
+						border-left-width: 7px;
+						border-bottom-color: #333333;
+					}
+					li{
+						&:first-child {
+							@include border-radius(3px 3px 0 0);
+							overflow: hidden;
+						}
+						&:last-child {
+							@include border-radius(0 0 3px 3px);
+							overflow: hidden;
+						}
+						&.divider {
+							margin: 0;
+							background-color: #666666;
+						}
+						&:not(.disabled):hover {
+							a {
+								background-color: #209962;
+							}
+						}
+						// &.del:hover {
+						// 	a {
+						// 		color: $red;
+						// 	}
+						// }
+						a {
+							padding: 0;
+							height: 30px;
+							line-height: 30px;
+							color: $white;
+							display: flex;
+							align-items: center;
+							.fa {
+								margin-right: 5px;
+								width: 28px;
+								text-align: center;
+								background-image: none;
+							}
+						}
+					}
+					.fa-cog {
+						font-size: 16px;
+						position: relative;
+						right: 1px;
+					}
+					.fa-pencil-square {
+						font-size: 16px;
+						position: relative;
+						top: 1px;
+					}
+					.fa-trash {
+						font-size: 16px;
+					}
+				}
+			}
+		}
+		.row-2 {
+			height: 31px;
+			padding-bottom: 5px;
+			border-bottom: 1px solid #DDDDDD;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			font-size: 12px;
+			.nickname {
+				display: inline-block;
+				width: 90px;
+				vertical-align: bottom;
+				@include mx-outtext;
+			}
+			a {
+				color: #3b9466;
+			}
+		}
+		.row-3 {
+			height: 31px;
+			border-top: 1px solid $white;
+
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			.flyer-pv {
+				align-items: center;
+				display: flex;
+				font-size: 12px;
+				.eye {
+					width: 15px;
+					height: 9px;
+					margin-right: 5px;
+					background-position: -282px -219px;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,68 @@
+ <div class="mdl-layer-container layer"
+	  ng-class="{'active':layer.active,
+				 'editable':isEditText(layer),
+				 'hide':layer.hidden,
+				 'layer-text':isText(layer),
+				 'layer-image':isImage(layer)}"
+	  id="{{layer.id}}"
+	  context-menu="menu"
+	  ng-click="selectLayer($event, layer)"
+	  ng-dblclick="toDblclickLayer($event, layer)">
+
+		<!-- 图片 -->
+		<div class="image-wrap" ng-if="isImage(layer)" ng-init="init()">
+			<img ng-src="{{layer.content.cropUrl||layer.content.pic}}"/>
+		</div>
+
+
+		<!-- 文本 -->
+		<div class="text" ng-if="isText(layer)">
+			<div class="content"
+				ng-init="init()">
+			</div>
+		</div>
+
+		<!-- 输入框 -->
+		<textarea class="ibox"
+			ng-if="isIbox(layer)"
+			ng-init="init()"
+			placeholder="{{layer.content.label}} {{layer.content.isRequired ? '(必填)':''}}"></textarea>
+
+		<!-- 地图 -->
+		<img class="map" ng-src="{{layer.content.cropUrl||layer.content.pic}}"
+			ng-if="isMap(layer)" ng-init="init()" />
+
+		<!-- 视频 -->
+		<img class="video" ng-src="{{layer.content.cropUrl||layer.content.pic}}"
+			ng-if="isVideo(layer)" ng-init="init()" />
+
+		<!-- 幻灯片 -->
+		<img class="slider"
+			ng-if="isSlider(layer)"
+			ng-init="init()"
+			ng-src="{{layer.content.node[0].cropUrl || '/images/slider.png'}}">
+
+		<!-- 形状 -->
+		<span class="shape"
+			ng-if="isShape(layer)"
+			ng-init="init()"></span>
+
+		<div class="operate" ng-class="{force: layer.force}">
+			<div class="rotate">
+				<div class="circle" data-delta="rotate">
+					<div class="circle-inner"></div>
+				</div>
+				<div class="line"></div>
+			</div>
+			<div class="scale scale-nw" data-direction="nw" data-delta="scale"></div>
+			<div class="scale scale-n" data-direction="n" data-delta="scale"></div>
+			<div class="scale scale-ne" data-direction="ne" data-delta="scale"></div>
+			<div class="scale scale-w" data-direction="w" data-delta="scale"></div>
+			<div class="scale scale-e" data-direction="e" data-delta="scale"></div>
+			<div class="scale scale-sw" data-direction="sw" data-delta="scale"></div>
+			<div class="scale scale-s" data-direction="s" data-delta="scale"></div>
+			<div class="scale scale-se" data-direction="se" data-delta="scale"></div>
+		</div>
+
+
+</div>

@@ -1,0 +1,43 @@
+@mixin fi-edit-bg {
+	.edit-bg {
+		.undertone {
+			.control-label {
+				width: 90px;
+			}
+			.mdl-input-color {
+				width: 200px;
+			}
+		}
+		.bg-image {
+			.control-label {
+				width: 90px;
+			}
+			.btn-change-bg {
+				width: 200px;
+			}
+			.btn-replace-bg {
+				margin-right: 10px;
+			}
+			.btn-replace-bg, .btn-rm-bg {
+				width: 95px;
+			}
+		}
+		.opacity, .blur {
+			line-height: 24px;
+		}
+		.bg-animate {
+			.form-group {
+				display: flex;
+				justify-content: space-between;
+			}
+			.btn {
+				width: 60px;
+			}
+		}
+		.edit-page-transition{
+			.control-label{
+				width: 130px;
+			}
+		}
+	}
+}

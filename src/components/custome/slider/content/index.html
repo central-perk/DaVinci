@@ -1,0 +1,47 @@
+<div class="custom-slider">
+    <p class="text-center">点击添加图像，拖动改变顺序</p>
+    <ul ui-sortable e-design="true" class="slider-node-list" ng-model="layer.content.node">
+        <li class="sort-item slider-node" ng-repeat="node in layer.content.node">
+            <img class="full-size" ng-if="node.cropUrl" ng-src="{{node.cropUrl}}">
+            <span class="btn-rm" ng-if="node.cropUrl" ng-click="rmNode($event, $index)">删除</span>
+        </li>
+        <li class="slider-node add-node" ng-if="layer.content.node.length < 6" ng-click="addNode()">
+        </li>
+        <li class="slider-node empty-node" ng-if="layer.content.node.length % 3 === 1"></li>
+    </ul>
+
+
+    <!-- 	<div class="slider-bar">
+		<div class="slider-add"
+			ng-disabled="layer.content.node.length > 5"
+			ng-click="addNode()">
+			<i class="fa fa-plus"></i>
+		</div>
+		<div ui-sortable horizontal="fixed"  e-design="true" ng-model="layer.content.node">
+			<div class="sort-item"
+				ng-class="{
+					active: activeNodeID === node.id,
+					alone: layer.content.node.length === 1
+				}"
+				ng-mousedown="editNode(node)"
+				ng-repeat="($index, node) in layer.content.node">
+				<div class="number">
+					<i class="fa fa-check" ng-if="activeNodeID === node.id"></i>
+					<span ng-if="activeNodeID !== node.id">{{$index+1}}</span>
+				</div>
+				<div class="slider-rm"
+					ng-if="layer.content.node.length > 1"
+					ng-click="rmNode($index)">
+					<i class="fa fa-times"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+	<slider-node-editor
+		ng-repeat="node in [activeNode]"
+		ng-model="node"></slider-node-editor> -->
+    <div class="tip">
+        <span class="tag">提示</span>
+        <span>点击空白区域返回“页面属性”编辑状态</span>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+<div class="page-content" ng-init="init()">
+    <div class="price">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-appbar">
+                  <div class="btn-group">
+                    <a class="btn green" ng-click="toAddImage()">
+                        <span>添加更多图片</span>
+                    </a>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- BEGIN TABLE -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>图片</th>
+                                <th>排序</th>
+                                <th> <!-- Single button -->
+                                    <div class="btn-group" dropdown is-open="categoryMenuStatus.isopen">
+                                        <a class="dropdown-toggle" ng-click="toggleCategoryMenu()" dropdown-toggle>
+                                           {{curCategory.name}} <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li ng-repeat="c in categorys">
+                                                <a ng-click="setSearchCategory(c)" ng-bind="c.name"></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </th>
+                                <th> 
+                                    <div class="btn-group" dropdown is-open="tagMenuStatus.isopen">
+                                        <a class="dropdown-toggle" ng-click="toggleTagMenu()" dropdown-toggle>
+                                           {{curTag.name}} <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li ng-repeat="t in tags">
+                                                <a ng-click="setSearchTag(t)" ng-bind="t.name"></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="image in images">
+                                <td ><img ng-src="{{image.url}}" alt=""></td>
+                                <td ng-bind="image.sort"></td>
+                                <td ng-bind="getCatetoryName(image.category)"></td>
+                                <td ng-bind="getTagName(image.category,image.tag)">
+                            </td>
+ 
+                                <td ng-bind="image.createdTime|dateDisplay">
+                             
+                                </td>
+                                <td>
+                                     <a class="btn btn-danger" 
+                                        ng-click="removeImage(image._id)">删除
+                                     </a>
+                                     <a class="btn btn-info" 
+                                        ng-click="toUpdateImage(image)">修改
+                                     </a>
+                                </td>
+                            </tr>
+    
+                            <tr class="text-center text-mutd" ng-if="images.length === 0">
+                                <td colspan="6">
+                                    暂无公共素材
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- END TABLE -->
+        <!-- BEGIN PAGINATION -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pull-right">
+                    <dvcpagination ng-model="pagination" max-size="5"></dvcpagination>
+                </div>
+            </div>
+        </div>
+        <!-- END PAGINATION -->
+    </div>
+</div>

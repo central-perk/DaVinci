@@ -1,0 +1,16 @@
+{
+  "name": "DaVinci",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd src && anywhere",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chi Zhang <terry.zhangchi@outlook.com>",
+  "license": "ISC",
+  "keywords": [],
+  "description": "",
+  "devDependencies": {
+    "anywhere": "^1.6.0"
+  }
+}

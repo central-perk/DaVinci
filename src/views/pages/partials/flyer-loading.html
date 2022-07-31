@@ -1,0 +1,8 @@
+<style>
+.flyer-loading{position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;z-index:100}.flyer-loading.normal{background:#21795b;}.flyer-loading.rmlogo{background:#333333;}.flyer-loading .content{width:100px;height:100px;position:absolute;top:50%;left:50%;margin-left:-50px;margin-top:-90px;}.flyer-loading .content .logo{width:100%;height:100%;background-size:contain;}.flyer-loading.normal .content .logo{background-image:url('/images/e_loading.gif');}.flyer-loading.rmlogo .content .logo{background-image:url('/images/svg/loading.svg');}.flyer-loading .footer{font-size:16px;text-align:center;color:white;position:absolute;bottom:0;width:400px;left:50%;margin-left:-200px}.flyer-loading .footer a{color:#ccc;text-decoration:none;font-size:small;font-family:Tahoma,Verdana,STHeiTi,simsun,sans-serif;font-size:14px;}.flyer-loading .footer a:hover{cursor:pointer;}.flyer-loading.rmlogo .content{margin-top:-50px;};
+</style>
+<div class="flyer-loading" id="flyer-loading">
+</div>
+<script type="text/javascript">
+(function(e,f){var d=document.getElementById("flyer-loading");var c=document.createElement("div");var a=document.createElement("div");var b;a.className="logo";c.className="content";if(f.flyer.hidePopularize){d.className=d.className+" rmlogo"}else{d.className=d.className+" normal";b=document.createElement("div");ftDivP=document.createElement("p");ftDivA=document.createElement("a");ftDivA.innerText="使用Davinci创作";ftDivA.href="davinci.echoes.link/";ftDivA.target="_blank";ftDivP.appendChild(ftDivA);b.appendChild(ftDivP);b.className="footer"}c.appendChild(a);d.appendChild(c);if(b){d.appendChild(b)}}(window,window.__DVC));
+</script>

@@ -1,0 +1,55 @@
+<div class="user-relation-blk">
+	<div class="inner">
+		<div class="top-part">
+			<div class="head">
+				<img class="full-size" ng-src="{{user.head}}">
+			</div>
+			<div class="intro">
+				<a class="nickname" ui-sref="user({ userID: user._id })" ng-bind="user.nickname"></a>
+				<div class="job" ng-bind="user.job || '职业未填写'"></div>
+				<div class="city"ng-bind="user|userHometown:'now'" ng-if="user.nowProvince != null"></div>
+				<div class="city" ng-bind="'现居未填写'" ng-if="user.nowProvince == null"></div>
+				<div class="view-like">
+					<div class="view">
+						<i class="sprite"></i>
+						<span ng-bind="user.view"></span>
+					</div>
+					<div class="like">
+						<i class="sprite"></i>
+						<span ng-bind="user.likeCount"></span>
+					</div>
+				</div>
+			</div>
+			<div class="work-list">
+				<a class="work" ng-click="preview(flyer)"
+					target="_blank"
+					ng-repeat="flyer in flyers"
+					ng-if="flyers.length">
+					<img class="full-size" ng-src="{{flyer.logo}}">
+					<div class="mask"></div>
+					<span class="ek-btn btn-s btn-white btn-round">浏览</span>
+				</a>
+				<div class="empty" ng-if="!flyers.length">
+					暂无作品
+				</div>
+			</div>
+		</div>
+		<div class="bottom-part">
+			<div class="chat" ng-click="chat()">
+				<i class="sprite"></i>
+				私信给 Ta
+			</div>
+			<div class="share" ng-click="showShare()" ng-if="!hideShare">
+				<i class="sprite"></i>
+				共享作品
+			</div>
+			<div class="space"></div>
+
+			<div class="remove ek-btn btn-hl btn-grey" ng-click="remove()" ng-if="!hideRemove">
+				<i class="sprite"></i>
+				{{removeBtn}}
+			</div>
+			<div ng-transclude ng-if="hideRemove"></div>
+		</div>
+	</div>
+</div>

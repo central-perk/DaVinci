@@ -1,0 +1,34 @@
+<div>
+	<div class="modal-header">
+		<div class="left-part">
+			<div class="title" ng-bind="title"></div>
+		</div>
+		<div class="right-part">
+			<i class="sprite close" ng-click="close()"></i>
+		</div>
+	</div>
+	<div class="modal-body">
+		是否共享作品给所有好友
+		<div class="radios">
+			<div class="radio">
+				<label for="friend-share1">
+					<input type="radio" name="friendShare"
+						id="friend-share1"
+						ng-value="true"
+						ng-model="flyer.friendShare">共享给好友
+				</label>
+			</div>
+			<div class="radio">
+				<label for="friend-share2">
+					<input type="radio" name="friendShare"
+						id="friend-share2"
+						ng-value="false"
+						ng-model="flyer.friendShare">不共享给好友
+				</label>
+			</div>
+		</div>
+		<div class="ek-btn btn-h btn-round btn-orange"
+			ng-bind="confirmBtn.label"
+			ng-click="save()"></div>
+	</div>
+</div>

@@ -1,0 +1,67 @@
+<div class="fv-flyer">
+	<div class="flyer-title" ng-bind="flyer.title"></div>
+	<div class="flyer-exp">
+		<div>
+			<span class="visit">
+				<i class="sprite"></i>
+				<span number-format="{{flyer.pv}}"></span>
+			</span>
+			<span class="zan">
+				<i class="sprite"></i>
+				<span number-format="{{flyer.likeCount}}"></span>
+			</span>
+			<span class="collect">
+				<i class="sprite"></i>
+				<span number-format="{{flyer.collectCount}}"></span>
+			</span>
+			<span class="comment">
+				<i class="sprite"></i>
+				<span number-format="{{flyer.replyCount}}"></span>
+			</span>
+		</div>
+	</div>
+	<div class="flyer-info">
+		<div>
+			<span class="info-label">发布时间：</span>
+			<span class="info-value" ng-bind="flyer.pubTime|dayDisplay"></span>
+		</div>
+		<div>
+			<span class="info-label">作品类型：</span>
+			<span class="info-value">
+				<span class="tpl-tag" ng-bind="flyer.tags|flyerTag">节日祝福</span>
+			</span>
+		</div>
+		<div>
+			<span class="info-label">作品描述：</span>
+			<span class="info-value" ng-bind="flyer.desc || '作者未对该作品做出任何说明'"></span>
+		</div>
+	</div>
+	<div class="flyer-qrcode">
+		<qr-block size="150" link="{{flyer.link}}"></qr-block>
+		<div class="download">
+			<div>扫描二维码，快速分享</div>
+			<div class="space"></div>
+			<div>下载二维码图片：</div>
+			<div class="d" ng-repeat="qrcode in flyer.qrcodes">
+				{{qrcode.name}}
+				<a ng-href="{{qrcode.uri}}" target="_blank">下载</a>
+			</div>
+		</div>
+	</div>
+	<div class="flyer-link">
+		转发网址：
+		<div class="input-group">
+		    <input type="text" class="form-control" ng-model="flyer.link" disabled="disabled">
+		    <span class="input-group-addon">复制</span>
+		</div>
+	</div>
+	<div class="flyer-share">
+		分享到：
+		<div class="share-btns">
+			<i class="sprite share-sweibo"></i>
+			<i class="sprite share-qq"></i>
+			<i class="sprite share-tweibo"></i>
+			<i class="sprite share-qzone"></i>
+		</div>
+	</div>
+</div>

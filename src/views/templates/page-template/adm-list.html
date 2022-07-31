@@ -1,0 +1,85 @@
+<div class="page-content" ng-init="list()">
+    <div class="price">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-appbar">
+                    <div class="group">
+                        <ul>
+                            <li>
+                                <input type="text" class="search-input" name="query" placeholder="按标题搜索..." ng-model="query.name" ng-enter="list(query)">
+                                <input type="button" class="search-btn" ng-click="list(query)">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- BEGIN TABLE -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>页面名称</th>
+                                <th>排序</th>
+                                <th>封面</th>
+                                <th>作者</th>
+                                <th>类型</th>
+                                <th>标签</th>
+                                <th>所属传单</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="tpl in templates">
+                                <td ng-bind="tpl.name"></td>
+                                <td ng-bind="tpl.sort"></td>
+                                <td ><img ng-src="{{tpl.cover}}" alt=""></td>
+                                <td ng-bind="tpl.user.nickname"></td>
+                                <td >
+                                <span ng-if="tpl.kind ==='custome'">自定义页面模版</span>
+                                <span ng-if="tpl.kind ==='std'">组件页面模版</span></td>
+                                <td ng-bind="getTagsName(tpl.tags)">
+                                    
+                                </td>
+                                <td>
+                                    <a href="/{{tpl.flyer._id}}" ng-bind="tpl.flyer.title||'未命名传单'" target="_blank"></a>
+                                </td>
+                                <td ng-bind="tpl.createdTime|dateDisplay">
+                             
+                                </td>
+                                <td>
+                                     <a class="btn btn-danger" 
+                                        ng-click="removeTpl(tpl._id)">删除
+                                     </a>
+                                     <a class="btn btn-info" 
+                                        ng-click="toUpdateTpl(tpl)">修改
+                                     </a>
+                       <!--               <a  class="btn btn-success" ng-click="toUpdateTags(tpl)">标签</a> -->
+                                </td>
+                            </tr>
+    
+                            <tr class="text-center text-mutd" ng-if="templates.length === 0">
+                                <td colspan="9">
+                                    暂无页面模板
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- END TABLE -->
+        <!-- BEGIN PAGINATION -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pull-right">
+                    <dvcpagination ng-model="pagination" max-size="5"></dvcpagination>
+                </div>
+            </div>
+        </div>
+        <!-- END PAGINATION -->
+    </div>
+</div>

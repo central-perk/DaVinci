@@ -1,0 +1,20 @@
+<div class="edit-form edit-effect">
+	<ul class="effect-group">
+		<li class="effect-group-item"
+			ng-repeat="nav in navs"
+			ng-class="{'active':nav.name === activeNav.name}"
+			ng-click="setActiveNav(nav)">
+			<span class="square">
+				<i ng-class="nav.name"></i>
+			</span>
+			<span ng-bind="nav.label"></span>
+		</li>
+	</ul>
+	<hr ng-show="page.effect.enable">
+	<div class="pan" ng-if="page.effect.enable">
+		<div class="edit-effect-{{activeNav.name}}">
+			<pg-effect-base ng-if="activeNav.name === 'mask'" ng-model="page" env='et'></pg-effect-base>
+			<pg-effect-base ng-if="activeNav.name === 'fpscan'" ng-model="page" env='et'></pg-effect-base>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,172 @@
+.user-flyer-card {
+	width: 100%;
+	.top-part {
+		.logo {
+			.img-freeze {
+				position: absolute;
+				top: 50px;
+				left: 52px;
+			}
+		}
+		.draft, .updated {
+			width: 24px;
+			height: 27px;
+			position: absolute;
+			right: 0;
+			top: 0;
+			z-index: 10;
+		}
+		.draft {
+			background-position: -283px -338px;
+		}
+		.updated {
+			background-position: -253px -338px;
+		}
+	}
+	.bottom-part {
+		&:hover {
+			i.cog {
+				-webkit-animation: fa-spin 2s infinite linear;
+				animation: fa-spin 2s infinite linear;
+			}
+		}
+		.row-1, .row-2 {
+			height: 31px;
+			line-height: 30px;
+			padding: 0 10px;
+		}
+		.row-1 {
+			border-bottom: 1px solid #DDDDDD;
+			position: relative;
+			.flyer-title {
+				height: 30px;
+				line-height: 30px;
+				padding-right: 20px;
+				@include mx-outtext;
+			}
+			.menu {
+				text-align: right;
+				position: absolute;
+				right: 10px;
+				top: 0px;
+				.cog {
+					width: 16px;
+					height: 16px;
+					background-position: -303px -172px;
+					top: 3px;
+					position: relative;
+					cursor: pointer;
+				}
+				.dropdown-menu {
+					width: 100px;
+					min-width: initial;
+					padding: 0;
+					right: 0;
+					left: auto;
+					background-color: #333333;
+					border: none;
+					margin-right: -42px;
+					margin-top: 5px;
+					@include border-radius(3px);
+					&:before {
+						content: '';
+						width: 0;
+						height: 0;
+						display: block;
+						position: absolute;
+						top: -10px;
+						right: 0;
+						left: 0;
+						margin: 0 auto;
+						border: solid transparent;
+						pointer-events: none;
+						border-bottom-width: 7px;
+						border-right-width: 7px;
+						border-left-width: 7px;
+						border-bottom-color: #333333;
+						z-index: 10;
+					}
+					li{
+						&:first-child {
+							@include border-radius(3px 3px 0 0);
+							overflow: hidden;
+						}
+						&:last-child {
+							@include border-radius(0 0 3px 3px);
+							overflow: hidden;
+						}
+						&.divider {
+							margin: 0;
+							background-color: #666666;
+						}
+						&:not(.disabled):hover {
+							a {
+								background-color: #209962;
+							}
+						}
+						// &.del:hover {
+						// 	a {
+						// 		color: $red;
+						// 	}
+						// }
+						a {
+							padding: 0;
+							height: 30px;
+							line-height: 30px;
+							color: $white;
+							display: flex;
+							align-items: center;
+							.fa {
+								margin-right: 5px;
+								width: 28px;
+								text-align: center;
+								background-image: none;
+							}
+						}
+					}
+					.fa-cog {
+						font-size: 16px;
+						position: relative;
+						right: 1px;
+					}
+					.fa-pencil-square {
+						font-size: 16px;
+						position: relative;
+						top: 1px;
+					}
+					.fa-trash {
+						font-size: 16px;
+					}
+				}
+			}
+
+		}
+		.row-2 {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			border-top: 1px solid $white;
+			.flyer-pv {
+				align-items: center;
+				display: flex;
+				font-size: 12px;
+				.eye {
+					width: 15px;
+					height: 9px;
+					margin-right: 5px;
+					background-position: -282px -219px;
+				}
+			}
+			.flyer-update-time {
+				cursor: pointer;
+				.clock {
+					width: 15px;
+					height: 15px;
+					background-position: -324px -172px;
+					position: relative;
+					top: 2px;
+				}
+			}
+		}
+	}
+}

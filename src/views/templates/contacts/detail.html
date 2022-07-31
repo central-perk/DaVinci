@@ -1,0 +1,322 @@
+<div class="manage container" ng-init="init()" resize-to-bottom top="60">
+    <div class="row">
+        <h3 class="title">客户详情</h3>
+        <div class="content contact-details">
+            <div class="head">
+                <div class="container-fluid">
+                    <h3>{{contact.nickname}}</h3>
+                    <span>（{{contact.gender|genderRespect}}<span ng-if="contact.city">，{{contact.city}}</span>）
+                    </span>
+                    <span class="btn btn-primary btn-sm" ng-click="toSelectGroup($event)">群组</span>
+                    <span class="label label-info" ng-repeat="g in contactGroups">
+                        {{g.name}}
+                    </span>
+                    <span ng-if="groups.length===0" class="text-muted">暂无分组</span>
+                    <span class="btn btn-sm btn-danger right btn-del" ng-click="toRemoveContact()">
+                        删除
+                        <!-- <i class="fa fa-trash"></i> -->
+                    </span>
+                </div>
+            </div>
+            <div class="content container-fluid">
+                <div class="row">
+                    <div class="col-sm-4 contact-info">
+                        <div class="form-group tels" ng-repeat="tel in contact.tels">
+                            <label class="control-label">电话</label>
+                            <div class="editable" ng-class="{'has-error':!telValid(tel.value)}">
+                                <div class="view-block" ng-if="!tel.edit">
+                                    <span class="field-value" ng-bind="tel.value"></span>
+                                    <a class="btn-edit" ng-click="editField('tels', $index)">编辑</a>
+                                </div>
+                                <div class="edit-block" ng-if="tel.edit">
+                                    <input type="number" name="tel" class="form-control input-sm"
+                                        ng-model="tel.value"/>
+                                    <span class="btn btn-sm btn-default" ng-click="cancelSaveField('tels', $index)">取消</span>
+                                    <button type="submit" class="btn btn-sm btn-success"
+                                        ng-disabled="!telValid(tel.value)"
+                                        ng-click="saveField('tels', $index)">保存</button>
+                                </div>
+                                <span class="help-block" ng-show="!telValid(tel.value)">请输入有效的电话号码</span>
+                            </div>
+                        </div>
+                        <div class="form-group emails" ng-repeat="email in contact.emails">
+                            <label>邮箱</label>
+                            <div class="editable" ng-class="{'has-error':!emailValid(email.value)}">
+                                <div class="view-block" ng-if="!email.edit">
+                                    <span class="field-value" ng-bind="email.value"></span>
+                                    <!-- <a class="btn-del" ng-click="delField(contact.emails, $index)">删除</a> -->
+                                    <a class="btn-edit" ng-click="editField('emails', $index)">编辑</a>
+                                </div>
+                                <div class="edit-block" ng-if="email.edit">
+                                    <input type="text" name="email" class="form-control input-sm" ng-model="email.value"/>
+                                    <span class="btn btn-sm btn-default" ng-click="cancelSaveField('emails', $index)">取消</span>
+                                    <button type="submit" class="btn btn-sm btn-success"
+                                        ng-disabled="!emailValid(email.value)"
+                                        ng-click="saveField('emails', $index)">保存</button>
+                                </div>
+                                <span class="help-block" ng-show="!emailValid(email.value)">请输入有效的邮箱</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">行业</label>
+                            <div class="editable">
+                                <div class="view-block" ng-if="!contact.industryEdit">
+                                    <span class="field-value" ng-bind="contact.industry|industryName"></span>
+                                    <a class="btn-edit" ng-click="editField('industry')">编辑</a>
+                                </div>
+                                <div class="edit-block" ng-if="contact.industryEdit">
+                                    <select class="form-control" name="industry"
+                                        ng-model="contact.industry"
+                                        ng-options="industry.key as industry.value for industry in industrys">
+                                        <option value="">请选择</option>
+                                    </select>
+                                    <span class="btn btn-sm btn-default" ng-click="cancelSaveField('industry')">取消</span>
+                                    <button type="submit" class="btn btn-sm btn-success"
+                                            ng-click="saveField('industry')">保存</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>公司</label>
+                            <form name="companyForm" novalidate ng-submit="saveField('company')">
+                                <div class="editable" ng-class="{'has-error':companyForm.$invalid}">
+                                    <div class="view-block" ng-if="!contact.companyEdit">
+                                        <span class="field-value" ng-bind="contact.company"></span>
+                                        <a class="btn-edit" ng-click="editField('company')">编辑</a>
+                                    </div>
+                                    <div class="edit-block" ng-if="contact.companyEdit">
+                                        <input type="text" name="company" class="form-control input-sm"
+                                            ng-model="contact.company"
+                                            ng-minlength="{{contactCols.company.len.min}}"
+                                            ng-maxlength="{{contactCols.company.len.max}}"
+                                            placeholder="长度应该在{{contactCols.company.len.min}}-{{contactCols.company.len.max}}"/>
+                                        <span class="btn btn-sm btn-default" ng-click="cancelSaveField('company')">取消</span>
+                                        <button type="submit" class="btn btn-sm btn-success"
+                                            ng-disabled="companyForm.$invalid">保存</button>
+                                    </div>
+                                    <span class="help-block" ng-show="companyForm.company.$invalid">长度应该在{{contactCols.company.len.min}}-{{contactCols.company.len.max}}</span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="form-group">
+                            <label for="">职位</label>
+                            <form name="positionForm" novalidate ng-submit="saveField('position')">
+                                <div class="editable" ng-class="{'has-error':positionForm.$invalid}">
+                                    <div class="view-block" ng-if="!contact.positionEdit">
+                                        <span class="field-value" ng-bind="contact.position"></span>
+                                        <a class="btn-edit" ng-click="editField('position')">编辑</a>
+                                    </div>
+                                    <div class="edit-block" ng-if="contact.positionEdit">
+                                        <input type="text" name="position" class="form-control input-sm"
+                                            ng-model="contact.position"
+                                            ng-minlength="{{contactCols.position.len.min}}"
+                                            ng-maxlength="{{contactCols.position.len.max}}"
+                                            placeholder="长度应该在{{contactCols.position.len.min}}-{{contactCols.position.len.max}}"/>
+                                        <span class="btn btn-sm btn-default" ng-click="cancelSaveField('position')">取消</span>
+                                        <button type="submit" class="btn btn-sm btn-success"
+                                            ng-disabled="positionForm.$invalid">保存</button>
+                                    </div>
+                                    <span class="help-block" ng-show="positionForm.position.$invalid">长度应该在{{contactCols.position.len.min}}-{{contactCols.position.len.max}}</span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="form-group">
+                            <label for="">生日</label>
+                            <div class="editable">
+                                <div class="view-block" ng-if="!contact.birthEdit">
+                                    <span class="field-value" ng-bind="contact.birth|cnDayDisplay"></span>
+                                    <a class="btn-edit" ng-click="editField('birth')">编辑</a>
+                                </div>
+                                <div class="edit-block" ng-if="contact.birthEdit">
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle input-datetimepicker" role="button" data-toggle="dropdown">
+                                            <input type="text" class="form-control" ng-model="contact.birth" date-format>
+                                            <i class="fa fa-calendar"></i>
+                                        </a>
+
+                                        <ul class="dropdown-menu" role="menu">
+                                            <datetimepicker ng-model="contact.birth" data-datetimepicker-config="{minView: 'day' }"></datetimepicker>
+                                        </ul>
+                                    </div>
+                                    <span class="btn btn-sm btn-default" ng-click="cancelSaveField('birth')">取消</span>
+                                    <button type="submit" class="btn btn-sm btn-success"
+                                            ng-click="saveField('birth')">保存</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>QQ</label>
+                            <form name="qqForm" novalidate ng-submit="saveField('qq')">
+                                <div class="editable" ng-class="{'has-error':qqForm.$invalid}">
+                                    <div class="view-block" ng-if="!contact.qqEdit">
+                                        <span class="field-value" ng-bind="contact.qq"></span>
+                                        <a class="btn-edit" ng-click="editField('qq')">编辑</a>
+                                    </div>
+                                    <div class="edit-block" ng-if="contact.qqEdit">
+                                        <input type="number" name="qq" class="form-control input-sm"
+                                            ng-model="contact.qq"
+                                            min="{{contactCols.qq.len.min}}"
+                                            max="{{contactCols.qq.len.max}}"
+                                            placeholder="长度应该在0-15"/>
+                                        <span class="btn btn-sm btn-default" ng-click="cancelSaveField('qq')">取消</span>
+                                        <button type="submit" class="btn btn-sm btn-success"
+                                            ng-disabled="qqForm.$invalid">保存</button>
+                                    </div>
+                                    <span class="help-block" ng-show="qqForm.qq.$invalid">请输入长度在0-15位的QQ号码</span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="form-group">
+                            <label for="">微信</label>
+                            <form name="weixinForm" novalidate ng-submit="saveField('weixin')">
+                                <div class="editable" ng-class="{'has-error':weixinForm.$invalid}">
+                                    <div class="view-block" ng-if="!contact.weixinEdit">
+                                        <span class="field-value" ng-bind="contact.weixin"></span>
+                                        <a class="btn-edit" ng-click="editField('weixin')">编辑</a>
+                                    </div>
+                                    <div class="edit-block" ng-if="contact.weixinEdit">
+                                        <input type="text" name="weixin" class="form-control input-sm"
+                                            ng-model="contact.weixin"
+                                            ng-minlength="{{contactCols.weixin.len.min}}"
+                                            ng-maxlength="{{contactCols.weixin.len.max}}"
+                                            placeholder="长度应该在{{contactCols.weixin.len.min}}-{{contactCols.weixin.len.max}}"/>
+                                        <span class="btn btn-sm btn-default" ng-click="cancelSaveField('weixin')">取消</span>
+                                        <button type="submit" class="btn btn-sm btn-success"
+                                            ng-disabled="weixinForm.$invalid">保存</button>
+                                    </div>
+                                    <span class="help-block" ng-show="weixinForm.weixin.$invalid">长度应该在{{contactCols.weixin.len.min}}-{{contactCols.weixin.len.max}}</span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="form-group">
+                            <label for="">微博</label>
+                            <form name="weiboForm" novalidate ng-submit="saveField('weibo')">
+                                <div class="editable" ng-class="{'has-error':weiboForm.$invalid}">
+                                    <div class="view-block" ng-if="!contact.weiboEdit">
+                                        <span class="field-value" ng-bind="contact.weibo"></span>
+                                        <a class="btn-edit" ng-click="editField('weibo')">编辑</a>
+                                    </div>
+                                    <div class="edit-block" ng-if="contact.weiboEdit">
+                                        <input type="text" name="weibo" class="form-control input-sm"
+                                            ng-model="contact.weibo"
+                                            ng-minlength="{{contactCols.weibo.len.min}}"
+                                            ng-maxlength="{{contactCols.weibo.len.max}}"
+                                            placeholder="长度应该在{{contactCols.weibo.len.min}}-{{contactCols.weibo.len.max}}"/>
+                                        <span class="btn btn-sm btn-default" ng-click="cancelSaveField('weibo')">取消</span>
+                                        <button type="submit" class="btn btn-sm btn-success"
+                                            ng-disabled="weiboForm.$invalid">保存</button>
+                                    </div>
+                                    <span class="help-block" ng-show="weiboForm.weibo.$invalid">长度应该在{{contactCols.weibo.len.min}}-{{contactCols.weibo.len.max}}</span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="form-group">
+                            <label for="">备注</label>
+                            <form name="extraForm" novalidate ng-submit="saveField('extra')">
+                                <div class="editable" ng-class="{'has-error':extraForm.$invalid}">
+                                    <div class="view-block" ng-if="!contact.extraEdit">
+                                        <span class="field-value" ng-bind="contact.extra"></span>
+                                        <a class="btn-edit" ng-click="editField('extra')">编辑</a>
+                                    </div>
+                                    <div class="edit-block" ng-if="contact.extraEdit">
+                                        <input type="text" name="extra" class="form-control input-sm"
+                                            ng-model="contact.extra"
+                                            ng-minlength="0"
+                                            ng-maxlength="200"/>
+                                        <span class="btn btn-sm btn-default" ng-click="cancelSaveField('extra')">取消</span>
+                                        <button type="submit" class="btn btn-sm btn-success"
+                                            ng-disabled="extraForm.$invalid">保存</button>
+                                    </div>
+                                    <span class="help-block" ng-show="extraForm.extra.$invalid">长度应该在0-200</span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 contact-history">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <button class="btn btn-sm btn-success" ng-click="toAddNote($event)">添加笔记</button>
+                            </div>
+                            <div class="form-inline col-sm-8">
+                                <div class="input-search text-right">
+                                    <input type="text" ng-enter="searchHistorys()" ng-model="query.content" placeholder="按内容搜索" class="form-control input-sm">
+                                    <button class="btn btn-default btn-sm" ng-click="searchHistorys()">查询</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-right history-categorys">
+                            <!-- 要改成动态的-->
+                            <div class="top-date left">
+                                <div class="top-month" ng-bind="topHistory.month"></div>
+                                <div class="top-year text-muted">
+                                    <small ng-bind="topHistory.year"></small>
+                                </div>
+                            </div>
+                            <button class="btn btn-default btn-sm"
+                                ng-class="c.active ? c.class: ''"
+                                ng-repeat="c in historyCategorys"
+                                ng-click="chooseHistoryCategory(c)">
+                                <i class="fa {{c.icon}}"></i>
+                                {{c.name}}
+                            </button>
+                        </div>
+                        <div class="history-items" history-month="{{historys}}" top-history="topHistory">
+                            <div class="dl-horizontal history-item" ng-repeat="h in historys">
+                                <span class="month" ng-bind="h.createdTime|month" ng-if="showHistoyMonth(h, $index)" ng-show="$index"></span>
+                                <span class="year text-muted" ng-if="showHistoyMonth(h, $index)" ng-show="$index">
+                                    <small ng-bind="h.createdTime|date:'y'"></small>
+                                </span>
+                                <span class="week" ng-class="getHistoryType(h.category)" ng-if="showHistoyDay(h, $index)" ng-bind="h.createdTime|week"></span>
+                                <span class="day" ng-class="getHistoryType(h.category)" ng-if="showHistoyDay(h, $index)">{{h.createdTime|date:'d'}}</span>
+                                <div class="history-text">
+                                    <div>
+                                        <i contact-details-icon ng-model="h"></i>
+                                        <small class="date text-muted" delta-time="{{h.createdTime}}"></small>
+                                        <small class="title text-muted" ng-bind="h.title"></small>
+                                    </div>
+                                    <div>
+                                        <div class="content" ng-if="h.category !== 10 ">
+                                            <span bind-html-unsafe="h.content"></span>
+                                        </div>
+                                        <div class="content" ng-if="h.category === 10">
+                                            <span bind-html-unsafe="h.content" ng-if="!h.edit"></span>
+                                            <div class="form-group edit"  ng-class="{'has-error':whenBtnSaveHistory(h)}" ng-if="h.edit">
+                                                    <input type="text" ng-model="h.content" placeholder="请输入笔记内容，最多100字。" class="form-control input-sm " ng-enter="saveHistory(h)">
+                                                        <small class="text-danger" ng-show="whenBtnSaveHistory(h)">笔记内容应在100字以内。</small>
+
+                                                <a class="btn btn-default btn-sm btn-cancel" ng-click="cancelSaveHistory(h)">取消</a>
+                                                <a class="btn btn-success btn-sm btn-save" ng-disabled="whenBtnSaveHistory(h)" ng-click="saveHistory(h)">保存</a>
+                                            </div>
+                                        </div>
+                                        <div class="operate text-right" ng-if="h.category === 10 ">
+                                            <a ng-click="delHistory(h)">
+                                                <small class="text-muted">删除</small>
+                                            </a>
+                                            <a ng-click="toEditHistory(h)">
+                                                <small class="text-muted">编辑</small>
+                                            </a>
+                                        </div>
+                                         <div class="operate text-right" ng-if=" h.category === 20 ">
+                                            <a href="/f/{{h.flyer}}/summary" target="_blank">
+                                                <small class="text-muted">查看传单</small>
+                                            </a>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <p class="text-center text-muted" ng-if="count === 0">暂无历史记录</p>
+                            <p class="text-center">
+                                <a ng-if="historys.length!==0&&next" class="text-muted" ng-click="viewNextPage()" type="button">查看更多
+                                </a>
+                                <span ng-if="!next&&count!==0" class="text-muted">没有更多了
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

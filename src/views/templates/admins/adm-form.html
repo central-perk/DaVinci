@@ -1,0 +1,78 @@
+<div class="page-content" ng-init="init()">
+    <div>
+        <!-- BEGIN TITLE -->
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="page-breadcrumb breadcrumb">
+                    <li> <i class="fa fa-th-large"></i>
+                        <a>{{form.title}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- END TITLE -->
+        <!-- BEGIN FORM -->
+        <form id="adminForm" name="adminForm" role="form" novalidate class="form-horizontal form-row-seperated" data-ng-submit="operate()">
+            <div class="portlet">
+                <div class="portlet-body">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">
+                            邮箱
+                            <span class="required"></span>
+                        </label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control" name="email" data-ng-model="admin.email" placeholder="邮箱" required ng-minlength="4" ng-maxlength="30" ng-disabled="disableEmail" />
+                            <div class="text-danger" ng-show="adminForm.email.$dirty && adminForm.email.$invalid">
+                                <small class="text-danger" ng-show="adminForm.email.$error.required">
+                                    邮箱为必输项
+                                </small>
+                                <small class="text-danger" ng-show="adminForm.email.$error.minlength||adminForm.pwd.$error.maxlength">
+                                    邮箱称长度应在4～30个字符以内
+                                </small>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error':adminForm.pwd.$dirty && adminForm.pwd.$invalid}">
+                        <label for="pwd" class="col-sm-2 control-label">原密码</label>
+                        <div class="col-sm-7">
+                            <input type="password" class="form-control" placeholder="原密码" name="pwd" ng-model="admin.pwd" ng-minlength="6" ng-maxlength="20" required auto-focus />
+                            <div class="text-danger" ng-show="adminForm.pwd.$dirty && adminForm.pwd.$invalid">
+                                <small class="text-danger" ng-show="adminForm.pwd.$error.required">
+                                    原密码为必输项
+                                </small>
+                                <small class="text-danger" ng-show="adminForm.pwd.$error.minlength||adminForm.pwd.$error.maxlength">
+                                    原密码长度应在6～20个字符以内
+                                </small>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error':adminForm.cpwd.$dirty && adminForm.cpwd.$invalid}">
+                        <label for="cpwd" class="col-sm-2 control-label">确认密码</label>
+                        <div class="col-sm-7">
+                            <input type="password" class="form-control" name="cpwd" placeholder="确认密码" ng-model="admin.cpwd" ng-enter="save()" ng-minlength="6" ng-maxlength="20" required auto-focus />
+                            <div class="text-danger" ng-show="adminForm.cpwd.$dirty && adminForm.cpwd.$invalid">
+                                <small class="text-danger" ng-show="adminForm.cpwd.$error.required">
+                                    确认密码为必输项
+                                </small>
+                                <small class="text-danger" ng-show="adminForm.cpwd.$error.minlength||adminForm.cpwd.$error.maxlength">
+                                    确认密码长度应在6～20个字符以内
+                                </small>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <label class="col-md-2 control-label"></label>
+                        <button type="submit" ng-disabled="adminForm.$invalid" class="btn blue">保存</button>
+                        <dvcback></dvcback>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- END FORM -->
+    </div>
+</div>

@@ -1,0 +1,20 @@
+@import '../components/custome/text/style/index';
+@import '../components/custome/image/style/index';
+@import '../components/custome/ibox/style/index';
+@import '../components/custome/map/style/index';
+@import '../components/custome/video/style/index';
+@import '../components/custome/slider/style/index';
+@import '../components/custome/shape/style/index';
+
+@mixin fi-edit-style {
+	.edit-style {
+		@include fi-edit-style-custom-text;
+		@include fi-edit-style-custom-image;
+		@include fi-edit-style-custom-ibox;
+		@include fi-edit-style-custom-map;
+		@include fi-edit-style-custom-video;
+		@include fi-edit-style-custom-slider;
+		@include fi-edit-style-custom-shape;
+		
+	}
+}

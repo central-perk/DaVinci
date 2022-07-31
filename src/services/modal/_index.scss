@@ -1,0 +1,15 @@
+.modal-dialog {
+	@include mx-center;
+	.modal-content {
+		width: 100%;
+		height: 100%;
+	}
+	.modal-header{
+		 h3{
+			font-size: 14px;
+		 }
+	}
+	.modal-body {
+		padding: 15px;
+	}
+}

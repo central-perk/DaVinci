@@ -1,0 +1,36 @@
+<div class="nav-area">
+  <div
+    class="sort-list thumbs"
+    ng-class="{'only-one':flyer.content.length === 1}"
+    ng-model="flyer.content"
+    ui-sortable
+    bottom-class="sort-list-end"
+    scroll="false"
+    e-design="true"
+  >
+    <div
+      ng-repeat="page in flyer.content"
+      class="thumb sort-item"
+      ng-class="{
+				'active': page.id === flyer.curPageID,
+				'pg-wait-save':isWaitSavePage(page),
+				'pg-edit-error':isEditErrorPage(page),
+				'thumb-foot': $last
+			}"
+    >
+      <pg-thumb
+        ng-model="page"
+        id="{{page.id}}"
+        curpageid="{{flyer.curPageID}}"
+        page-num="{{$index+1}}"
+      ></pg-thumb>
+    </div>
+    <div class="sort-list-end"></div>
+  </div>
+  <div class="pg-add" ng-click="toAddCustomPage($event)">
+    <div class="add-icon">
+      <i class="sprite"></i>
+      <div>Add Page</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="mdl-super-select">
+	  <label class="control-label" ng-bind="label"></label>
+	   <select 
+	           class="form-control input-sm"
+	           ng-model="curOpt" 
+	           ng-options="opt as opt.name for opt in opts">
+	  </select>
+	  <style>
+		.mdl-super-select{
+			width: 140px;
+			display: inline-block;
+			margin-left: 5px;
+		}
+		.mdl-super-select label{
+			  float: left;
+			  min-width: 60px;
+			  margin-right: 5px;
+			  width: initial;
+		}
+		.mdl-super-select select{
+			  float: left;
+				  width: 70px;
+				  margin-top: 3px;
+		}
+	</style>
+</div>

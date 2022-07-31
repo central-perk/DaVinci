@@ -1,0 +1,338 @@
+@import "shared/shared";
+
+.user-nav {
+	height: 60px;
+	background-color: #F3F3F3;
+	margin-bottom: 20px;
+	.container {
+		height: 100%;
+		@include mx-flex-center;
+	}
+	.nav-tab {
+		width: 120px;
+		height: 100%;
+		text-align: center;
+		display: block;
+		color: #666666;
+		border-bottom: 3px solid transparent;
+		line-height: 60px;
+		&.active {
+			border-bottom-color: $ek-green;
+			color: $ek-green;
+		}
+		span {
+			height: 16px;
+			line-height: 16px;
+			background-color: $orange;
+			color: white;
+			font-size: 12px;
+			border-radius: 8px;
+			display: inline-block;
+			padding: 0 6px;
+			margin-left: 5px;
+		}
+	}
+}
+
+.user-sub-nav {
+	height: 40px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	position: relative;
+	.sub-nav {
+		display: flex;
+		& > li {
+			height: 30px;
+
+			border-radius: 15px;
+			border: 1px solid transparent;
+			line-height: 28px;
+			padding: 0 20px;
+			cursor: pointer;
+			transition: all 0.3s;
+			position: relative;
+			&:hover {
+				color: $ek-black;
+			}
+			&.active {
+				border-color: $yellow-d;
+				& > a {
+					color: $ek-black;
+				}
+			}
+			& > a {
+				color: #999999;
+			}
+			.fa-caret-down {
+				width: 18px;
+				height: 18px;
+				text-align: center;
+				margin-right: -6px;
+			}
+			.dropdown-menu {
+				width: 160px;
+				min-width: initial;
+				box-shadow: 0 0px 8px rgba(0, 0, 0, 0.175);
+				border-radius: 0;
+				top: calc(100% + 11px);
+				left: 50%;
+				margin-left: -80px;
+				.arrow {
+					@include mx-arrow;
+				}
+				li {
+					padding: 0 15px;
+					margin-bottom: 5px;
+					&:last-child {
+						margin-bottom: 0;
+					}
+					a {
+						width: 100%;
+						height: 30px;
+						transition: all 0.3s;
+						line-height: 30px;
+						padding: 0;
+						text-align: center;
+						&:hover {
+							background-color: #31a16f;
+							color: #fff;
+							border-radius: 3px;
+						}
+						&.active {
+							color: #31a16f;
+							background-color: transparent;
+						}
+					}
+				}
+			}
+		}
+	}
+	.tab-content {
+		width: 100%;
+		position: absolute;
+		top: 60px;
+	}
+}
+
+.card-display {
+	color: #4A4A4A;
+	.top-area {
+		height: 100px;
+		margin-bottom: 40px;
+		.container {
+			height: 100px;
+			position: relative;
+		}
+		img.bg {
+			height: 100px;
+			margin-left: -90px;
+		}
+		.tabbable {
+			width: 100%;
+			height: 50px;
+			position: absolute;
+			bottom: 0;
+		}
+		.top-nav {
+			li {
+				display: block;
+				&.active a {
+					background-color: white;
+					color: #4A4A4A;
+				}
+				a {
+					width: 140px;
+					height: 50px;
+					font-size: 16px;
+					border-radius: 3px 3px 0 0;
+					margin-right: 10px;
+					background-color: #eeeeee;
+					@include mx-flex-center;
+				}
+			}
+		}
+	}
+	.card-list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		margin: -15px -15px 45px -15px;
+		.card {
+			width: 204px;
+			margin: 15px;
+		}
+	}
+	.blk-list {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		.blk {
+			margin-bottom: 20px;
+			&:hover {
+				z-index: 1;
+			}
+		}
+	}
+	.snippet-empty {
+		text-align: center;
+		margin-top: 150px;
+		span {
+			color: #676767;
+
+		}
+		.green {
+			color: $ek-green;
+		}
+	}
+	.load-more {
+		color: #62A587;
+		margin-top: 40px;
+		margin-bottom: 40px;
+		cursor: pointer;
+		@include mx-flex-center;
+		.sprite {
+			width: 29px;
+			height: 29px;
+			vertical-align: middle;
+			background-position: -313px -337px;
+			margin-right: 15px;
+			-webkit-animation: fa-spin 2s infinite linear;
+			animation: fa-spin 2s infinite linear;
+		}
+	}
+}
+
+@import './intro/index';
+@import './flyer/index';
+@import './tpl/index';
+@import './collect/index';
+@import './relation/index';
+@import './follow/index';
+@import './fans/index';
+
+
+// 作品广场
+// .flyer-display {
+// 	color: #4A4A4A;
+// 	.top-area {
+// 		height: 100px;
+// 		margin-bottom: 40px;
+// 		.container {
+// 			height: 100px;
+// 			position: relative;
+// 		}
+// 		img.bg {
+// 			height: 100px;
+// 			margin-left: -90px;
+// 		}
+// 		.tabbable {
+// 			position: absolute;
+// 			bottom: 0;
+// 			border-bottom: none;
+// 			height: 50px;
+// 			.filter-list {
+// 				display: none;
+// 				width: 100%;
+// 				position: absolute;
+// 				left: 0;
+// 				top: 0;
+// 				z-index: 10;
+// 				padding-top: 50px;
+// 				overflow: hidden;
+// 				cursor: pointer;
+// 				font-size: 14px;
+// 				text-align: center;
+// 				@include border-radius(3px);
+// 				@include box-shadow(0 0 5px 0px $grey);
+// 				.filter {
+// 					height: 40px;
+// 					line-height: 40px;
+// 					cursor: pointer;
+// 					border-top: 1px solid #CCCCCC;
+// 					background-color: $white;
+// 					&:hover {
+// 						background-color: #EEEEEE;
+// 					}
+// 				}
+// 			}
+// 		}
+// 		.nav-tabs {
+// 			border-bottom: 0;
+// 		}
+// 		.nav-tabs {
+// 			& > li {
+// 				&.active > a {
+// 					background-color: white;
+// 				}
+// 				& > a {
+// 					width: 140px;
+// 					height: 50px;
+// 					line-height: 30px;
+// 					padding-left: 25px;
+// 					padding-right: 25px;
+// 					font-size: 16px;
+// 					border: none;
+// 					border-radius: 3px 3px 0 0;
+// 					margin-right: 10px;
+// 					background-color: #eeeeee;
+// 					.caret-down {
+// 						background-color: #4A4A4A;
+// 						width: 14px;
+// 						height: 12px;
+// 						display: block;
+// 						cursor: pointer;
+// 						position: absolute;
+// 						right: 26px;
+// 						top: 19px;
+// 						&:before {
+// 							content: '';
+// 							width: 0;
+// 							height: 0;
+// 							display: block;
+// 							@include mx-center;
+// 							top: 3px;
+// 							border: solid transparent;
+// 							pointer-events: none;
+// 							border-top-width: 5px;
+// 							border-right-width: 4px;
+// 							border-left-width: 4px;
+// 							border-top-color: white;
+// 							cursor: pointer;
+// 						}
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// 	.show-more {
+// 		color: #62A587;
+// 		margin-top: 40px;
+// 		margin-bottom: 40px;
+// 		cursor: pointer;
+// 		@include mx-flex-center;
+// 		i.loading {
+// 			width: 29px;
+// 			height: 29px;
+// 			display: block;
+// 			margin-right: 17px;
+// 			background-image: url(/images/sprite2.png);
+// 			background-size: 237px 29px;
+// 			background-position: -208px 0;
+// 			-webkit-animation: fa-spin 2s infinite linear;
+// 			animation: fa-spin 2s infinite linear;
+// 		}
+// 	}
+// 	.flyers-cards {
+// 		display: flex;
+// 		flex-wrap: wrap;
+// 		justify-content: flex-start;
+// 		margin: -15px;
+// 		.flyers-card {
+// 			width: 204px;
+// 			margin: 15px;
+// 		}
+// 	}
+// }
+

@@ -1,0 +1,17 @@
+<div class="mdl-input-color">
+	<div class="color-area" ng-style="colorAreaStyle()">
+		<spectrum-colorpicker
+			ng-model="color"
+			format="'hex'"
+			options="{
+				showAlpha: false,
+				chooseText: '选择',
+				cancelText: '取消',
+				containerClassName: 'sp-common',
+				allowEmpty: allowEmpty
+			}">
+		</spectrum-colorpicker>
+	</div>
+	<!-- <input class="color-input" ng-class="inputClass"> -->
+	<iframe scrolling="no" frameborder="0" src="/modules/input-color/input.html"></iframe>
+</div>	

@@ -1,0 +1,251 @@
+@import "shared/shared";
+
+
+.page-account {
+	width: 100%;
+	height: 900px;
+	color: #4A4A4A;
+	font-size: 14px;
+	position: absolute;
+	background-color: #F0F0F0;
+	line-height: 1;
+	h1, h2, h3, h4, h5, h6, a, p {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font: inherit;
+		font-size: 100%;
+		vertical-align: baseline;
+	}
+	a img {
+		border: none;
+	}
+  	ol, ul {
+		list-style: none;
+	}
+	> .container {
+		height: 100%;
+	}
+	a {
+		color: #4A4A4A;
+	}
+	.top-area {
+		height: 100px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		h3 {
+			font-size: 20px;
+			font-weight: 100;
+		}
+		.upgrade {
+			width: 160px;
+			height: 40px;
+			line-height: 38px;
+			border: 1px solid #3B9466;
+			color: #3B9466;
+			text-align: center;
+			cursor: pointer;
+		}
+	}
+	.main-area {
+		min-height: calc(100% - 100px);
+		background-color: #fff;
+		display: flex;
+		> .left-area {
+			width: 200px;
+			background-color: #ADDAC5;
+			text-align: center;
+			.user-info {
+				height: 175px;
+				border-bottom: 1px solid #93C6AE;
+				.avatar {
+					width: 100px;
+					height: 100px;
+					border-radius: 50%;
+					margin: 20px 0;
+				}
+				.nickname {
+					height: 20px;
+					font-size: 16px;
+					padding: 0 10px;
+					@include mx-outtext;
+				}
+			}
+			.menu {
+				li {
+					height: 40px;
+					line-height: 40px;
+					text-align: left;
+					padding: 0 20px;
+					cursor: pointer;
+					transition: background-color 0.3s;
+					position: relative;
+					&:hover {
+						background-color: #93C6AE;
+					}
+					&.active {
+						background-color: #609D80;
+						// border: 1px solid #93C6AE;
+						color: white;
+						&:after {
+							content: '';
+							width: 0;
+							height: 0;
+							display: block;
+							position: absolute;
+							bottom: 0;
+							top: 0;
+							right: -1px;
+							margin: auto;
+							border: solid transparent;
+							pointer-events: none;
+							border-width: 7px;
+							border-right-color: #fff;
+						}
+					}
+					.num {
+						width: 24px;
+						height: 24px;
+						line-height: 24px;
+						text-align: center;
+						border-radius: 50%;
+						color: white;
+						background-color: #EC580C;
+						font-size: 12px;
+						position: absolute;
+						right: 20px;
+						top: 8px;
+						padding: 0 4px;
+						@include mx-outtext;
+					}
+				}
+			}
+		}
+		> .right-area {
+			width: calc(100% - 200px);
+			.act-title {
+				height: 55px;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 0 40px;
+				border-bottom: 1px solid #CCCCCC;
+
+				h3 {
+					font-size: 20px;
+					font-weight: 100;
+				}
+			}
+			.act-block {
+				padding: 30px 40px;
+				display: flex;
+				border-bottom: 1px solid #E5E5E5;
+				&:last-child {
+					border-bottom: 0;
+				}
+				& > .title {
+					width: 100px;
+					border-right: 1px solid #E5E5E5;
+				}
+				& > .content {
+					padding-left: 25px;
+					.tip {
+						color: #888888;
+						font-size: 12px;
+						margin-bottom: 15px;
+					}
+					.orange {
+						color: #EC580C;
+						font-size: 12px;
+						cursor: pointer;
+					}
+					.green {
+						color: #3B9466;
+						font-size: 12px;
+						cursor: pointer;
+						&[disabled] {
+							opacity: 0.8;
+							cursor: not-allowed;
+						}
+					}
+					.blue {
+						color: #0096FF;
+						font-size: 12px;
+						cursor: pointer;
+					}
+					input, textarea {
+						display: block;
+						border: 1px solid #CCCCCC;
+						border-radius: 0;
+						padding: 5px 8px;
+						margin-bottom: 10px;
+					}
+					input {
+						height: 30px;
+						line-height: 18px;
+					}
+					textarea {
+						line-height: 20px;
+					}
+				}
+			}
+		}
+	}
+	.lbtn {
+		width: 80px;
+		height: 30px;
+		line-height: 28px;
+		display: inline-block;
+		text-align: center;
+		border: 1px solid;
+		cursor: pointer;
+		padding: 0;
+		background-color: #fff;
+		outline: none;
+		&[disabled] {
+			color: #CCCCCC !important;
+			border-color: #CCCCCC !important;
+			background-color: #fff !important;
+			cursor: not-allowed;
+		}
+		&.lbtn-orange {
+			border-color: #EC580C;
+			color: #EC580C;
+			&:hover {
+				background-color: #FFE8CD;
+			}
+			&:active {
+				color: white;
+				background-color: #EC580C;
+			}
+		}
+		&.lbtn-green {
+			border-color: #3B9466;
+			color: #3B9466;
+			&:hover {
+				background-color: #C2F0D8;
+			}
+			&:active {
+				color: white;
+				background-color: #3B9466;
+			}
+		}
+		&.lbtn-grey {
+			border-color: #CCCCCC;
+			color: #CCCCCC;
+			&:hover {
+				background-color: #F7F7F7;
+			}
+			&:active {
+				color: white;
+				background-color: #CCCCCC;
+			}
+		}
+	}
+}
+
+@import './setting/index';
+@import './manage/index';
+@import './msg/index';
+@import './relation/index';

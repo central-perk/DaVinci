@@ -1,0 +1,261 @@
+.act-setting {
+	.email-block {
+		.email {
+			font-size: 18px;
+			margin-bottom: 15px;
+		}
+		input {
+			width: 300px;
+		}
+		form {
+			> div {
+				display: flex;
+				align-items: baseline;
+				small {
+					margin-left: 10px;
+				}
+			}
+		}
+		.lbtn-reset, .init-act, .save-act {
+			margin-right: 15px;
+		}
+
+		.init-act, .bind-act {
+			width: 100px;
+		}
+	}
+	.amount-block{
+		.interact,.static{
+			float: left;
+		}
+	}
+	.social-block {
+		.social-list {
+			display: flex;
+			& > a {
+				width: 66px;
+				height: 66px;
+				border: 1px solid #CCCCCC;
+				border-radius: 6px;
+				text-align: center;
+				padding: 10px 0;
+				cursor: pointer;
+				margin-right: 15px;
+				i {
+					font-size: 16px !important;
+					margin-bottom: 10px !important;
+					color: #D0D0D0;
+				}
+				// &.active {
+				// 	border-color: #3B9466;
+				// }
+			}
+			.weixin.active {
+				i {
+					color: #05af10;
+				}
+			}
+			.weibo.active {
+				i {
+					color: #da251c;
+				}
+			}
+			.qq.active {
+				i {
+					color: #0091c6;
+				}
+			}
+			.mingdao {
+				i {
+					width: 32px;
+					height: 16px;
+					display: block;
+					background: url(/images/social_account.png) no-repeat;
+					margin: 0 auto;
+					background-position: 2px -66px;
+					background-size: 104%;
+				}
+				&.active {
+					i {
+						background-position: 2px -159px;
+					}
+				}
+			}
+		}
+	}
+	.truetel-block {
+		.verified {
+			.truetel {
+				font-size: 16px;
+				margin-bottom: 10px;
+			}
+			.mark {
+				width: 56px;
+				height: 20px;
+				display: block;
+				color: white;
+				background-color: #54BF8C;
+				font-size: 12px;
+				border-radius: 2px;
+				padding: 0;
+				@include mx-flex-center;
+			}
+		}
+		.verify {
+			position: relative;
+			input {
+				width: 220px;
+				height: 34px;
+				padding-right: 70px !important;
+			}
+			.get-code {
+				width: 68px;
+				height: 26px;
+				font-size: 12px;
+				border-radius: 2px;
+				@include mx-flex-center;
+				position: absolute;
+				top: 2px;
+				left: 150px;
+				background-color: $orange;
+				color: white;
+				cursor: pointer;
+				border: none;
+				padding: 0;
+				&[disabled] {
+					opacity: 0.65;
+					cursor: not-allowed;
+				}
+			}
+			.submit-code {
+				width: 68px;
+				height: 26px;
+				font-size: 12px;
+				border-radius: 2px;
+				@include mx-flex-center;
+				position: absolute;
+				top: 42px;
+				left: 150px;
+				background-color: $ek-green;
+				color: white;
+				cursor: pointer;
+				border: none;
+				padding: 0;
+				&[disabled] {
+					opacity: 0.65;
+					cursor: not-allowed;
+				}
+			}
+			.tip {
+				margin-bottom: 0 !important;
+			}
+		}
+	}
+	.nickname-avatar-block {
+		.content {
+			display: flex;
+		}
+		.nickname-edit {
+			width: 155px;
+			padding-right: 25px;
+			border-right: 1px solid #E5E5E5;
+			.nickname {
+				height: 30px;
+				line-height: 30px;
+				margin-bottom: 10px;
+				@include mx-outtext;
+			}
+			input {
+				width: 100%;
+			}
+		}
+		.avatar-edit {
+			padding-left: 25px;
+			.upload-avatar {
+				width: 120px;
+				height: 30px;
+				line-height: 28px;
+				border: 1px solid #CCCCCC;
+				text-align: center;
+				margin-bottom: 10px;
+				cursor: pointer;
+			}
+			.blue {
+				display: none;
+			}
+		}
+	}
+	.info-block {
+		.info-line {
+			display: flex;
+			height: 30px;
+			margin-bottom: 5px;
+			&:last-child {
+				height: auto;
+				margin-bottom: 0;
+			}
+			&.signature {
+				input[type="text"] {
+					width: 320px;
+				}
+			}
+			input[type="text"] {
+				width: 200px;
+				margin-right: 10px;
+			}
+			textarea {
+				width: 320px;
+				height: 100px;
+			}
+			select {
+				width: 100px;
+				height: 30px;
+				background: transparent;
+				border: 0;
+				border-radius: 0;
+				outline: 1px solid #CCCCCC;
+				outline-offset: -1px;
+				vertical-align: top;
+				margin-right: 10px;
+			}
+			.title {
+				width: 58px;
+				text-align: right;
+				line-height: 30px;
+			}
+			.con {
+				// width: 235px;
+				padding-left: 25px;
+				line-height: 30px;
+				// display: flex;
+				@include mx-outtext;
+				display: inline-block;
+				&.empty {
+					color: $grey;
+				}
+			}
+			.radio {
+				display: inline-block;
+				margin: 0;
+				margin-right: 10px;
+				input {
+					margin-top: 0;
+					margin-bottom: 0;
+				}
+			}
+		}
+
+	}
+	.desc-block {
+		.desc {
+			margin-bottom: 10px;
+		}
+		textarea {
+			width: 320px;
+			height: 100px;
+		}
+		.content {
+			height: 130px;
+		}
+	}
+}

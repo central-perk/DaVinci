@@ -1,0 +1,118 @@
+<div>
+    <table class="table table-striped table-bordered table-hover table-std">
+        <thead>
+            <tr>
+                <th class="checkbox-select-all">
+                    <div class="dropdown-btn" dropdown is-open="$parent.selectAll.isOpen">
+                        <a class="btn btn-default dropdown-toggle">
+                            <input type="checkbox"
+                                ng-checked="selected.length === contacts.length&&contacts.length!==0">
+                                <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li ng-click="updateMultiSelection('addPage')">
+                                <a>
+                                    选择已显示
+                                    <label class="badge" ng-bind="contacts.length"></label>
+                                </a>
+                            </li>
+                            <li ng-click="updateMultiSelection('addAll')">
+                                <a>
+                                    选择全部
+                                    <label class="badge" ng-bind="count"></label>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li ng-click="updateMultiSelection('removeAll')">
+                                <a>
+                                    取消选择
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </th>
+                <th ng-repeat="col in cols" ng-style="{width: colwidthDic[col]}" ng-bind="contactCols[col].name"></th>
+            </tr>
+ 
+            <th class="operate">操作</th>
+        </thead>
+        <tbody>
+        
+            <tr ng-repeat="c in contacts">
+                <td class="checkbox-select" ng-click="updateSingleSelection($event,c)">
+                    <input type="checkbox" ng-model="c.checked" ng-checked="isSelected(c._id)" ng-click="updateSingleSelection($event,c)">
+                </td>
+                <!-- href="/contacts/{{c._id}}/detail" target="_blank"   -->
+                <td ng-style="{width: colwidthDic[col]}" ng-repeat="col in $parent.cols">
+                    <a class="text-primary nickname text-out"
+                        ng-bind="c[col]"
+                        ng-href="/contacts/{{c._id}}/detail"
+                        target="_blank"
+                        ng-if="col ==='nickname'"></a>
+                    <span class="text-out"
+                        ng-bind="c[col]"
+                        ng-if="col!=='birth'&&col!=='industry'&&col!=='nickname'&&col!=='emails'&&col!=='tels'"
+                        ng-class="col"></span>
+                    <span class="text-out"
+                        ng-bind="c[col]|cnDayDisplay"
+                        ng-if="col==='birth'"
+                        ng-class="col"></span>
+                    <span class="text-out"
+                        ng-bind="c[col]|industryName"
+                        ng-if="col==='industry'"
+                        ng-class="col"></span>
+                    <span class="text-out"
+                        ng-bind="c[col][0].value"
+                        ng-if="col==='emails'||col==='tels'"
+                        ng-class="col"></span>
+                </td>
+
+           <td class="operate"> <a class="btn btn-sm btn-success" contact-add="{{c._id}}">修改</a>  <a class="btn btn-sm btn-danger" ng-click="toRemoveContact(c)">删除</a>
+                </td> 
+            </tr>
+            <tr ng-if="contacts.length==0&&!isQuery">
+                <td colspan="{{cols.length+2}}">
+                    <p class="text-muted text-center snippet-empty">
+                        暂无客户
+                    </p>
+                </td>
+
+            </tr>
+            <tr ng-if="contacts.length==0&&isQuery">
+                <td colspan="{{cols.length+1}}">
+                    <p class="text-muted text-center snippet-empty">
+                        没有搜索到符合条件的客户
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- BEGIN PAGINATION -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <ul class="pagination">
+                    <li class="previous" ng-if="pagination.content">
+                        <a class="icon-chevron-left" ng-click="search(pagination.left)"><i class="fa fa-angle-double-left"></i></a>
+                    </li>
+
+                    <li class="no disabled" ng-if="pagination.leftIgnore">
+                        <a>...</a>
+                    </li>
+                    <li data-ng-repeat="item in pagination.content" class="{{item.pclass}}">
+                        <a ng-click="search(item.curpage)">{{item.ptext}}</a>
+                    </li>
+                    <li class="no disabled" ng-if="pagination.rightIgnore">
+                        <a>...</a>
+                    </li>
+                    <li class="next" ng-if="pagination.content">
+                        <a class="icon-chevron-right" ng-click="search(pagination.right)"><i class="fa fa-angle-double-right"></i></a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <!-- END PAGINATION -->
+    </div>
+
+</div>

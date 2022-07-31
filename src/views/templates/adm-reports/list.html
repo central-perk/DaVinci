@@ -1,0 +1,74 @@
+<div class="page-content" ng-init="list()">
+    <!-- BEGIN TITLE -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-appbar">
+                <div class="group">
+                    <ul>
+                        <li>
+                            <input type="text" class="search-input" name="query" placeholder="按传单名称搜索..." ng-model="query.title" ng-enter="list(query)">
+                            <input type="button" class="search-btn" ng-click="list(query)">
+                        </li>
+                    </ul>
+                    <a class="btn btn-default" ng-click="clearSearch()">
+                        清空
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END TITLE -->
+    <!-- BEGIN TABLE -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>传单</th>
+                            <th>举报类型</th>
+                            <th>举报原因</th>
+                            <th>举报时间</th>
+                            <th>举报人</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="report in reports" ng-if="report.status == REPORT_STATUS.enable">
+                            <td>
+                                <a href="{{urlJoin(appHost,'f', report.flyer._id)}}" ng-bind="report.flyer.title" target="_blank"></a>
+                            </td>
+                            <td ng-bind="report.category|reportCategory">/</td>
+                            <td ng-bind="report.reason">/</td>
+                            <td ng-bind="report.createdTime|dateDisplay"></td>
+                            <td>
+                                <a ng-bind="report.user.nickname || '游客'" ng-click="showUser(report.user)"></a>
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-danger" ng-click="freeze(report.flyer)" ng-if="report.flyer.status!==40">冻结</a>
+                                <a class="btn btn-sm btn-success" ng-click="unfreeze(report.flyer)" ng-if="report.flyer.status===40">解冻</a>
+                                <a class="btn btn-sm btn-warning" ng-click="ingore(report)">忽略</a>
+                            </td>
+
+                        </tr>
+                        <tr  class="text-center text-mutd" ng-if="reports.length === 0">
+                            <td colspan="6">
+                                暂无举报
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- END TABLE -->
+    <!-- BEGIN PAGINATION -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <dvcpagination ng-model="pagination" max-size="5"></dvcpagination>
+            </div>
+        </div>
+    </div>
+    <!-- END PAGINATION -->
+</div>

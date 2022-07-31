@@ -1,0 +1,51 @@
+<section>
+      <div class="modal-header">
+          <h5>添加更多图片</h5>
+      </div>
+      <div class="modal-body">
+       <div class="portlet">
+                <div class="portlet-body">
+                  <form class="form-horizontal">
+                    <div  class="form-group">
+                        <label for="" class="col-md-3 control-label">一级分类</label>
+                        <div class="col-md-9">
+                             <select class="form-control input-sm" ng-model="setting.category"
+                                    ng-options="c.tag as c.name for c in categorys">
+                                    <option value="">请选择</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-md-3 control-label">二级分类</label>
+                        <div class="col-md-9">
+                             <select class="form-control input-sm" ng-model="setting.tag"
+                                    ng-options="t.tag as t.name for t in tags"><option value="">请选择</option>
+                              </select>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                      <label for="" class="col-md-3 control-label">排序</label>
+                      <div class="col-md-9">
+                           <input type="number" class="form-control" name="sort" ng-model="setting.sort" required />
+                        <div class="help-block">
+                            <small>(数字越大，排序越靠前)</small>
+                        </div>
+                      </div> 
+                    </div>
+
+                   </form>
+           </div>
+         </div>
+         
+      </div>
+          <div class="modal-footer">
+      <span class="btn green"
+                        ng-file-change="upload($files, $event)"
+                        accept="image/png,image/jpg,image/jpeg,image/gif"
+                        multiple="true"
+                        resetOnClick="true"
+                        ng-file-select>上传图片</span>
+                    
+                       <span class="btn pink" data-ng-click="close();">取消</span>
+          </div>
+</section>

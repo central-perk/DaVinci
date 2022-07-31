@@ -1,0 +1,153 @@
+.tpl-config {
+	.modal-body {
+		display: flex;
+		.tpl-price-form {
+			display: flex;
+		}
+		.logo-area {
+			width: 240px;
+			background-color: #F0F0F0;
+			padding: 20px;
+			.logo-tip {
+				margin-bottom: 15px;
+				text-align: center;
+			}
+			.logo {
+				width: 200px;
+				height: 200px;
+				margin-bottom: 15px;
+				position: relative;
+				background-image: url(/images/grey-bg-logo.png);
+			}
+			.change-logo {
+				width: 100%;
+				margin-top: 20px;
+				transition: none;
+			}
+		}
+		.info-area {
+			flex-grow: 1;
+			padding: 30px;
+			.title {
+				margin-bottom: 5px;
+			}
+			.tags-transfer {
+				margin-bottom: 30px;
+				display: flex;
+				justify-content: space-between;
+				.tags, .transfer {
+					width: 45%;
+				}
+			}
+			.desc {
+				width: 100%;
+				height: 150px;
+				border: none;
+				background: transparent;
+				box-shadow: none;
+				outline: 1px solid #CBCBCB;
+				outline-offset:-1px;
+				-webkit-appearance: none;
+				padding: 6px 8px;
+				resize: none;
+				margin-bottom: 35px;
+			}
+			.next-step {
+				width: 160px;
+				margin-left: calc(50% - 80px);
+			}
+		}
+		.price-area {
+			flex-grow: 1;
+			padding: 30px;
+			.form-group {
+				display: flex;
+				align-items: center;
+				.control-label {
+					width: 90px;
+				}
+				.control-content {
+					flex-grow: 1;
+					display: flex;
+					align-items: center;
+					.radio {
+						margin: 0 20px 0 0;
+						&:last-child {
+							margin-left: 0;
+						}
+					}
+				}
+			}
+			.unit-price {
+				.price-select {
+					display: flex;
+					margin-left: 10px;
+					margin-right: 20px;
+					select {
+						width: 60px;
+						border: none;
+						background: transparent;
+						box-shadow: none;
+						outline: 1px solid #CBCBCB;
+						outline-offset:-1px;
+						margin-left: -1px;
+						text-align: center;
+						text-indent: 13px;
+						&:first-child {
+							margin-left: 0;
+						}
+					}
+				}
+			}
+			.buyout-price, .integral {
+				color: $orange;
+				margin-right: 20px;
+			}
+			.after-sale {
+				.radio {
+					&:first-child {
+						margin-left: 0;
+					}
+				}
+			}
+			.after-sale-desc {
+				margin-bottom: 35px;
+				textarea {
+					height: 100px;
+				}
+			}
+			.operate {
+				@include mx-flex-center;
+				.prev-step, .save {
+					width: 100px;
+				}
+				.prev-step {
+					margin-right: 30px;
+				}
+			}
+		}
+		.form-control-outter {
+			border-bottom: 1px solid #CBCBCB;
+			.form-control {
+				border: none;
+				background: transparent;
+				box-shadow: none;
+			}
+			input.form-control {
+				padding: 6px 8px;
+			}
+		}
+		textarea {
+			width: 100%;
+			border: none;
+			background: transparent;
+			box-shadow: none;
+			outline: 1px solid #CBCBCB;
+			outline-offset:-1px;
+			-webkit-appearance: none;
+			padding: 6px 8px;
+			resize: none;
+		}
+
+	}
+}

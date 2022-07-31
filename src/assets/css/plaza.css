@@ -1,0 +1,308 @@
+.page-plaza .top-area {
+    background-color: #f1f2b9;
+}
+
+.page-plaza .hot-flyers {
+    height: 350px;
+    margin: 50px 0;
+    overflow: hidden;
+    overflow-x: auto;
+    padding: 0 40px;
+}
+
+.page-plaza .hot-flyers>.container {
+    width: 1170px !important;
+}
+
+.page-plaza .hot-flyers .headline {
+    height: 24px;
+    line-height: 24px;
+    margin-bottom: 15px;
+}
+
+.page-plaza .hot-flyers .headline .title {
+    font-size: 20px;
+    color: #ee580c;
+    margin-right: 10px;
+}
+
+.page-plaza .hot-flyers .headline .bg-grey {
+    background-color: #f0f0f0;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 10px;
+}
+
+.page-plaza .hot-flyers .headline .bg-grey .green {
+    color: #3b9466;
+}
+
+.page-plaza .hot-flyers .headline .bg-grey .red {
+    color: #c22200;
+}
+
+.page-plaza .hot-flyers .slick-prev,
+.page-plaza .hot-flyers .slick-next {
+    height: 85px;
+    width: 19px;
+    margin-top: -40px;
+    opacity: 0.8;
+}
+
+.page-plaza .hot-flyers .slick-prev:before,
+.page-plaza .hot-flyers .slick-next:before {
+    content: '';
+}
+
+.page-plaza .hot-flyers .slick-prev:hover,
+.page-plaza .hot-flyers .slick-next:hover {
+    opacity: 1;
+}
+
+.page-plaza .hot-flyers .slick-prev {
+    background-image: url(/images/slick-prev.png);
+}
+
+.page-plaza .hot-flyers .slick-next {
+    background-image: url(/images/slick-next.png);
+}
+
+.page-plaza .good-flyers {
+    background-color: #b8dbcb;
+    padding-bottom: 100px;
+}
+
+.page-plaza .good-flyers .headline {
+    display: flex;
+    padding: 20px 0 30px 0;
+    line-height: 30px;
+    position: relative;
+}
+
+.page-plaza .good-flyers .headline .title {
+    font-size: 20px;
+    margin-right: 60px;
+}
+
+.page-plaza .good-flyers .headline .sort .form-control {
+    width: 140px;
+    margin-right: 15px;
+}
+
+.page-plaza .good-flyers .headline .search {
+    position: absolute;
+    right: 0;
+}
+
+.page-plaza .good-flyers .headline .search .form-control {
+    padding-right: 43px;
+}
+
+.page-plaza .good-flyers .headline .search .search-btn {
+    width: 36px;
+    height: 30px;
+    border: 1px solid white;
+    display: block;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.page-plaza .good-flyers .headline .search .search-btn i {
+    background: none;
+    color: white;
+    line-height: 28px;
+    font-size: 18px;
+}
+
+.page-plaza .good-flyers .headline .form-control {
+    display: inline-block;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    outline: 1px solid white;
+    outline-offset: -1px;
+    vertical-align: top;
+}
+
+.page-plaza .good-flyers .search-more button {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.plaza-card {
+    width: 100%;
+}
+
+.plaza-card .bottom-part .row-1,
+.plaza-card .bottom-part .row-2,
+.plaza-card .bottom-part .row-3 {
+    line-height: 30px;
+    padding: 0 10px;
+    position: relative;
+}
+
+.plaza-card .bottom-part .row-1 {
+    height: 30px;
+    padding-top: 5px;
+}
+
+.plaza-card .bottom-part .row-1 .flyer-title {
+    height: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.plaza-card .bottom-part .row-1 .menu {
+    text-align: right;
+    position: absolute;
+    right: 10px;
+    top: 7px;
+}
+
+.plaza-card .bottom-part .row-1 .menu i.cog {
+    width: 16px;
+    height: 16px;
+    background-position: -112px 0px;
+}
+
+.plaza-card .bottom-part .row-1 .menu .dropdown-toggle {
+    font-size: 17px;
+    top: 1px;
+    position: relative;
+    cursor: pointer;
+}
+
+.plaza-card .bottom-part .row-1 .menu .dropdown-menu {
+    width: 100px;
+    min-width: initial;
+    padding: 0;
+    right: 0;
+    left: auto;
+    background-color: #333333;
+    border: none;
+    margin-right: -42px;
+    margin-top: 10px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.plaza-card .bottom-part .row-1 .menu .dropdown-menu:before {
+    content: '';
+    width: 0;
+    height: 0;
+    display: block;
+    position: absolute;
+    top: -10px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    border: solid transparent;
+    pointer-events: none;
+    border-bottom-width: 7px;
+    border-right-width: 7px;
+    border-left-width: 7px;
+    border-bottom-color: #333333;
+}
+
+.plaza-card .bottom-part .row-1 .menu .dropdown-menu li:first-child {
+    -moz-border-radius: 3px 3px 0 0;
+    -webkit-border-radius: 3px;
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+}
+
+.plaza-card .bottom-part .row-1 .menu .dropdown-menu li:last-child {
+    -moz-border-radius: 0 0 3px 3px;
+    -webkit-border-radius: 0;
+    border-radius: 0 0 3px 3px;
+    overflow: hidden;
+}
+
+.plaza-card .bottom-part .row-1 .menu .dropdown-menu li.divider {
+    margin: 0;
+    background-color: #666666;
+}
+
+.plaza-card .bottom-part .row-1 .menu .dropdown-menu li:not(.disabled):hover a {
+    background-color: #209962;
+}
+
+.plaza-card .bottom-part .row-1 .menu .dropdown-menu li a {
+    padding: 0;
+    height: 30px;
+    line-height: 30px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+
+.plaza-card .bottom-part .row-1 .menu .dropdown-menu li a .fa {
+    margin-right: 5px;
+    width: 28px;
+    text-align: center;
+    background-image: none;
+}
+
+.plaza-card .bottom-part .row-1 .menu .dropdown-menu .fa-cog {
+    font-size: 16px;
+    position: relative;
+    right: 1px;
+}
+
+.plaza-card .bottom-part .row-1 .menu .dropdown-menu .fa-pencil-square {
+    font-size: 16px;
+    position: relative;
+    top: 1px;
+}
+
+.plaza-card .bottom-part .row-1 .menu .dropdown-menu .fa-trash {
+    font-size: 16px;
+}
+
+.plaza-card .bottom-part .row-2 {
+    height: 31px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #DDDDDD;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+
+.plaza-card .bottom-part .row-2 .nickname {
+    display: inline-block;
+    width: 90px;
+    vertical-align: bottom;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.plaza-card .bottom-part .row-2 a {
+    color: #3b9466;
+}
+
+.plaza-card .bottom-part .row-3 {
+    height: 31px;
+    border-top: 1px solid #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.plaza-card .bottom-part .row-3 .flyer-pv {
+    align-items: center;
+    display: flex;
+    font-size: 12px;
+}
+
+.plaza-card .bottom-part .row-3 .flyer-pv .eye {
+    width: 15px;
+    height: 9px;
+    margin-right: 5px;
+    background-position: -282px -219px;
+}

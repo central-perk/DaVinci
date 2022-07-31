@@ -1,0 +1,39 @@
+<div class="edit-custome-page edit-form" ng-switch on="tab.type">
+
+	<!-- 样式 -->
+	<div ng-switch-when="style">
+		<fi-edit-style ng-model="layer"></fi-edit-content>
+	</div>
+
+	<!-- 内容 -->
+	<div ng-switch-when="content">
+		<fi-edit-content ng-model="layer"></fi-edit-content>
+	</div>
+
+	<!-- 排列 -->
+	<div ng-switch-when="arrange">
+		<fi-edit-arrange ng-model="layer"></fi-edit-arrange>
+	</div>
+
+	<!-- 动画 -->
+	<div ng-switch-when="animate">
+		<fi-edit-animate ng-model="layer" ng-if="layer"></fi-edit-animate>
+	</div>
+
+	<!-- 背景 -->
+	<div ng-switch-when="bg">
+		<fi-edit-bg ng-model="page"></fi-edit-bg>
+	</div>
+
+	<!-- 特效 -->
+	<div ng-switch-when="effect">
+		<fi-edit-effect ng-model="page"></fi-edit-effect>
+	</div>
+
+	<!-- 图层 -->
+	<div ng-switch-when="layer">
+		<fi-edit-layer ng-model="page.layers" layer="layer"></fi-edit-layer>
+	</div>
+
+
+</div>

@@ -1,0 +1,65 @@
+<div class="manage container ct-pay" ng-init="init()" resize-to-bottom top="60">
+    <div class="row">
+        <h3 class="title" ng-bind="title"></h3>
+        <div class="content">
+            <div class="row boxes">
+                <div class="box" ng-class="{'active':cost.active,
+                'disabled':cost.disabled}" ng-click="chooseCost(cost)" ng-repeat="cost in costs">
+                    <h4 class="name" ng-bind="cost.name"></h4>
+                    <p class="price">
+                        <span class="amount" ng-bind="cost.price"></span>{{pack.unitName}}</p>
+                        <span class="fa-stack fa-lg icon-checked">
+                            <i class="fa fa-stop fa-stack-2x"></i>
+                            <i class="fa fa-check fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="row" >
+                <div class="col-sm-12">
+                    <form role="form" class="form-upgrade" action="/api/service-pack/get" method="post">
+                    <!--     <div class="checkbox" ng-if="account.balance>0">
+                            <label>
+                                <input type="checkbox" ng-click="toUseAccountBalance()" ng-model="useAccountBalance">使用余额(可用余额
+                                <span>{{account.balance|toFixed}}元</span>
+                                <span ng-if="useAccountBalance&&payPrice===0">,从余额扣款{{cost.price|toFixed}}元</span>
+                                <span ng-if="useAccountBalance&&payPrice!==0">,从余额扣款{{account.balance|toFixed}}元</span>
+                                )
+                            </label>
+                        </div>
+                        <div class="checkbox" ng-if="account.balance===0">
+                            当前余额是0元
+                        </div> -->
+                        <div ng-if="pack.unit==='money'">
+                            <div class="checkbox" ng-if="account.balance===0">
+                                当前余额是0元
+                            </div> 
+                            <button type="submit" class="btn btn-pay btn-zhifubao">
+                             <!--    <span class="name" ng-class="{'pay-price':payPrice>0}" ng-if="payPrice>0">立刻支付 {{payPrice|toFixed}}元</span> -->
+                                <span class="name pay-price" >立刻支付{{payPrice|toFixed}}元</span>
+                            </button>
+                        </div>
+                        <div  ng-if="pack.unit==='integral'">
+                            <div class="checkbox">
+                                当前剩余易豆{{user.integral}}个,
+                                <a href="http://club.davinci.echoes.link/topic/5504244998067e752e0b3c91"
+                                   target="_blank" 
+                                  ng-if="pack.unit==='integral'" >如何获取易豆?</a>
+                            </div> 
+                            <button  class="btn btn-primary" ng-disabled="costs[0].disabled">
+                                立刻兑换 
+                            </button>
+                        </div>
+                       
+                 <!--        <input type="hidden" name="useAccountBalance" value="{{useAccountBalance}}"> -->
+                        <input type="hidden" name="category" value="{{cost.category}}">
+                        <input type="hidden" name="unit" value="{{pack.unit}}">
+                        <input type="hidden" name="pack" value="{{pack.name}}">
+
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="page-account">
+	<div class="container">
+		<div class="top-area">
+			<h3>用户中心</h3>
+			<a href="" class="upgrade">升级账号</a>
+		</div>
+		<div class="main-area">
+			<div class="left-area">
+				<div class="user-info">
+					<img class="avatar" ng-src="{{user.head}}">
+					<div class="nickname" ng-bind="user.nickname"></div>
+				</div>
+				<ul class="menu">
+					<li ui-sref="account.setting" ui-sref-active="active">
+						账号设置
+					</li>
+					<li ui-sref="account.manage" ui-sref-active="active" ng-if="!user.isAgent">
+						账户管理
+					</li>
+					<li ui-sref="account.msg" ui-sref-active="active" ng-if="!user.isAgent">
+						消息管理
+						<span class="num" ng-bind="unReadMsgCount" ng-if="unReadMsgCount"></span>
+					</li>
+					<li ui-sref="account.relation" ui-sref-active="active" ng-if="!user.isAgent">
+						我的好友
+					</li>
+				</ul>
+			</div>
+			<div class="right-area" ui-view></div>
+		</div>
+	</div>
+</div>

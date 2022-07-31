@@ -1,0 +1,32 @@
+<div class="custom-shape">
+    <div class="form-group" dropdown>
+        <span dropdown-toggle class="btn btn-sm btn-green-click btn-replace-shape">替换形状</span>
+        <ul class="dropdown-menu">
+            <div class="dropdown-menu-inner">
+                <li ng-repeat="svg in svgs" ng-click="replaceShape(svg)">
+                    <span ng-style="getSvgStyle(svg.src)"></span>
+                </li>
+            </div>
+        </ul>
+    </div>
+    <hr>
+    <div class="form-group blur">
+        <div class="control-label">模糊</div>
+        <div class="edit-container">
+            <div slider ng-model="layer.content.style.blur" min="0" max="100" tooltip="hide"></div>
+            <input-number ng-model="layer.content.style.blur" unit="%" input-class="form-control input-sm">
+            </input-number>
+        </div>
+    </div>
+    <hr>
+    <layer-link-select ng-model="layer">
+    </layer-link-select>
+    <hr>
+    <layer-submit-setting ng-model="layer">
+    </layer-submit-setting>
+    <hr>
+    <div class="tip">
+        <span class="tag">提示</span>
+        <span>点击空白区域返回“页面属性”编辑状态</span>
+    </div>
+</div>

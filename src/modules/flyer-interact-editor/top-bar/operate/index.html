@@ -1,0 +1,29 @@
+<div class="operate">
+  <span class="update ek-btn" ng-click="update()">
+    <i class="sprite"></i>
+    Save
+  </span>
+
+  <span class="preview ek-btn" ng-click="preview()">
+    <i class="sprite"></i>
+    Preview
+  </span>
+
+  <span class="publish ek-btn" ng-click="publish()" ng-if="!tplMode">
+    <i class="sprite"></i>
+    Post
+  </span>
+
+  <span class="submit ek-btn" ng-click="submit()" ng-if="tplMode">
+    <i class="sprite"></i>
+    Submit
+  </span>
+
+  <span class="exit ek-btn btn-s" ng-if="!user.isPartnerUser" ng-click="jump()">
+    <i class="sprite"></i>
+    Quit
+  </span>
+  <span class="exit ek-btn btn-s" ng-if="user.isPartnerUser" ng-click="jump()">
+    Back
+  </span>
+</div>

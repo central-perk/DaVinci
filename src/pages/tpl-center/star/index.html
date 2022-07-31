@@ -1,0 +1,59 @@
+<span class="tc-star" dropdown
+	is-open="dropdown.isopen"
+	ng-mouseenter="openDropdown()"
+	ng-mouseleave="closeDropdown()">
+	<rating class="dropdown-toggle"
+		ng-model="tpl.star"
+		readonly="true"
+		state-on="'fa-star active'"
+		state-off="'fa-star'"></rating>
+
+	<ul class="dropdown-menu">
+		<div class="arrow"></div>
+		<div class="center sep">平台推荐指数</div>
+		<div>
+			<span>创意设计</span>
+			<rating ng-model="tpl.creativeDesignStar" readonly="true"
+				state-on="'fa-star active'"
+				state-off="'fa-star'"></rating>
+		</div>
+		<div>
+			<span>用户交互</span>
+			<rating ng-model="tpl.userInteractionStar" readonly="true"
+				state-on="'fa-star active'"
+				state-off="'fa-star'"></rating>
+		</div>
+		<div>
+			<span>动画处理</span>
+			<rating ng-model="tpl.animationProcessStar" readonly="true"
+				state-on="'fa-star active'"
+				state-off="'fa-star'"></rating>
+		</div>
+		<div>
+			<span>视觉效果</span>
+			<rating ng-model="tpl.visualEffectStar" readonly="true"
+				state-on="'fa-star active'"
+				state-off="'fa-star'"></rating>
+		</div>
+		<div>
+			<span>整体完成度</span>
+			<rating ng-model="tpl.completionStar" readonly="true"
+				state-on="'fa-star active'"
+				state-off="'fa-star'"></rating>
+		</div>
+		<div>
+			<span>改造难易度</span>
+			<rating ng-model="tpl.transformationDifficultyStar" readonly="true"
+				state-on="'fa-star active'"
+				state-off="'fa-star'"></rating>
+		</div>
+<!-- 		<div class="center sep">用户推荐指数</div>
+		<div class="center">
+			<rating ng-model="tpl.userRecommendStar" readonly="true"
+				state-on="'fa-star active'"
+				state-off="'fa-star'"></rating>
+		</div> -->
+	</ul>
+
+
+</span>

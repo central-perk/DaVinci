@@ -1,0 +1,341 @@
+<div>
+	<div class="modal-header">
+	  <div class="left-part">
+		<div class="title" ng-bind="title"></div>
+	  </div>
+	  <div class="right-part">
+		<i class="sprite close" ng-click="close()"></i>
+	  </div>
+	</div>
+	<div class="modal-body" ng-switch on="curWindow">
+	  <form name="flyerConfigForm" class="flyer-config-form">
+		<div class="logo-area">
+		  <div class="logo-tip">Best size for cover is 260 x 260</div>
+		  <div class="logo">
+			<img
+			  class="full-size"
+			  ng-src="{{flyer.logo + compressSuffix}}"
+			  ng-show="flyer.logo"
+			/>
+		  </div>
+		  <div class="form-control-outter">
+			<select
+			  class="form-control"
+			  ng-model="flyer.logo"
+			  ng-options="tag.url as tag.name for tag in tags"
+			  ng-change="selectLogo()"
+			  required
+			>
+			  <option value="">System Cover</option>
+			</select>
+		  </div>
+		  <span
+			class="change-logo ek-btn btn-hl btn-grey"
+			ng-if="!flyer.logoCustomValue"
+			ng-click="replaceLogo()"
+			>Custom Cover</span
+		  >
+		  <span
+			class="change-logo ek-btn btn-hl btn-green"
+			ng-if="flyer.logoCustomValue"
+			ng-click="replaceLogo()"
+			>Replace Cover</span
+		  >
+		</div>
+		<div class="copyright-area" ng-switch-when="copyright">
+		  <div class="recommend form-group">
+			<div class="control-label">Platform promotion</div>
+			<div class="control-content">
+			  <div class="checkbox">
+				<label>
+				  <input type="checkbox" ng-model="flyer.canRecommend" />
+				  Automatic acquisition
+				  <i
+					class="question"
+					tooltip="After checking this option, when your flyer reaches 1,000 page views, it will be automatically recommended by the platform, and your work will be included in the "Works Display"."
+					tooltip-placement="bottom"
+					>?</i
+				  >
+				</label>
+			  </div>
+			</div>
+		  </div>
+		  <div class="copyright form-group" ng-if="!flyer.rmLogo">
+			<div class="control-label">Remove copyright</div>
+			<div class="control-content">
+			  You have {{user.rmLogoPack || 0}} "copyright packs"
+			  <i
+				class="question"
+				tooltip=""Copyright package" is used to remove Davinci copyright; you can get this service by purchasing or exchanging with Yidou."
+				tooltip-placement="bottom"
+				>?</i
+			  >
+			  available. There are {{user.integral || 0}} Easy Beans available for "redemption"
+			  <!-- <i class="question"
+  tooltip="After checking this option, when your flyer reaches 1,000 page views, it will be automatically recommended by the platform, and your work will be included in the "Works Display"."
+  tooltip-append-to-body="true"
+  tooltip-placement="bottom">?</i> -->
+			  .
+			</div>
+		  </div>
+		  <div class="copyright form-group" ng-if="!flyer.rmLogo">
+			<div class="control-label"></div>
+			<div class="control-content">
+			  <div class="checkbox">
+				<label>
+				  <input
+					type="checkbox"
+					ng-disabled="!user.rmLogoPack"
+					ng-click="usePack($event)"
+				  />
+				  Use a copyright-free package
+				</label>
+			  </div>
+			</div>
+		  </div>
+		  <div class="copyright form-group" ng-if="!flyer.rmLogo">
+			<div class="control-label"></div>
+			<div class="control-content">
+			  <button class="ek-btn btn-s btn-orange" ng-click="goBuy()">
+				Buy
+			  </button>
+			  <button class="ek-btn btn-s btn-green" ng-click="goExchange()">
+				exchange
+			  </button>
+			</div>
+		  </div>
+		  <div class="copyright form-group" ng-if="flyer.rmLogo">
+			<div class="control-label">Remove copyright</div>
+			<div class="control-content">Copyright removal service activated</div>
+		  </div>
+		  <div class="operate" ng-if="!user.isPartnerUser">
+			<button
+			  type="button"
+			  class="prev-step ek-btn btn-h btn-green btn-round"
+			  ng-click="goInfo()"
+			>
+			  return
+			</button>
+			<button
+			  type="button"
+			  class="save ek-btn btn-h btn-orange btn-round"
+			  ng-disabled="flyerConfigForm.$invalid"
+			  ng-click="save()"
+			  ng-bind="confirmBtn.label"
+			></button>
+		  </div>
+		</div>
+	  </form>
+
+    <div class="info-area" ng-switch-when="info">
+      <form name="flyerInfoForm">
+        <div class="title form-control-outter" ng-if="!hideTitleEdit">
+          <input
+            class="form-control"
+            type="text"
+            name="title"
+            required
+            maxlength="25"
+            ng-model="flyer.title"
+            placeholder="请输入作品标题"
+          />
+        </div>
+
+        <div class="tags-transfer">
+          <div class="tags form-control-outter">
+            <select
+              class="form-control"
+              ng-model="flyer.tags"
+              required
+              ng-options="tag.tag as tag.name for tag in tags"
+            >
+              <option value="">Please select a type</option>
+            </select>
+          </div>
+          <div class="transfer form-control-outter">
+            <select
+              class="form-control"
+              ng-model="flyer.transferMode"
+              required
+              ng-options="transfer.key as transfer.label for transfer in transfers"
+            >
+              <option value="">Please select a transition mode</option>
+            </select>
+          </div>
+        </div>
+		<textarea
+		class="desc"
+		placeholder="Work description"
+		ng-if="!hideDescEdit"
+		name="desc"
+		maxlength="50"
+		ng-model="flyer.desc"
+	  ></textarea>
+	  <div class="permission form-group" ng-if="!hidePermissionEdit">
+		<div class="control-label">Access Settings</div>
+		<div class="control-content">
+		  <div class="radio">
+			<label for="permission-public">
+			  <input
+				type="radio"
+				name="permission"
+				id="permission-public"
+				ng-value="FPMS.categorys.public"
+				ng-model="flyer.setting.permission.category"
+			  /> public
+			</label>
+		  </div>
+		  <div class="radio">
+			<label for="permission-private">
+			  <input
+				type="radio"
+				name="permission"
+				id="permission-private"
+				ng-value="FPMS.categorys.enterPwd"
+				ng-model="flyer.setting.permission.category"
+			  />Encryption
+			</label>
+		  </div>
+		  <div
+			class="form-control-outter"
+			ng-if="flyer.setting.permission.category===FPMS.categorys.enterPwd"
+		  >
+			<input
+			  class="form-control input-sm"
+			  type="text"
+			  name="pwd"
+			  ng-required="true"
+			  ng-minlength="4"
+			  ng-maxlength="20"
+			  ng-model="flyer.setting.permission.pwd"
+			  placeholder="Please enter a password between 4-20 characters"
+			/>
+		  </div>
+		</div>
+	  </div>
+	  <!-- <button type="button" ng-if="!user.isPartnerUser" class="next-step ek-btn btn-h btn-green btn-round"
+ng-disabled="flyerInfoForm.$invalid"
+ng-click="goCopyright()">Next</button> -->
+	  <button
+		style="width: 160px"
+		type="button"
+		class="prev-step ek-btn btn-h btn-green btn-round"
+		ng-click="close()"
+	  >
+		Cancel
+	  </button>
+	  <button
+		style="width: 160px"
+		type="button"
+		ng-if="!user.isPartnerUser"
+		class="save ek-btn btn-h btn-orange btn-round"
+		ng-disabled="flyerConfigForm.$invalid"
+		ng-click="save()"
+		ng-bind="confirmBtn.label"
+	  ></button>
+
+	  <div class="copyright-area" ng-if="user.isPartnerUser">
+		<div class="operate">
+		  <button
+			type="button"
+			class="prev-step ek-btn btn-h btn-green btn-round"
+			ng-click="close()"
+		  >
+			Cancel
+		  </button>
+		  <button
+			type="button"
+			class="save ek-btn btn-h btn-orange btn-round"
+			ng-disabled="flyerInfoForm.$invalid"
+			ng-click="save()"
+			ng-bind="confirmBtn.label"
+		  ></button>
+		</div>
+	  </div>
+	</form>
+  </div>
+  <div class="buy-area" ng-switch-when="buy">
+	<form
+	  name="payForm"
+	  id="payForm"
+	  onkeydown="if(event.keyCode==13){return false;}"
+	  action="{{'/api/service-pack/get'}}"
+	  method="post"
+	>
+	  <div class="pack-list">
+		<button
+		  type="button"
+		  class="pack ek-btn btn-hl btn-grey"
+		  ng-repeat="cost in costs"
+		  ng-class="{active:cost.active, disabled:cost.disabled}"
+		  ng-click="chooseCost(cost)"
+		>
+		  <div class="num" ng-bind="cost.name"></div>
+		  <div class="price"><span>{{cost.price}}</span>$</div>
+		</button>
+	  </div>
+	  <div class="pay-list">
+		<button
+		  type="button"
+		  class="alipay ek-btn btn-s btn-green"
+		  ng-click="doPay()"
+		>
+		  Alipay
+          </button>
+		  <button
+		  type="button"
+		  class="weixinpay ek-btn btn-s btn-green"
+		  disabled="disabled"
+		>
+		  WeChat Pay
+		</button>
+	  </div>
+	  <div class="return" ng-click="goCopyright()">
+		<i class="fa fa-arrow-left"></i>Cancel return
+	  </div>
+	  <input type="hidden" name="category" value="{{cost.category}}" />
+	  <input type="hidden" name="unit" value="{{pack.unit}}" />
+	  <input type="hidden" name="pack" value="{{pack.name}}" />
+	</form>
+  </div>
+  <div class="exchange-area" ng-switch-when="exchange">
+	<form
+	  name="exchangeForm"
+	  id="exchangeForm"
+	  onkeydown="if(event.keyCode==13){return false;}"
+	  action="{{'/api/service-pack/get'}}"
+	  method="post"
+	>
+	  <div class="pack-list">
+		<button
+		  type="button"
+		  class="pack ek-btn btn-hl btn-grey"
+		  ng-repeat="cost in costs"
+		  ng-class="{active:cost.active}"
+		  ng-disabled="user.integral < cost.price"
+		  ng-click="chooseCost(cost)"
+		>
+		  <div class="num" ng-bind="cost.name"></div>
+		  <div class="price"><span>{{cost.price}}</span> Easy Beans</div>
+		</button>
+	  </div>
+	  <div class="pay-list">
+		<button
+		  type="button"
+		  class="ek-btn btn-s btn-green"
+		  ng-disabled="user.integral < cost.price"
+		  ng-click="doExchange()"
+		>
+		  Redeem now
+		</button>
+	  </div>
+	  <div class="return" ng-click="goCopyright()">
+		<i class="fa fa-arrow-left"></i>Cancel return
+	  </div>
+	  <input type="hidden" name="category" value="{{cost.category}}" />
+	  <input type="hidden" name="unit" value="{{pack.unit}}" />
+	  <input type="hidden" name="pack" value="{{pack.name}}" />
+	</form>
+  </div>
+</div>
+</div>

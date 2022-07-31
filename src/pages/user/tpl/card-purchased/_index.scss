@@ -1,0 +1,33 @@
+.user-tpl-card-purchased {
+	width: 100%;
+	.bottom-part {
+		background-color: #F0F0F0;
+		border-radius: 0 0 3px 3px;
+		overflow: hidden;
+		.row-1, .row-2 {
+			height: 31px;
+			line-height: 30px;
+		}
+		.row-1 {
+			border-bottom: 1px solid #DDDDDD;
+			position: relative;
+			padding: 0 10px;
+			.tpl-title {
+				height: 30px;
+				line-height: 30px;
+				@include mx-outtext;
+			}
+		}
+		.row-2 {
+			text-align: center;
+			border-top: 1px solid $white;
+			.create {
+				cursor: pointer;
+				transition: background-color 0.3s;
+				&:hover {
+					background-color: #BAE6D0;
+				}
+			}
+		}
+	}
+}

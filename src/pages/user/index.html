@@ -1,0 +1,23 @@
+<user-intro ng-model="user"></user-intro>
+
+<div class="user-nav">
+	<div class="container">
+		<a class="nav-tab" ui-sref="user.flyer" ui-sref-active="active">作品</a>
+		<a class="nav-tab" ui-sref="user.tpl" ui-sref-active="active" ng-if="isAuthor(user)">模板</a>
+		<a class="nav-tab" ui-sref="user.tpl_" ui-sref-active="active" ng-if="!isAuthor(user)">模板</a>
+
+		<a class="nav-tab" ui-sref="user.collect" ui-sref-active="active">收藏</a>
+		<a class="nav-tab" ui-sref="user.relation" ui-sref-active="active"
+			ng-if="isAuthor(user)">
+			好友<span ng-if="user.newFriendCount" ng-bind="user.newFriendCount"></span>
+		</a>
+		<a class="nav-tab" ui-sref="user.follow" ui-sref-active="active">关注</a>
+		<a class="nav-tab" ui-sref="user.fans" ui-sref-active="active">粉丝<span ng-if="user.newFansCount" ng-bind="user.newFansCount"></span>
+		</a>
+	</div>
+</div>
+<div class="user-content card-display">
+	<div class="container" ui-view>
+
+	</div>
+</div>

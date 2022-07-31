@@ -1,0 +1,38 @@
+<div ng-init="init()">
+	<div class="modal-header">
+		<div class="left-part">
+			<div class="title" ng-bind="title"></div>
+		</div>
+		<div class="right-part">
+			<i class="sprite close" ng-click="close()"></i>
+		</div>
+	</div>
+	<div class="modal-body">
+		<div class="tool-bar">
+			<div>请选择您要共享给该好友的作品</div>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" ng-model="$parent.chooseAll" ng-change="clickChooseAll()">
+					全选
+				</label>
+			</div>
+		</div>
+		<div class="flyer-list">
+			<div class="flyer"
+				ng-click="clickFlyer(flyer._id)"
+				ng-class="{active: ifShared(flyer._id)}"
+				ng-repeat="flyer in flyers">
+				<img class="full-size" ng-src="{{flyer.logo}}">
+				<div class="mask">
+					<div class="check">
+						<i class="sprite"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+		<button class="ek-btn btn-h btn-round btn-orange"
+			ng-disabled="!shareFlyers.length"
+			ng-bind="confirmBtn.label"
+			ng-click="save()"></button>
+	</div>
+</div>

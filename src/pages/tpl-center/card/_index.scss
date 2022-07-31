@@ -1,0 +1,135 @@
+.tc-card {
+	width: 100%;
+	.inner {
+		background: #fff;
+		position: relative;
+		border-radius: 3px;
+		&:hover {
+			.operate {
+				display: flex;
+			}
+		}
+	}
+	.top-part {
+		width: 204px;
+		height: 204px;
+		position: relative;
+		overflow: hidden;
+		border-radius: 3px 3px 0 0;
+		cursor: pointer;
+		background-color: #DBDBDB;
+		.logo {
+			width: 100%;
+			height: 100%;
+			.tpl-logo {
+				width: 100%;
+			}
+		}
+		.operate {
+			display: none;
+			width: 100%;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			position: absolute;
+			bottom: 0;
+			color: #a4d7cd;
+			& > div {
+				min-width: 50%;
+				width: 100%;
+				background-color: #338b75;
+				cursor: pointer;
+				&:hover {
+					color: #fffd2e;
+					background-color: #157c5e;
+				}
+			}
+		}
+	}
+	.bottom-part {
+		background-color: #F0F0F0;
+		border-radius: 0 0 3px 3px;
+		color: #666666;
+		& > div {
+			padding: 0 10px;
+		}
+		.row-1 {
+			height: 30px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			.price {
+				width: 110px;
+				color: #ff5500;
+				font-size: 16px;
+				font-weight: bold;
+				@include mx-outtext;
+			}
+			.fa-star {
+				color: #c1c1c1;
+				margin-left: 1px;
+				&.active {
+					color: #ff5500;
+				}
+			}
+		}
+		.row-2 {
+			.tpl-title {
+				@include mx-outtext;
+			}
+		}
+		.row-3 {
+			height: 30px;
+			border-bottom: 1px solid #DDDDDD;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			font-size: 12px;
+			.tpl-author {
+				width: 125px;
+				@include mx-outtext;
+				a {
+					color: #2d9e5d;
+				}
+			}
+		}
+		.row-4 {
+			height: 32px;
+			display: flex;
+			align-items: center;
+			font-size: 12px;
+			.visit {
+				margin-right: 15px;
+				.sprite {
+					width: 15px;
+					height: 9px;
+					background-position: -282px -219px;
+				}
+			}
+			.zan {
+				.sprite {
+					width: 15px;
+					height: 12px;
+					background-position: -301px -219px;
+				}
+			}
+			.space {
+				flex-grow: 1;
+			}
+			.remove {
+				height: 13px;
+				cursor: pointer;
+				&:hover {
+					.sprite {
+						background-position: -172px -370px;
+					}
+				}
+				.sprite {
+					width: 10px;
+					height: 13px;
+					background-position: -157px -370px;
+				}
+			}
+		}
+	}
+}

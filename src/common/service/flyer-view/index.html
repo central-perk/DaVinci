@@ -1,0 +1,46 @@
+<div>
+	<fv-show ng-if="tab.flyerActive || tab.authorActive"
+		flyer-id="{{flyer._id}}"
+		transfer-mode="{{flyer.transferMode}}"
+		flyer-link="{{flyer.link}}"
+		flyer-cdn-version="{{flyer.cdnVersion}}"
+		></fv-show>
+	<fv-flyer ng-model="flyer" ng-if="tab.flyerActive"></fv-flyer>
+	<fv-author flyer-id="{{flyer._id}}" ng-if="tab.authorActive"></fv-author>
+	<fv-reply
+		ng-if="tab.replyActive"
+		setting="{modelID: flyer._id, category: 1}"></fv-reply>
+
+	<tabset type="'view-nav'">
+		<tab active="tab.flyerActive">
+			<tab-heading>
+				<i class="sprite flyer"></i>
+				作品
+			</tab-heading>
+		</tab>
+		<tab active="tab.authorActive">
+			<tab-heading>
+				<i class="sprite author"></i>
+				作者
+			</tab-heading>
+		</tab>
+		<tab active="tab.replyActive">
+			<tab-heading>
+				<i class="sprite reply"></i>
+				评论
+			</tab-heading>
+		</tab>
+		<div class="like" ng-click="like()" ng-if="!flyer.likeID">
+			<i class="sprite"></i>
+		</div>
+		<div class="like active" ng-click="unlike()" ng-if="flyer.likeID">
+			<i class="sprite"></i>
+		</div>
+		<div class="collect" ng-click="collect()" ng-if="!flyer.collectID">
+			<i class="sprite"></i>
+		</div>
+		<div class="collect active" ng-click="uncollect()" ng-if="flyer.collectID">
+			<i class="sprite"></i>
+		</div>
+	</tabset>
+</div>

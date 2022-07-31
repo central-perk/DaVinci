@@ -1,0 +1,44 @@
+<div class="manage container ct-pay" ng-init="buyServicePageInit()" resize-to-bottom top="60">
+    <div class="row">
+        <h3 class="title" ng-bind="title"></h3>
+        <div class="content">
+            <div class="row boxes">
+                <div class="box" ng-class="{'active':cost.active}" ng-click="chooseCost(cost)" ng-repeat="cost in costs">
+                    <h4 class="name" ng-bind="cost.name"></h4>
+                    <p class="price">
+                        <span class="amount" ng-bind="cost.price"></span>元</p>
+                    <span class="fa-stack fa-lg icon-checked">
+                        <i class="fa fa-stop fa-stack-2x"></i>
+                        <i class="fa fa-check fa-stack-1x fa-inverse"></i>
+                    </span>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <form role="form" class="form-upgrade" action="{{'/api/buy/'+orderType}}" method="post">
+                        <div class="checkbox" ng-if="account.balance>0">
+                            <label>
+                                <input type="checkbox" ng-click="toUseAccountBalance()" ng-model="useAccountBalance">使用余额(可用余额
+                                <span>{{account.balance|toFixed}}元</span>
+                                <span ng-if="useAccountBalance&&payPrice===0">,从余额扣款{{cost.price|toFixed}}元</span>
+                                <span ng-if="useAccountBalance&&payPrice!==0">,从余额扣款{{account.balance|toFixed}}元</span>
+                                )
+                            </label>
+                        </div>
+                        <div class="checkbox" ng-if="account.balance===0">
+                            当前余额是0元
+                        </div>
+                        <button type="submit" ng-class="{'btn-zhifubao':payPrice>0}" class="btn btn-pay">
+                            <span class="name" ng-class="{'pay-price':payPrice>0}" ng-if="payPrice>0">立刻支付 {{payPrice|toFixed}}元</span>
+                            <span class="name" ng-if="payPrice<=0">立刻支付</span>
+                        </button>
+                        <input type="hidden" name="useAccountBalance" value="{{useAccountBalance}}">
+                        <input type="hidden" name="costCategory" value="{{cost.category}}">
+                        <input type="hidden" name="orderType" value="{{orderType}}">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

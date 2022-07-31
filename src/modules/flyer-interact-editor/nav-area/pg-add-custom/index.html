@@ -1,0 +1,67 @@
+<div class="modal-content modal-new pg-add-custom">
+  <!-- <div class="header">
+	
+	</div>
+	<div>Create custom page</div>
+	<div>Universal Template Library</div>
+	<div>Select in my template gallery</div>
+	
+	<div>Create blank template</div> -->
+
+  <div class="modal-header">
+    <div class="left-part">
+      <div class="title">Create custom page</div>
+      <div class="tpl-store">
+        <div class="active">Universal Template Library</div>
+        <!-- <div>Select in my template library</div> -->
+      </div>
+    </div>
+    <div class="right-part">
+      <div
+        class="btn btn-sm btn-green-click"
+        style="width: 170px"
+        ng-click="createBlankPg()"
+      >
+        <span class="">Create a empty page</span>
+        <span></span>
+      </div>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        data-ng-click="close();"
+      >
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+      </button>
+    </div>
+  </div>
+  <tabset>
+    <tab
+      ng-repeat="category in customCategorys"
+      active="category.active"
+      heading="{{category.label}}"
+      select="chooseCategory(category)"
+    >
+    </tab>
+    <select
+      class="form-control input-sm"
+      ng-model="other.selectedCategory"
+      ng-change="selectCategory()"
+      ng-options="category as category.label for category in otherCategorys"
+    >
+      <option value="" ng-show="!other.selectedCategory">
+        Select template type
+      </option>
+    </select>
+  </tabset>
+  <div class="modal-body">
+    <ul class="custom-tpls">
+      <li class="tpl" ng-repeat="tpl in tpls" ng-click="createPg(tpl)">
+        <div class="thumb">
+          <img ng-src="{{tpl.cover}}" image-loading />
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

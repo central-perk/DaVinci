@@ -1,0 +1,22 @@
+<section class="mail-details">
+    <div class="modal-content" ng-init="init()">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" data-ng-click="close();">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            <h3>{{title}}</h3>
+        </div>
+        <div class="modal-body">
+            <div ng-repeat="data in datas" class="record">
+                <label class="record-label" ng-bind="data.label">
+
+                </label>
+                <div class="record-value record-{{data.class}}" ng-bind-html="$sce.trustAsHtml(data.value)">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

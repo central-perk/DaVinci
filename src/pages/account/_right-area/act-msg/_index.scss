@@ -1,0 +1,115 @@
+.act-msg {
+	.act-title {
+		.unread {
+			color: #EC580C;
+			font-size: 14px;
+			margin-left: 25px;
+			padding-left: 25px;
+			border-left: 1px solid #CCCCCC;
+		}
+		.read-all {
+			width: 138px;
+			height: 30px;
+			line-height: 28px;
+			color: #9B9B9B;
+			border: 1px solid #9B9B9B;
+			text-align: center;
+			cursor: pointer;
+			margin-right: 22px;
+			position: relative;
+			padding-left: 26px;
+			i {
+				width: 20px;
+				height: 14px;
+				background-position: -200px -173px;
+				position: absolute;
+				left: 12px;
+				top: 8px;
+			}
+		}
+	}
+	.content {
+		padding: 40px;
+		.panel-group {
+			border: 1px solid #CCCCCC;
+			.panel {
+				border-bottom: 1px solid #CCCCCC;
+				&:last-child {
+					border-bottom: none;
+				}
+				&.open {
+					background-color: #F0F0F0;
+				}
+				&.unread {
+					.panel-heading .msg-status {
+						color: #EC580C;
+					}
+				}
+				.panel-heading {
+					height: 40px;
+					line-height: 40px;
+					padding: 0 20px;
+					.accordion-toggle {
+						display: block;
+						.ts {
+							float: right;
+							color: #9B9B9B;
+							font-weight: 300;
+						}
+					}
+					.msg-status {
+						color: #3B9466;
+					}
+				}
+				.panel-collapse {
+					margin: 0 20px;
+					border-top: 1px solid #CCCCCC;
+					.panel-body {
+						// padding: 20px 20px 44px 20px;
+						padding: 20px;
+						position: relative;
+						line-height: 1.6rem;
+						.rm-msg {
+							width: 100px;
+							height: 24px;
+							line-height: 22px;
+							border: 1px solid #EC580C;
+							text-align: center;
+							position: absolute;
+							right: 0;
+							bottom: 20px;
+							font-size: 12px;
+							background-color: #fff;
+							cursor: pointer;
+							padding-left: 18px;
+							i {
+								width: 13px;
+								height: 13px;
+								background-position: -181px -172px;
+								position: absolute;
+								left: 7px;
+								top: 5px;
+							}
+						}
+						a {
+							color: #337ab7;
+							&:hover,
+							&:focus {
+							  	color: #2a6496;
+							  	text-decoration: underline!important;
+							}
+							&:focus {
+							  	outline: thin dotted;
+							  	outline: 5px auto -webkit-focus-ring-color;
+							  	outline-offset: -2px;
+							}
+						}
+					}
+				}
+			}
+		}
+		.pagination-wrap {
+			text-align: center;
+		}
+	}
+}

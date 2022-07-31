@@ -1,0 +1,30 @@
+<div class="user-flyer-card-friend">
+	<div class="inner">
+		<!-- 正常作品，缩略图&二维码 -->
+		<div class="top-part" ng-click="preview()">
+			<div class="logo">
+				<img class="full-size" ng-src="{{flyer.logo}}" image-loading/>
+			</div>
+			<div class="operate">
+				<div class="preview"
+					ng-if="flyer.status !== 10"
+					ng-click="preview(); $event.stopPropagation();">预览</div>
+			</div>
+		</div>
+
+
+		<!-- 基本信息 -->
+		<div class="bottom-part">
+			<!-- 作品标题、作品作者、作品分类 -->
+			<div class="row-1">
+				<div class="flyer-title" ng-bind="flyer.title"></div>
+			</div>
+			<div class="row-2">
+				<span>来自：
+					<span class="nickname" ng-bind="flyer.user.nickname || '未知用户'"></span>
+				</span>
+				<span class="clone-flyer" ng-click="cloneFlyer(flyer)">复制作品</span>
+			</div>
+		</div>
+	</div>
+</div>

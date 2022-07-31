@@ -1,0 +1,189 @@
+<div class="dt-stat">
+	<ul class="overview" ng-init="init()">
+		<li>
+			<div class="title">总转发量</div>
+			<div class="num" ng-model="wxShare" count-up id="wx-share"></div>
+		</li>
+		<li>
+			<div class="title">总浏览量</div>
+			<div class="num" ng-model="pv" count-up id="pv"></div>
+		</li>
+		<li ng-repeat="r in refMap" ng-if="r.key !== 'email'">
+			<div class="title" ng-bind="r.value"></div>
+			<div class="num" ng-model="ref[r.key]" count-up id="{{r.key}}"></div>
+		</li>
+	</ul>
+	
+	<div class="traffic">
+		<div class="section-header">
+			<span class="title">流量统计</span>
+			<a href="#" class="export pull-right" ng-click="trafficChartExport()">
+				<i class="sprite"></i>
+				下载流量统计图
+			</a>
+		</div>
+		<div class="data-query-toolbar">
+			<ul class="quick-query">
+				<li ng-repeat="queryBtn in queryBtns"
+					ng-click="trafficQuery(queryBtn.key);trafficTime.start= '';trafficTime.end= '';"
+					ng-class="{active: queryBtn.key == trafficQueryDate}" ng-bind="queryBtn.value"></li>
+			</ul>
+			<div class="date-query pull-right" ng-class="{'has-error':trafficDtpickerErr}">
+				按日期查询
+				<div class="dropdown">
+					<a class="dropdown-toggle" role="button" data-toggle="dropdown">
+						<input type="text"
+							class="form-control input-sm"
+							placeholder="起始"
+							ng-model="trafficTime.start"
+							date-format>
+						<i class="sprite"></i>
+					</a>
+					<ul class="dropdown-menu" role="menu">
+						<datetimepicker ng-model="trafficTime.start" data-datetimepicker-config="{minView: 'day'}"></datetimepicker>
+					</ul>
+				</div>
+				<div class="dropdown">
+					<a class="dropdown-toggle" role="button" data-toggle="dropdown">
+						<input type="text"
+							class="form-control input-sm"
+							placeholder="截至"
+							ng-model="trafficTime.end"
+							date-format>
+						<i class="sprite"></i>
+					</a>
+					<ul class="dropdown-menu" role="menu">
+						<datetimepicker ng-model="trafficTime.end" data-datetimepicker-config="{minView: 'day' }"></datetimepicker>
+					</ul>
+				</div>
+				<span class="btn-query"
+					ng-click="trafficQuery(trafficTime.start, trafficTime.end)">查询</span>
+			</div>
+		</div>
+		<div class="chart-table-switch">
+			<div class="btn-group">
+				<label class="btn btn-default btn-sm" ng-model="contentType" btn-radio="false">图表</label>
+				<label class="btn btn-default btn-sm" ng-model="contentType" btn-radio="true">数据</label>
+			</div>
+		</div>
+		<div class="section-body" ng-class="{hide: contentType}">
+			<highchart id="trafficChart" config="trafficChartConfig"></highchart>
+		</div>
+		<div class="section-body" ng-class="{hide: !contentType}">
+			<table class="table" ng-if="!singleDay">
+				<thead>
+					<th>日期</th>
+					<th>浏览量</th>
+					<th>访客数</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="category in trafficTableCategories">
+						<td>{{category}}</td>
+						<td>
+							{{trafficSeriesDataReverse[0].data[$index + pagination.perPage * (pagination.curPage-1)]}}
+						</td>
+						<td>
+							{{trafficSeriesDataReverse[1].data[$index + pagination.perPage * (pagination.curPage-1)]}}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table" ng-if="singleDay">
+				<thead>
+					<th>日期</th>
+					<th>浏览量</th>
+					<th>访客数</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{curDate}}</td>
+						<td>{{pvSum}}</td>
+						<td>{{uvSum}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<ul class="pagination right" ng-if="pagination.pageNum > 1 && !singleDay">
+				<li ng-repeat="page in pagination.pages" ng-class="{active:pagination.curPage == page}">
+					<a ng-click="doPage(page)">{{page}}</a>
+				</li>
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<div class="section-error"></div>
+	</div>
+
+	<dt-stat-event a-id="{{flyer.aID}}"></dt-stat-event>
+
+	<div class="ref">
+		<div class="section-header">
+			<span class="title">来源统计</span>
+			<a href="#" class="export pull-right" ng-click="refChartExport()">
+				<i class="sprite"></i>
+				下载来源统计图
+			</a>
+		</div>
+		<div class="data-query-toolbar">
+			<ul class="quick-query">
+				<li ng-repeat="queryBtn in queryBtns"
+					ng-click="refQuery(queryBtn.key);refTime.start= '';refTime.end= '';"
+					ng-class="{active: queryBtn.key == refQueryDate}"
+					ng-bind="queryBtn.value"></li>
+			</ul>
+			<div class="date-query pull-right" ng-class="{'has-error':refDtpickerErr}">
+				按日期查询
+				<div class="dropdown">
+					<a class="dropdown-toggle" role="button" data-toggle="dropdown">
+						<input type="text"
+							class="form-control input-sm"
+							placeholder="起始"
+							ng-model="refTime.start"
+							date-format>
+						<i class="sprite"></i>
+					</a>
+					<ul class="dropdown-menu" role="menu">
+						<datetimepicker ng-model="refTime.start" data-datetimepicker-config="{minView: 'day'}"></datetimepicker>
+					</ul>
+				</div>
+				<div class="dropdown">
+					<a class="dropdown-toggle" role="button" data-toggle="dropdown">
+						<input type="text"
+							class="form-control input-sm"
+							placeholder="截至"
+							ng-model="refTime.end"
+							date-format>
+						<i class="sprite"></i>
+					</a>
+					<ul class="dropdown-menu" role="menu">
+						<datetimepicker ng-model="refTime.end" data-datetimepicker-config="{minView: 'day' }"></datetimepicker>
+					</ul>
+				</div>
+				<span class="btn-query"
+					ng-click="refQuery(refTime.start, refTime.end)">查询</span>
+			</div>
+		</div>
+
+		<div class="section-body">
+			<div class="btn-group">
+				<label class="btn btn-default btn-sm"
+					ng-click="setRefType('pie', $event)">饼图</label>
+				<label class="btn btn-default btn-sm" ng-click="setRefType('column', $event)">柱图</label>
+			</div>
+			<div class="refChart-wrap">
+				<highchart id="refChart" config="refChartConfig"></highchart>
+			</div>
+			<table ng-table="refTableParams" class="table">
+				<tr ng-repeat="user in $data">
+					<td data-title="'来源'" sortable="'name'">
+						{{user.name}}
+					</td>
+					<td data-title="'浏览量'" sortable="'value'">
+						{{user.value}}
+					</td>
+				</tr>
+			</table>
+
+
+		</div>
+		<div class="section-error"></div>
+	</div>
+</div>

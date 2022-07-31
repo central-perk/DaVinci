@@ -1,0 +1,15 @@
+<div class="msg" ng-bind="msg"></div>
+<div class="btns">
+	<button  type="button"
+		class="btn btn-green"
+		ng-bind="btnConfirm.label"
+		ng-hide="btnConfirm.hide"
+		ng-enter="confirm()"
+		auto-focus="true"
+		ng-click="confirm()"></button>
+	<button class="btn btn-white"
+		ng-bind="btnCancel.label"
+		ng-hide="btnCancel.hide"
+		ng-enter="close()"
+		ng-click="close()"></button>
+</div>

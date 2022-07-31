@@ -1,0 +1,42 @@
+<div class="user-fans-nav user-sub-nav" ng-init="init()">
+	<tabset type="'sub-nav'">
+		<tab select="listFans()">
+			<tab-heading>
+				<span ng-if="isAuthor(user)">全部粉丝</span>
+
+				<span ng-if="!isAuthor(user)">Ta 的粉丝</span>
+			</tab-heading>
+			<div class="blk-list" ng-show="fans.length">
+				<div class="blk aa-fade disable-hide"
+					ng-repeat="fan in fans">
+
+					<user-relation-blk
+						ng-model="fan"
+						remove-btn="移除粉丝"
+						hide-share="true"
+						hide-remove="true">
+						<div class="follow ek-btn btn-hl btn-grey" ng-click="follow(fan)" ng-if="!fan.followID">
+							<i class="sprite"></i>关注
+						</div>
+					</user-relation-blk>
+				</div>
+			</div>
+
+			<div class="snippet-empty" ng-if="count === 0 && isAuthor(user)">
+				<h3>您还没有粉丝</h3>
+				<span>创建炫酷<span class="green">作品</span>，迅速增粉哦！</span>
+			</div>
+
+			<div class="snippet-empty" ng-if="count === 0 && !isAuthor(user)">
+				<h3>Ta 还没有粉丝</h3>
+			</div>
+
+			<div class="load-more" ng-if="count !== 0 && next">
+				<span ng-if="loading">
+					<i class="sprite"></i>
+				</span>
+				<span ng-click="loadMore()">载入更多</span>
+			</div>
+		</tab>
+	</tabset>
+</div>

@@ -1,0 +1,103 @@
+<div class="tpl-center flyer-display card-display" ng-init="init()">
+	<div class="top-area">
+		<div class="container">
+			<tabset type="'top-nav'">
+				<tab select="myFlyersInit()">
+					<tab-heading>
+						模板中心
+					</tab-heading>
+				</tab>
+			</tabset>
+			<a class="create-tpl" ng-click="createTpl()">
+				<i class="sprite"></i>
+				创建模板
+			</a>
+			<img class="bg" src="/images/create-flyer-top.png" alt="">
+		</div>
+	</div>
+
+	<!-- 筛选区域 -->
+	<div class="search-area">
+		<div class="container">
+			<div class="query">
+				<div class="dropdown tag">
+					<div class="dropdown-toggle">
+						<span ng-bind="activeTag.name || '全部类型'"></span>
+						<i class="fa fa-caret-down"></i>
+					</div>
+					<ul class="dropdown-menu" role="menu">
+						<div class="arrow"></div>
+						<li ng-repeat="tag in tags" ng-click="listByTag(tag)">
+							<a href="#" ng-bind="tag.name"></a>
+						</li>
+						<div class="cancel" ng-click="cancelTag()">
+							<i class="sprite"></i>
+							取消类型
+						</div>
+					</ul>
+				</div>
+				<div class="dropdown filter">
+					<div class="dropdown-toggle">
+						<span ng-bind="activeFilter.label || '筛选'"></span>
+						<i class="fa fa-caret-down"></i>
+					</div>
+					<ul class="dropdown-menu" role="menu">
+						<div class="arrow"></div>
+						<li ng-repeat="filter in filters" ng-click="listByFilter(filter)">
+							<a href="#" ng-bind="filter.label"></a>
+						</li>
+						<div class="cancel" ng-click="cancelFilter()">
+							<i class="sprite"></i>
+							取消筛选
+						</div>
+					</ul>
+				</div>
+				<div class="dropdown sort">
+					<div class="dropdown-toggle">
+						<span ng-bind="activeSort.label || '排序'"></span>
+						<i class="fa fa-caret-down"></i>
+					</div>
+					<ul class="dropdown-menu" role="menu">
+						<div class="arrow"></div>
+						<li ng-repeat="sort in sorts" ng-click="listBySort(sort)">
+							<a href="#" ng-bind="sort.label"></a>
+						</li>
+						<div class="cancel" ng-click="cancelSort()">
+							<i class="sprite"></i>
+							取消排序
+						</div>
+					</ul>
+				</div>
+			</div>
+			<div class="search">
+				<i class="fa fa-search" ng-click="listByTitle()"></i>
+				<input class="form-control input-sm"
+					ng-enter="listByTitle()"
+					ng-model="query.title"
+					type="text"
+					placeholder="按标题搜索">
+			</div>
+		</div>
+	</div>
+
+	<!-- 模板列表 -->
+	<div class="container" ng-init="searchAreaFixed()" ng-show="tpls.length">
+		<div class="card-list">
+			<div class="card aa-fade disable-hide" ng-repeat="tpl in tpls">
+				<tc-card ng-model="tpl"></tc-card>
+			</div>
+		</div>
+	</div>
+
+	<div class="snippet-empty" ng-if="count === 0">
+		<h3>没有符合条件的模板</h3>
+	</div>
+
+	<!-- 加载更多 -->
+	<div class="load-more" ng-if="count !== 0 && next">
+		<span ng-if="loading">
+			<i class="sprite"></i>
+		</span>
+		<span ng-click="nextTpl()">载入更多</span>
+	</div>
+</div>

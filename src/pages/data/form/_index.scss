@@ -1,0 +1,73 @@
+.dt-form {
+	.panel {
+		margin-bottom: 15px;
+	}
+	.panel-group {
+		.panel-heading {
+			.panel-title {
+				height: 40px;
+				line-height: 40px;
+				margin: 0;
+				padding: 0 10px;
+				position: relative;
+				a {
+					color: #4A4A4A;
+					font-size: 16px;
+					i {
+						width: 15px;
+						display: inline-block;
+					}
+				}
+				hr {
+					width: 100%;
+					margin: 0;
+					border-color: #BBBBBB;
+					position: absolute;
+					bottom: 0px;
+					left: 0;
+				}
+				.export {
+					font-size: 12px;
+					cursor: pointer;
+					.sprite {
+						width: 14px;
+						height: 15px;
+						background-position: -265px -172px;
+						top: 3px;
+						position: relative;
+						margin-right: 5px;
+					}
+				}
+			}
+		}
+	}
+	table {
+		width: 100%;
+
+		tr {
+			height: 40px;
+			line-height: 40px;
+			&:nth-child(even) {
+				background-color: #F0F0F0;
+			}
+			td, th {
+				&:first-child {
+					padding-left: 20px;
+				}
+				&:last-child {
+					padding-right: 20px;
+				}
+			}
+		}
+		thead {
+			background-color: #DDDDDD;
+			padding: 0 10px;
+		}
+	}
+	.bottom-bar {
+		height: 40px;
+		line-height: 40px;
+		padding: 0 10px;
+		background-color: #DDDDDD;
+	}
+}

@@ -1,0 +1,58 @@
+<div>
+	<div class="modal-header">
+		<div class="left-part">
+			<div class="title" ng-bind="title"></div>
+		</div>
+		<div class="right-part">
+			<i class="sprite close" ng-click="close()"></i>
+		</div>
+	</div>
+	<div class="modal-body">
+		<div class="tip">请输入昵称或邮箱后按下回车键</div>
+		<form name="relationForm">
+			<div class="form-group">
+				<input class="form-control" type="text"
+					ng-model="query._title"
+					ng-enter="search()">
+				<i class="fa fa-search" ng-click="search()"></i>
+			</div>
+		</form>
+		<div class="user-list">
+		    <div class="user-list-empty" ng-if="relations.length === 0">
+		    	暂无符合条件的搜索结果
+		    </div>
+			<div class="block" ng-repeat="relation in relations">
+				<div class="head">
+					<img class="full-size" ng-src="{{relation.user.head}}">
+				</div>
+				<div class="intro">
+					<div class="nickname"
+						ui-sref="user({ userID: relation.user._id })"
+						ng-bind="relation.user.nickname"></div>
+					<div class="job" ng-bind="relation.user.job||'职业未填写'" ></div>
+					<div class="city"ng-bind="relation.user|userHometown:'now'" ng-if="user.nowProvince !== null"></div>
+				<div class="city" ng-bind="'现居未填写'" ng-if="relation.user.nowProvince == null"></div>
+				</div>
+				<div class="space"></div>
+				<div class="operate">
+					<div ng-if="relation.status === 0"
+						ng-click="create(relation)"
+						class="ek-btn btn-h btn-orange btn-round disable-hide">加为好友</div>
+					<div ng-if="relation.status === 10">
+						<i class="sprite"></i>
+						<div>好友申请已经发送</div>
+					</div>
+					<div ng-if="relation.status === 20">
+						<div>你们已经是好友了</div>
+					</div>
+				</div>
+			</div>
+			<div class="load-more" ng-if="count !== 0 && next">
+				<span ng-if="loading">
+					<i class="sprite"></i>
+				</span>
+				<span ng-click="loadMore()">载入更多</span>
+			</div>
+		</div>
+	</div>
+</div>

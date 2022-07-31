@@ -1,0 +1,611 @@
+<div class="act-setting" ng-init="init()">
+	<div class="act-title">
+		<h3>账号设置</h3>
+	</div>
+	<div class="act-block email-block">
+		<div class="title">
+			<h3>邮箱账号</h3>
+		</div>
+		<div class="content" ng-if="user.email">
+			<div class="tip">使用该邮箱可直接登录Davinci</div>
+			<div class="email" ng-bind="user.email"></div>
+			<!-- 重设密码 -->
+			<div class="orange"
+				ng-if="!pwdEditing && !user.nopwd"
+				ng-click="resetPwd()">重设密码</div>
+			<div ng-if="pwdEditing && !user.nopwd">
+				<form name="pwdForm" novalidate>
+					<div>
+						<input type="password" name="pwd"
+							placeholder="输入旧密码："
+							ng-model="pwdObj.pwd"
+							ng-minlength="6"
+							maxlength="20"
+							required
+							auto-focus/>
+						<div ng-show="pwdForm.pwd.$dirty && pwdForm.pwd.$invalid">
+							<small class="text-danger" ng-show="pwdForm.pwd.$error.required">
+								原密码为必输项
+							</small>
+							<small class="text-danger" ng-show="pwdForm.pwd.$error.minlength">
+								原密码长度应在6～20个字符以内
+							</small>
+						</div>
+					</div>
+					<div>
+						<input type="password" name="npwd"
+							placeholder="输入新密码："
+							ng-model="pwdObj.npwd"
+							ng-minlength="6"
+							maxlength="20"
+							required/>
+						<div ng-show="pwdForm.npwd.$dirty && pwdForm.npwd.$invalid">
+							<small class="text-danger" ng-show="pwdForm.npwd.$error.required">
+								新密码为必输项
+							</small>
+							<small class="text-danger" ng-show="pwdForm.npwd.$error.minlength">
+								新密码长度应在6～20个字符以内
+							</small>
+						</div>
+					</div>
+					<div>
+						<input type="password" name="cpwd"
+							placeholder="确认新密码："
+							ng-model="pwdObj.cpwd"
+							ng-minlength="6"
+							maxlength="20"
+							required/>
+						<div ng-show="pwdForm.cpwd.$dirty && pwdForm.cpwd.$invalid">
+							<small class="text-danger" ng-show="pwdForm.cpwd.$error.required">
+								确认新密码为必输项
+							</small>
+							<small class="text-danger" ng-show="pwdForm.cpwd.$error.minlength">
+								确认新密码长度应在6～20个字符以内
+							</small>
+						</div>
+					</div>
+				</form>
+				<button type="button" class="lbtn lbtn-orange lbtn-reset"
+					ng-disabled="pwdForm.$invalid"
+					ng-click="savePwd()">重设</button>
+				<button type="button" class="lbtn lbtn-grey lbtn-cancel"
+					ng-click="cancelPwd()">取消</button>
+			</div>
+			<!-- 初始化密码 -->
+			<div class="orange"
+				ng-if="!pwdEditing && user.nopwd"
+				ng-click="resetPwd()">初始化密码</div>
+			<div ng-if="pwdEditing && user.nopwd">
+				<form name="pwdForm" novalidate>
+					<div>
+						<input type="password" name="npwd"
+							placeholder="输入新密码："
+							ng-model="pwdObj.npwd"
+							ng-minlength="6"
+							maxlength="20"
+							required/>
+						<div ng-show="pwdForm.npwd.$dirty && pwdForm.npwd.$invalid">
+							<small class="text-danger" ng-show="pwdForm.npwd.$error.required">
+								新密码为必输项
+							</small>
+							<small class="text-danger" ng-show="pwdForm.npwd.$error.minlength">
+								新密码长度应在6～20个字符以内
+							</small>
+						</div>
+					</div>
+					<div>
+						<input type="password" name="cpwd"
+							placeholder="确认新密码："
+							ng-model="pwdObj.cpwd"
+							ng-minlength="6"
+							maxlength="20"
+							required/>
+						<div ng-show="pwdForm.cpwd.$dirty && pwdForm.cpwd.$invalid">
+							<small class="text-danger" ng-show="pwdForm.cpwd.$error.required">
+								确认新密码为必输项
+							</small>
+							<small class="text-danger" ng-show="pwdForm.cpwd.$error.minlength">
+								确认新密码长度应在6～20个字符以内
+							</small>
+						</div>
+					</div>
+				</form>
+				<button type="button" class="lbtn lbtn-orange lbtn-reset"
+					ng-disabled="pwdForm.$invalid"
+					ng-click="savePwd()">重设</button>
+				<button type="button" class="lbtn lbtn-grey lbtn-cancel"
+					ng-click="cancelPwd()">取消</button>
+			</div>
+		</div>
+		<div class="content" ng-if="!user.email">
+			<div ng-if="!actIniting && !actBinding">
+				<span class="lbtn lbtn-orange init-act" ng-click="initAct()">创建新账号</span>
+				<span class="lbtn lbtn-green bind-act" ng-click="bindAct()">绑定原账号</span>
+			</div>
+			<div ng-if="actIniting">
+				<form name="initActForm" novalidate>
+					<div>
+						<input type="text" name="email"
+							placeholder="邮箱地址："
+							ng-model="actObj.email"
+							maxlength="30"
+							required
+							auto-focus/>
+						<div ng-show="initActForm.email.$dirty && (initActForm.email.$invalid || !emailValid())">
+							<small class="text-danger" ng-show="initActForm.email.$error.required">
+								邮箱为必输项
+							</small>
+							<small class="text-danger" ng-show="!emailValid()">
+								请输入有效邮箱
+							</small>
+						</div>
+					</div>
+					<div>
+						<input type="password" name="pwd"
+							placeholder="设置密码："
+							ng-model="actObj.pwd"
+							ng-minlength="6"
+							maxlength="20"
+							required/>
+						<div ng-show="initActForm.pwd.$dirty && initActForm.pwd.$invalid">
+							<small class="text-danger" ng-show="initActForm.pwd.$error.required">
+								密码为必输项
+							</small>
+							<small class="text-danger" ng-show="initActForm.pwd.$error.minlength">
+								密码长度应在6～20个字符以内
+							</small>
+						</div>
+					</div>
+					<div>
+						<input type="password" name="cpwd"
+							placeholder="确认密码："
+							ng-model="actObj.cpwd"
+							ng-minlength="6"
+							maxlength="20"
+							required/>
+						<div ng-show="initActForm.cpwd.$dirty && initActForm.cpwd.$invalid">
+							<small class="text-danger" ng-show="initActForm.cpwd.$error.required">
+								确认密码为必输项
+							</small>
+							<small class="text-danger" ng-show="initActForm.cpwd.$error.minlength">
+								确认密码长度应在6～20个字符以内
+							</small>
+						</div>
+					</div>
+				</form>
+				<button type="button" class="lbtn lbtn-orange save-act"
+					ng-disabled="initActForm.$invalid"
+					ng-click="saveInitAct()">创建账号</button>
+				<button type="button" class="lbtn lbtn-grey cancel-act"
+					ng-click="cancelAct()">取消</button>
+			</div>
+			<div ng-if="actBinding">
+				<form name="bindActForm" novalidate>
+					<div>
+						<input type="text" name="email"
+							placeholder="邮箱地址："
+							ng-model="actObj.email"
+							maxlength="30"
+							required
+							auto-focus/>
+						<div ng-show="bindActForm.email.$dirty && (bindActForm.email.$invalid || !emailValid())">
+							<small class="text-danger" ng-show="bindActForm.email.$error.required">
+								邮箱为必输项
+							</small>
+							<small class="text-danger" ng-show="!emailValid()">
+								请输入有效邮箱
+							</small>
+						</div>
+					</div>
+					<div>
+						<input type="password" name="pwd"
+							placeholder="输入密码："
+							ng-model="actObj.pwd"
+							ng-minlength="6"
+							maxlength="20"
+							required/>
+						<div ng-show="bindActForm.pwd.$dirty && bindActForm.pwd.$invalid">
+							<small class="text-danger" ng-show="bindActForm.pwd.$error.required">
+								密码为必输项
+							</small>
+							<small class="text-danger" ng-show="bindActForm.pwd.$error.minlength">
+								密码长度应在6～20个字符以内
+							</small>
+						</div>
+					</div>
+				</form>
+				<button type="button" class="lbtn lbtn-orange save-act"
+					ng-disabled="bindActForm.$invalid"
+					ng-click="saveBindAct()">绑定账号</button>
+				<button type="button" class="lbtn lbtn-grey cancel-act"
+					ng-click="cancelAct()">取消</button>
+			</div>
+		</div>
+	</div>
+	<div class="act-block truetel-block hide">
+		<div class="title">
+			<h3>手机验证</h3>
+		</div>
+		<div class="content">
+			<div class="tip">作为身份的唯一标识，通过手机验证方便在平台内进行各项交易</div>
+			<div class="verified" ng-if="user.truetel">
+				<div class="truetel" ng-bind="user.truetel"></div>
+				<span class="mark">
+					<!-- <i class="sprite"></i> -->
+					已验证
+				</span>
+			</div>
+			<div class="verify" ng-if="!user.truetel">
+				<div>
+					<input type="text" placeholder="请输入手机号" ng-model="user._truetel">
+					<button class="get-code"
+						ng-disabled="!telValid()"
+						ng-click="getCode()"
+						ng-if="!showCount">获取验证码</button>
+					<button class="get-code"
+						ng-disabled="true"
+						ng-if="showCount"
+						ng-bind="count"></button>
+				</div>
+				<div ng-if="showSubmitCode">
+					<input type="text" placeholder="请输入验证码" ng-model="user._code">
+					<button class="submit-code" ng-click="submitCode()">提交验证码</button>
+				</div>
+
+
+				<div class="tip">60 秒内未收到验证短信请重新点击获取</div>
+			</div>
+		</div>
+	</div>
+	<div class="act-block amount-block" ng-if="user.isAgent">
+		<div class="title">
+			<h3>作品剩余额度</h3>
+		</div>
+		<div class="content" ng-if="user.email">
+			<div class="interact">
+				交互作品 :
+				<amount>
+					<span ng-bind="user.amount.interactFlyer"></span>
+				</amount>个
+				&nbsp;&nbsp;
+			</div>
+			<div class="static">
+			   普通作品 :
+				<amount>
+					<span ng-bind="user.amount.staticFlyer"></span>
+				</amount>个
+			</div>
+		</div>
+	</div>
+	<div class="act-block social-block">
+		<div class="title">
+			社交账号
+		</div>
+		<div class="content">
+			<div class="tip">绑定社交帐号后可使用以下帐号直接登录Davinci</div>
+			<div class="social-list">
+				<a class="weixin"
+					ng-if="!user.wechatOpenid"
+					ng-click="bindSocial('wechat')">
+					<i class="fa fa-weixin"></i>
+					<div>绑定</div>
+				</a>
+				<a class="weixin active"
+					ng-if="user.wechatOpenid&&!user.nopwd&&!whenUserInitial()"
+					ng-click="unbindSocial('wechat')">
+					<i class="fa fa-weixin"></i>
+					<div>解绑</div>
+				</a>
+				<a class="weibo"
+					ng-click="bindSocial('weibo')"
+					ng-if="!user.weiboOpenid">
+					<i class="fa fa-weibo"></i>
+					<div>绑定</div>
+				</a>
+				<a class="weibo active"
+					ng-click="unbindSocial('weibo')"
+					ng-if="user.weiboOpenid&&!user.nopwd&&!whenUserInitial()">
+					<i class="fa fa-weibo"></i>
+					<div>解绑</div>
+				</a>
+
+				<a class="mingdao"
+					ng-click="bindSocial('mingdao')"
+					ng-if="!user.mingdaoOpenid">
+					<i></i>
+					<div>绑定</div>
+				</a>
+				<a class="mingdao active"
+					ng-click="unbindSocial('mingdao')"
+					ng-if="user.mingdaoOpenid&&!user.nopwd&&!whenUserInitial()">
+					<i></i>
+					<div>解绑</div>
+				</a>
+
+
+
+				<a class="qq"
+					ng-click="bindSocial('qq')"
+					ng-if="!user.qqOpenid">
+					<i class="fa fa-qq"></i>
+					<div>绑定</div>
+				</a>
+				<a class="qq active"
+					ng-click="unbindSocial('qq')"
+					ng-if="user.qqOpenid&&!user.nopwd&&!whenUserInitial()">
+					<i class="fa fa-qq"></i>
+					<div>解绑</div>
+				</a>
+
+			</div>
+		</div>
+	</div>
+	<div class="act-block nickname-avatar-block">
+		<div class="title">
+			昵称 / 头像
+		</div>
+		<div class="content">
+			<div class="nickname-edit" ng-if="!nicknameEditing">
+				<div class="nickname" ng-bind="user.nickname"></div>
+				<span class="orange" ng-click="editNickname()">修改</span>
+			</div>
+			<div class="nickname-edit" ng-if="nicknameEditing">
+				<form name="formNickname">
+					<input type="text"
+						required
+						ng-model="user.nickname"
+						ng-minlength="2"
+						maxlength="20">
+					<span class="green"
+						ng-disabled="!formNickname.$valid"
+						ng-click="saveNickname(formNickname.$valid)">保存</span>
+				</form>
+			</div>
+			<div class="avatar-edit">
+				<div class="upload-avatar"
+					image-upload
+					upload-callback="uploadAvatar(data)"
+					tip="图片建议尺寸180x180"
+					options="{
+						url: 'https://wyxcdn.fspage.com/flat-boy-with-vintage-glasses-avatar-vector-illustration.jpg',
+						crop: {&quot;w&quot;:500,&quot;h&quot;:500},
+						ratio: 1
+					}"
+					title="修改头像">上传新头像</div>
+				<span class="blue">头像已更新，请于左侧查看</span>
+			</div>
+		</div>
+	</div>
+	<div class="act-block info-block">
+		<div class="title">
+			基本信息
+		</div>
+		<div class="content">
+			<form name="infoForm" novalidate>
+				<div class="info-line">
+					<div class="title">真实姓名</div>
+					<div class="con" ng-if="!infoEditing"
+						ng-class="{empty: isEmpty(user.truename)}"
+						ng-bind="user.truename | userInfo"></div>
+					<div class="con" ng-if="infoEditing">
+						<input type="text"
+							name="truename"
+							placeholder="请输入真实姓名"
+							ng-model="user.truename"
+							maxlength="20">
+					</div>
+					<act-vb ng-model="user.truenameVb" ng-if="infoEditing"></act-vb>
+				</div>
+				<div class="info-line">
+					<div class="title">性别</div>
+					<div class="con" ng-if="!infoEditing"
+						ng-class="{empty: isEmpty(user.gender)}"
+						ng-bind="user.gender | userGender | userInfo"></div>
+					<div class="con" ng-if="infoEditing">
+						<div class="radio" ng-repeat="gender in GENDER">
+							<label>
+								<input name="gender" type="radio"
+									ng-value="gender.key"
+									required
+									ng-model="user.gender">{{gender.label}}
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="info-line">
+					<div class="title">家乡</div>
+					<div class="con" ng-if="!infoEditing"
+						ng-class="{empty: isEmpty(user.homeProvince)}"
+						ng-bind="user | userHometown:'home' | userInfo"></div>
+					<div class="con" ng-if="infoEditing">
+						<select ng-model="user.homeProvince"
+							ng-change="changeProvince('home')"
+							ng-options="province.key as province.label for province in PROVINCE">
+						</select>
+						<select ng-model="user.homeCity"
+							ng-options="city.key as city.label for city in PROVINCE[user.homeProvince].city">
+						</select>
+					</div>
+				</div>
+				<div class="info-line">
+					<div class="title">现居</div>
+					<div class="con" ng-if="!infoEditing"
+						ng-class="{empty: isEmpty(user.nowProvince)}"
+						ng-bind="user | userHometown:'now' | userInfo"></div>
+					<div class="con" ng-if="infoEditing">
+						<select ng-model="user.nowProvince"
+							ng-change="changeProvince('now')"
+							ng-options="province.key as province.label for province in PROVINCE">
+						</select>
+						<select ng-model="user.nowCity"
+							ng-options="city.key as city.label for city in PROVINCE[user.nowProvince].city">
+						</select>
+					</div>
+				</div>
+				<div class="info-line">
+					<div class="title">学历</div>
+					<div class="con" ng-if="!infoEditing"
+						ng-class="{empty: isEmpty(user.education)}"
+						ng-bind="user.education | userEducation | userInfo"></div>
+					<div class="con" ng-if="infoEditing">
+						<select ng-model="user.education"
+							ng-options="edu.key as edu.label for edu in EDU">
+						</select>
+					</div>
+				</div>
+				<div class="info-line">
+					<div class="title">院校</div>
+					<div class="con" ng-if="!infoEditing"
+						ng-class="{empty: isEmpty(user.school)}"
+						ng-bind="user.school | userInfo"></div>
+					<div class="con" ng-if="infoEditing">
+						<input type="text"
+							name="school"
+							placeholder="请输入院校"
+							ng-model="user.school"
+							maxlength="40">
+					</div>
+				</div>
+				<div class="info-line">
+					<div class="title">职业</div>
+					<div class="con" ng-if="!infoEditing"
+						ng-class="{empty: isEmpty(user.job)}"
+						ng-bind="user.job | userInfo"></div>
+					<div class="con" ng-if="infoEditing">
+						<input type="text"
+							name="job"
+							placeholder="请输入职业"
+							ng-model="user.job"
+							maxlength="20">
+					</div>
+				</div>
+				<div class="info-line">
+					<div class="title">职务</div>
+					<div class="con" ng-if="!infoEditing"
+						ng-class="{empty: isEmpty(user.position)}"
+						ng-bind="user.position | userInfo"></div>
+					<div class="con" ng-if="infoEditing">
+						<input type="text"
+							name="position"
+							placeholder="请输入职务"
+							ng-model="user.position"
+							maxlength="20">
+					</div>
+				</div>
+				<div class="info-line">
+					<div class="title">手机</div>
+					<div class="con" ng-if="!infoEditing"
+						ng-class="{empty: isEmpty(user.tel)}"
+						ng-bind="user.tel | userInfo"></div>
+					<div class="con" ng-if="infoEditing">
+						<input type="text"
+							name="tel"
+							placeholder="请输入手机号码"
+							ng-model="user.tel"
+							maxlength="20">
+					</div>
+					<act-vb ng-model="user.telVb" ng-if="infoEditing"></act-vb>
+				</div>
+				<div class="info-line">
+					<div class="title">邮箱</div>
+					<div class="con" ng-if="!infoEditing"
+						ng-class="{empty: isEmpty(user.tel)}"
+						ng-bind="user.email | userInfo"></div>
+					<div class="con" ng-if="infoEditing">
+						<input type="text" class="form-control"
+							readonly
+							name="email"
+							ng-model="user.email"
+							ng-disabled="true">
+					</div>
+					<act-vb ng-model="user.emailVb" ng-if="infoEditing"></act-vb>
+				</div>
+				<div class="info-line">
+					<div class="title">Q Q</div>
+					<div class="con" ng-if="!infoEditing"
+						ng-class="{empty: isEmpty(user.qq)}"
+						ng-bind="user.qq | userInfo"></div>
+					<div class="con" ng-if="infoEditing">
+						<input type="text"
+							name="qq"
+							placeholder="请输入 QQ 号码"
+							ng-model="user.qq"
+							maxlength="20">
+					</div>
+					<act-vb ng-model="user.qqVb" ng-if="infoEditing"></act-vb>
+				</div>
+				<div class="info-line">
+					<div class="title">微信</div>
+					<div class="con" ng-if="!infoEditing"
+						ng-class="{empty: isEmpty(user.weixin)}"
+						ng-bind="user.weixin | userInfo"></div>
+					<div class="con" ng-if="infoEditing">
+						<input type="text"
+							name="weixin"
+							placeholder="请输入微信"
+							ng-model="user.weixin"
+							maxlength="20">
+					</div>
+					<act-vb ng-model="user.weixinVb" ng-if="infoEditing"></act-vb>
+				</div>
+				<div class="info-line">
+					<div class="title">微博</div>
+					<div class="con" ng-if="!infoEditing"
+						ng-class="{empty: isEmpty(user.weibo)}"
+						ng-bind="user.weibo | userInfo"></div>
+					<div class="con" ng-if="infoEditing">
+						<input type="text"
+							name="weibo"
+							placeholder="请输入微博"
+							ng-model="user.weibo"
+							maxlength="40">
+					</div>
+					<act-vb ng-model="user.weiboVb" ng-if="infoEditing"></act-vb>
+				</div>
+				<div class="info-line">
+					<div class="title">其他</div>
+					<div class="con" ng-if="!infoEditing"
+						ng-class="{empty: isEmpty(user.extra)}"
+						ng-bind="user.extra | userInfo"></div>
+					<div class="con" ng-if="infoEditing">
+						<input type="text"
+							name="extra"
+							placeholder="请输入其他"
+							ng-model="user.extra"
+							maxlength="20">
+					</div>
+				</div>
+				<div class="info-line signature">
+					<div class="title">个性签名</div>
+					<div class="con" ng-if="!infoEditing"
+						ng-class="{empty: isEmpty(user.signature)}"
+						ng-bind="user.signature | userInfo"></div>
+					<div class="con" ng-if="infoEditing">
+						<input type="text"
+							name="signature"
+							placeholder="请输入个性签名"
+							ng-model="user.signature"
+							maxlength="50">
+					</div>
+				</div>
+				<div class="info-line">
+					<div class="title">个人简介</div>
+					<div class="con" ng-if="!infoEditing"
+						ng-class="{empty: isEmpty(user.desc)}"
+						ng-bind="user.desc | userInfo"></div>
+					<div class="con" ng-if="infoEditing">
+						<textarea type="text"
+							ng-model="user.desc"
+							maxlength="50"
+							placeholder="尚未录入任何信息，请在此写下您为人传诵的江湖事迹，让我们敬仰一番吧～"></textarea>
+					</div>
+				</div>
+			</form>
+			<span class="orange" ng-if="!infoEditing" ng-click="editInfo()">修改</span>
+			<span class="green"
+				ng-if="infoEditing"
+				ng-disabled="!infoForm.$valid"
+				ng-click="saveInfo(infoForm.$valid)">保存</span>
+		</div>
+	</div>
+</div>

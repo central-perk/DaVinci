@@ -1,0 +1,109 @@
+.modal-tpl-view {
+	.modal-content > div {
+		display: flex;
+	}
+	.tabbable {
+		width: 120px;
+		position: relative;
+	}
+	.view-nav {
+		width: 100%;
+		height: 100%;
+		background-color: $green-l;
+		position: absolute;
+		li {
+			width: 100%;
+			height: 120px;
+			&.active {
+				@include mx-angle(left, #eee, 10px);
+				background-color: #71b89e;
+				a {
+					.sprite {
+						background-position-y: -278px;
+					}
+				}
+			}
+			a {
+				width: 100%;
+				height: 100%;
+				color: #4A4A4A;
+				tab-heading {
+					height: 100%;
+					@include mx-flex-center(column);
+				}
+				.sprite {
+					margin-bottom: 10px;
+				}
+			}
+		}
+		// 图标
+		.sprite.tpl {
+			width: 37px;
+			height: 38px;
+			background-position: -213px -235px;
+			margin-bottom: 10px;
+		}
+		.sprite.author {
+			width: 38px;
+			height: 38px;
+			background-position: -255px -235px;
+		}
+		.sprite.reply {
+			width: 39px;
+			height: 38px;
+			background-position: -299px -235px;
+		}
+		.like, .collect{
+			width: 60px;
+			height: 60px;
+			border: 1px solid #FF5500;
+			border-radius: 50%;
+			margin: 0 auto;
+			cursor: pointer;
+			.sprite {
+				cursor: pointer;
+			}
+			&:not(active):hover {
+				background-color: #FFF600;
+				border: 1px solid #FFF600;
+			}
+			&.active {
+				border: 1px solid #FFF600;
+				background-color: #FFF600;
+			}
+		}
+		.like {
+			margin-top: 160px;
+			.sprite {
+				width: 35px;
+				height: 31px;
+				background-position: -37px -392px;
+				margin: 11px 0 0 13px;
+			}
+			&.active {
+				.sprite {
+					background-position: -116px -392px;
+				}
+			}
+		}
+		.collect {
+			margin-top: 20px;
+			.sprite {
+				width: 32px;
+				height: 29px;
+				background-position: 0 -392px;
+				margin: 18px 0 0 13px;
+			}
+			&.active {
+				.sprite {
+					background-position: -78px -393px;
+				}
+			}
+		}
+	}
+}
+
+@import './tpl/index';
+// @import './show/index';
+// @import './author/index';
+// @import './reply/index';

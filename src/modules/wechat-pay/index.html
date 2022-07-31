@@ -1,0 +1,38 @@
+<section class="mdl-wechat-pay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" data-ng-click="close();">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            <h3>微信支付</h3>
+        </div>
+        <div class="modal-body">
+            <div class="pay-title">
+                     <div class="col-sm-5 company">
+                        商品详情:{{setting.subject}}
+                     </div>
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-3 company">
+                        收款方:Davinci
+                    </div>
+                    <div class="col-sm-2 money">
+                        <amount><i class="fa fa-cny"></i>{{setting.price}}</amount>  
+                    </div>
+            </div>
+            <div class="pay-qrcode" ng-if="qrcode.done">
+                <qr-block link="{{qrcode.link}}" size="160"></qr-block>
+                <p class="tips">请使用微信扫一扫，扫描二维码支付</p>
+            </div>
+            <div class="pay-qrcode text-center" ng-if="!qrcode.done">
+                加载二维码中...
+            </div>
+        </div>
+        <div class="modal-footer">
+           <div class="pay-tips">
+                <p><a  data-ng-click="close()"> 更换其他支付方式</a></p>
+                <small class="text-danger">如您已成功支付，请刷新页面查看详情</small>
+           </div>
+        </div>
+    </div>
+</section>

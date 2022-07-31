@@ -1,0 +1,50 @@
+<div class="manage container" ng-init="contactsPageinit()" resize-to-bottom top="60">
+    <div class="row">
+        <h3 class="title">客户管理</h3>
+        <div class="content contact-list">
+            <ng-include src="'/views/templates/contacts/search.html'"></ng-include>
+            <div class="operate">
+                <button class="btn btn-success btn-sm" contact-add>新增客户</button>
+                <button class="btn btn-primary btn-sm" ng-disabled="whenMultiSelected()" ng-click="toSelectGroup($event)">保存到群组</button>
+                <!-- <button class="btn btn-primary btn-sm" contact-merge>合并重复</button> -->
+                <span class="contact-more" dropdown is-open="contactMore.isOpen">
+                    <button class="btn btn-success btn-sm dropdown-toggle" type="button" id="moreOperate" ng-disabled="whenMultiSelected()" data-toggle="dropdown">
+                        更多操作
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <!-- 发送短信，发送邮件功能暂不提供 -->
+                        <!-- beign -->
+                        <!-- <li role="presentation">
+                            <a role="menuitem" tabindex="-1" ng-click="toSendSms()">
+                                <i class="fa fa-comments"></i>发送短信
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" ng-click="toSendMail()">
+                                <i class="fa fa-envelope"></i>发送邮件
+                            </a>
+                        </li>
+                        <li role="presentation" class="divider"></li> -->
+                        <!-- end -->
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" ng-click="toAddNote()">
+                                <i class="fa fa-file-text"></i>添加笔记
+                            </a>
+                        </li>
+                        <li role="presentation" ng-click="toRemoveMultiContact()">
+                            <a role="menuitem" tabindex="-1">
+                                <i class="fa fa-trash"></i>批量删除
+                            </a>
+                        </li>
+                    </ul>
+                </span>
+                <button class="btn btn-info btn-sm pull-right" contact-setting>自定义显示列</button>
+                <button class="btn btn-info btn-sm pull-right" ng-disabled="whenMultiSelected()" ng-click="toExportContact()">导出</button>
+                <button class="btn btn-info btn-sm pull-right" ng-click="toImportContact()">导入</button>
+                <div class="clear"></div>
+            </div>
+            <ng-include src="'/views/templates/contacts/table.html'"></ng-include>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="edit-form edit-layer">
+  <div class="tip">Select and drag layers to change their order</div>
+  <div
+    class="layer-list"
+    ui-sortable
+    scroll="false"
+    ng-model="layers"
+    ng-if="layers.length"
+  >
+    <div
+      ng-repeat="layer in layers"
+      class="layer sort-item"
+      ng-class="{active: layer.active}"
+    >
+      <div class="inner" ng-click="layerQuickClick($event, layer, 'choose')">
+        <i
+          ng-class="layer.hidden ? 'eye-slash' : 'eye'"
+          ng-click="layerQuickClick($event, layer, 'display')"
+        ></i>
+
+        <!-- {{layer.style.zIndex}} -->
+        <!-- text -->
+        <!-- <i class="fa fa-text-width left" ng-if="isTextLayer(layer)"></i> -->
+
+        <span
+          class="text-content left"
+          ng-bind="getText(layer)"
+          ng-if="isText(layer)"
+        ></span>
+
+        <span
+          class="text-content left"
+          ng-bind="layer.name"
+          ng-if="isImage(layer)"
+        ></span>
+
+        <span
+          class="text-content left"
+          ng-bind="layer.content.label || layer.name"
+          ng-if="isIbox(layer)"
+        ></span>
+
+        <span
+          class="text-content left"
+          ng-bind="layer.name"
+          ng-if="isMap(layer)"
+        ></span>
+
+        <span
+          class="text-content left"
+          ng-bind="layer.name"
+          ng-if="isVideo(layer)"
+        ></span>
+
+        <span
+          class="text-content left"
+          ng-bind="layer.name"
+          ng-if="isSlider(layer)"
+        ></span>
+
+        <span
+          class="text-content left"
+          ng-bind="layer.name"
+          ng-if="isShape(layer)"
+        ></span>
+
+        <i class="edit" ng-click="layerQuickClick($event, layer, 'edit')"></i>
+        <i
+          class="remove"
+          ng-click="layerQuickClick($event, layer, 'remove')"
+        ></i>
+      </div>
+    </div>
+  </div>
+</div>

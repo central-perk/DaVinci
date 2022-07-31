@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+{{> tag_home_head}}
+
+<body class="page-sign">
+    {{> home_header}}
+    {{> wrapper_cloud}}
+    <![if !lte IE 9]>
+
+    <div class="content">
+        <form>
+            <div class="form-common form-signin clearfix container" id="form-signin">
+                <div class="form-common-head">
+                    <div class="inner">
+                         <img src="/images/LoginIcon.png">
+                         <div class="word">用户登录</div>
+                    </div>
+                </div>
+                <div class="form-common-content">
+                    <div class="form-control-outter email">
+                       <input class="form-control" value="{{#if social}}{{social.email}}{{/if}}" id="email" name="email" type="email" />
+                    </div>
+                    <div class="form-control-outter pwd">
+                        <input class="form-control" id="pwd" name="pwd" type="password" />
+                        <a class="btn-forget-pwd" href="/forget_pwd.html">忘记密码？</a>
+                    </div>
+                    <div class="form-control-outter remind">
+                        <label>
+                            <input type="checkbox" name="rmr" value="true"/>
+                            下次自动登录
+                        </label>
+                    </div>
+                </div>
+                <div class="form-common-footer">
+                    <div class="btn-submit green">登录{{#if social}}并绑定{{social.name}}{{/if}}
+                    </div>
+                </div>
+                {{>home_social_login}}
+            </div>
+        </form>
+        <div class="word-welcome">
+             <p>还不是Davinci用户？</p>
+             <p><a class="btn-red-link" href="/signup.html">快来注册吧</a>,秒变H5高手哦！</p>
+        </div>
+    </div>
+    <![endif]>
+
+    {{> home_script}}
+    {{> g_script}}
+</body>
+
+</html>

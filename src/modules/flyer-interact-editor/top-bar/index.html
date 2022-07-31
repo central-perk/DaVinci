@@ -1,0 +1,15 @@
+<header class="top-bar">
+  <div class="brand" ng-click="jump()">
+    <img
+      src="/images/brand/logo_dark.png"
+      ng-if="!user.isAgent&&!user.isPartnerUser"
+    />
+    <span ng-if="!tplMode">Draft Mode</span>
+    <span ng-if="tplMode">Tempate Mode</span>
+  </div>
+  <div class="center">
+    <fi-create-layer></fi-create-layer>
+    <fi-setting></fi-setting>
+  </div>
+  <fi-operate></fi-operate>
+</header>

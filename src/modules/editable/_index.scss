@@ -1,0 +1,21 @@
+.mdl-editable {
+	.view-block {
+		.btn-edit, .btn-del {
+			margin-left: 5px;
+			float: right;
+			color: $grey;
+			display: none;
+		}
+		&:hover {
+			.btn-edit, .btn-del {
+				display: block;
+			}
+		}
+	}
+	.edit-block {
+		input {
+			width: auto;
+			display: inline-block;
+		}
+	}
+}

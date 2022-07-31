@@ -1,0 +1,22 @@
+{{{configScript}}}
+
+{{#if isproduction}}
+<script src="/{{mainVendorJs}}"></script>
+<script type="text/javascript" data-main="{{mainJs}}" src="/{{requireJs}}"></script>
+{{else}}
+ <script src="/assets/js/main-vendor.js"></script>
+ <script data-main="main" src="/assets/libs/requirejs/require.js"></script>
+{{/if}}
+
+{{#each templates}}
+<script type="text/ng-template" path="{{path}}">
+    {{{tpl}}}
+</script>
+{{/each}}
+<script type="text/javascript">
+ if (window.document.domain.indexOf('davinci.echoes.link') > -1) {
+       window.document.domain = 'davinci.echoes.link';
+ }
+</script>
+{{> g_script}}
+

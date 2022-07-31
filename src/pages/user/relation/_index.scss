@@ -1,0 +1,17 @@
+@import './blk/index';
+
+.user-relation-nav {
+	.add-relation {
+		width: 160px;
+		color: $ek-green !important;
+		font-size: 18px;
+		padding: 0.375em 1em;
+		@include mx-flex-center;
+		.sprite {
+			width: 23px;
+			height: 22px;
+			background-position: -347px -337px;
+			margin-right: 10px;
+		}
+	}
+}

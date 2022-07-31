@@ -1,0 +1,118 @@
+@import "shared/shared";
+
+.page-plaza {
+	.top-area {
+		background-color: #f1f2b9;
+	}
+	.hot-flyers {
+		height: 350px;
+		margin: 50px 0;
+		overflow: hidden;
+		overflow-x: auto;
+		padding: 0 40px;
+		& > .container {
+			width: 1170px !important;
+		}
+		.headline {
+			height: 24px;
+			line-height: 24px;
+			margin-bottom: 15px;
+			.title {
+				font-size: 20px;
+				color: #ee580c;
+				margin-right: 10px;
+			}
+			.bg-grey {
+				background-color: #f0f0f0;
+				display: inline-block;
+				vertical-align: top;
+				padding: 0 10px;
+				.green {
+					color: #3b9466;
+				}
+				.red {
+					color: #c22200;
+				}
+			}
+		}
+		.slick-prev, .slick-next {
+			height: 85px;
+			width: 19px;
+			margin-top: -40px;
+			opacity: 0.8;
+			&:before {
+				content: '';
+			}
+			&:hover {
+				opacity: 1;
+			}
+		}
+		.slick-prev {
+			background-image: url(/images/slick-prev.png);
+		}
+		.slick-next {
+			background-image: url(/images/slick-next.png);
+		}
+	}
+	.good-flyers {
+		background-color: #b8dbcb;
+		padding-bottom: 100px;
+		.headline {
+			display: flex;
+			padding: 20px 0 30px 0;
+			line-height: 30px;
+			position: relative;
+			.title {
+				font-size: 20px;
+				margin-right: 60px;
+			}
+			.sort {
+				.form-control {
+					width: 140px;
+					margin-right: 15px;
+				}
+			}
+			.search {
+				position: absolute;
+				right: 0;
+				.form-control {
+					padding-right: 43px;
+				}
+				.search-btn {
+					width: 36px;
+					height: 30px;
+					border: 1px solid white;
+					display: block;
+					text-align: center;
+					position: absolute;
+					right: 0;
+					top: 0;
+
+					i {
+						background: none;
+						color: white;
+						line-height: 28px;
+						font-size: 18px;
+					}
+				}
+			}
+			.form-control {
+				display: inline-block;
+				background: transparent;
+				border: 0;
+				border-radius: 0;
+				outline: 1px solid white;
+				outline-offset: -1px;
+				vertical-align: top;
+			}
+		}
+		.search-more{
+			button{
+				width: 300px;
+				margin: 0 auto;
+			}
+		}
+	}
+}
+
+@import './card/index';

@@ -1,0 +1,89 @@
+@mixin fi-edit-layer {
+	.edit-layer {
+		.operation {
+			.btn-group {
+				margin-bottom: 10px;
+			}
+		}
+		.layer-list {
+			width: 100%;
+			height: calc(100% - 60px);
+			overflow-y: auto;
+			overflow-x: hidden;
+			position: absolute;
+			left: 0;
+			top: 60px;
+			padding: 15px 20px;
+			background-color: #D8D8D8;
+			.layer {
+				height: 35px !important;
+				line-height: 35px;
+				margin-bottom: 12px;
+				color: $white;
+				background-color: #4A4A4A;
+				cursor: pointer;
+				&:hover {
+					background-color: #70c8a0;
+				}
+				&:last-child {
+					margin-bottom: 0;
+				}
+				&.active {
+					background-color: #3B9466;
+				}
+				&.ui-sortable-placeholder {
+					padding: 0;
+					height: 35px !important;
+					margin: 0 0 15px 0 !important;
+					min-height: 0!important;
+					border-width: 2px !important;
+					@include border-radius(3px !important);
+				}
+				.inner {
+					padding: 0 10px;
+					display: flex;
+					&:hover {
+						i.remove, i.edit {
+							display: block;
+						}
+					}
+					i.eye, i.eye-slash {
+						width: 22px;
+						height: 18px;
+						margin: 8px 10px 0 0;
+					}
+					i.eye {
+						background-position: -153px -215px;
+					}
+					i.eye-slash {
+						background-position: -179px -215px;
+					}
+					i.remove, i.edit {
+						display: none;
+					}
+					i.remove {
+						width: 16px;
+						height: 16px;
+						background-position: -66px -200px;
+						margin: 9px 0 0 10px;
+					}
+					i.edit {
+						width: 15px;
+						height: 15px;
+						margin: 10px 7px 0 0;
+						background-position: -205px -219px;
+					}
+					.text-content {
+						width: 194px;
+						height: 35px;
+						display: inline-block;
+						@include mx-outtext;
+					}
+					i {
+						background-image: url(/images/sprite.png);
+					}
+				}
+			}
+		}
+	}
+}

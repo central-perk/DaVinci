@@ -1,0 +1,57 @@
+<div class="fi-grid {{gridColor}}">
+	<div>
+		<div class="grid-vertical"></div>
+		<div class="grid-vertical"></div>
+		<div class="grid-vertical"></div>
+		<div class="grid-vertical"></div>
+		<div class="grid-vertical"></div>
+		<div class="grid-vertical"></div>
+		<div class="grid-vertical"></div>
+	</div>
+	<div>
+		<div class="grid-horizontal"></div>
+		<div class="grid-horizontal"></div>
+		<div class="grid-horizontal"></div>
+		<div class="grid-horizontal"></div>
+		<div class="grid-horizontal"></div>
+		<div class="grid-horizontal"></div>
+		<div class="grid-horizontal"></div>
+		<div class="grid-horizontal"></div>
+		<div class="grid-horizontal"></div>
+		<div class="grid-horizontal"></div>
+		<div class="grid-horizontal"></div>
+		<div class="grid-horizontal"></div>
+	</div>
+	<div class="trigger" dropdown is-open="dropdown.isOpen">
+		<i class="sprite"
+			ng-click="toggleGrid()"
+			tooltip="点击显示网络"
+			tooltip-placement="bottom"
+			tooltip-append-to-body="true"></i>
+
+		<i class="sprite active" style="display: none"
+			ng-click="toggleGrid()"
+			dropdown-toggle
+			ng-mouseenter="dropdown.isOpen = true"></i>
+
+		<ul class="dropdown-menu" ng-mouseleave="dropdown.isOpen = false">
+			<span class="arrow"></span>
+			<li class="title">选择网格颜色</li>
+			<li class="color red" ng-click="chooseColor($event)">
+				<a><i></i>红色</a>
+			</li>
+			<li class="color blue" ng-click="chooseColor($event)">
+				<a><i></i>蓝色</a>
+			</li>
+			<li class="color green" ng-click="chooseColor($event)">
+				<a><i></i>绿色</a>
+			</li>
+			<li class="color yellow" ng-click="chooseColor($event)">
+				<a><i></i>黄色</a>
+			</li>
+			<li class="color grey" ng-click="chooseColor($event)">
+				<a><i></i>灰色</a>
+			</li>
+		</ul>
+	</div>
+</div>

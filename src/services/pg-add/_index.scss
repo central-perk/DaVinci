@@ -1,0 +1,32 @@
+.modal-dialog .pg-add {
+    .pg-tpl-categorys {
+        margin-bottom: 15px;
+        .category {
+            margin-right: 5px;
+        }
+    }
+    .pg-tpls {
+        .tpl {
+            display: inline-block;
+            margin: 0 16px 10px 0;
+            cursor: pointer;
+            &:nth-child(5n) {
+                margin-right: 0;
+            }
+            .thumb {
+                width: 100px;
+                height: 156px;
+                margin-bottom: 5px;
+                overflow: hidden;
+                @include border-radius(5px);
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .title {
+                text-align: center;
+            }
+        }
+    }
+}

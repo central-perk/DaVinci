@@ -1,0 +1,33 @@
+@import '../components/custome/text/content/index';
+@import '../components/custome/image/content/index';
+@import '../components/custome/ibox/content/index';
+@import '../components/custome/map/content/index';
+@import '../components/custome/video/content/index';
+@import '../components/custome/slider/content/index';
+@import '../components/custome/shape/content/index';
+
+@mixin fi-edit-content {
+	.edit-content {
+		.tip {
+			font-size: 12px;
+			.tag {
+				width: 40px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				margin-right: 5px;
+				background-color: #F8E71C;
+				color: #C22200;
+				display: inline-block;
+				@include border-radius(3px);
+			}
+		}
+		@include fi-edit-content-custom-text;
+		@include fi-edit-content-custom-image;
+		@include fi-edit-content-custom-ibox;
+		@include fi-edit-content-custom-map;
+		@include fi-edit-content-custom-video;
+		@include fi-edit-content-custom-slider;
+		@include fi-edit-content-custom-shape;
+	}
+}

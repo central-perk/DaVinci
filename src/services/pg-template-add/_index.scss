@@ -1,0 +1,14 @@
+.svs-pg-template-add{
+	.thumb{
+			display: inline-block;
+	        width: 100px;
+            height: 156px;
+            margin-bottom: 5px;
+            overflow: hidden;
+            @include border-radius(5px);
+            img {
+                width: 100%;
+                height: 100%;
+            }
+	}
+}

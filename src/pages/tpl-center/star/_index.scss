@@ -1,0 +1,33 @@
+.tc-star {
+	position: relative;
+	.dropdown-toggle {
+		cursor: pointer;
+	}
+	.dropdown-menu {
+		width: 180px;
+		box-shadow: 0 0px 8px rgba(0, 0, 0, 0.175);
+		border-radius: 0;
+		top: calc(100% + 11px);
+		left: calc(50% - 90px);
+		padding: 15px;
+		font-size: 12px;
+		& > div {
+			margin-bottom: 10px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+			display: flex;
+			justify-content: space-between;
+		}
+		.arrow {
+			@include mx-arrow;
+		}
+		.center {
+			display: block !important;
+			text-align: center;
+		}
+		.sep {
+			color: $grey;
+		}
+	}
+}

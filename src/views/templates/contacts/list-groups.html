@@ -1,0 +1,56 @@
+<div class="manage container" ng-init="groupContactsPageinit()" resize-to-bottom top="60">
+    <div class="row">
+        <h3 class="title">群组管理</h3>
+        <div class="content">
+            <div class="row group-contact-list contact-list">
+                <div class="pane-left">
+                    <group-manage></group-manage>
+                </div>
+                <div class="col-sm-9 pane-right">
+                    <group-edit></group-edit>
+                    <div class="operate">
+                        <span class="btn btn-primary btn-sm" ng-disabled="whenMultiSelected()"  ng-click="toSelectGroup($event)">保存到群组</span>
+                        <span class="contact-more dropdown">
+                            <span class="btn btn-success btn-sm dropdown-toggle" ng-disabled="whenMultiSelected()" type="button" id="moreOperate" data-toggle="dropdown">
+                                更多操作
+                                <span class="caret"></span>
+                            </span>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="moreOperate">
+                         <!--        <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" ng-click="toSendSms()">
+                                        <i class="fa fa-comments"></i>发送短信
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" ng-click="toSendMail()">
+                                        <i class="fa fa-envelope"></i>发送邮件
+                                    </a>
+                                </li>
+                                <li role="presentation" class="divider"></li> -->
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" ng-click="toAddNote()">
+                                        <i class="fa fa-file-text"></i>添加笔记
+                                    </a>
+                                </li>
+                                <li role="presentation" ng-click="toRemoveMultiContact()">
+                                    <a role="menuitem" tabindex="-1">
+                                        <i class="fa fa-trash"></i>批量删除
+                                    </a>
+                                </li>
+                                <li role="presentation" ng-click="toUnBindGroup()">
+                                    <a role="menuitem" tabindex="-1"
+                                        ng-if=" group.type === 'custom'">
+                                        <i class="fa fa-minus-square"></i>移出群组
+                                    </a>
+                                </li>
+                            </ul>
+                        </span>
+                        <!--        <button class="btn btn-default btn-sm pull-right" contact-list-config>自定义显示列</button> -->
+                    </div>
+                    <ng-include src="'/views/templates/contacts/table.html'"></ng-include>
+                </div>
+            </div>
+            <!-- END PAGINATION -->
+        </div>
+    </div>
+</div>

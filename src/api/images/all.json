@@ -1,0 +1,80 @@
+{
+  "code": 200,
+  "msg": {
+    "public": {
+      "static": [
+        {
+          "tag": "colorBackground",
+          "name": "多彩背景",
+          "data": []
+        },
+        {
+          "tag": "festivalElements",
+          "name": "节日元素",
+          "data": []
+        },
+        {
+          "tag": "seasonOfLove",
+          "name": "恋爱季节",
+          "data": []
+        },
+        {
+          "tag": "cartoonCharacters",
+          "name": "卡通人物",
+          "data": []
+        },
+        {
+          "tag": "officeSupplies",
+          "name": "办公用品",
+          "data": []
+        },
+        {
+          "tag": "abstractThings",
+          "name": "抽象事物",
+          "data": []
+        },
+        {
+          "tag": "vehicle",
+          "name": "交通工具",
+          "data": []
+        },
+        {
+          "tag": "otherImages",
+          "name": "其他图像",
+          "data": []
+        }
+      ],
+      "dynamic": [
+        {
+          "tag": "festivalElements",
+          "name": "节日元素",
+          "data": []
+        },
+        {
+          "tag": "seasonOfLove",
+          "name": "恋爱季节",
+          "data": []
+        },
+        {
+          "tag": "flowersStory",
+          "name": "鲜花物语",
+          "data": []
+        },
+        {
+          "tag": "cartoonCharacters",
+          "name": "卡通玩偶",
+          "data": []
+        }
+      ]
+    },
+    "user": {
+      "static": [
+        {
+          "tag": "default",
+          "name": "默认分类",
+          "data": []
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,45 @@
+.user-tpl-card-created {
+	width: 100%;
+	.top-part {
+		.operate .tip {
+			color: $red !important;
+		}
+		.draft {
+			width: 24px;
+			height: 27px;
+			background-position: -283px -338px;
+			position: absolute;
+			right: 0;
+			top: 0;
+			z-index: 10;
+		}
+	}
+	.bottom-part {
+		background-color: #F0F0F0;
+		border-radius: 0 0 3px 3px;
+		&:hover {
+			i.cog {
+				-webkit-animation: fa-spin 2s infinite linear;
+				animation: fa-spin 2s infinite linear;
+			}
+		}
+		.row-1, .row-2 {
+			height: 31px;
+			line-height: 30px;
+			padding: 0 10px;
+		}
+		.row-1 {
+			border-bottom: 1px solid #DDDDDD;
+			position: relative;
+			.tpl-title {
+				height: 30px;
+				line-height: 30px;
+				padding-right: 20px;
+				@include mx-outtext;
+			}
+		}
+		.row-2 {
+			border-top: 1px solid $white;
+		}
+	}
+}

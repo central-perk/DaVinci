@@ -1,0 +1,16 @@
+<div class="edit-form edit-content" ng-switch on="layer.type">
+	<fi-edit-content-custom-text
+		ng-switch-when="1" ng-model="layer"></fi-edit-content-custom-text>
+	<fi-edit-content-custom-image
+		ng-switch-when="2" ng-model="layer"></fi-edit-content-custom-image>
+	<fi-edit-content-custom-ibox
+		ng-switch-when="3" ng-model="layer"></fi-edit-content-custom-ibox>
+	<fi-edit-content-custom-map
+		ng-switch-when="4" ng-model="layer"></fi-edit-content-custom-map>
+	<fi-edit-content-custom-video
+		ng-switch-when="5" ng-model="layer"></fi-edit-content-custom-video>
+	<fi-edit-content-custom-slider
+		ng-switch-when="6" ng-model="layer"></fi-edit-content-custom-slider>
+	<fi-edit-content-custom-shape
+		ng-switch-when="7" ng-model="layer"></fi-edit-content-custom-shape>
+</div>

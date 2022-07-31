@@ -1,0 +1,71 @@
+<div class="page-content" ng-init="list()">
+    <div class="price">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-appbar">
+                    <div class="group">
+                        <ul>
+                            <li>
+                                <input type="text" class="search-input" name="query" placeholder="按标题搜索..." ng-model="query.name" ng-enter="list(query)">
+                                <input type="button" class="search-btn" ng-click="list(query)">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- BEGIN TABLE -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>页面名称</th>
+                                <th>排序</th>
+                                <th>封面</th>
+                                <th>作者</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="card in cards">
+                                <td ng-bind="card.name"></td>
+                                <td ng-bind="card.sort"></td>
+                                <td ><img ng-src="{{card.cover}}" alt=""></td>
+                                <td ng-bind="card.user.nickname"></td>
+                                <td ng-bind="card.createdTime|dateDisplay">
+                                </td>
+                                <td>
+                                     <a class="btn btn-danger" 
+                                        ng-click="removeCard(card._id)">删除
+                                     </a>
+                                     <a class="btn btn-info" 
+                                        ng-click="toUpdateCard(card)">修改
+                                     </a>
+                                </td>
+                            </tr>
+    
+                            <tr class="text-center text-mutd" ng-if="cards.length === 0">
+                                <td colspan="9">
+                                    暂无单页模板
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- END TABLE -->
+        <!-- BEGIN PAGINATION -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pull-right">
+                    <dvcpagination ng-model="pagination" max-size="5"></dvcpagination>
+                </div>
+            </div>
+        </div>
+        <!-- END PAGINATION -->
+    </div>
+</div>

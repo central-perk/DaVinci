@@ -1,0 +1,96 @@
+<div class="manage container ct-base ct-pay ct-charge" ng-init="chargePageInit()" resize-to-bottom top="60">
+    <div class="row">
+        <h3 class="title" ng-bind="title"></h3>
+        <div class="content">
+        <form method="post" action="{{'/api/buy/'+orderType}}" name="chargeForm">
+                <div class="section">
+                    <p class="section-title">当前余额是
+                        <span class="text-success"><b>{{account.balance}}元</b>
+                        </span>。账户资金只限于站内使用，不可提现。
+                    </p>
+                </div>
+                <div class="section">
+                    <p class="section-title">
+                        <span class="step">1</span>选择充值金额
+                    </p>
+                </div>
+                <div class="boxes row boxes-charge">
+                    <div class="boxes-charge-content">
+                        <div class="box"
+                            ng-class="{'active':cost.active}"
+                            ng-click="chooseCost(cost)"
+                            ng-repeat="cost in costs">
+                            <h4 class="name">
+                                ¥
+                                <amount>{{cost.price}}</amount>元</h4>
+                            <span class="fa-stack fa-lg icon-checked">
+                                <i class="fa fa-stop fa-stack-2x"></i>
+                                <i class="fa fa-check fa-stack-1x fa-inverse"></i>
+                            </span>
+                                <p ng-if="cost.gift" class="media text-danger text-center price-gift"><b>赠送¥{{cost.gift}}元</b>
+                                </p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="section">
+                    <p class="section-title">
+                        <span class="step">2</span>选择支付方式
+                    </p>
+                    <div class="form-charge">
+                        <div class="radio radio-pay-way ">
+                            <label>
+                                <input type="radio" name="payWay" ng-click="chooseAlipay()" checked>
+                                <img class="img-alipay" src="/images/logo/alipay.png" alt="">
+                                <span class="text-muted description">在线支付，实时到账，提供发票</span>
+                            </label>
+                        </div>
+                        <div class="radio radio-pay-way ">
+                            <label>
+                                <input type="radio" name="payWay" ng-click="chooseArtificial()">
+                                <span class="img-artificial">人工支付</span>
+                                <span class="text-muted description">人工接待，当然也提供发票</span>
+                            </label>
+                        </div>
+                        <div ng-if="whenChooseArtificial()" class="form-horizontal" role="form">
+                            <p><b>请提供您的联系方式,我们的工作人员会在一个工作日内联系您:</b>
+                            </p>
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <input type="text" ng-model="contact.nickname" class="form-control" placeholder="如何称呼您" ng-required="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <input type="text" ng-model="contact.tel" class="form-control" placeholder="手机或者电话号码" ng-required="true">
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col-sm-6 bg-warning alert">
+                    <p>
+                        <span class="text-muted">充值金额：</span><b>¥{{cost.price}}</b>
+                    </p>
+                    <p>
+                        <span class="text-muted">支付方式：</span><b ng-bind="getChargeWayName()"></b>
+                    </p>
+                    <p ng-if="cost.gift">
+                        <span class="text-muted" >赠送金额：</span><b class="text-danger" >¥{{cost.gift}}</b>
+                    </p>
+                </div>
+                <div class="clear"></div>
+                <div class="submit">
+                    <input type="hidden" name="way" value="{{chargeWay}}">
+                    <input type="hidden" name="costCategory" value="{{cost.category}}">
+                    <input type="hidden" name="tel" value="{{contact.tel}}">
+                    <input type="hidden" name="nickname" value="{{contact.nickname}}">
+                    <button type="submit" class="btn btn-pay btn-charge">支付
+                    </button>
+                </div>
+        </form>
+        </div>
+    </div>
+</div>

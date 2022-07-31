@@ -1,0 +1,84 @@
+<div class="user-flyer-nav user-sub-nav" ng-init="init()">
+	<tabset type="'sub-nav'">
+		<tab select="listFlyerByQuery()">
+			<tab-heading dropdown>
+
+				<span ng-bind="activeFilter.label || '我的作品'" ng-if="isAuthor(user)"></span>
+				<i class="fa fa-caret-down dropdown-toggle" ng-if="isAuthor(user)"></i>
+
+				<span ng-if="!isAuthor(user)">Ta 的作品</span>
+
+
+				<ul class="dropdown-menu">
+					<div class="arrow"></div>
+					<li ng-repeat="filter in filters"
+						ng-if="filter.name !== activeFilter.name"
+						ng-click="listFlyerByQuery(filter)">
+						<a ng-bind="filter.label"></a>
+					</li>
+				</ul>
+			</tab-heading>
+
+			<div class="card-list" ng-show="flyers.length">
+				<div class="card aa-fade disable-hide"
+					ng-repeat="flyer in flyers">
+					<user-flyer-card ng-model="flyer" is-author="isAuthor(user)"></user-flyer-card>
+				</div>
+			</div>
+
+			<!-- 未能找到作品 -->
+			<div class="snippet-empty" ng-if="count === 0 && isAuthor(user)">
+				<h3 ng-if="!activeFilter.query.status">您还没有创建作品</h3>
+				<h3 ng-if="activeFilter.query.status">无符合条件的作品</h3>
+			</div>
+
+			<div class="snippet-empty" ng-if="count === 0 && !isAuthor(user)">
+				<h3>Ta 还没有创建作品</h3>
+			</div>
+
+			<!-- 加载更多 -->
+			<div class="load-more" ng-if="count !== 0 && next">
+				<span ng-if="loading">
+					<i class="sprite"></i>
+				</span>
+				<span ng-click="loadMore('listFlyer')">载入更多</span>
+			</div>
+		</tab>
+		<tab select="listFriendFlyerByQuery()" ng-if="isAuthor(user)">
+			<tab-heading>
+				好友的作品
+			</tab-heading>
+
+			<div class="card-list" ng-show="friendFlyers.length">
+				<div class="card aa-fade disable-hide"
+					ng-repeat="flyer in friendFlyers">
+					<user-flyer-card-friend ng-model="flyer"></user-flyer-card-friend>
+				</div>
+			</div>
+
+			<div ng-cloak class="snippet-empty" ng-if="count === 0">
+				<h3>好朋友，快到碗里来！添加好友就可以共享作品了</h3>
+				<div>您可以前往<a href="/account?menu=3">个人账号</a>完成好友添加</div>
+			</div>
+
+			<div class="load-more" ng-if="count !== 0 && next">
+				<span ng-if="loading">
+					<i class="sprite"></i>
+				</span>
+				<span ng-click="loadMore('listFriendFlyer')">载入更多</span>
+			</div>
+		</tab>
+	</tabset>
+	<div class="create-flyer ek-btn btn-hl btn-round btn-grey"
+		ng-if="isAuthor(user)">
+		<div class="sample">
+			<i class="sprite"></i>创建作品
+		</div>
+		<div class="from-empty" ng-click="createFlyer()">
+			<i class="sprite"></i>自由创作
+		</div>
+		<div class="from-tpl" ui-sref="tplCenter">
+			<i class="sprite"></i>从模板创建
+		</div>
+	</div>
+</div>

@@ -1,0 +1,15 @@
+@import "shared/shared";
+.page-data {
+	margin-top: 60px;
+	color: #4A4A4A;
+	font-size: 14px;
+	& > .container {
+		display: flex;
+	}
+
+}
+
+@import './side-bar/index';
+@import './main-area/index';
+@import './form/index';
+@import './stat/index';

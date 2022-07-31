@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+{{> tag_home_head}}
+
+<body class="page-sign">
+    {{> home_header}}
+    {{> wrapper_cloud}}
+    <![if !lte IE 9]>
+
+    <div class="content">
+        <form>
+            <div class="form-common form-signup clearfix container" id="form-forget-pwd">
+                <div class="form-common-head">
+                    <div class="inner">
+                         <img src="/images/ResetIcon.png">
+                         <div class="word">重置密码</div>
+                    </div>
+                </div>
+                <div class="form-common-content">
+                    <div class="form-control-outter email">
+                        <input class="form-control" id="email" name="email" type="email" placeholder="输入您注册账号所用的邮箱" />
+                    </div>
+                </div>
+                <div class="form-common-footer">
+                    <div class="btn-submit red">确认重置
+                    </div>
+                </div>
+                {{>home_social_login}}
+            </div>
+        </form>
+        <div class="word-welcome">
+             <p>已有账号，<a class="btn-red-link" href="/signin.html">立刻登录</a></p>
+        </div>
+    </div>
+    <![endif]>
+    {{> home_script}}
+    {{> g_script}}
+</body>
+
+</html>

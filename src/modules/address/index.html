@@ -1,0 +1,10 @@
+<div ng-controller="AddressController">
+	<div ng-init="initAddress()">
+		<label>地址</label>
+		<div class="input-filed">
+			<i class="fa fa-map-marker"></i>
+			<input id="suggestId" type="text" class="form-control icon-form-control search-input" ng-model="ngModel.location" placeholder="请输入地址" ng-input-limit="0,40"/>
+		</div>
+		<div id="searchResultPanel">
+	</div>
+</div>

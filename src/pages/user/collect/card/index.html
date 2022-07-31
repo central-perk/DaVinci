@@ -1,0 +1,47 @@
+<div class="user-collect-card">
+	<div class="inner">
+
+		<!-- 缩略图 -->
+		<div class="top-part" ng-click="preview($event)">
+			<div class="logo">
+				<img class="full-size" ng-src="{{ngModel.logo}}" image-loading/>
+			</div>
+			<div class="operate">
+				<div class="preview" ng-click="preview($event)">预览</div>
+				<div class="collect" ng-click="collect($event)" ng-if="!ngModel.collectID">收藏</div>
+				<div class="collect" ng-click="uncollect($event)" ng-if="ngModel.collectID">取消收藏</div>
+			</div>
+		</div>
+
+		<!-- 基本信息 -->
+		<div class="bottom-part">
+			<div class="row-1" ng-if="opt.category === 0">
+				<span class="price" ng-if="ngModel.price">{{ngModel.price | currency:"¥ "}}</span>
+				<span class="price" ng-if="!ngModel.price">免费</span>
+				<tc-star ng-model="tpl"></tc-star>
+			</div>
+			<div class="row-2">
+				<div class="tpl-title" ng-bind="ngModel.title"></div>
+			</div>
+			<div class="row-3">
+				<span class="tpl-author">by:
+					<a ui-sref="user({ userID: ngModel.user._id })"
+						ng-bind="ngModel.user.nickname"></a>
+				</span>
+				<span class="tpl-tag" ng-bind="ngModel.tags|flyerTag"></span>
+			</div>
+			<!-- 查看、点赞数量 -->
+			<div class="row-4">
+				<span class="visit">
+					<i class="sprite"></i>
+					<span number-format="{{ngModel.viewCount || ngModel.pv}}"></span>
+				</span>
+				<span class="zan">
+					<i class="sprite"></i>
+					<span number-format="{{ngModel.likeCount}}"></span>
+				</span>
+				<span class="space"></span>
+			</div>
+		</div>
+	</div>
+</div>

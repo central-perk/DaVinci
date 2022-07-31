@@ -1,0 +1,294 @@
+.act-manage {
+	.property {
+		.property-list {
+			display: flex;
+			li {
+				width: 25%;
+				height: 190px;
+				border-right: 1px solid #E5E5E5;
+				padding: 20px;
+				position: relative;
+				cursor: pointer;
+				border-top: 3px solid #fff;
+				&:nth-child(4) {
+					border-right: none;
+				}
+				&.active {
+					border-top: 3px solid #FF8C0A;
+				}
+				.property-num {
+					display: flex;
+					.left-part {
+						width: 60px;
+						text-align: center;
+						margin-right: 20px;
+						.property-title {
+							color: #9B9B9B;
+						}
+					}
+					.right-part {
+						& > div {
+							margin-bottom: 7px;
+						}
+						.desc {
+							font-size: 12px;
+							color: #9B9B9B;
+						}
+					}
+				}
+				.property-operation {
+					width: 100%;
+					height: 30px;
+					text-align: center;
+					position: absolute;
+					bottom: 25px;
+					left: 0;
+					& > span, a, button {
+						width: 60px;
+						height: 30px;
+						line-height: 28px;
+						display: inline-block;
+						border: 1px solid;
+						text-align: center;
+						padding: 0;
+						background-color: white;
+						outline: none;
+						&[disabled] {
+							color: #CCCCCC !important;
+							border-color: #CCCCCC !important;
+							background-color: #fff !important;
+						}
+					}
+					.green {
+						border-color: #3B9466;
+						color: #3B9466;
+						margin-right: 18px;
+						&:hover {
+							background-color: #C2F0D8;
+						}
+						&:active {
+							color: white;
+							background-color: #3B9466;
+						}
+					}
+					.orange {
+						border-color: #EC580C;
+						color: #EC580C;
+						&:hover {
+							background-color: #FFE8CD;
+						}
+						&:active {
+							color: white;
+							background-color: #EC580C;
+						}
+					}
+				}
+			}
+			.edou {
+				i.sprite {
+					width: 52px;
+					height: 40px;
+					background-position: 0px -248px;
+					margin-bottom: 15px;
+					&.active {
+						background-position: 0px -292px;
+					}
+				}
+				.property-operation {
+					.get-edou {
+						width: 180px;
+						color: #3B9466;
+						border-color: #3B9466;
+					}
+				}
+			}
+			.rmlogo {
+				i.sprite {
+					width: 42px;
+					height: 42px;
+					background-position: -56px -239px;
+					margin-bottom: 13px;
+					&.active {
+						background-position: -56px -286px;
+					}
+				}
+				.property-operation {
+
+				}
+			}
+		}
+		.property-layout {
+			height: 240px;
+			background-color: #E5E5E5;
+			display: flex;
+			padding: 30px 40px;
+			.left-part {
+				width: 120px;
+				font-size: 18px;
+				text-align: center;
+				line-height: 24px;
+				margin-right: 40px;
+				i {
+					display: inline-block;
+					margin-bottom: 15px;
+				}
+				.property-title {
+					margin: auto;
+				}
+			}
+			.right-part {
+				.pack-list {
+					display: flex;
+					li {
+						width: 120px;
+						height: 80px;
+						background-color: white;
+						cursor: pointer;
+						margin-right: 30px;
+						text-align: center;
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						border-radius: 5px;
+						&.active {
+							border: 2px solid #EC580C;
+						}
+						.num {
+							font-size: 14px;
+							margin-bottom: 10px;
+						}
+						.price {
+							font-size: 20px;
+							color: #EC580C;
+							span {
+								font-size: 14px;
+							}
+						}
+						&:hover {
+							border-color: #EC580C;
+						}
+					}
+				}
+				.pay-block {
+					display: flex;
+					margin-top: 20px;
+					.btn {
+						display: block;
+						width: 120px;
+						height: 50px;
+						margin-right: 30px;
+						line-height: 38px;
+						font-size: 20px;
+					}
+					.btn-alipay {
+						background-image: url('/images/alipay.png');
+						background-repeat: no-repeat;
+						background-position: 18px 12px;
+					}
+					.btn-wxpay {
+						background-image: url('/images/wxpay.png');
+						background-repeat: no-repeat;
+						background-position: 42px 12px;
+					}
+					.pay-info {
+						width: 300px;
+						font-size: 12px;
+						.orange {
+							color: #EC580C;
+						}
+					}
+				}
+				.green {
+					color: #3B9466;
+				}
+			}
+			.question {
+				width: 14px;
+				height: 14px;
+				border-radius: 50%;
+				display: inline-block;
+				font-size: 12px;
+				background-color: #f8e71c;
+				color: #d0021b;
+				text-align: center;
+				line-height: 14px;
+				text-indent: 1px;
+				cursor: pointer;
+			}
+		}
+		.get-edou-layout {
+			.left-part {
+				i {
+					width: 122px;
+					height: 93px;
+					background-image: url(/images/edou.png);
+				}
+				.property-title {
+					width: 100px;
+				}
+			}
+			.right-part {
+
+			}
+		}
+		.exchange-rmlogo-layout, .buy-rmlogo-layout  {
+			.left-part {
+				i {
+					width: 112px;
+					height: 115px;
+					background-image: url(/images/rmlogo-pack.png);
+				}
+			}
+			.right-part {
+				p {
+					margin-bottom: 15px;
+				}
+			}
+		}
+	}
+
+	.bill-record {
+		padding: 25px 40px;
+		.bill-title {
+			height: 30px;
+			display: flex;
+			align-items: center;
+			margin-bottom: 20px;
+			h3 {
+				font-size: 20px;
+				font-weight: 100;
+			}
+		}
+		table {
+			width: 100%;
+			border-top: 2px solid #CCCCCC;
+			border-bottom: 1px solid #CCCCCC;
+			.bill-created-time {
+				width: 190px;
+			}
+			.bill-amount {
+			 	width: 160px;
+			}
+			tr {
+				height: 40px;
+				line-height: 40px;
+				&:nth-child(odd) {
+					background-color: #F0F0F0;
+				}
+				td, th {
+					&:first-child, &:last-child {
+						padding: 0 20px;
+					}
+				}
+			}
+			thead {
+				tr {
+					background-color: #fff!important;
+				}
+			}
+		}
+		.pagination-wrap {
+			text-align: center;
+		}
+	}
+}

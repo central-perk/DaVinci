@@ -1,0 +1,98 @@
+<div class="pane pane-account" ng-if="user.isAgent">
+        <h3 class="pane-title">
+            账户概览
+        </h3>
+        <!-- 账户套餐 -->
+        <!--  <div class="row sub-item sub-item-account">
+            <div class="col-sm-6 col-xs-12 measure">
+                <label>账户套餐：</label>
+                <plan-flag ng-model="user.plan.category"></plan-flag>
+                <span class="mg-r-1" ng-class="getPlanNameClass()" ng-bind="user.plan.name"></span>
+                <span ng-if="!whenPlanFree()" class="text-success">(至
+                    <b ng-bind="user.plan.endTime|dateDisplay" ng-class="{'text-danger':whenExpiryDate()}"></b>
+                    <b ng-if="planAmount.isProbation">,当前试用中</b>)
+                </span>
+                <span ng-if="plan.category===1" class="text-success">永久免费
+                </span>
+            </div>
+            <div ng-if="!whenPlanEnt()" class="col-sm-2 operate col-xs-12 pull-right">
+                <a class="btn btn-warning btn-block btn-qa" ng-click="toUpgradePlan()">升级<question  tooltip-data="升级" tooltip-trigger="ehover"></question></a>
+            </div>
+            <div ng-if="!whenPlanFree()" class="col-sm-2 operate col-xs-12 pull-right">
+                <a class="btn btn-warning btn-block btn-qa" ng-click="toRenewalPlan()">续费<question tooltip-data="续费"></question></a>
+            </div>
+            <div ng-if="whenProbationPlanInitial()" class="col-sm-3 operate col-xs-12 pull-right">
+                <a class="btn btn-success btn-block btn-qa" ng-click="probationPlan()">免费试用7天标准版
+                    <question tooltip-data="点击这里可以申请免费试用7天标准版套餐"></question></a>
+            </div>
+        </div> -->
+        <!-- 传单额度 -->
+        <div class="row sub-item">
+            <div class="col-sm-10 measure">
+                <label title="传单的剩余可用额度">剩余额度：</label>
+                <div class="interact-left">
+                    <i class="fa fa-file-movie-o icon-limit"></i>交互传单 :
+                    <amount>
+                        <span ng-bind="user.amount.interactFlyer"></span>
+                    </amount>个
+                    &nbsp;&nbsp;
+                </div>
+                <div class="static-left">
+                    <i class="fa fa-file-o icon-limit"></i>普通传单 :
+                    <amount>
+                        <span ng-bind="user.amount.staticFlyer"></span>
+                    </amount>个
+                </div>
+            </div>
+            <!--    <div class="col-sm-2 operate">
+                <a ng-click="toBuyFlyers()" class="btn btn-warning btn-block btn-qa">购买
+                 <question tooltip-data="购买"></question></a>
+            </div> -->
+        </div>
+        <!-- 短信额度 -->
+        <!--         <div class="row sub-item">
+            <div class="col-sm-8 measure">
+                <label>短信额度：</label>
+
+                <i class="fa fa-comment-o icon-limit"></i>
+                <amount>{{serviceAmount.sms}}</amount>条
+            </div>
+            <div class="col-sm-2 operate">
+                <a href="/mails" class="btn btn-success btn-block">推送记录</a>
+            </div>
+            <div class="col-sm-2 operate">
+                <a class="btn btn-warning btn-block btn-qa" ng-click="toBuySms()">购买
+                 <question tooltip-data="购买"></question></a>
+            </div>
+        </div> -->
+        <!-- 邮件额度 -->
+        <!--         <div class="row sub-item">
+            <div class="col-sm-8 measure">
+                <label>邮件额度：</label>
+                <i class="fa fa-envelope-o icon-limit"></i>
+                <amount>{{serviceAmount.mails}}</amount>封
+            </div>
+            <div class="col-sm-2 operate">
+                <a href="/mails" class="btn btn-success btn-block">推送记录</a>
+            </div>
+            <div class="col-sm-2 operate">
+                <a class="btn btn-warning btn-block btn-qa" ng-click="toBuyMails()">购买<question tooltip-data="购买"></question></a>
+            </div>
+        </div> -->
+        <!-- 账户余额 -->
+        <!--   <div class="row sub-item">
+            <div class="col-sm-8  measure">
+                <label>账户余额：</label>
+                <i class="fa fa-jpy icon-limit"></i> 
+                <amount>
+                    {{account.balance | toFixed}}
+                </amount>元
+            </div>
+            <div class="col-sm-2 operate">
+                <a href="/bills" class="btn btn-success btn-block">交易记录</a>
+            </div>
+            <div class="col-sm-2 operate">
+                <a href="/charge" class="btn btn-warning btn-block btn-qa">充值<question tooltip-data="充值"></question></a>
+            </div>
+        </div> -->
+    </div>

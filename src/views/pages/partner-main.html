@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-controller="LayoutController">
+<head>
+    {{>main_head}}
+</head>
+<body class="partner">
+   {{> global_alert}}
+   <!--Loading -->
+    <div class="mdl-loading loading" id="loading">
+        <i class="fa fa-spinner fa-spin"></i>
+    </div>
+   {{> partner_header}}
+  
+   <div ui-view ng-cloak></div>
+     {{> main_script}}
+</html>

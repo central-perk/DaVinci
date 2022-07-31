@@ -1,0 +1,16 @@
+<div class="mdl-flex-carousel" ng-init="init()" >
+    <div class="carousel">
+        <!-- -->
+        <div class="carousel-inner clearfixed">
+        </div>
+    </div>
+    <ol class="carousel-indicators" ng-show="layouts.length >1">
+        <li ng-repeat="layout in layouts" ng-class="{active: isActive(layout)}"></li>
+    </ol>
+    <a class="left carousel-control" ng-if="layouts.length>1" ng-click="prev($event)">
+        <span class="icon-prev"  tooltip-placement="left" tooltip-trigger="mouseenter" tooltip-append-to-body="true"  tooltip-html-unsafe="切换布局"></span>
+    </a>
+    <a class="right carousel-control" ng-if="layouts.length>1"  ng-click="next($event)">
+        <span class="icon-next" tooltip-placement="right" tooltip-trigger="mouseenter" tooltip-append-to-body="true"  tooltip-html-unsafe="切换布局" ></span>
+    </a>
+</div>

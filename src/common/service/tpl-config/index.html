@@ -1,0 +1,190 @@
+<div>
+	<div class="modal-header">
+		<div class="left-part">
+			<div class="title" ng-bind="title"></div>
+		</div>
+		<div class="right-part">
+			<i class="sprite close" ng-click="close()"></i>
+		</div>
+	</div>
+	<div class="modal-body">
+		<form name="tplPriceForm" class="tpl-price-form">
+			<div class="logo-area">
+				<div class="logo-tip">封面最佳尺寸 260 x 260</div>
+				<div class="logo">
+					<img class="full-size" ng-src="{{tpl.logo}}" ng-show="tpl.logo">
+				</div>
+				<div class="form-control-outter">
+					<select class="form-control"
+						ng-model="tpl.logo"
+						ng-options="tag.url as tag.name for tag in tags"
+						ng-change="selectLogo()"
+						required>
+						<option value="">系统封面</option>
+					</select>
+				</div>
+				<span class="change-logo ek-btn btn-hl btn-grey"
+					ng-if="!tpl.logoCustomValue"
+					ng-click="replaceLogo()">自定义封面</span>
+				<span class="change-logo ek-btn btn-hl btn-green"
+					ng-if="tpl.logoCustomValue"
+					ng-click="replaceLogo()">替换封面</span>
+			</div>
+			<div class="price-area" ng-show="showPriceArea">
+				<div class="form-group unit-price">
+					<div class="control-label">模板单价</div>
+					<div class="control-content">
+						¥
+						<div class="price-select">
+							<select class="form-control"
+								ng-model="priceIndex[2]"
+								ng-options="value for value in [0,1,2]">
+							</select>
+							<select class="form-control"
+								ng-model="priceIndex[1]"
+								ng-options="value for value in [0,1,2,3,4,5,6,7,8,9]">
+							</select>
+							<select class="form-control"
+								ng-model="priceIndex[0]"
+								ng-options="value for value in [0,1,2,3,4,5,6,7,8,9]">
+							</select>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio"
+									ng-value="true"
+									ng-click="setFree()"
+									ng-model="tpl.isFree">
+								免费
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group" ng-if="!tpl.isFree">
+					<div class="control-label">买断价格</div>
+					<div class="control-content">
+						<span class="buyout-price" ng-if="tpl.buyoutSupport">¥<span ng-bind="tpl.price * 10"></span></span>
+						<div class="radio">
+							<label>
+								<input type="radio"
+									name="buyout"
+									ng-value="true"
+									ng-model="tpl.buyoutSupport">
+								可以买断
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio"
+									name="buyout"
+									ng-value="false"
+									ng-model="tpl.buyoutSupport">
+								不可买断
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group" ng-if="!tpl.isFree">
+					<div class="control-label">易豆兑换</div>
+					<div class="control-content">
+						<span class="integral" ng-if="tpl.integralSupport"><span ng-bind="tpl.price"></span> 易豆</span>
+						<div class="radio">
+							<label>
+								<input type="radio"
+									name="integral-support"
+									ng-value="true"
+									ng-model="tpl.integralSupport">
+								可以兑换
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio"
+									name="integral-support"
+									ng-value="false"
+									ng-model="tpl.integralSupport">
+								不可兑换
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group after-sale">
+					<div class="control-label">后续服务</div>
+					<div class="control-content">
+						<div class="radio">
+							<label>
+								<input type="radio"
+									name="after-sale-support"
+									ng-value="true"
+									ng-model="tpl.afterSaleSupport">
+								提供
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio"
+									name="after-sale-support"
+									ng-value="false"
+									ng-model="tpl.afterSaleSupport">
+								不提供
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group after-sale-desc" ng-if="tpl.afterSaleSupport">
+					<div class="control-label"></div>
+					<div class="control-content">
+						<textarea placeholder="请留下真实联系方式，以便购买方与您取得联系"
+							required
+							ng-model="tpl.afterSaleDesc"></textarea>
+					</div>
+				</div>
+				<div class="operate">
+					<div class="prev-step ek-btn btn-h btn-green btn-round"
+						ng-click="showPriceArea = false">返回</div>
+					<button class="save ek-btn btn-h btn-orange btn-round"
+						ng-disabled="tplPriceForm.$invalid"
+						ng-bind="confirmBtn.label"
+						ng-click="save()"></button>
+				</div>
+			</div>
+		</form>
+		<div class="info-area" ng-show="!showPriceArea">
+			<form name="tplInfoForm">
+				<div class="title form-control-outter">
+					<input class="form-control" type="text" name="title"
+						required
+						maxlength="25"
+						ng-model="tpl.title"
+						placeholder="请输入模版标题">
+				</div>
+				<div class="tags-transfer">
+					<div class="tags form-control-outter">
+						<select class="form-control"
+							ng-model="tpl.tags"
+							required
+							ng-options="tag.tag as tag.name for tag in tags">
+							<option value="">请选择类型</option>
+						</select>
+					</div>
+					<div class="transfer form-control-outter">
+						<select class="form-control"
+							ng-model="tpl.transferMode"
+							required
+							ng-options="transfer.key as transfer.label for transfer in transfers">
+							<option value="">请选择转场模式</option>
+						</select>
+					</div>
+				</div>
+
+				<textarea class="desc" placeholder="模板描述"
+					name="desc"
+					maxlength="50"
+					ng-model="tpl.desc"></textarea>
+				<button class="next-step ek-btn btn-h btn-green btn-round"
+					ng-disabled="tplInfoForm.$invalid"
+					ng-click="showPriceArea = true">下一步</button>
+			</form>
+		</div>
+	</div>
+</div>
