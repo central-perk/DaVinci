@@ -7,6 +7,7 @@ DaVinci is ECD 2013's 1.0 editor, based on Angluarjs and DOM implementation, the
 # Quick Start
 
 ```shell
+git clone git@github.com:central-perk/DaVinci.git
 npm i
 npm start
 ```
