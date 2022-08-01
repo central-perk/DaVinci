@@ -14,4 +14,6 @@ npm start
 
 # License
 
-Distributed under the AGPLv3 License. See LICENSE.md for more information.
+DaVinci is distributed under the terms of MIT license.
+
+See LICENSE for details.
