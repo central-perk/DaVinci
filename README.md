@@ -1,6 +1,6 @@
 # DaVinci
 
-DaVinci is ECD 2012's 1.0 editor, based on Angluarjs and DOM implementation, the latest version has been reimplemented based on canvas, rust and webgl
+DaVinci is ECD 2013's 1.0 editor, based on Angluarjs and DOM implementation, the latest version has been reimplemented based on canvas, rust and webgl
 
 <img src="./docs/preview.png"/>
 
